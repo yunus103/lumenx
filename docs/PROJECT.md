@@ -29,7 +29,7 @@ Read this first in every session. It holds the client, the agreed scope, the dec
   - Product URLs are flat (`/urun/[slug]`) so a category change never breaks them; category pages exist for SEO ("şarjlı masa lambası").
 - **Referanslar:** a page of images and videos of installations. A global switch in `siteSettings` (`referencesEnabled`, default off) hides it from navigation and makes the route return 404.
 - **Prices:**
-  - Each product has a **base price in USD**.
+  - Each product has an **Ekonomik and a Premium price in USD** (`priceUsd`, `premiumPriceUsd`); if only one is filled, only that one is shown. Products with a single price use `priceUsd`.
   - Shown in TL, converted with the daily rate (TCMB), labelled as a starting / quote price; the real price is negotiated.
   - **One global switch** in `siteSettings` (not per product): show TL price / show no price. Built now so a later "hide prices" request costs nothing.
 - **Kelvin:** options per product, with a category default (all table lamps are 2700 K). With a single option, the existing Kelvin card shows that one value as info instead of three choices.
@@ -37,13 +37,16 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - **Products first, models later:** upload all products without 3D first, then model them one by one. A product without a model shows its photo gallery and configurator without the viewer.
 - **3D data lives in code, catalogue data in Sanity:** a product has an optional `modelKey` string. Kit specs (profiles, grain, light tuning) are code in the repo, versioned in git, never edited by the client. Modelling a product = add its spec + fill `modelKey`.
 - **Environment:** the existing restaurant room covers all table lamps. An outdoor kit and room are discussed once the full product list arrives; not a blocker now.
+- **Catalogue schema (2026-11-02):** `product`, `productCategory` (a tree via `parent`, so a mega menu needs no schema change; URLs stay flat), shared `finish` (body colour with RAL; its slug is the 3D material key) and `shade`. Variant photos are keyed by finish (+ shade), the demo's `photoFor` logic; missing combinations fall back to the nearest photo, and Yunus fills gaps with AI-generated photos. Category holds the default Kelvin options and default spec table.
+- **Light Design's separate "Ekonomik" listings** (charging stations, Ezop, Meissa, Pandora, Plastica) stay separate products.
+- **Design:** the demo's design is ported as the starting point (header, hero, cards, Kelvin guide, quote drawer, configurator), not redesigned.
 - **Quote list:** keep the demo's flow (localStorage list, sent as one prefilled WhatsApp message).
 - **Webhook:** every new or removed `_type` must be reflected in `src/app/api/revalidate/route.ts`, the README's webhook filter, and the Sanity dashboard webhook (see CLAUDE.md "Adding Content Types").
 
 ## Product sources
 
 - **Light Design (`lightdesign.com.tr`), all products.** Built on ikas (Next.js storefront).
-  - `https://lightdesign.com.tr/products.xml` lists 106 product URLs, with duplicates (suffixes like `defne-sarjli-masa-lambasi-3-3`): expect ~90–100 unique products. Collections: `collections.xml`.
+  - `https://lightdesign.com.tr/products.xml` lists 106 product URLs → **104 unique products** (scraped 2026-11-02 into `tools/data/lightdesign.json`). Suffixes like `-3-3` are often the real URL, so dedupe is by ikas product id. Palermo redirects to Aldebaran; **Albostan** is in a redirect loop on their site and is missing. 103 descriptions name "Light Design" and need the rewrite pass.
   - Each product page embeds `<script id="__NEXT_DATA__">` with `props.pageProps.pageSpecificData`: name, description, `variantTypes` (e.g. "Renk": Ceviz / Kayın, with thumbnail image ids), categories (with path, e.g. Şarjlı Ürünler › Şarjlı Masa Lambası) and images on `cdn.myikas.com`. No HTML parsing needed.
 - **Frekans (`frekanselektrikaydinlatma.com`), some products.** WooCommerce; which ones is up to the client.
 - **The rest** (to reach ~250) comes from the client's product list.
