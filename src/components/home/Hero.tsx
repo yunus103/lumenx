@@ -20,7 +20,6 @@ function Frame({ k, on, eager }: { k: string; on: boolean; eager: boolean }) {
   return (
     <picture className={`hero-frame${on ? " on" : ""}`} data-k={k}>
       <source media="(max-width: 759px)" srcSet={src("m")} />
-      {/* eslint-disable-next-line @next/next/no-img-element -- art-directed static renders, already optimised */}
       <img src={src("d")} alt="" width={2400} height={1350} fetchPriority={k === "2700" ? "high" : undefined} />
     </picture>
   );

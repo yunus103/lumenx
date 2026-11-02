@@ -1,19 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SanityImage } from "@/components/ui/SanityImage";
 import { useQuote } from "@/components/quote/QuoteProvider";
 import { WaIcon } from "@/components/quote/icons";
 import { finishInfo, finishKind, photoFor, shortName, waLink } from "@/lib/catalog";
 import { KINFO, nearestKelvin, rgbStr, swatchBg } from "@/lib/light";
 import { formatPrice } from "@/lib/price";
+import { finish3D, shade3D } from "@/three/finishes";
+import { MODELS, MODE_LABELS, hasModel, type Mode } from "@/three/models";
+import type { ViewerState } from "@/three/types";
 import type { Product } from "@/types";
+import { ProductViewer } from "./ProductViewer";
 
 type Power = "ekonomik" | "premium";
 const POWER: Record<Power, { label: string; detail: string }> = {
   ekonomik: { label: "Ekonomik · 3 W", detail: "1×18650, 1500 mAh" },
   premium: { label: "Premium · 5 W", detail: "2×18650, 1500–2200 mAh" },
 };
+
+const LEVELS = ["Düşük", "Orta", "Yüksek"];
+const ICON_PWR = (
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
+    <path d="M8 1.8v5.4" />
+    <path d="M4.6 4a5 5 0 1 0 6.8 0" />
+  </svg>
+);
 
 const kName = (k: number) => KINFO[k]?.[0] ?? KINFO[nearestKelvin(k)][0];
 const kUse = (k: number) => KINFO[k]?.[1] ?? KINFO[nearestKelvin(k)][1];
@@ -51,8 +63,36 @@ export function Configurator({ product: p }: { product: Product }) {
   const [galleryIndex, setGalleryIndex] = useState<number | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
 
+  // 3D viewer (products with a model): view, ambience and the lamp's switch and level
+  const model = useMemo(() => (hasModel(p.modelKey) ? { key: p.modelKey, family: MODELS[p.modelKey] } : null), [p.modelKey]);
+  const [view, setView] = useState<"3d" | "photo">(model ? "3d" : "photo");
+  const [mode, setMode] = useState<Mode>("aksam");
+  const [on, setOn] = useState(true);
+  const [lvl, setLvl] = useState(2);
+  const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [touched, setTouched] = useState(false);
+
   const finish = finishes.find((f) => f._id === finishId);
   const shade = shades.find((s) => s._id === shadeId);
+
+  const viewerState = useMemo<ViewerState>(
+    () => ({
+      finish: finish3D(finish ?? {}),
+      shade: shade ? shade3D(shade) : null,
+      k: k ?? 2700,
+      on,
+      lvl,
+      power: p.chargeOptions ? power : "premium",
+      mode,
+    }),
+    [finish, shade, k, on, lvl, power, mode, p.chargeOptions]
+  );
+
+  // the light colour of the power button's glow follows the chosen Kelvin, as in the demo
+  useEffect(() => {
+    if (k) document.documentElement.style.setProperty("--glow", rgbStr(k));
+  }, [k]);
   const name = shortName(p.name, p.category?.title);
   const word = finish && finishKind(finish) === "wood" ? "gövde" : "kasa";
 
@@ -64,7 +104,9 @@ export function Configurator({ product: p }: { product: Product }) {
       : variant.exact && finish
         ? `Stüdyo fotoğrafı · ${finish.name}${shade ? `, ${shade.name.toLocaleLowerCase("tr")} abajur` : ""}`
         : finishes.length > 1
-          ? "Fotoğraftaki renk seçiminizden farklı olabilir."
+          ? model && !failed
+            ? "Fotoğraftaki renk farklı olabilir. Seçtiğiniz renk 3D görünümde."
+            : "Fotoğraftaki renk seçiminizden farklı olabilir."
           : "Stüdyo fotoğrafı";
 
   const tierPrice = p.chargeOptions ? formatPrice(power === "premium" ? p.premiumPriceUsd : p.priceUsd) : null;
@@ -114,8 +156,25 @@ export function Configurator({ product: p }: { product: Product }) {
   return (
     <>
       <div className="pv-grid">
-        <div className="viewer photo">
-          <figure className="v-photo">
+        <div className={`viewer${view === "photo" ? " photo" : ""}${touched ? " touched" : ""}`}>
+          {model && !failed && (
+            <>
+              <ProductViewer
+                model={model}
+                state={viewerState}
+                onReady={() => setReady(true)}
+                onInteract={() => setTouched(true)}
+                onFail={() => {
+                  setFailed(true);
+                  setView("photo");
+                }}
+              />
+              <div className={`v-load${ready ? " done" : ""}`}>
+                <span>3D sahne hazırlanıyor</span>
+              </div>
+            </>
+          )}
+          <figure className="v-photo" hidden={view !== "photo"}>
             {shownImage && (
               <SanityImage
                 key={shownImage.asset._id}
@@ -130,7 +189,61 @@ export function Configurator({ product: p }: { product: Product }) {
             )}
             <figcaption>{caption}</figcaption>
           </figure>
-          {gallery.length > 1 && (
+          {model && (
+            <div className="v-top">
+              <div className="seg" role="group" aria-label="Görünüm">
+                <button
+                  type="button"
+                  aria-pressed={view === "3d"}
+                  disabled={failed}
+                  title={failed ? "Tarayıcınız 3D önizlemeyi desteklemiyor" : undefined}
+                  onClick={() => setView("3d")}
+                >
+                  3D
+                </button>
+                <button type="button" aria-pressed={view === "photo"} onClick={() => setView("photo")}>
+                  Fotoğraf
+                </button>
+              </div>
+              <div className="seg" role="group" aria-label="Ortam">
+                {(Object.keys(MODE_LABELS) as Mode[]).map((m) => (
+                  <button key={m} type="button" aria-pressed={mode === m} onClick={() => setMode(m)}>
+                    {MODE_LABELS[m]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          {view === "3d" && model ? (
+            <div className="v-bot">
+              <div className="power">
+                <button className="pwr" type="button" aria-pressed={on} aria-label="Işık" onClick={() => setOn(!on)}>
+                  <i>{ICON_PWR}</i>
+                  <span aria-hidden="true">{on ? "Açık" : "Kapalı"}</span>
+                </button>
+                <div className="dim" role="group" aria-label="Işık seviyesi">
+                  {LEVELS.map((n, i) => (
+                    <button
+                      key={n}
+                      type="button"
+                      aria-label={n}
+                      title={n}
+                      aria-pressed={on && i === lvl}
+                      className={on && i <= lvl ? "lit" : undefined}
+                      onClick={() => {
+                        setLvl(i);
+                        setOn(true);
+                      }}
+                    >
+                      <b style={{ height: 5 + i * 5 }} />
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <span className="v-hint">Sürükleyerek çevirin, tekerlekle yakınlaştırın</span>
+            </div>
+          ) : (
+            gallery.length > 1 && (
             <div className="v-bot">
               <div className="v-thumbs" role="group" aria-label="Fotoğraflar">
                 {gallery.map((img, i) => (
@@ -146,6 +259,7 @@ export function Configurator({ product: p }: { product: Product }) {
                 ))}
               </div>
             </div>
+            )
           )}
         </div>
 
@@ -242,7 +356,16 @@ export function Configurator({ product: p }: { product: Product }) {
                   </div>
                 ) : (
                   ks.map((v) => (
-                    <button key={v} type="button" className="kopt" aria-pressed={v === k} onClick={() => setK(v)}>
+                    <button
+                      key={v}
+                      type="button"
+                      className="kopt"
+                      aria-pressed={v === k}
+                      onClick={() => {
+                        setK(v);
+                        setOn(true);
+                      }}
+                    >
                       <span className="sw-k" style={{ background: `rgb(${rgbStr(v)})` }} />
                       <b>{v} K</b>
                       <span>{kName(v)}</span>

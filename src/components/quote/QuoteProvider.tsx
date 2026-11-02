@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { SanityImage } from "@/components/ui/SanityImage";
 import { waLink } from "@/lib/catalog";
 import type { SanityImage as SanityImageType } from "@/types";
@@ -49,11 +49,40 @@ function readStore(): QuoteItem[] {
   }
 }
 
+// localStorage as an external store: the server renders an empty list, the client reads the saved one, and
+// another tab's changes come in through the storage event.
+const EMPTY: QuoteItem[] = [];
+const listeners = new Set<() => void>();
+let cache: QuoteItem[] | null = null;
+const getSnapshot = () => (cache ??= readStore());
+const getServerSnapshot = () => EMPTY;
+function subscribe(listener: () => void) {
+  const onStorage = (e: StorageEvent) => {
+    if (e.key !== STORAGE_KEY) return;
+    cache = readStore();
+    listener();
+  };
+  listeners.add(listener);
+  addEventListener("storage", onStorage);
+  return () => {
+    listeners.delete(listener);
+    removeEventListener("storage", onStorage);
+  };
+}
+function setItems(update: (list: QuoteItem[]) => QuoteItem[]) {
+  cache = update(getSnapshot());
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cache));
+  } catch {
+    /* private mode */
+  }
+  listeners.forEach((l) => l());
+}
+
 const emptyForm = { name: "", company: "", phone: "", city: "", note: "" };
 
 export function QuoteProvider({ children, whatsappNumber }: { children: React.ReactNode; whatsappNumber?: string }) {
-  const [items, setItems] = useState<QuoteItem[]>([]);
-  const [loaded, setLoaded] = useState(false);
+  const items = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [isOpen, setIsOpen] = useState(false);
   const [visible, setVisible] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -64,20 +93,6 @@ export function QuoteProvider({ children, whatsappNumber }: { children: React.Re
   const panelRef = useRef<HTMLElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
-
-  useEffect(() => {
-    setItems(readStore());
-    setLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (!loaded) return;
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    } catch {
-      /* private mode */
-    }
-  }, [items, loaded]);
 
   const open = useCallback(() => {
     clearTimeout(toastTimer.current);

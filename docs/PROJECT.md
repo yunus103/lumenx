@@ -74,7 +74,15 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - UI microcopy of the configurator and quote drawer stays in code; page texts and metadata come from Sanity (`homePage`, new `productsPage` singleton, `siteSettings.footerText`/`legalName`).
 - `tools/seed-content.mjs` creates the singletons from the schemas' `initialValue` plus LUMENX's contact data and menus (create-if-missing).
 - `product.chargeOptions` marks the 81 products with Light Design's Ekonomik/Premium option; prices show in USD until the TCMB rate (step 6).
-- `three` becomes an npm dependency (needs Yunus's approval when added). The viewer is a client component loaded with `next/dynamic` and `ssr: false`; the kit stays framework-free so it ports as plain modules.
+- **3D (ported 2026-11-02):** `three@0.169.0`, pinned exactly (the kit patches three's shader chunks by text). The engine is TypeScript under `src/three/`, imperative three.js with the demo's render pipeline unchanged (render on demand, `compileAsync`, shadows only after a build, probe capture, knee pass), not React Three Fiber:
+  - `Viewer.ts` (renderer, composer, loop, camera, `open`/`apply`/`dispose`), `passes.ts`, `textures.ts`, `color.ts`, `geometry.ts`, `env.ts`.
+  - `kit/` (`materials.ts` wood/fabric/liner/ring shaders, `build.ts` the turned lamp, `specs.ts` per-product measurements), `scene/` (`table.ts`, `luminaire.ts`, `lamps.ts` kit + procedural lamps, `room.ts` baked restaurant, `tableware.ts`, `cutlery.ts`, `materials.ts`).
+  - `models.ts` maps a `modelKey` to its family (kit, lamp, luminaire); `finishes.ts` maps finish/shade slugs to 3D materials (unknown finishes fall back by type). Both are pure data, usable during SSR.
+  - React: `ProductViewer` (dynamic import, lifecycle, failure falls back to photos) and the configurator's controls (3D/Fotoğraf, Gündüz/Akşam/Gece, power, dimmer). `ViewerWarmup` preloads engine and room on the home page after idle.
+  - Assets in `public/3d/` (room bake, textures, Draco decoder).
+  - **Adding a model:** a turned lamp = a spec in `kit/specs.ts` + `MODELS[key] = "kit"` + the product's `modelKey` (add it to `tools/link-models.mjs`).
+- `tools/link-models.mjs` sets `modelKey` and shades on Defne (Keten), Avior and Alderamin (Krem, Kırmızı; Light Design lists these as Alderamin body colours, the demo has them as shades), Capella. Rerun it after an import with `--overwrite`.
+- Kelvin options follow the category default (2700 K for table lamps); to offer 3000/4000 K like the demo, fill the product's Kelvin options in the Studio.
 - Static 3D assets (room, textures) go in `public/` with the code; product photos go to Sanity.
 - The boilerplate's own section designs are placeholders; replacing them with the demo's design is expected.
 - Keep the demo's performance work: one-step open with the room preloaded, `Viewer.compile()` with the composer target bound, shadows updated only after a build, touch devices get `-lo` maps and fewer samples.

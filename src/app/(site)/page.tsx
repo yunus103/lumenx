@@ -7,6 +7,7 @@ import { Collection } from "@/components/home/Collection";
 import { KelvinGuide } from "@/components/home/KelvinGuide";
 import { ProjectsBand } from "@/components/home/ProjectsBand";
 import { CtaBand } from "@/components/home/CtaBand";
+import { ViewerWarmup } from "@/components/product/ViewerWarmup";
 import { HomePage as HomePageType, ProductCardData } from "@/types";
 
 const getHome = () =>
@@ -50,6 +51,7 @@ export default async function HomePage() {
         ctaWhatsappLabel={data?.ctaWhatsappLabel}
         whatsappNumber={settings?.contactInfo?.whatsappNumber}
       />
+      <ViewerWarmup />
     </>
   );
 }

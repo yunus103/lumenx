@@ -4,6 +4,7 @@
 // IDs are deterministic (product-ld-<ikas id>, finish-<slug>, productCategory-<slug>), so reruns never duplicate.
 // By default existing documents are left alone, so edits made in the Studio (prices, texts, AI variant photos)
 // survive a rerun; --overwrite replaces every imported product with the scraped version.
+// After --overwrite, run tools/link-models.mjs again (it sets modelKey and shades on the modelled products).
 import { createClient } from "@sanity/client";
 import { readFile, writeFile, mkdir, access } from "node:fs/promises";
 import { turkishSlugify } from "../src/sanity/lib/slugify.ts";
