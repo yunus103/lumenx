@@ -7,7 +7,7 @@ import { singletonPlugin } from "./src/sanity/plugins/singletonPlugin";
 import { media } from "sanity-plugin-media";
 import { trTRLocale } from "@sanity/locale-tr-tr";
 
-const SINGLETONS = ["siteSettings", "navigation", "homePage", "aboutPage", "contactPage", "blogPage", "servicesPage", "projectsPage"];
+const SINGLETONS = ["siteSettings", "navigation", "homePage", "aboutPage", "contactPage", "blogPage"];
 
 export default defineConfig({
   basePath: "/studio",

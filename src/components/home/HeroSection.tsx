@@ -22,8 +22,6 @@ export function resolveLink(linkData?: CtaLink) {
   if (!ref || !ref._type) return "/";
   
   switch (ref._type) {
-    case "service": return `/hizmetler/${ref.slug}`;
-    case "project": return `/projeler/${ref.slug}`;
     case "blogPost": return `/blog/${ref.slug}`;
     case "aboutPage": return `/hakkimizda`;
     case "contactPage": return `/iletisim`;

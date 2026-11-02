@@ -46,16 +46,6 @@ export const homePageQuery = groq`*[_type == "homePage"][0] {
   aboutTitle, aboutSubtitle, aboutText,
   aboutImage ${imageFields},
   aboutCtaLabel, aboutCtaLink,
-  servicesTitle, servicesSubtitle,
-  featuredServices[]-> {
-    title, slug,
-    mainImage ${imageFields}
-  },
-  projectsTitle, projectsSubtitle,
-  featuredProjects[]-> {
-    title, slug,
-    mainImage ${imageFields}
-  },
   blogTitle, blogSubtitle,
   featuredPosts[]-> {
     title, slug, excerpt, publishedAt,
@@ -82,18 +72,6 @@ export const contactPageQuery = groq`*[_type == "contactPage"][0] {
 }`;
 
 export const blogPageQuery = groq`*[_type == "blogPage"][0] {
-  heroTitle, heroSubtitle,
-  heroImage ${imageFields},
-  pageTitle, pageSubtitle, ctaLabel, ctaLink, seo
-}`;
-
-export const servicesPageQuery = groq`*[_type == "servicesPage"][0] {
-  heroTitle, heroSubtitle,
-  heroImage ${imageFields},
-  pageTitle, pageSubtitle, ctaLabel, ctaLink, seo
-}`;
-
-export const projectsPageQuery = groq`*[_type == "projectsPage"][0] {
   heroTitle, heroSubtitle,
   heroImage ${imageFields},
   pageTitle, pageSubtitle, ctaLabel, ctaLink, seo
@@ -138,50 +116,6 @@ export const blogRelatedPostsQuery = groq`*[_type == "blogPost" && category._ref
   mainImage ${imageFields}
 }`;
 
-// ─── Hizmetler ─────────────────────────────────────────────────────────────────
-
-export const serviceListQuery = groq`*[_type == "service"] | order(_createdAt asc) {
-  title, slug,
-  mainImage ${imageFields}
-}`;
-
-export const serviceFallbackQuery = groq`*[_type == "service"] | order(_createdAt asc)[0...3] {
-  title, slug,
-  mainImage ${imageFields}
-}`;
-
-export const serviceBySlugQuery = groq`*[_type == "service" && slug.current == $slug][0] {
-  title, slug,
-  mainImage ${imageFields},
-  body[] {
-    ...,
-    _type == "image" => { asset->{ _id, url, metadata { lqip, dimensions } }, alt, alignment, size, hotspot, crop }
-  },
-  seo
-}`;
-
-// ─── Projeler ──────────────────────────────────────────────────────────────────
-
-export const projectListQuery = groq`*[_type == "project"] | order(_createdAt asc) {
-  title, slug,
-  mainImage ${imageFields}
-}`;
-
-export const projectFallbackQuery = groq`*[_type == "project"] | order(_createdAt asc)[0...3] {
-  title, slug,
-  mainImage ${imageFields}
-}`;
-
-export const projectBySlugQuery = groq`*[_type == "project" && slug.current == $slug][0] {
-  title, slug,
-  mainImage ${imageFields},
-  body[] {
-    ...,
-    _type == "image" => { asset->{ _id, url, metadata { lqip, dimensions } }, alt, alignment, size, hotspot, crop }
-  },
-  seo
-}`;
-
 // ─── Sitemap ───────────────────────────────────────────────────────────────────
 
 export const allSlugsForSitemapQuery = groq`{
@@ -189,13 +123,9 @@ export const allSlugsForSitemapQuery = groq`{
     "home": *[_type == "homePage"][0] { _updatedAt, "noIndex": seo.noIndex },
     "about": *[_type == "aboutPage"][0] { _updatedAt, "noIndex": seo.noIndex },
     "contact": *[_type == "contactPage"][0] { _updatedAt, "noIndex": seo.noIndex },
-    "blog": *[_type == "blogPage"][0] { _updatedAt, "noIndex": seo.noIndex },
-    "services": *[_type == "servicesPage"][0] { _updatedAt, "noIndex": seo.noIndex },
-    "projects": *[_type == "projectsPage"][0] { _updatedAt, "noIndex": seo.noIndex }
+    "blog": *[_type == "blogPage"][0] { _updatedAt, "noIndex": seo.noIndex }
   },
-  "blogPosts": *[_type == "blogPost" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt },
-  "services": *[_type == "service" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt },
-  "projects": *[_type == "project" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt }
+  "blogPosts": *[_type == "blogPost" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt }
 }`;
 
 // ─── Varsayılan SEO ────────────────────────────────────────────────────────────
@@ -211,5 +141,3 @@ export const defaultSeoQuery = groq`*[_type == "siteSettings"][0] {
 }`;
 
 export const blogSlugsQuery = groq`*[_type == "blogPost" && defined(slug.current)] { "slug": slug.current }`;
-export const projectSlugsQuery = groq`*[_type == "project" && defined(slug.current)] { "slug": slug.current }`;
-export const serviceSlugsQuery = groq`*[_type == "service" && defined(slug.current)] { "slug": slug.current }`;

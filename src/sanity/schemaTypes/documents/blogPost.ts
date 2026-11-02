@@ -74,7 +74,7 @@ export const blogPostType = defineType({
                         if (isRelative || isMailtoOrTel || isAnchor || isAbsolute) {
                           return true;
                         }
-                        return "Geçerli bir URL veya bağıntılı yol girin (örn: https://example.com veya /hizmetler)";
+                        return "Geçerli bir URL veya bağıntılı yol girin (örn: https://example.com veya /urunler)";
                       }),
                   },
                 ],

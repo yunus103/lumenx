@@ -6,6 +6,10 @@ trigger: always_on
 
 This repository is the boilerplate foundation. When maintaining the boilerplate, optimize for reuse and correct defaults. When working on a client project cloned from it, adapt and style freely for the client while preserving these core architecture rules.
 
+## This project: LUMENX
+- Client site for the LUMENX lighting brand (Frekans Elektrik Aydınlatma). **Read `docs/PROJECT.md` first**: client, scope, decisions, product sources, the 3D demo to port, and the plan.
+- Project overrides of the rules below: routes are those in `docs/PROJECT.md` (`/hizmetler` and `/projeler` are removed, not kept passive).
+
 ## Stack & Routes
 - Next.js 16 (App Router) · React 19 · Sanity v5 (Studio at `/studio`) · Tailwind CSS v4 · shadcn/ui on `@base-ui/react` · framer-motion · nodemailer.
 - Code/comments/commits: English. UI strings/Sanity titles: Turkish.

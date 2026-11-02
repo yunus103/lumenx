@@ -1,5 +1,5 @@
 import { getSiteUrl } from "@/lib/utils";
-import { SiteSettings, BlogPost, SocialLink, Service, Project } from "@/types";
+import { SiteSettings, BlogPost, SocialLink } from "@/types";
 
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
@@ -100,25 +100,5 @@ export function breadcrumbListJsonLd(items: { label: string; href: string }[]) {
       name: item.label,
       item: item.href.startsWith("http") ? item.href : `${siteUrl}${item.href}`,
     })),
-  };
-}
-
-export function serviceJsonLd(service?: Service) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: service?.title,
-    url: `${getSiteUrl()}/hizmetler/${service?.slug?.current}`,
-    ...(service?.mainImage?.asset?.url && { image: service.mainImage.asset.url }),
-  };
-}
-
-export function projectJsonLd(project?: Project) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: project?.title,
-    url: `${getSiteUrl()}/projeler/${project?.slug?.current}`,
-    ...(project?.mainImage?.asset?.url && { image: project.mainImage.asset.url }),
   };
 }

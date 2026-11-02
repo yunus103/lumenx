@@ -23,8 +23,6 @@ type CollectionConfig = {
 
 const collectionConfig: Record<string, CollectionConfig> = {
   blogPost: { detailPrefix: "blog:detail", listTag: "blog:list" },
-  service: { detailPrefix: "service:detail", listTag: "service:list" },
-  project: { detailPrefix: "project:detail", listTag: "project:list" },
 };
 
 const singletonTags: Record<string, string> = {
@@ -34,8 +32,6 @@ const singletonTags: Record<string, string> = {
   aboutPage: "about",
   contactPage: "contact",
   blogPage: "blogPage",
-  servicesPage: "servicesPage",
-  projectsPage: "projectsPage",
 };
 
 const sitemapPageTypes = new Set([
@@ -43,8 +39,6 @@ const sitemapPageTypes = new Set([
   "aboutPage",
   "contactPage",
   "blogPage",
-  "servicesPage",
-  "projectsPage",
 ]);
 
 function readSlug(value: unknown): string | undefined {

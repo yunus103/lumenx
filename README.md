@@ -74,12 +74,8 @@ _type in [
   "aboutPage",
   "contactPage",
   "blogPage",
-  "servicesPage",
-  "projectsPage",
   "blogPost",
   "blogCategory",
-  "service",
-  "project",
   "faq"
 ]
 ```
@@ -106,8 +102,6 @@ _type in [
   "affectsList": select(
     delta::operation() != "update" => true,
     _type == "blogPost" => delta::changedAny((title, slug.current, excerpt, publishedAt, category, mainImage, seo.noIndex)),
-    _type == "service" => delta::changedAny((title, slug.current, mainImage, seo.noIndex)),
-    _type == "project" => delta::changedAny((title, slug.current, mainImage, seo.noIndex)),
     false
   )
 }
@@ -146,8 +140,6 @@ src/
 │   │   ├── blog/[slug]/  # Dinamik blog detay sayfaları
 │   │   ├── page.tsx      # Ana sayfa
 │   │   ├── blog/         # Blog listesi hub sayfası
-│   │   ├── hizmetler/    # Hizmet hub ve [slug] detay sayfaları
-│   │   ├── projeler/     # Proje hub ve [slug] detay sayfaları
 │   │   ├── iletisim/     # İletişim sayfası
 │   ├── api/              # API route'ları
 │   │   ├── revalidate/   # ISR webhook
@@ -189,5 +181,4 @@ Aşağıdaki zengin arama sonuçları şemaları kod yazmaya gerek kalmadan tama
 *   **Ekmek Kırıntıları (Breadcrumbs):** İç sayfalarda `<Breadcrumbs>` bileşeni çağrıldığı anda dinamik URL hiyerarşisi üzerinden `BreadcrumbList` şemasını oluşturup sayfaya enjekte eder.
 *   **Taranabilir Sıkça Sorulan Sorular (FAQ):** `<FAQ>` bileşeni kullanıldığında, arama botlarının kapalı cevapları da %100 okuyabilmesi için answers DOM'da saklanır ve `FAQPage` şeması dinamik olarak sayfaya basılır.
 *   **Blog Yazıları:** `blog/[slug]/page.tsx` rotasında dinamik `Article` şeması otomatik olarak basılır.
-*   **Hizmet & Projeler:** İlgili detay sayfalarında `Service` ve `CreativeWork` şemaları otomatik olarak yer alır.
 

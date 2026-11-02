@@ -93,28 +93,6 @@ export interface Navigation {
   footerLinks?: NavItem[];
 }
 
-export interface Service {
-  _id?: string;
-  _createdAt?: string;
-  _updatedAt?: string;
-  title: string;
-  slug: SanitySlug;
-  mainImage?: SanityImage;
-  body?: PortableTextBlock[];
-  seo?: SeoSettings;
-}
-
-export interface Project {
-  _id?: string;
-  _createdAt?: string;
-  _updatedAt?: string;
-  title: string;
-  slug: SanitySlug;
-  mainImage?: SanityImage;
-  body?: PortableTextBlock[];
-  seo?: SeoSettings;
-}
-
 export interface CtaLink {
   linkType: "internal" | "manual";
   manual?: string;
@@ -163,8 +141,6 @@ export interface InnerPageWithCta extends BasePage {
 }
 
 export type BlogPage = InnerPageWithCta;
-export type ServicesPage = InnerPageWithCta;
-export type ProjectsPage = InnerPageWithCta;
 
 export interface HomePage {
   heroTitle: string;
@@ -178,12 +154,6 @@ export interface HomePage {
   aboutImage?: SanityImage;
   aboutCtaLabel?: string;
   aboutCtaLink?: string;
-  servicesTitle?: string;
-  servicesSubtitle?: string;
-  featuredServices?: Service[];
-  projectsTitle?: string;
-  projectsSubtitle?: string;
-  featuredProjects?: Project[];
   blogTitle?: string;
   blogSubtitle?: string;
   featuredPosts?: BlogPost[];
