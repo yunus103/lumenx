@@ -142,7 +142,7 @@ export function QuoteProvider({ children, whatsappNumber }: { children: React.Re
       const ex = list.find((x) => sameLine(x, item));
       return ex ? list.map((x) => (x === ex ? { ...x, qty: x.qty + item.qty } : x)) : [...list, item];
     });
-    setToast(`${item.name} · ${item.qty} adet eklendi`);
+    setToast(`${item.qty} adet ${item.name} eklendi`);
     setBump((b) => b + 1);
     clearTimeout(toastTimer.current);
     toastTimer.current = setTimeout(() => setToast(null), 3800);

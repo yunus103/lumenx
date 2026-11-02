@@ -62,6 +62,8 @@
   --paper-ink: #1e1517;
   --paper-muted: #65584f;
   --paper-line: rgba(30, 21, 23, .12);
+  /* the studio backdrop of Light Design's product photos, so photo frames blend into the shot */
+  --photo: #f2f2f2;
   --wa: #1a7f48;
   --glow: 255, 190, 111;
   --f: var(--font-saira), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;

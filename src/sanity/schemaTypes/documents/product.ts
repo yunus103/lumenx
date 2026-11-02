@@ -140,7 +140,7 @@ export const productType = defineType({
       type: "array",
       group: "tech",
       of: [defineArrayMember({ type: "specRow" })],
-      description: "Boş bırakılırsa kategorinin varsayılan tablosu gösterilir.",
+      description: "Kategorinin tablosuna eklenir. Aynı başlıkta bir satır kategorideki satırın yerine geçer; sadece ürüne özel bilgileri girin (ağırlık, malzeme, ölçü).",
     }),
     defineField({
       name: "datasheets",

@@ -1,4 +1,13 @@
-import type { Finish, SanityImage, VariantPhoto } from "@/types";
+import type { Finish, SanityImage, SpecRow, VariantPhoto } from "@/types";
+
+// The category's table with the product's own rows on top: a row with the same label replaces the
+// category's, new labels are appended. A product only lists what differs (weight, material...).
+export function mergeSpecs(categoryRows: SpecRow[], productRows: SpecRow[]) {
+  const key = (r: SpecRow) => r.label.trim().toLocaleLowerCase("tr-TR");
+  const own = new Map(productRows.map((r) => [key(r), r]));
+  const base = new Set(categoryRows.map(key));
+  return [...categoryRows.map((r) => own.get(key(r)) ?? r), ...productRows.filter((r) => !base.has(key(r)))];
+}
 
 // Product names repeat their category ("Defne Şarjlı Masa Lambası" in "Şarjlı Masa Lambası"); cards and the
 // configurator heading show the model name the way the demo did, with the category as the meta line.
@@ -41,13 +50,13 @@ export function finishInfo(f: Finish): FinishInfo {
   if (kind === "metal")
     return {
       title: f.name,
-      line: f.ral ? `${f.finishType} · en yakın referans RAL ${f.ral} ${f.ralName ?? ""}`.trim() : `${f.finishType} · RAL karşılığı yok`,
+      line: f.ral ? `${f.finishType}, en yakın referans RAL ${f.ral} ${f.ralName ?? ""}`.trim() : `${f.finishType}, RAL karşılığı yok`,
       note: "Kaplama tonu ekranda tam yansımaz; numune kartelayla doğrulanır.",
       copy: f.ral ? `${f.name} (en yakın RAL ${f.ral})` : `${f.name} kaplama`,
     };
   return {
     title: f.ral ? `RAL ${f.ral}` : f.name,
-    line: [f.ral ? f.ralName ?? f.name : null, f.finishType].filter(Boolean).join(" · "),
+    line: [f.ral ? f.ralName ?? f.name : null, f.finishType].filter(Boolean).join(", "),
     note: "Ekran rengi yaklaşık değerdir; üretim fiziksel kartelaya göre yapılır.",
     copy: f.ral ? `RAL ${f.ral}` : f.name,
   };

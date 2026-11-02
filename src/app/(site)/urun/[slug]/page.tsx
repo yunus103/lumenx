@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { cachedFetch } from "@/sanity/lib/client";
 import { productBySlugQuery, productSlugsQuery, productsPageQuery, relatedProductsQuery } from "@/sanity/lib/queries";
 import { buildMetadata, getLayoutData, portableTextToPlainText } from "@/lib/seo";
-import { shortName } from "@/lib/catalog";
+import { mergeSpecs, shortName } from "@/lib/catalog";
 import { Configurator } from "@/components/product/Configurator";
 import { RichText } from "@/components/ui/RichText";
 import { SanityImage } from "@/components/ui/SanityImage";
@@ -45,7 +45,9 @@ export default async function ProductPage({ params }: Props) {
     getLayoutData(),
   ]);
 
-  const specs = p.specs?.length ? p.specs : (p.category?.defaultSpecs ?? []);
+  // GROQ returns null, not undefined, for missing arrays
+  const specs = mergeSpecs(p.category?.defaultSpecs ?? [], p.specs ?? []);
+  const hasAbout = !!p.description?.length || !!p.datasheets?.length;
   const crumbs = [
     { label: page?.pageTitle ?? "", href: "/urunler" },
     { label: p.category.title, href: `/urunler/${p.category.slug.current}` },
@@ -66,36 +68,37 @@ export default async function ProductPage({ params }: Props) {
 
       <Configurator product={p} />
 
-      {!!p.description?.length && (
-        <section className="p-about" aria-labelledby="aboutH">
-          <h2 id="aboutH">Ürün hakkında</h2>
-          <RichText value={p.description} className="prose-invert prose-base" />
-        </section>
-      )}
-
-      {(specs.length > 0 || !!p.datasheets?.length) && (
-        <section className="specs" aria-labelledby="specH">
-          <h2 id="specH">Teknik özellikler</h2>
-          {specs.length > 0 && (
-            <dl className="spec-table">
-              {specs.map((s) => (
-                <div className="spec-row" key={s.label}>
-                  <dt>{s.label}</dt>
-                  <dd>{s.value}</dd>
+      {(hasAbout || specs.length > 0) && (
+        <div className="p-info">
+          {hasAbout && (
+            <section className="p-about" aria-labelledby="aboutH">
+              <h2 id="aboutH">Ürün hakkında</h2>
+              {!!p.description?.length && <RichText value={p.description} className="prose-invert prose-base" />}
+              {!!p.datasheets?.length && (
+                <div className="sheets">
+                  {p.datasheets.map((d) => (
+                    <a key={d.url} className="btn btn-line" href={d.url} target="_blank" rel="noopener">
+                      {d.title} (PDF)
+                    </a>
+                  ))}
                 </div>
-              ))}
-            </dl>
+              )}
+            </section>
           )}
-          {!!p.datasheets?.length && (
-            <div className="sheets">
-              {p.datasheets.map((d) => (
-                <a key={d.url} className="btn btn-line" href={d.url} target="_blank" rel="noopener">
-                  {d.title} (PDF)
-                </a>
-              ))}
-            </div>
+          {specs.length > 0 && (
+            <section className="specs" aria-labelledby="specH">
+              <h2 id="specH">Teknik özellikler</h2>
+              <dl className="spec-table">
+                {specs.map((s) => (
+                  <div className="spec-row" key={s.label}>
+                    <dt>{s.label}</dt>
+                    <dd>{s.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
           )}
-        </section>
+        </div>
       )}
 
       {!!related?.length && (

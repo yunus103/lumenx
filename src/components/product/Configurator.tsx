@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Lightbox } from "@/components/ui/Lightbox";
 import { SanityImage } from "@/components/ui/SanityImage";
 import { useQuote } from "@/components/quote/QuoteProvider";
 import { WaIcon } from "@/components/quote/icons";
@@ -15,8 +16,8 @@ import { ProductViewer } from "./ProductViewer";
 
 type Power = "ekonomik" | "premium";
 const POWER: Record<Power, { label: string; detail: string }> = {
-  ekonomik: { label: "Ekonomik · 3 W", detail: "1×18650, 1500 mAh" },
-  premium: { label: "Premium · 5 W", detail: "2×18650, 1500–2200 mAh" },
+  ekonomik: { label: "Ekonomik 3 W", detail: "1×18650, 1500 mAh" },
+  premium: { label: "Premium 5 W", detail: "2×18650, 1500–2200 mAh" },
 };
 
 const LEVELS = ["Düşük", "Orta", "Yüksek"];
@@ -29,6 +30,38 @@ const ICON_PWR = (
 
 const kName = (k: number) => KINFO[k]?.[0] ?? KINFO[nearestKelvin(k)][0];
 const kUse = (k: number) => KINFO[k]?.[1] ?? KINFO[nearestKelvin(k)][1];
+
+const ARROW = (d: string) => (
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d={d} />
+  </svg>
+);
+
+// CSS background continuing a photo past its left and right edges: one vertical gradient per side, built
+// from the edge pixel columns of its (tiny, same-origin data URI) placeholder, so backdrops with a falloff
+// match too.
+function edgeColor(src: string) {
+  return new Promise<string>((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      const c = document.createElement("canvas");
+      c.width = img.width;
+      c.height = img.height;
+      const ctx = c.getContext("2d")!;
+      ctx.drawImage(img, 0, 0);
+      const { data } = ctx.getImageData(0, 0, c.width, c.height);
+      const column = (x: number) =>
+        Array.from({ length: c.height }, (_, y) => {
+          const i = (y * c.width + x) * 4;
+          return `rgb(${data[i]} ${data[i + 1]} ${data[i + 2]}) ${(((y + 0.5) / c.height) * 100).toFixed(1)}%`;
+        }).join(", ");
+      resolve(
+        `linear-gradient(${column(0)}) left / 50% 100% no-repeat, linear-gradient(${column(c.width - 1)}) right / 50% 100% no-repeat`
+      );
+    };
+    img.src = src;
+  });
+}
 
 function Qty({ id, value, onChange }: { id: string; value: number; onChange: (v: number) => void }) {
   const set = (v: number) => onChange(Math.max(1, Math.min(9999, v | 0)));
@@ -61,6 +94,8 @@ export function Configurator({ product: p }: { product: Product }) {
   );
   const [qty, setQty] = useState(10);
   const [galleryIndex, setGalleryIndex] = useState<number | null>(null);
+  const [zoom, setZoom] = useState<number | null>(null);
+  const swipeX = useRef<number | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
 
   // 3D viewer (products with a model): view, ambience and the lamp's switch and level
@@ -98,16 +133,28 @@ export function Configurator({ product: p }: { product: Product }) {
 
   const variant = photoFor(p.variantPhotos, gallery[0], finishId, shadeId);
   const shownImage = galleryIndex !== null ? gallery[galleryIndex] : variant.image;
+  // the finish photo is usually one of the gallery images, so arrows continue from it
+  const shownIndex = galleryIndex ?? gallery.findIndex((g) => g.asset._id === variant.image?.asset._id);
+  const step = (d: number) => setGalleryIndex((Math.max(shownIndex, 0) + d + gallery.length) % gallery.length);
+  const closeZoom = useCallback(() => setZoom(null), []);
+
+  // a contained photo leaves bands beside it; fill them with the colour of the photo's own side edges
+  const lqip = shownImage?.asset.metadata?.lqip;
+  const [edges, setEdges] = useState<Record<string, string>>({});
+  useEffect(() => {
+    if (!lqip || edges[lqip]) return;
+    edgeColor(lqip).then((c) => setEdges((e) => ({ ...e, [lqip]: c })));
+  }, [lqip, edges]);
   const caption =
     galleryIndex !== null
-      ? `Fotoğraf ${galleryIndex + 1} / ${gallery.length}`
+      ? null
       : variant.exact && finish
-        ? `Stüdyo fotoğrafı · ${finish.name}${shade ? `, ${shade.name.toLocaleLowerCase("tr")} abajur` : ""}`
+        ? `${finish.name}${shade ? `, ${shade.name.toLocaleLowerCase("tr")} abajur` : ""}`
         : finishes.length > 1
           ? model && !failed
             ? "Fotoğraftaki renk farklı olabilir. Seçtiğiniz renk 3D görünümde."
             : "Fotoğraftaki renk seçiminizden farklı olabilir."
-          : "Stüdyo fotoğrafı";
+          : null;
 
   const tierPrice = p.chargeOptions ? formatPrice(power === "premium" ? p.premiumPriceUsd : p.priceUsd) : null;
   const price = tierPrice ?? formatPrice(p.priceUsd, p.premiumPriceUsd);
@@ -119,12 +166,12 @@ export function Configurator({ product: p }: { product: Product }) {
     p.chargeOptions && (power === "premium" ? "Premium 5 W" : "Ekonomik 3 W"),
     ...Object.entries(options).map(([n, v]) => `${n}: ${v}`),
   ].filter(Boolean) as string[];
-  const detail = detailParts.join(" · ");
+  const detail = detailParts.join(", ");
 
   const summaryRows: [string, string][] = [
     ...(finish ? [[word === "gövde" ? "Gövde" : "Kasa", finish.name + (finish.ral ? ` (RAL ${finish.ral})` : "")] as [string, string]] : []),
     ...(shade ? [["Abajur", shade.name] as [string, string]] : []),
-    ...(k ? [["Işık", `${k} K · ${kName(k)}`] as [string, string]] : []),
+    ...(k ? [["Işık", `${kName(k)} (${k} K)`] as [string, string]] : []),
     ...(p.chargeOptions ? [["Batarya", power === "premium" ? "Premium 5 W" : "Ekonomik 3 W"] as [string, string]] : []),
     ...Object.entries(options),
     ["Adet", String(qty)],
@@ -174,7 +221,18 @@ export function Configurator({ product: p }: { product: Product }) {
               </div>
             </>
           )}
-          <figure className="v-photo" hidden={view !== "photo"}>
+          <figure
+            className="v-photo"
+            hidden={view !== "photo"}
+            style={lqip && edges[lqip] ? { background: edges[lqip] } : undefined}
+            onClick={() => setZoom(Math.max(shownIndex, 0))}
+            onTouchStart={(e) => (swipeX.current = e.touches[0].clientX)}
+            onTouchEnd={(e) => {
+              const dx = e.changedTouches[0].clientX - (swipeX.current ?? e.changedTouches[0].clientX);
+              if (gallery.length > 1 && Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+              swipeX.current = null;
+            }}
+          >
             {shownImage && (
               <SanityImage
                 key={shownImage.asset._id}
@@ -187,7 +245,7 @@ export function Configurator({ product: p }: { product: Product }) {
                 priority
               />
             )}
-            <figcaption>{caption}</figcaption>
+            {caption && <figcaption>{caption}</figcaption>}
           </figure>
           {model && (
             <div className="v-top">
@@ -244,24 +302,35 @@ export function Configurator({ product: p }: { product: Product }) {
             </div>
           ) : (
             gallery.length > 1 && (
-            <div className="v-bot">
-              <div className="v-thumbs" role="group" aria-label="Fotoğraflar">
-                {gallery.map((img, i) => (
-                  <button
-                    key={img.asset._id ?? i}
-                    type="button"
-                    aria-label={`Fotoğraf ${i + 1}`}
-                    aria-pressed={galleryIndex === i}
-                    onClick={() => setGalleryIndex(galleryIndex === i ? null : i)}
-                  >
-                    <SanityImage image={img} width={104} height={104} fit="max" objectFit="contain" className="h-full w-full object-contain" noBlur />
+              <>
+                <div className="v-thumbs" role="group" aria-label="Fotoğraflar">
+                  {gallery.map((img, i) => (
+                    <button key={img.asset._id ?? i} type="button" aria-label={`Fotoğraf ${i + 1}`} aria-pressed={shownIndex === i} onClick={() => setGalleryIndex(i)}>
+                      <SanityImage image={img} width={112} height={134} sizes="56px" objectFit="cover" noBlur />
+                    </button>
+                  ))}
+                </div>
+                <div className="v-arrows">
+                  <button type="button" aria-label="Önceki fotoğraf" onClick={() => step(-1)}>
+                    {ARROW("M10 3 5 8l5 5")}
                   </button>
-                ))}
-              </div>
-            </div>
+                  <button type="button" aria-label="Sonraki fotoğraf" onClick={() => step(1)}>
+                    {ARROW("m6 3 5 5-5 5")}
+                  </button>
+                </div>
+              </>
             )
           )}
         </div>
+        <Lightbox
+          images={gallery}
+          index={zoom}
+          onIndexChange={(i) => {
+            setZoom(i);
+            setGalleryIndex(i);
+          }}
+          onClose={closeZoom}
+        />
 
         <div className="cfg">
           <div className="cfg-head">
@@ -270,7 +339,7 @@ export function Configurator({ product: p }: { product: Product }) {
             <div className="price">
               {price ? (
                 <>
-                  {price}’den başlayan fiyatlar<span> · adet ve kaplamaya göre değişir</span>
+                  {price}’den başlayan fiyatlar<span>, adet ve kaplamaya göre değişir</span>
                 </>
               ) : (
                 <span>Adet ve seçeneklere göre projeye özel fiyatlandırılır</span>
@@ -344,7 +413,7 @@ export function Configurator({ product: p }: { product: Product }) {
               <div className="opt-h">
                 <h2>Işık rengi</h2>
                 <span>
-                  {k} K · {kName(k)}
+                  {kName(k)} ({k} K)
                 </span>
               </div>
               <div className="kopts" style={{ "--n": ks.length } as React.CSSProperties}>
@@ -410,15 +479,6 @@ export function Configurator({ product: p }: { product: Product }) {
               </div>
             ))}
 
-          <div className="opt actions-main">
-            <div className="opt-h">
-              <h2>Adet</h2>
-            </div>
-            <div className="actions">
-              <Qty id="qty" value={qty} onChange={setQty} />
-            </div>
-          </div>
-
           <div className="summary">
             <h2>Seçiminiz</h2>
             <dl>
@@ -431,10 +491,13 @@ export function Configurator({ product: p }: { product: Product }) {
             </dl>
           </div>
 
-          <div className="actions actions-main">
-            <button className="btn btn-amber" type="button" onClick={addToQuote}>
-              Teklif listesine ekle
-            </button>
+          <div className="buy actions-main">
+            <div className="actions">
+              <Qty id="qty" value={qty} onChange={setQty} />
+              <button className="btn btn-amber" type="button" onClick={addToQuote}>
+                Teklif listesine ekle
+              </button>
+            </div>
             <a className="btn btn-line" href={askHref} target="_blank" rel="noopener">
               <WaIcon />
               WhatsApp&apos;tan sorun
@@ -447,7 +510,7 @@ export function Configurator({ product: p }: { product: Product }) {
         <Qty id="qty2" value={qty} onChange={setQty} />
         <button className="btn btn-amber" type="button" onClick={addToQuote}>
           <span className="pb-l">
-            Teklif listesine ekle<small>{[finish?.name, shade?.name, k && `${k} K`].filter(Boolean).join(" · ")}</small>
+            Teklife ekle<small>{[finish?.name, shade?.name, k && `${k} K`].filter(Boolean).join(", ")}</small>
           </span>
         </button>
         <a className="btn btn-line wa-mini" href={askHref} target="_blank" rel="noopener" aria-label="WhatsApp'tan sorun">
