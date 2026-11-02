@@ -34,6 +34,10 @@ Read this first in every session. It holds the client, the agreed scope, the dec
   - **One global switch** in `siteSettings` (not per product): show TL price / show no price. Built now so a later "hide prices" request costs nothing.
 - **Kelvin:** options per product, with a category default (all table lamps are 2700 K). With a single option, the existing Kelvin card shows that one value as info instead of three choices.
 - **Product texts:** scraped texts get their obvious errors fixed (e.g. Light Design's Defne page says "aluminium body", it is wood) and are lightly rewritten so they don't duplicate Light Design word for word. Quick pass, not a copywriting project.
+  - Where the original has product-specific prose, it is kept and edited: "Light Design", SEO keyword lists, slogans, FAQ blocks and spec lists removed, wrong materials fixed. About 2/3 of the originals are one shared template; those get a short text describing the product from its photo.
+  - No facts beyond the source data and what the photo shows. Unclear points (e.g. the source's "1 kg" on every product) are confirmed with the client, not guessed.
+  - Source of truth for the copy is `tools/data/product-copy.mjs`; `tools/apply-copy.mjs` writes it to Sanity (descriptions, product spec rows, option and name fixes, category spec tables). After this, Studio edits win: rerunning the script overwrites them. `import-lightdesign.mjs --overwrite` reverts the copy; rerun `apply-copy.mjs` after it.
+- **Spec table:** a product shows its category's `defaultSpecs` merged with its own `specs` by label (`mergeSpecs` in `src/lib/catalog.ts`): a product row with the same label replaces the category row, new labels are appended. Products list only what differs (material, weight, dimensions); charging stations have an empty category table and list all their rows.
 - **Products first, models later:** upload all products without 3D first, then model them one by one. A product without a model shows its photo gallery and configurator without the viewer.
 - **3D data lives in code, catalogue data in Sanity:** a product has an optional `modelKey` string. Kit specs (profiles, grain, light tuning) are code in the repo, versioned in git, never edited by the client. Modelling a product = add its spec + fill `modelKey`.
 - **Environment:** the existing restaurant room covers all table lamps. An outdoor kit and room are discussed once the full product list arrives; not a blocker now.
@@ -46,7 +50,7 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 ## Product sources
 
 - **Light Design (`lightdesign.com.tr`), all products.** Built on ikas (Next.js storefront).
-  - `https://lightdesign.com.tr/products.xml` lists 106 product URLs → **104 unique products** (scraped 2026-11-02 into `tools/data/lightdesign.json`). Suffixes like `-3-3` are often the real URL, so dedupe is by ikas product id. Palermo redirects to Aldebaran; **Albostan** is in a redirect loop on their site and is missing. 103 descriptions name "Light Design" and need the rewrite pass.
+  - `https://lightdesign.com.tr/products.xml` lists 106 product URLs → **104 unique products** (scraped 2026-11-02 into `tools/data/lightdesign.json`). Suffixes like `-3-3` are often the real URL, so dedupe is by ikas product id. Palermo redirects to Aldebaran; **Albostan** is in a redirect loop on their site and is missing. The descriptions are rewritten (see "Product texts" above).
   - Each product page embeds `<script id="__NEXT_DATA__">` with `props.pageProps.pageSpecificData`: name, description, `variantTypes` (e.g. "Renk": Ceviz / Kayın, with thumbnail image ids), categories (with path, e.g. Şarjlı Ürünler › Şarjlı Masa Lambası) and images on `cdn.myikas.com`. No HTML parsing needed.
 - **Frekans (`frekanselektrikaydinlatma.com`), some products.** WooCommerce; which ones is up to the client.
 - **The rest** (to reach ~250) comes from the client's product list.

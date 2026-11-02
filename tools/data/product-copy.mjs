@@ -1,13 +1,15 @@
-// LUMENX product copy: rewritten descriptions, product-specific spec rows and option fixes, keyed by the
-// Light Design slug in lightdesign.json. Applied by tools/apply-copy.mjs. Shapes are taken from the studio
-// photos; facts (materials, sizes, options) only from Light Design's data. Product rows are merged over the
-// category table by label (src/lib/catalog.ts mergeSpecs), so only what differs is listed here.
+// LUMENX product copy: descriptions, product-specific spec rows and option fixes, keyed by the
+// Light Design slug in lightdesign.json. Applied by tools/apply-copy.mjs. Where Light Design's text has
+// product-specific prose it is edited (brand, SEO lines, FAQ and spec lists removed, wrong materials fixed);
+// the template-only ones describe the shape from the studio photo. Facts only from Light Design's data.
+// Product rows are merged over the category table by label (src/lib/catalog.ts mergeSpecs), so only what
+// differs is listed here.
 
 const SAC = ["Malzeme", "Alüminyum ve sac, boya veya kaplama"];
 const WOOD = (shade) => ["Malzeme", `Ahşap gövde, ${shade}`];
-const MOSAIC = ["Malzeme", "Metal gövde, el yapımı mozaik cam"];
+const MOSAIC = ["Malzeme", "Metal gövde, mozaik cam"];
 const GLASS = ["Malzeme", "Metal gövde, cam abajur"];
-const STATION = [["Uyumluluk", "Şarjlı masa lambası ve garson çağırma serisi"], ["Kullanım", "İç mekân"], ["Menşei", "Türkiye"]];
+const STATION = [["Uyumluluk", "Şarjlı masa lambaları"], ["Kullanım", "İç mekân"], ["Menşei", "Türkiye"]];
 
 export const CATEGORY_SPECS = {
   "sarjli-masa-lambasi": [
@@ -67,14 +69,14 @@ export const COPY = {
   "9lu-sarj-istasyonu": {
     name: "9'lu Şarj İstasyonu - Premium",
     d: [
-      "Dokuz yuvalı, alçak ve düz bir şarj tablası. Tezgâh altına ya da bir rafa sığacak kadar basık olduğu için servis alanında yer kaplamaz.",
-      "Lambalar gün sonunda yuvalarına bırakılır, ertesi akşam tam şarjla masaya döner.",
+      "9'lu şarj istasyonu, aynı anda dokuz masa lambasını şarj etme imkânı sunarak hem zamandan hem de alandan tasarruf etmenizi sağlar. Özellikle otel, restoran ve kafeler gibi işletmeler için tasarlanmıştır.",
+      "Kablosuz görünümüyle çalışma alanını düzenli tutar, hızlı ve güvenli şarj sağlar. Masa lambalarınız her zaman kullanıma hazır kalır.",
     ],
     specs: [["Kapasite", "9 lamba"], ["Ölçüler", "45 × 54 cm, yükseklik 9 cm"], ["Seri", "Premium"], ...STATION],
   },
   "18li-sarj-istasyonu-ekonomik": {
     d: [
-      "On sekiz lambayı tek noktada toplayan, dikey kurgulu ekonomik istasyon. Küçük bir taban alanında iki katlı şarj kapasitesi sunar.",
+      "On sekiz lambayı tek noktada toplayan, dikey kurgulu ekonomik istasyon. Küçük bir taban alanında yüksek şarj kapasitesi sunar.",
       "Orta ölçekli bir salonun tüm masa lambalarını tek gece şarjına hazırlamak için yeterlidir.",
     ],
     specs: [["Kapasite", "18 lamba"], ["Ölçüler", "Yükseklik 74 cm, çap 54 cm"], ["Seri", "Ekonomik"], ...STATION],
@@ -82,10 +84,10 @@ export const COPY = {
   "18li-sarj-istasyonu": {
     name: "18'li Şarj İstasyonu - Premium",
     d: [
-      "İki raflı, siyah metal gövdeli şarj ünitesi. Her rafta dokuz yuva bulunur, lambalar dik ve düzenli durur.",
-      "Raflar arasındaki 40 cm'lik mesafe uzun gövdeli modellerin de rahatça sığmasını sağlar.",
+      "18'li şarj istasyonu, aynı anda on sekiz masa lambasını şarj etme imkânı sunarak zamandan ve alandan tasarruf sağlar. Otel, restoran ve kafeler gibi işletmelerde iş süreçlerini kolaylaştırmak için tasarlanmıştır.",
+      "Kablosuz ve düzenli görünümüyle hızlı, güvenli şarj sağlar; dayanıklı yapısıyla uzun ömürlü kullanım sunar.",
     ],
-    specs: [["Kapasite", "18 lamba"], ["Ölçüler", "45 × 54 cm, yükseklik 61 cm"], ["Raf arası", "40 cm"], ["Seri", "Premium"], ...STATION],
+    specs: [["Kapasite", "18 lamba"], ["Ölçüler", "45 × 54 cm, yükseklik 61 cm"], ["Ara ölçü", "40 cm"], ["Seri", "Premium"], ...STATION],
   },
   "27li-sarj-istasyonu-ekonomik": {
     d: [
@@ -97,10 +99,10 @@ export const COPY = {
   "27li-sarj-istasyonu": {
     name: "27'li Şarj İstasyonu - Premium",
     d: [
-      "Üç raflı premium şarj ünitesi. Dokuzarlı üç sıra yuva, yirmi yedi lambayı aynı anda şarj eder.",
-      "Sağlam metal iskeleti sayesinde yoğun servis temposunda her gün kullanılmak üzere tasarlanmıştır.",
+      "27'li şarj istasyonu, aynı anda yirmi yedi masa lambasını şarj ederek yoğun kullanımlı işletmelerde zaman ve alan kazandırır. Otel, restoran ve kafeler için tasarlanmıştır.",
+      "Kablosuz görünümüyle ortamı düzenli tutar. Hızlı ve güvenli şarjıyla lambalarınızın her zaman tam kapasiteyle kullanıma hazır olmasını sağlar.",
     ],
-    specs: [["Kapasite", "27 lamba"], ["Ölçüler", "45 × 54 cm, yükseklik 106 cm"], ["Raf arası", "40 cm"], ["Seri", "Premium"], ...STATION],
+    specs: [["Kapasite", "27 lamba"], ["Ölçüler", "45 × 54 cm, yükseklik 106 cm"], ["Ara ölçü", "40 cm"], ["Seri", "Premium"], ...STATION],
   },
   "36li-sarj-istasyonu-ekonomik": {
     d: [
@@ -112,15 +114,15 @@ export const COPY = {
   "36li-sarj-istasyonu": {
     name: "36'lı Şarj İstasyonu - Premium",
     d: [
-      "Serinin en büyük ünitesi: dört raf, otuz altı yuva. Tüm salonun lambaları tek bir dolap genişliğinde toplanır ve birlikte şarj olur.",
-      "Raflar 40 cm aralıklı olduğundan lambalar başlıkları birbirine değmeden yerleşir.",
+      "36'lı şarj istasyonu, aynı anda otuz altı masa lambasını şarj edebilen en yüksek kapasiteli modeldir. Otel, restoran ve kafeler gibi geniş işletmelerde zamandan ve alandan tasarruf sağlar.",
+      "Kablosuz ve düzenli görünümü, hızlı ve güvenli şarjı ile dayanıklı yapısı sayesinde enerji yönetimini kolaylaştırır.",
     ],
-    specs: [["Kapasite", "36 lamba"], ["Ölçüler", "45 × 54 cm, yükseklik 151 cm"], ["Raf arası", "40 cm"], ["Seri", "Premium"], ...STATION],
+    specs: [["Kapasite", "36 lamba"], ["Ölçüler", "45 × 54 cm, yükseklik 151 cm"], ["Ara ölçü", "40 cm"], ["Seri", "Premium"], ...STATION],
   },
   "tekli-sarj-kaseti": {
     d: [
-      "Tek bir lambayı şarj etmek için kompakt, yuvarlak bir kaset. Lamba üzerine oturtulur, başka bir bağlantı gerekmez.",
-      "Az sayıda lamba kullanan mekânlar, ev kullanımı ya da istasyona ek yedek şarj noktası olarak idealdir.",
+      "Tekli şarj kaseti, her masa lambasını ayrı ayrı hızlı ve güvenli şekilde şarj etmenizi sağlar. Kompakt ve kullanıcı dostu yapısıyla özellikle restoran, otel ve kafe gibi yoğun kullanım alanlarında büyük kolaylık sunar.",
+      "Her lambayı bağımsız şarj ederek enerji yönetimini kolaylaştırır; taşınabilir tasarımı sayesinde her ortama uyum sağlar ve lambalarınızın her zaman hazır olmasına yardımcı olur.",
     ],
     specs: [["Kapasite", "1 lamba"], ["Seri", "Premium"], ...STATION],
   },
@@ -205,32 +207,32 @@ export const COPY = {
   // ─── Wood ──────────────────────────────────────────────────────────────────
   "defne-sarjli-masa-lambasi-3-3": {
     d: [
-      "Damla formlu ahşap gövde ve keten abajurdan oluşan, sıcak ve doğal bir masa lambası. Ceviz ya da kayın ahşap seçeneğiyle üretilir.",
-      "Ahşap ve kumaşın birlikte verdiği yumuşak ışık, akşam yemeği servislerinde masaya samimi bir atmosfer getirir.",
+      "Defne Ahşap Şarjlı Masa Lambası, zarif tasarımı ve ahşap gövdesiyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Dekoratif görünümünü yüksek performansla birleştiren Defne, profesyonel kullanım için tasarlanmıştır.",
+      "3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanımıyla akşam boyunca kesintisiz ışık verir. Çoklu şarj istasyonlarıyla uyumlu olan Defne, oteller, restoranlar, kafeler ve barlar için ideal bir aydınlatma çözümüdür.",
     ],
     specs: [WOOD("keten abajur")],
     options: [],
   },
   "kamelya-sarjli-masa-lambasi-3-2": {
     d: [
-      "Silindir ahşap gövde üzerinde, düz kesimli kumaş abajur. Yalın çizgileriyle ahşabın dokusunu öne çıkaran bir masa lambası.",
-      "Ceviz ve kayın seçenekleri, iskandinav ve doğal tonlu dekorasyonlarla kolayca uyum sağlar.",
+      "Kamelya Ahşap Şarjlı Masa Lambası, zarif tasarımı ve ahşap gövdesiyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Dekoratif görünümünü yüksek performansla birleştiren Kamelya, profesyonel kullanım için tasarlanmıştır.",
+      "Kamelya, 3 kademeli dokunmatik dimmeriyle ışığı ortama göre ayarlamanıza olanak tanır ve tam şarjla 30 saate varan kullanım sunar. Çoklu şarj istasyonlarıyla uyumludur; oteller, restoranlar, kafeler ve özel projeler için ideal bir çözümdür.",
     ],
     specs: [WOOD("kumaş abajur")],
     options: [],
   },
   "lila-sarjli-masa-lambasi-3-1-4": {
     d: [
-      "Vazo formlu ahşap gövde ve konik kumaş abajur. Klasik abajurlu lamba siluetini kablosuz kullanımla buluşturur.",
-      "Ceviz ya da kayın ahşap seçeneğiyle otel odası, lobi ve restoran masalarına ev sıcaklığı katar.",
+      "Lila Ahşap Şarjlı Masa Lambası, zarif tasarımı ve ahşap gövdesiyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Dekoratif görünümünü yüksek performansla birleştiren Lila, profesyonel kullanım için tasarlanmıştır.",
+      "3 kademeli dokunmatik dimmeri sayesinde ışık seviyesi kolayca ayarlanır; tam şarjla 30 saate varan kullanım uzun süreli, kesintisiz aydınlatma sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Lila, oteller, restoranlar ve kafeler için ideal bir aydınlatma çözümüdür.",
     ],
     specs: [WOOD("kumaş abajur")],
     options: [],
   },
   "lotus-sarjli-masa-lambasi-2": {
     d: [
-      "Başlığı ve gövdesi ahşaptan, konik çizgilere sahip bir masa lambası. Işık geniş ahşap şapkanın altından masaya yayılır.",
-      "Tamamen ahşap görünümü sayesinde doğal malzemeli iç mekânlarda heykelsi bir obje gibi durur.",
+      "Lotus Ahşap Şarjlı Masa Lambası, zarif tasarımı ve ahşap gövdesiyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Dekoratif görünümünü yüksek performansla birleştiren Lotus, profesyonel kullanım için tasarlanmıştır.",
+      "3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanımıyla uzun süreli, kesintisiz aydınlatma sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Lotus, oteller, restoranlar, kafeler ve özel projeler için ideal bir çözümdür.",
     ],
     specs: [["Malzeme", "Ahşap gövde ve başlık"]],
     options: [],
@@ -248,7 +250,7 @@ export const COPY = {
   },
   "sargas-sarjli-masa-lambasi": {
     d: [
-      "El yapımı mozaik cam başlıklı, metal gövdeli bir masa lambası. Büyük, orta ve küçük olmak üzere üç boyda üretilir.",
+      "Mozaik cam başlıklı, metal gövdeli bir masa lambası. Büyük, orta ve küçük olmak üzere üç boyda üretilir.",
       "Farklı boyları bir arada kullanarak masalarda ya da bar tezgâhında katmanlı bir mozaik ışık düzeni kurulabilir.",
     ],
     specs: [MOSAIC],
@@ -263,8 +265,8 @@ export const COPY = {
   },
   "sutun-sarjli-masa-lambasi": {
     d: [
-      "İnce, uzun bir sütun formunda mozaik cam masa lambası. Dikey silueti masada az yer kaplarken renkli ışığı yukarı doğru taşır.",
-      "Klasik mozaik lambaların daha modern ve sade bir yorumu olarak hem geleneksel hem çağdaş mekânlara uyar.",
+      "Sütun Şarjlı Masa Lambası, sade ve modern sütun formuyla dikkat çeken, restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Dayanıklı metal gövdesi ve kaliteli yüzey kaplamasıyla yoğun kullanıma uygundur; minimal tasarımı modern ve klasik dekorasyonlara kolayca uyum sağlar.",
+      "3 kademeli dokunmatik dimmeriyle farklı ortamlara uygun ışık verir, tam şarjla 30 saate varan kullanım sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Sütun, oteller, restoranlar, kafeler ve özel projeler için estetik bir çözümdür.",
     ],
     specs: [MOSAIC],
   },
@@ -272,8 +274,8 @@ export const COPY = {
   // ─── Glass and clear shades ────────────────────────────────────────────────
   "newyork-cam-sarjli-masa-lambasi": {
     d: [
-      "Metal başlık ve taban arasında şeffaf nervürlü cam silindirden oluşan, fener esintili bir masa lambası. Işık, camın dikey çizgileriyle kırılarak yayılır.",
-      "Kokteyl barları, bistrolar ve otel lobileri için şık ve dikkat çekici bir seçenek.",
+      "Newyork Cam Şarjlı Masa Lambası, dekoratif cam tasarımı ve kablosuz kullanım avantajıyla restoran, kafe, otel ve yaşam alanları için tasarlanmıştır. Dokunmatik dimmer özelliğiyle ışık seviyesi ihtiyaca göre kolayca ayarlanır.",
+      "Şık görünümü ve pratik kullanımıyla masalarda hem estetik hem işlevsel bir aydınlatma çözümü sunar. Şarjlı yapısı kablo karmaşasını ortadan kaldırır ve masalarda düzenli, özgür bir kullanım sağlar.",
     ],
     specs: [GLASS],
   },
@@ -304,8 +306,8 @@ export const COPY = {
   },
   "minkar-sarjli-masa-lambasi": {
     d: [
-      "Metal bir kaide üzerinde mat beyaz silindir abajur. Işığı doğrudan değil, abajurun yüzeyinden yumuşak bir parıltı olarak verir.",
-      "Minimal formu modern otel odaları, lounge alanları ve bar tezgâhları için uygundur.",
+      "Minkar Şarjlı Masa Lambası, zarif tasarımı ve kaliteli alüminyum gövdesiyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Modern çizgileri ve dekoratif görünümü ortama estetik bir dokunuş katar; sağlam yapısıyla uzun yıllar güvenle kullanılır.",
+      "Premium Seri'nin bir üyesi olan Minkar, 3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanım süresiyle işletmelerde kesintisiz aydınlatma verir. Çoklu şarj istasyonlarıyla uyumlu olup şıklığı, dayanıklılığı ve kullanım kolaylığını bir araya getirir.",
     ],
   },
   "vega-sarjli-masa-lambasi": {
@@ -316,16 +318,16 @@ export const COPY = {
   },
   "carina-sarjli-masa-lambasi": {
     d: [
-      "İnce metal gövde üzerinde beyaz opal kubbe. Kubbe ışığı her yöne eşit dağıttığı için masanın tamamını yumuşakça aydınlatır.",
-      "Klasik bir siluete modern bir sadelik katar. Restoran, otel ve kafe masalarında kolayca uyum sağlar.",
+      "Carina Şarjlı Masa Lambası, zarif tasarımı, dayanıklı metal gövdesi ve kaliteli yüzey kaplamasıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Modern görünümü dekorasyona estetik bir dokunuş katar, sağlam yapısıyla uzun yıllar güvenle kullanılır.",
+      "Premium Seri'nin bir üyesi olan Carina, 3 kademeli dokunmatik dimmeriyle ışık seviyesini kolayca ayarlamanıza olanak tanır. Tam şarjla 30 saate varan kullanım sunar ve çoklu şarj istasyonu ile uyumlu olduğu için profesyonel projelerde güvenle kullanılır.",
     ],
   },
 
   // ─── Lantern forms ─────────────────────────────────────────────────────────
   "azha-sarjli-masa-lambasi": {
     d: [
-      "Dikdörtgen metal çerçeve içinde mum formunda bir ışık gövdesi. Fener görünümünü kablosuz bir masa lambasına dönüştürür.",
-      "Büyük ve küçük olmak üzere iki boyda üretilir. İki boy bir arada kullanıldığında masalarda katmanlı bir kompozisyon oluşur.",
+      "Azha Şarjlı Masa Lambası, modern tasarımı, kaliteli metal gövdesi ve zarif detaylarıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Şık ve minimalist görünümü ortama estetik katarken, sağlam yapısıyla yoğun kullanıma uygun uzun ömürlü bir çözüm sunar.",
+      "3 kademeli dokunmatik dimmeriyle ışık seviyesi kolayca ayarlanır, tam şarjla 30 saate varan kullanım sağlar. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumludur.",
     ],
   },
   "bilham-sarjli-masa-lambasi": {
@@ -333,20 +335,20 @@ export const COPY = {
     name: "Bilham Şarjlı Masa Lambası",
     slug: "bilham-sarjli-masa-lambasi",
     d: [
-      "İnce metal çerçeveli, fener formlu bir masa lambası. Çerçevenin ortasındaki mum biçimli gövde, alevi andıran yumuşak bir ışık verir.",
-      "Antrasit ve gri tonlarında, büyük ve küçük iki boyda üretilir. Teras ve kış bahçesi gibi kapalı açık alanlara yakışır.",
+      "Bilham Şarjlı Masa Lambası, modern tasarımı, kaliteli metal gövdesi ve zarif detaylarıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Dekoratif görünümü ortama estetik bir dokunuş katarken, sağlam yapısıyla yoğun kullanıma uygundur.",
+      "3 kademeli dokunmatik dimmeriyle ışık seviyesi kolayca ayarlanır, tam şarjla 30 saate varan kullanım sağlanır. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumlu olan Bilham, restoranlar, oteller ve kafeler için şık ve işlevsel bir çözümdür.",
     ],
   },
   "enif-sarjli-masa-lambasi": {
     d: [
-      "Metal kafesli fener formu ve içinde mum biçimli ışık gövdesi. Klasik fenerlerin çizgisini sade ve modern bir yoruma taşır.",
-      "Antrasit ve gri renk, büyük ve küçük boy seçenekleriyle kullanılabilir.",
+      "Enif Şarjlı Masa Lambası, modern çizgileri, sağlam metal gövdesi ve kaliteli yüzey kaplamasıyla restoran, otel, kafe ve yaşam alanları için tasarlanmış premium kablosuz LED masa lambasıdır. Şık ve zarif tasarımı ortama estetik bir görünüm kazandırır, dayanıklı yapısıyla yoğun kullanıma uygundur.",
+      "3 kademeli dokunmatik dimmeriyle farklı kullanım senaryolarına uygun ışık seviyeleri sağlar, tam şarjla 30 saate varan kullanım sunar. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumludur.",
     ],
   },
   "pico-sarjli-masa-lambasi": {
     d: [
-      "Kare metal çerçeveli ve deri saplı, taşınabilir bir fener lamba. Sapından tutulup masadan masaya kolayca taşınır.",
-      "Küçük ölçüsüne rağmen sağlam gövdesi yoğun kullanıma uygundur. Teras, bahçe kapalı alanları ve butik oteller için pratik bir seçenek.",
+      "Pico Şarjlı Masa Lambası, kompakt tasarımı, kaliteli metal gövdesi ve modern görünümüyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Minimal çizgileri her türlü dekorasyona kolayca uyum sağlar, sağlam yapısıyla yoğun kullanıma dayanır.",
+      "3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanım süresiyle farklı ortamlara uygun ışık verir. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumludur.",
     ],
   },
 
@@ -385,8 +387,8 @@ export const COPY = {
   // ─── Marble and body options ───────────────────────────────────────────────
   "amore-sarjli-masa-lambasi-1": {
     d: [
-      "Metal mantar şapka ve kalın silindir gövdeden oluşan bir masa lambası. Gövde mermer, metal ya da ahşap olarak üretilebilir.",
-      "Mermer gövde seçeneği, lambayı masada dekoratif bir objeye dönüştürür ve özellikle fine dining mekânlarında öne çıkar.",
+      "Amore Şarjlı Masa Lambası, zarif tasarımı ve mermer, metal ya da ahşap seçenekleriyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Dekoratif görünümünü yüksek performansla birleştiren Amore, profesyonel kullanım için tasarlanmıştır.",
+      "3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanımıyla uzun süreli, kesintisiz aydınlatma sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Amore, oteller, restoranlar, kafeler ve barlar için ideal bir aydınlatma çözümüdür.",
     ],
     options: [{ name: "Gövde", values: ["Mermer", "Metal", "Ahşap"] }],
   },
@@ -489,8 +491,8 @@ export const COPY = {
   },
   "sirius-sarjli-masa-lambasi": {
     d: [
-      "Kubbe başlık ve silindir gövdeden oluşan, modern çizgili bir metal masa lambası.",
-      "Aynı formun garson çağırma butonlu versiyonu da bulunduğundan, salonun bir bölümünde çağrı özellikli model aynı görünümle kullanılabilir.",
+      "Sirius Şarjlı Masa Lambası, modern ve şık metal tasarımıyla restoran, kafe ve otel masaları için geliştirilmiş kablosuz bir aydınlatma çözümüdür. Dokunmatik dimmer özelliğiyle ışık seviyesi ihtiyaca göre kolayca ayarlanır.",
+      "Dayanıklı metal gövdesi ve estetik tasarımıyla profesyonel işletmelere işlevsel bir kullanım sunar. Şarjlı yapısı masalardaki kablo karmaşasını ortadan kaldırarak düzenli ve prestijli bir görünüm sağlar.",
     ],
   },
   "suma-sarjli-masa-lambasi": {
@@ -530,8 +532,8 @@ export const COPY = {
   // ─── Flat and cone hats ────────────────────────────────────────────────────
   "bella-sarjli-masa-lambasi": {
     d: [
-      "Geniş ve basık konik şapka, ince gövde. Işığı aşağı yönlendirerek masada net bir aydınlatma alanı yaratır.",
-      "Yalın silueti modern restoran ve otel masalarında dekorasyonun önüne geçmeden işlev görür.",
+      "Bella Şarjlı Masa Lambası, zarif tasarımı ve modern çizgileriyle restoran, otel, kafe ve yaşam alanlarına estetik bir görünüm kazandıran premium kablosuz LED masa lambasıdır. Kaliteli alüminyum gövdesi ve dekoratif tasarımıyla hem şık hem de uzun ömürlüdür.",
+      "Premium Seri'nin bir üyesi olan Bella, 3 kademeli dokunmatik dimmeriyle ışığı ortama göre ayarlamanıza olanak tanır. Tam şarjla 30 saate varan kullanım sunar ve çoklu şarj istasyonlarıyla uyumludur. Restoranlar, oteller, kafeler ve özel projeler için profesyonel bir çözümdür.",
     ],
   },
   "fuga-sarjli-masa-lambasi": {
@@ -555,8 +557,8 @@ export const COPY = {
   },
   "lofen-sarjli-masa-lambasi": {
     d: [
-      "Geniş ve basık kubbe şapka, ince gövde ve sade taban. Işığı masa yüzeyine geniş bir alan halinde yayar.",
-      "Premium seride üretilir. Sade çizgisi otel restoranları ve mimari projeler için güvenli bir seçimdir.",
+      "Lofen Şarjlı Masa Lambası, sade ve modern tasarımıyla restoran, otel, kafe ve yaşam alanlarında estetik bir aydınlatma sunan premium kablosuz LED masa lambasıdır. Dayanıklı alüminyum gövdesi ve kaliteli yüzey kaplaması uzun ömürlü kullanım sağlar.",
+      "Premium Seri'nin bir parçası olan Lofen, 3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanımıyla kesintisiz aydınlatma verir. Çoklu şarj istasyonlarıyla uyumludur; profesyonel işletmeler ve mimari projeler için şık bir çözümdür.",
     ],
   },
   "melma-sarjli-masa-lambasi": {
@@ -573,8 +575,8 @@ export const COPY = {
   },
   "navi-sarjli-masa-lambasi": {
     d: [
-      "Düz ve küçük şapka, ince gövde ve sade taban. Modern çizgili, yalın bir metal masa lambası.",
-      "Premium seride üretilir. Kompakt boyu yoğun oturma düzenli restoranlarda masaya rahatça sığar.",
+      "Navi Şarjlı Masa Lambası, modern tasarımı, sağlam metal gövdesi ve kaliteli yüzey kaplamasıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Şık görünümüyle dekorasyona katkı sağlar, dayanıklı yapısıyla yoğun kullanıma uygundur.",
+      "3 kademeli dokunmatik dimmeriyle istenen ışık seviyesi kolayca ayarlanır, tam şarjla 30 saate varan kullanım sağlanır. Çoklu şarj istasyonlarıyla uyumlu olan Navi, oteller, restoranlar, kafeler ve özel projeler için güvenilir bir aydınlatma çözümüdür.",
     ],
   },
   "nigora-sarjli-masa-lambasi": {
@@ -648,8 +650,8 @@ export const COPY = {
   },
   "furud-sarjli-masa-lambasi": {
     d: [
-      "Çok ince, mum çubuğunu andıran gövdesiyle serinin en narin modellerinden biri.",
-      "Premium seride üretilir. Masada neredeyse hiç yer kaplamadan ışık noktası oluşturur. Kalabalık ve dar masalar için idealdir.",
+      "Furud Şarjlı Masa Lambası, modern tasarımı, sağlam alüminyum gövdesi ve kaliteli yüzey kaplamasıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Şık görünümü dekorasyonu tamamlar, profesyonel kullanım için uzun ömürlü performans sunar.",
+      "Premium Seri'nin bir üyesi olan Furud, 3 kademeli dokunmatik dimmeriyle istenen ışık seviyesine kolayca ayarlanır. Tam şarjla 30 saate varan kullanımı ve çoklu şarj istasyonu uyumuyla profesyonel projeler için güvenilir bir çözümdür.",
     ],
   },
   "gemini-sarjli-masa-lambasi": {
@@ -667,8 +669,8 @@ export const COPY = {
   },
   "kuma-sarjli-masa-lambasi": {
     d: [
-      "Düz disk başlık, çok ince gövde ve küçük tabanlı minimal bir masa lambası.",
-      "Premium seride üretilir. Krom ve parlak kaplamalarda modern ve rafine bir görünüm sunar.",
+      "Kuma Şarjlı Masa Lambası, modern çizgileri, sağlam metal gövdesi ve kaliteli yüzey kaplamasıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Estetik tasarımı dekorasyona uyum sağlarken, dayanıklı yapısı profesyonel kullanıma uygundur.",
+      "Premium Seri'nin bir üyesi olan Kuma, 3 kademeli dokunmatik dimmeriyle farklı ortamlara uygun ışık seviyeleri sunar. Tam şarjla 30 saate varan kullanım süresi işletmelere uzun süreli avantaj sağlar; çoklu şarj istasyonlarıyla uyumludur.",
     ],
   },
   "meissa-sarjli-masa-lambasi-ekonomik": {
@@ -717,8 +719,8 @@ export const COPY = {
   },
   "nerio-sarjli-masa-lambasi": {
     d: [
-      "Küçük disk başlık, ince gövde ve yuvarlak taban. Sade çizgileriyle premium serinin zarif modellerinden biri.",
-      "Rose ve gold gibi sıcak kaplamalarda masaya rafine ve sıcak bir aksan katar.",
+      "Nerio Şarjlı Masa Lambası, sade çizgileri ve modern tasarımıyla restoran, otel, kafe ve yaşam alanlarında estetik bir aydınlatma sunan premium kablosuz LED masa lambasıdır. Dayanıklı alüminyum gövdesi ve kaliteli yüzey kaplaması uzun ömürlü kullanım sağlarken, dekoratif tasarımı bulunduğu ortama şıklık katar.",
+      "Premium Seri'nin bir üyesi olan Nerio, 3 kademeli dokunmatik dimmeriyle farklı kullanım senaryolarına uygun ışık seviyeleri sunar. Tam şarjla 30 saate varan kullanım süresiyle uzun süre kesintisiz aydınlatma verir.",
     ],
   },
   "pandora-sarjli-masa-lambasi-ekonomik": {
