@@ -1,20 +1,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --font-sans: var(--f);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -35,42 +22,77 @@
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* LUMENX palette as utilities (bg-ink, text-fg-2, border-line, ...) */
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-amber: var(--amber);
+  --color-amber-2: var(--amber-2);
+  --color-wine: var(--wine);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-ink: var(--paper-ink);
+  --color-paper-muted: var(--paper-muted);
 }
 
+/* LUMENX. A dim showroom: the logo's burgundy with the logo's wine and amber; one light paper band for the
+   catalogue, so product photos sit on white like they were shot. Type is Saira throughout: expanded and
+   light for headings (it echoes the wordmark), normal width for reading. */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --ink: #66142a;
+  --ink-2: #561125;
+  --ink-3: #4a0e1f;
+  --line: rgba(243, 234, 223, .1);
+  --line-2: rgba(243, 234, 223, .2);
+  --fg: #f3eadf;
+  --fg-2: #cdc2b6;
+  --muted-c: #b9aea5;
+  --amber: #e89d46;
+  --amber-2: #f2b467;
+  --amber-ink: #1c1105;
+  --wine: #63142a;
+  --wine-2: #7a1b35;
+  --paper: #efe9e0;
+  --paper-2: #e6ded2;
+  --paper-ink: #1e1517;
+  --paper-muted: #65584f;
+  --paper-line: rgba(30, 21, 23, .12);
+  --wa: #1a7f48;
+  --glow: 255, 190, 111;
+  --f: var(--font-saira), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --s-1: clamp(2.55rem, 5.6vw, 5.2rem);
+  --s-2: clamp(1.9rem, 3.4vw, 3.05rem);
+  --s-3: clamp(1.3rem, 1.9vw, 1.6rem);
+  --wrap: 1280px;
+  --hdr: 64px;
+  --r: 6px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  color-scheme: dark;
+
+  /* shadcn tokens mapped onto the palette, so the stock ui/ components read on the dark site */
+  --background: var(--ink);
+  --foreground: var(--fg);
+  --card: var(--ink-2);
+  --card-foreground: var(--fg);
+  --popover: var(--ink-2);
+  --popover-foreground: var(--fg);
+  --primary: var(--amber);
+  --primary-foreground: var(--amber-ink);
+  --secondary: var(--ink-3);
+  --secondary-foreground: var(--fg);
+  --muted: var(--ink-2);
+  --muted-foreground: var(--muted-c);
+  --accent: var(--ink-3);
+  --accent-foreground: var(--fg);
+  --destructive: #e5484d;
+  --border: var(--line-2);
+  --input: var(--line-2);
+  --ring: var(--amber);
+  --radius: var(--r);
 }
+@media (max-width: 759px) { :root { --hdr: 58px; } }

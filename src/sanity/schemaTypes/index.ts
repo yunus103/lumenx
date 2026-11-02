@@ -8,6 +8,7 @@ import { homePageType } from "./singletons/homePage";
 import { aboutPageType } from "./singletons/aboutPage";
 import { contactPageType } from "./singletons/contactPage";
 import { blogPageType } from "./singletons/blogPage";
+import { productsPageType } from "./singletons/productsPage";
 import { blogPostType } from "./documents/blogPost";
 import { blogCategoryType } from "./documents/blogCategory";
 import { productType } from "./documents/product";
@@ -28,6 +29,7 @@ export const schemaTypes = [
   aboutPageType,
   contactPageType,
   blogPageType,
+  productsPageType,
   // Collections
   blogPostType,
   blogCategoryType,

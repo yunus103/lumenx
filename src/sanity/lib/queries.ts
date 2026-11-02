@@ -13,11 +13,24 @@ export const imageFields = /* groq */ `{
   crop
 }`;
 
+// Swapped in on interaction only, so no blur placeholder (keeps 100+ card listings light).
+const lightImageFields = /* groq */ `{ asset->{ _id, url }, alt, hotspot, crop }`;
+
+const finishFields = /* groq */ `{ _id, name, slug, hex, finishType, ral, ralName }`;
+
+export const productCardFields = /* groq */ `{
+  _id, name, slug, summary, priceUsd, premiumPriceUsd,
+  "category": category->{ _id, title, slug },
+  "cover": gallery[0] ${imageFields},
+  "finishes": finishes[]->${finishFields},
+  "variantPhotos": variantPhotos[]{ "finish": finish->{ _id }, "shade": shade->{ _id }, image ${lightImageFields} }
+}`;
+
 // ─── Layout ────────────────────────────────────────────────────────────────────
 // Her sayfada bir kez çekilir — header, footer, global ayarlar
 export const layoutQuery = groq`{
   "settings": *[_type == "siteSettings"][0] {
-    siteName, siteTagline,
+    siteName, siteTagline, legalName, footerText,
     logo ${imageFields},
     logoHeight,
     favicon { asset->{ _id, url } },
@@ -36,22 +49,12 @@ export const layoutQuery = groq`{
 // ─── Sayfalar ──────────────────────────────────────────────────────────────────
 
 export const homePageQuery = groq`*[_type == "homePage"][0] {
-  heroTitle, heroSubtitle, heroCtaLabel,
-  heroCtaLink {
-    linkType,
-    manual,
-    internal->{ _type, "slug": slug.current }
-  },
-  heroImage ${imageFields},
-  aboutTitle, aboutSubtitle, aboutText,
-  aboutImage ${imageFields},
-  aboutCtaLabel, aboutCtaLink,
-  blogTitle, blogSubtitle,
-  featuredPosts[]-> {
-    title, slug, excerpt, publishedAt,
-    category->{ title, slug },
-    mainImage ${imageFields}
-  },
+  heroTitle, heroText, heroPrimaryLabel, heroPrimaryLink, heroSecondaryLabel, heroSecondaryLink, heroCaption,
+  collectionTitle, collectionText, collectionLinkLabel,
+  "featuredProducts": featuredProducts[]->${productCardFields},
+  kelvinTitle, kelvinText,
+  projectsTitle, projectsText, stationsTitle, stationsText,
+  ctaTitle, ctaText, ctaQuoteLabel, ctaWhatsappLabel,
   seo
 }`;
 
@@ -76,6 +79,53 @@ export const blogPageQuery = groq`*[_type == "blogPage"][0] {
   heroImage ${imageFields},
   pageTitle, pageSubtitle, ctaLabel, ctaLink, seo
 }`;
+
+// ─── Ürünler ───────────────────────────────────────────────────────────────────
+
+export const productsPageQuery = groq`*[_type == "productsPage"][0] { pageTitle, pageSubtitle, allLabel, seo }`;
+
+const productOrder = /* groq */ `order(category->order asc, name asc)`;
+
+export const productListQuery = groq`*[_type == "product" && defined(slug.current)] | ${productOrder} ${productCardFields}`;
+
+export const productFallbackQuery = groq`*[_type == "product" && defined(slug.current)] | ${productOrder} [0...9] ${productCardFields}`;
+
+// A category page lists its own products and those of its direct children.
+export const productsByCategoryQuery = groq`*[_type == "product" && defined(slug.current) && (category->slug.current == $slug || category->parent->slug.current == $slug)] | ${productOrder} ${productCardFields}`;
+
+export const productCategoriesQuery = groq`*[_type == "productCategory" && defined(slug.current)] | order(order asc, title asc) {
+  _id, title, slug, order,
+  "parent": parent->{ _id, title, slug },
+  "count": count(*[_type == "product" && (category._ref == ^._id || category->parent._ref == ^._id)])
+}`;
+
+export const categoryBySlugQuery = groq`*[_type == "productCategory" && slug.current == $slug][0] {
+  _id, title, slug, description,
+  "parent": parent->{ _id, title, slug },
+  seo
+}`;
+
+export const productBySlugQuery = groq`*[_type == "product" && slug.current == $slug][0] {
+  _id, _updatedAt, name, slug, summary, description, chargeOptions, priceUsd, premiumPriceUsd,
+  kelvinOptions, modelKey, seo,
+  "category": category->{ _id, title, slug, kelvinOptions, defaultSpecs[]{ label, value } },
+  gallery[] ${imageFields},
+  "finishes": finishes[]->${finishFields},
+  "shades": shades[]->{ _id, name, slug, hex },
+  "variantPhotos": variantPhotos[]{ "finish": finish->{ _id }, "shade": shade->{ _id }, image ${imageFields} },
+  options[]{ name, values },
+  specs[]{ label, value },
+  datasheets[]{ title, url }
+}`;
+
+export const relatedProductsQuery = groq`*[_type == "product" && category._ref == $categoryId && _id != $id && defined(slug.current)] | order(name asc)[0...4] {
+  _id, name, slug,
+  "category": category->{ _id, title, slug },
+  "cover": gallery[0] ${imageFields}
+}`;
+
+export const productSlugsQuery = groq`*[_type == "product" && defined(slug.current)] { "slug": slug.current }`;
+export const categorySlugsQuery = groq`*[_type == "productCategory" && defined(slug.current)] { "slug": slug.current }`;
 
 // ─── Blog ──────────────────────────────────────────────────────────────────────
 
@@ -123,9 +173,12 @@ export const allSlugsForSitemapQuery = groq`{
     "home": *[_type == "homePage"][0] { _updatedAt, "noIndex": seo.noIndex },
     "about": *[_type == "aboutPage"][0] { _updatedAt, "noIndex": seo.noIndex },
     "contact": *[_type == "contactPage"][0] { _updatedAt, "noIndex": seo.noIndex },
-    "blog": *[_type == "blogPage"][0] { _updatedAt, "noIndex": seo.noIndex }
+    "blog": *[_type == "blogPage"][0] { _updatedAt, "noIndex": seo.noIndex },
+    "products": *[_type == "productsPage"][0] { _updatedAt, "noIndex": seo.noIndex }
   },
-  "blogPosts": *[_type == "blogPost" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt }
+  "blogPosts": *[_type == "blogPost" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt },
+  "products": *[_type == "product" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt },
+  "categories": *[_type == "productCategory" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt }
 }`;
 
 // ─── Varsayılan SEO ────────────────────────────────────────────────────────────

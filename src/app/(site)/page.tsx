@@ -1,57 +1,55 @@
 import { Metadata } from "next";
 import { cachedFetch } from "@/sanity/lib/client";
-import {
-  homePageQuery,
-  blogFallbackQuery,
-} from "@/sanity/lib/queries";
-import { buildMetadata } from "@/lib/seo";
-import { HeroSection } from "@/components/home/HeroSection";
-import { AboutSection } from "@/components/home/AboutSection";
-import { BlogSection } from "@/components/home/BlogSection";
-import { HomePage as HomePageType, BlogPost } from "@/types";
+import { homePageQuery, productFallbackQuery } from "@/sanity/lib/queries";
+import { buildMetadata, getLayoutData } from "@/lib/seo";
+import { Hero } from "@/components/home/Hero";
+import { Collection } from "@/components/home/Collection";
+import { KelvinGuide } from "@/components/home/KelvinGuide";
+import { ProjectsBand } from "@/components/home/ProjectsBand";
+import { CtaBand } from "@/components/home/CtaBand";
+import { HomePage as HomePageType, ProductCardData } from "@/types";
+
+const getHome = () =>
+  cachedFetch<HomePageType>(homePageQuery, {}, { next: { tags: ["home", "home:featured", "product:all"] } });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await cachedFetch<HomePageType>(homePageQuery, {}, { next: { tags: ["home", "home:featured"] } });
-  return buildMetadata({
-    canonicalPath: "/",
-    pageSeo: data?.seo,
-  });
+  const data = await getHome();
+  return buildMetadata({ canonicalPath: "/", pageSeo: data?.seo });
 }
 
 export default async function HomePage() {
-  // 1. First fetch the main homepage configuration
-  const data = await cachedFetch<HomePageType>(homePageQuery, {}, { next: { tags: ["home", "home:featured"] } });
+  const [data, { settings }] = await Promise.all([getHome(), getLayoutData()]);
 
-  const needsFallbackPosts = !data?.featuredPosts || data.featuredPosts.length === 0;
-  const fallbackPosts = needsFallbackPosts
-    ? await cachedFetch<BlogPost[]>(blogFallbackQuery, {}, { next: { tags: ["blog:list", "blog:categories"] } })
-    : [];
-
-  const postsToDisplay = data?.featuredPosts && data.featuredPosts.length > 0
-    ? data.featuredPosts
-    : fallbackPosts;
+  const products = data?.featuredProducts?.length
+    ? data.featuredProducts
+    : await cachedFetch<ProductCardData[]>(productFallbackQuery, {}, { next: { tags: ["product:list", "product:all"] } });
 
   return (
-    <div className="flex flex-col w-full">
-      {/* 1. Hero Section */}
-      <HeroSection data={data} />
-
-      {/* 2. Hakkımızda Bölümü */}
-      <AboutSection
-        title={data?.aboutTitle}
-        subtitle={data?.aboutSubtitle}
-        text={data?.aboutText}
-        image={data?.aboutImage}
-        ctaLabel={data?.aboutCtaLabel}
-        ctaLink={data?.aboutCtaLink}
+    <>
+      <Hero
+        heroTitle={data?.heroTitle}
+        heroText={data?.heroText}
+        heroPrimaryLabel={data?.heroPrimaryLabel}
+        heroPrimaryLink={data?.heroPrimaryLink}
+        heroSecondaryLabel={data?.heroSecondaryLabel}
+        heroSecondaryLink={data?.heroSecondaryLink}
+        heroCaption={data?.heroCaption}
       />
-
-      {/* 5. Son Blog Yazıları */}
-      <BlogSection
-        title={data?.blogTitle}
-        subtitle={data?.blogSubtitle}
-        posts={postsToDisplay}
+      <Collection title={data?.collectionTitle} text={data?.collectionText} linkLabel={data?.collectionLinkLabel} products={products ?? []} />
+      <KelvinGuide title={data?.kelvinTitle} text={data?.kelvinText} />
+      <ProjectsBand
+        projectsTitle={data?.projectsTitle}
+        projectsText={data?.projectsText}
+        stationsTitle={data?.stationsTitle}
+        stationsText={data?.stationsText}
       />
-    </div>
+      <CtaBand
+        ctaTitle={data?.ctaTitle}
+        ctaText={data?.ctaText}
+        ctaQuoteLabel={data?.ctaQuoteLabel}
+        ctaWhatsappLabel={data?.ctaWhatsappLabel}
+        whatsappNumber={settings?.contactInfo?.whatsappNumber}
+      />
+    </>
   );
 }

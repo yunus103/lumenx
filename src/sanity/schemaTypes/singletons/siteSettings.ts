@@ -7,6 +7,14 @@ export const siteSettingsType = defineType({
   fields: [
     defineField({ name: "siteName", title: "Site Adı", type: "string", validation: (Rule) => Rule.required() }),
     defineField({ name: "siteTagline", title: "Slogan", type: "string" }),
+    defineField({ name: "legalName", title: "Firma Unvanı", type: "string", description: "Footer telif satırında görünür.", initialValue: "Frekans Elektrik Aydınlatma" }),
+    defineField({
+      name: "footerText",
+      title: "Footer Metni",
+      type: "text",
+      rows: 3,
+      initialValue: "LUMENX, Frekans Elektrik Aydınlatma markasıdır. Şarjlı masa lambaları Türkiye'de üretilir.",
+    }),
     defineField({
       name: "logo",
       title: "Logo",

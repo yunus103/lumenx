@@ -1,0 +1,26 @@
+import { OpenQuoteButton } from "@/components/quote/QuoteProvider";
+import { WaIcon } from "@/components/quote/icons";
+import { waLink } from "@/lib/catalog";
+import type { HomePage } from "@/types";
+
+type CtaBandProps = Pick<HomePage, "ctaTitle" | "ctaText" | "ctaQuoteLabel" | "ctaWhatsappLabel"> & { whatsappNumber?: string };
+
+export function CtaBand({ ctaTitle, ctaText, ctaQuoteLabel, ctaWhatsappLabel, whatsappNumber }: CtaBandProps) {
+  return (
+    <section className="cta-band" aria-labelledby="cH">
+      <div className="wrap cta-in">
+        <h2 id="cH">{ctaTitle}</h2>
+        {ctaText && <p>{ctaText}</p>}
+        <div className="cta-row">
+          {ctaQuoteLabel && <OpenQuoteButton className="btn btn-light">{ctaQuoteLabel}</OpenQuoteButton>}
+          {ctaWhatsappLabel && whatsappNumber && (
+            <a className="btn btn-wa" href={waLink(whatsappNumber, "Merhaba, ürünleriniz hakkında bilgi almak istiyorum.")} target="_blank" rel="noopener">
+              <WaIcon />
+              {ctaWhatsappLabel}
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}

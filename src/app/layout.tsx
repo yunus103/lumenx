@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Saira } from "next/font/google";
 import "./globals.css";
 import { buildMetadata, getLayoutData } from "@/lib/seo";
 
@@ -7,9 +7,12 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { JsonLd, organizationJsonLd, websiteJsonLd } from "@/components/seo/JsonLd";
 import NextTopLoader from "nextjs-toploader";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
+// Variable width axis: headings use an expanded stretch that echoes the wordmark.
+const saira = Saira({
+  subsets: ["latin", "latin-ext"],
+  axes: ["wdth"],
+  variable: "--font-saira",
+  display: "swap",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -20,14 +23,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const { settings } = await getLayoutData();
 
   return (
-    <html lang="tr" className={inter.variable} suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="tr" className={saira.variable} suppressHydrationWarning>
+      <body>
         <noscript>
           <style>{`[data-fade-in]{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         {/* Sayfa geçişlerinde üstte ince ilerleme çubuğu — marka rengi kullanır */}
         <NextTopLoader
-          color="var(--primary)"
+          color="var(--amber)"
           height={3}
           showSpinner={false}
           shadow={false}

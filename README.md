@@ -74,6 +74,7 @@ _type in [
   "aboutPage",
   "contactPage",
   "blogPage",
+  "productsPage",
   "blogPost",
   "blogCategory",
   "product",

@@ -69,6 +69,11 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 
 ## Porting notes
 
+- **Done (2026-11-02):** tokens in `theme.css` (shadcn tokens mapped onto the palette), the demo's component CSS 1:1 in `components.css`, Saira via `next/font` (wdth axis), header (transparent over the home hero, solid elsewhere), footer, quote list (`QuoteProvider`: drawer, toast, localStorage `lumenx-quote`, WhatsApp text), home page (hero frames, collection, Kelvin guide, projects/stations, CTA band), `/urunler`, `/urunler/[kategori]`, `/urun/[slug]` with the configurator in photo mode (finish swatches + RAL card, shade, Kelvin, Ekonomik/Premium, other options, summary, mobile bar), specs, datasheets, related products.
+- Hero and Kelvin renders, brand SVGs are static files in `public/` (not CMS content). Kelvin names/uses (`KINFO`) and the light-colour maths are code (`src/lib/light.ts`), like the RAL table.
+- UI microcopy of the configurator and quote drawer stays in code; page texts and metadata come from Sanity (`homePage`, new `productsPage` singleton, `siteSettings.footerText`/`legalName`).
+- `tools/seed-content.mjs` creates the singletons from the schemas' `initialValue` plus LUMENX's contact data and menus (create-if-missing).
+- `product.chargeOptions` marks the 81 products with Light Design's Ekonomik/Premium option; prices show in USD until the TCMB rate (step 6).
 - `three` becomes an npm dependency (needs Yunus's approval when added). The viewer is a client component loaded with `next/dynamic` and `ssr: false`; the kit stays framework-free so it ports as plain modules.
 - Static 3D assets (room, textures) go in `public/` with the code; product photos go to Sanity.
 - The boilerplate's own section designs are placeholders; replacing them with the demo's design is expected.

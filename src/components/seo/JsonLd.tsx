@@ -1,5 +1,5 @@
 import { getSiteUrl } from "@/lib/utils";
-import { SiteSettings, BlogPost, SocialLink } from "@/types";
+import { SiteSettings, BlogPost, SocialLink, Product } from "@/types";
 
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
@@ -100,5 +100,18 @@ export function breadcrumbListJsonLd(items: { label: string; href: string }[]) {
       name: item.label,
       item: item.href.startsWith("http") ? item.href : `${siteUrl}${item.href}`,
     })),
+  };
+}
+
+export function productJsonLd(product: Product, brand?: string) {
+  const image = product.gallery?.map((g) => g.asset?.url).filter(Boolean);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    url: `${getSiteUrl()}/urun/${product.slug.current}`,
+    category: product.category?.title,
+    ...(image?.length && { image }),
+    ...(brand && { brand: { "@type": "Brand", name: brand } }),
   };
 }

@@ -14,8 +14,10 @@ type SitemapPage = {
 };
 
 type SitemapData = {
-  pages?: Record<"home" | "about" | "contact" | "blog", SitemapPage | null>;
+  pages?: Record<"home" | "about" | "contact" | "blog" | "products", SitemapPage | null>;
   blogPosts?: SitemapItem[];
+  products?: SitemapItem[];
+  categories?: SitemapItem[];
 };
 
 function lastModified(updatedAt?: string) {
@@ -35,6 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: base, lastModified: lastModified(pages?.home?._updatedAt), changeFrequency: "weekly", priority: 1 },
     { url: `${base}/hakkimizda`, lastModified: lastModified(pages?.about?._updatedAt), changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/iletisim`, lastModified: lastModified(pages?.contact?._updatedAt), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/urunler`, lastModified: lastModified(pages?.products?._updatedAt), changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/blog`, lastModified: lastModified(pages?.blog?._updatedAt), changeFrequency: "weekly", priority: 0.9 },
   ];
 
@@ -44,6 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (path === "/hakkimizda") return !pages?.about?.noIndex;
     if (path === "/iletisim") return !pages?.contact?.noIndex;
     if (path === "/blog") return !pages?.blog?.noIndex;
+    if (path === "/urunler") return !pages?.products?.noIndex;
     return true;
   });
 
@@ -53,6 +57,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastModified(p._updatedAt),
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })) || []),
+    ...(data?.categories?.map((c) => ({
+      url: `${base}/urunler/${c.slug}`,
+      lastModified: lastModified(c._updatedAt),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })) || []),
+    ...(data?.products?.map((p) => ({
+      url: `${base}/urun/${p.slug}`,
+      lastModified: lastModified(p._updatedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })) || []),
   ];
 

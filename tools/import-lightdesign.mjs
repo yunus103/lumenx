@@ -259,6 +259,7 @@ function productDoc(p, assetIds) {
     finishes: finishes.map((id) => ref(id, id.replace(/^finish-/, ""))),
     variantPhotos,
     options,
+    chargeOptions: p.variantTypes.some((t) => PRICE_TYPES.has(t.name)),
     datasheets,
     source: { name: "lightdesign", id: p.id, url: p.url },
   };

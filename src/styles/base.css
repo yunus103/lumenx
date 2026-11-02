@@ -2,10 +2,16 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--hdr); -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
   }
-  html {
-    @apply font-sans;
-  }
+  body { margin: 0; background: var(--ink); color: var(--fg); font: 400 16.5px/1.6 var(--f); font-stretch: 100%; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+  h1, h2, h3 { margin: 0; font-weight: 300; font-stretch: 118%; line-height: 1.04; letter-spacing: -.012em; text-wrap: balance; }
+  p { text-wrap: pretty; }
 }

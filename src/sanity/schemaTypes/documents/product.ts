@@ -123,6 +123,14 @@ export const productType = defineType({
       ],
     }),
 
+    defineField({
+      name: "chargeOptions",
+      title: "Ekonomik / Premium Şarj Seçeneği",
+      type: "boolean",
+      group: "price",
+      description: "Açıksa ürün sayfasında batarya seçimi (Ekonomik 3 W / Premium 5 W) gösterilir.",
+      initialValue: true,
+    }),
     defineField({ name: "priceUsd", title: "Ekonomik Fiyat (USD)", type: "number", group: "price", description: "Tek fiyatlı ürünlerde sadece bunu doldurun.", validation: (Rule) => Rule.min(0) }),
     defineField({ name: "premiumPriceUsd", title: "Premium Fiyat (USD)", type: "number", group: "price", validation: (Rule) => Rule.min(0) }),
 

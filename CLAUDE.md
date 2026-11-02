@@ -9,6 +9,7 @@ This repository is the boilerplate foundation. When maintaining the boilerplate,
 ## This project: LUMENX
 - Client site for the LUMENX lighting brand (Frekans Elektrik Aydınlatma). **Read `docs/PROJECT.md` first**: client, scope, decisions, product sources, the 3D demo to port, and the plan.
 - Project overrides of the rules below: routes are those in `docs/PROJECT.md` (`/hizmetler` and `/projeler` are removed, not kept passive).
+- Styling override: the demo's component CSS is ported 1:1 into `src/styles/components.css` (`@layer components`, imported from `globals.css`) instead of being rewritten as utilities; new styles may use either. Demo `--muted` is `--muted-c` and `.grid` is `.pgrid` (Tailwind/shadcn name clashes).
 
 ## Stack & Routes
 - Next.js 16 (App Router) · React 19 · Sanity v5 (Studio at `/studio`) · Tailwind CSS v4 · shadcn/ui on `@base-ui/react` · framer-motion · nodemailer.

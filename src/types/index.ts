@@ -66,6 +66,8 @@ export interface ContactInfo {
 export interface SiteSettings {
   siteName: string;
   siteTagline?: string;
+  legalName?: string;
+  footerText?: string;
   logo?: SanityImage;
   logoHeight?: number;
   favicon?: { asset: { url: string } };
@@ -144,12 +146,45 @@ export interface Datasheet {
   url: string;
 }
 
+export interface CategoryRef {
+  _id: string;
+  title: string;
+  slug: SanitySlug;
+}
+
+export interface CategoryListItem extends CategoryRef {
+  order?: number;
+  parent?: CategoryRef;
+  count: number;
+}
+
+export interface ProductCardData {
+  _id: string;
+  name: string;
+  slug: SanitySlug;
+  summary?: string;
+  priceUsd?: number;
+  premiumPriceUsd?: number;
+  category: CategoryRef;
+  cover?: SanityImage;
+  finishes?: Finish[];
+  variantPhotos?: VariantPhoto[];
+}
+
+export interface RelatedProduct {
+  _id: string;
+  name: string;
+  slug: SanitySlug;
+  category: CategoryRef;
+  cover?: SanityImage;
+}
+
 export interface Product {
   _id: string;
   _updatedAt?: string;
   name: string;
   slug: SanitySlug;
-  category: ProductCategory;
+  category: Pick<ProductCategory, "_id" | "title" | "slug" | "kelvinOptions" | "defaultSpecs">;
   summary?: string;
   description?: PortableTextBlock[];
   gallery?: SanityImage[];
@@ -158,6 +193,7 @@ export interface Product {
   variantPhotos?: VariantPhoto[];
   kelvinOptions?: number[];
   options?: ProductOption[];
+  chargeOptions?: boolean;
   priceUsd?: number;
   premiumPriceUsd?: number;
   specs?: SpecRow[];
@@ -215,21 +251,35 @@ export interface InnerPageWithCta extends BasePage {
 
 export type BlogPage = InnerPageWithCta;
 
+export interface ProductsPage {
+  pageTitle: string;
+  pageSubtitle?: string;
+  allLabel?: string;
+  seo?: SeoSettings;
+}
+
 export interface HomePage {
   heroTitle: string;
-  heroSubtitle?: string;
-  heroImage?: SanityImage;
-  heroCtaLabel?: string;
-  heroCtaLink?: CtaLink;
-  aboutTitle?: string;
-  aboutSubtitle?: string;
-  aboutText?: PortableTextBlock[];
-  aboutImage?: SanityImage;
-  aboutCtaLabel?: string;
-  aboutCtaLink?: string;
-  blogTitle?: string;
-  blogSubtitle?: string;
-  featuredPosts?: BlogPost[];
+  heroText?: string;
+  heroPrimaryLabel?: string;
+  heroPrimaryLink?: string;
+  heroSecondaryLabel?: string;
+  heroSecondaryLink?: string;
+  heroCaption?: string;
+  collectionTitle?: string;
+  collectionText?: string;
+  collectionLinkLabel?: string;
+  featuredProducts?: ProductCardData[];
+  kelvinTitle?: string;
+  kelvinText?: string;
+  projectsTitle?: string;
+  projectsText?: string;
+  stationsTitle?: string;
+  stationsText?: string;
+  ctaTitle?: string;
+  ctaText?: string;
+  ctaQuoteLabel?: string;
+  ctaWhatsappLabel?: string;
   seo?: SeoSettings;
 }
 
