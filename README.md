@@ -76,6 +76,10 @@ _type in [
   "blogPage",
   "blogPost",
   "blogCategory",
+  "product",
+  "productCategory",
+  "finish",
+  "shade",
   "faq"
 ]
 ```
@@ -102,6 +106,7 @@ _type in [
   "affectsList": select(
     delta::operation() != "update" => true,
     _type == "blogPost" => delta::changedAny((title, slug.current, excerpt, publishedAt, category, mainImage, seo.noIndex)),
+    _type == "product" => delta::changedAny((name, slug.current, summary, category, gallery[0], finishes, priceUsd, premiumPriceUsd, seo.noIndex)),
     false
   )
 }

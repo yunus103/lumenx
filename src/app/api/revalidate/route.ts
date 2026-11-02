@@ -23,7 +23,11 @@ type CollectionConfig = {
 
 const collectionConfig: Record<string, CollectionConfig> = {
   blogPost: { detailPrefix: "blog:detail", listTag: "blog:list" },
+  product: { detailPrefix: "product:detail", listTag: "product:list" },
 };
+
+// Shared catalogue data embedded in every product page and listing, so a change touches all of them.
+const catalogueTypes = new Set(["productCategory", "finish", "shade"]);
 
 const singletonTags: Record<string, string> = {
   siteSettings: "layout",
@@ -105,6 +109,14 @@ function getRevalidationTags(
     tags.add("blog:list");
     tags.add("blog:categories");
     tags.add("home:featured");
+    return [...tags];
+  }
+
+  if (catalogueTypes.has(documentType)) {
+    tags.add("product:list");
+    tags.add("product:all");
+    tags.add("home:featured");
+    if (documentType === "productCategory" && inventoryChanged) tags.add("sitemap");
     return [...tags];
   }
 

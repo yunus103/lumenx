@@ -93,6 +93,79 @@ export interface Navigation {
   footerLinks?: NavItem[];
 }
 
+export interface SpecRow {
+  label: string;
+  value: string;
+}
+
+export interface ProductCategory {
+  _id: string;
+  title: string;
+  slug: SanitySlug;
+  parent?: { _id: string; title: string; slug: SanitySlug };
+  order?: number;
+  description?: string;
+  image?: SanityImage;
+  kelvinOptions?: number[];
+  defaultSpecs?: SpecRow[];
+  seo?: SeoSettings;
+}
+
+export interface Finish {
+  _id: string;
+  name: string;
+  slug: SanitySlug;
+  hex?: string;
+  finishType?: string;
+  ral?: string;
+  ralName?: string;
+}
+
+export interface Shade {
+  _id: string;
+  name: string;
+  slug: SanitySlug;
+  hex?: string;
+}
+
+export interface VariantPhoto {
+  finish: { _id: string };
+  shade?: { _id: string };
+  image: SanityImage;
+}
+
+export interface ProductOption {
+  name: string;
+  values?: string[];
+}
+
+export interface Datasheet {
+  title: string;
+  url: string;
+}
+
+export interface Product {
+  _id: string;
+  _updatedAt?: string;
+  name: string;
+  slug: SanitySlug;
+  category: ProductCategory;
+  summary?: string;
+  description?: PortableTextBlock[];
+  gallery?: SanityImage[];
+  finishes?: Finish[];
+  shades?: Shade[];
+  variantPhotos?: VariantPhoto[];
+  kelvinOptions?: number[];
+  options?: ProductOption[];
+  priceUsd?: number;
+  premiumPriceUsd?: number;
+  specs?: SpecRow[];
+  datasheets?: Datasheet[];
+  modelKey?: string;
+  seo?: SeoSettings;
+}
+
 export interface CtaLink {
   linkType: "internal" | "manual";
   manual?: string;

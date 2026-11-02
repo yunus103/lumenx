@@ -30,6 +30,11 @@ export const structure: StructureResolver = (S) =>
           ])
         ),
       S.divider(),
+      S.documentTypeListItem("product").title("💡 Ürünler"),
+      S.documentTypeListItem("productCategory").title("🗂 Ürün Kategorileri"),
+      S.documentTypeListItem("finish").title("🎨 Gövde Renkleri"),
+      S.documentTypeListItem("shade").title("🎨 Abajur Renkleri"),
+      S.divider(),
       S.documentTypeListItem("blogCategory").title("📝 Blog Kategorileri"),
       S.documentTypeListItem("blogPost").title("📝 Blog Yazıları"),
     ]);
