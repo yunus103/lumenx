@@ -6,14 +6,16 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useQuote } from "@/components/quote/QuoteProvider";
 import { ListIcon } from "@/components/quote/icons";
-import type { NavItem } from "@/types";
+import { HeaderSearch } from "@/components/layout/HeaderSearch";
+import type { NavItem, SiteSettings } from "@/types";
 
 interface HeaderProps {
   siteName?: string;
   links?: NavItem[];
+  search?: Pick<SiteSettings, "searchLabel" | "searchPlaceholder" | "searchAllLabel" | "searchEmptyText">;
 }
 
-export function Header({ siteName, links }: HeaderProps) {
+export function Header({ siteName, links, search }: HeaderProps) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
@@ -43,6 +45,7 @@ export function Header({ siteName, links }: HeaderProps) {
               </Link>
             ))}
           </nav>
+          <HeaderSearch texts={search} />
           {/* key restarts the bump animation on every add */}
           <button className={`qbtn${bump ? " bump" : ""}`} key={bump} type="button" aria-haspopup="dialog" onClick={open}>
             <ListIcon />

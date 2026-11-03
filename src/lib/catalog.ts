@@ -28,7 +28,7 @@ export function finishKind(f: Pick<Finish, "finishType">): FinishKind {
 }
 
 // Wood bodies are a "gövde", painted/plated metal ones a "kasa".
-export const finishWord = (finishes?: Finish[]) => (finishes?.[0] && finishKind(finishes[0]) === "wood" ? "gövde" : "kasa");
+export const finishWord = (finishes?: Pick<Finish, "finishType">[]) => (finishes?.[0] && finishKind(finishes[0]) === "wood" ? "gövde" : "kasa");
 
 export interface FinishInfo {
   title: string;

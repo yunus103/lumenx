@@ -20,13 +20,5 @@ export default async function ProductsPage() {
     cachedFetch<ProductCardData[]>(productListQuery, {}, tags),
   ]);
 
-  return (
-    <Catalog
-      title={page?.pageTitle ?? ""}
-      intro={page?.pageSubtitle}
-      allLabel={page?.allLabel}
-      categories={categories ?? []}
-      products={products ?? []}
-    />
-  );
+  return <Catalog page={page} categories={categories ?? []} products={products ?? []} />;
 }

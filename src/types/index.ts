@@ -73,6 +73,10 @@ export interface SiteSettings {
   favicon?: { asset: { url: string } };
   contactInfo?: ContactInfo;
   socialLinks?: SocialLink[];
+  searchLabel?: string;
+  searchPlaceholder?: string;
+  searchAllLabel?: string;
+  searchEmptyText?: string;
   gaId?: string;
   gtmId?: string;
   googleSearchConsoleId?: string;
@@ -154,6 +158,7 @@ export interface CategoryRef {
 
 export interface CategoryListItem extends CategoryRef {
   order?: number;
+  description?: string;
   parent?: CategoryRef;
   count: number;
 }
@@ -167,8 +172,21 @@ export interface ProductCardData {
   premiumPriceUsd?: number;
   category: CategoryRef;
   cover?: SanityImage;
-  finishes?: Finish[];
+  finishes?: CardFinish[];
   variantPhotos?: VariantPhoto[];
+  night?: SanityImage;
+  kelvin?: number;
+}
+
+export type CardFinish = Pick<Finish, "_id" | "name" | "hex" | "finishType">;
+
+export interface SearchItem {
+  _id: string;
+  name: string;
+  slug: string;
+  summary?: string;
+  category?: string;
+  cover?: SanityImage;
 }
 
 export interface RelatedProduct {
@@ -255,6 +273,11 @@ export interface ProductsPage {
   pageTitle: string;
   pageSubtitle?: string;
   allLabel?: string;
+  searchPlaceholder?: string;
+  countLabel?: string;
+  loadMoreLabel?: string;
+  emptyText?: string;
+  clearLabel?: string;
   seo?: SeoSettings;
 }
 

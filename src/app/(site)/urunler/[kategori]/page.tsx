@@ -5,7 +5,7 @@ import {
   categoryBySlugQuery,
   categorySlugsQuery,
   productCategoriesQuery,
-  productsByCategoryQuery,
+  productListQuery,
   productsPageQuery,
 } from "@/sanity/lib/queries";
 import { buildMetadata } from "@/lib/seo";
@@ -36,7 +36,8 @@ export default async function CategoryPage({ params }: Props) {
     getCategory(kategori),
     cachedFetch<ProductsPage | null>(productsPageQuery, {}, { next: { tags: ["productsPage"] } }),
     cachedFetch<CategoryListItem[]>(productCategoriesQuery, {}, tags),
-    cachedFetch<ProductCardData[]>(productsByCategoryQuery, { slug: kategori }, tags),
+    // All products, not just this category's: the catalogue switches categories in the browser.
+    cachedFetch<ProductCardData[]>(productListQuery, {}, tags),
   ]);
   if (!cat) notFound();
 
@@ -48,14 +49,7 @@ export default async function CategoryPage({ params }: Props) {
           { label: cat.title, href: `/urunler/${kategori}` },
         ])}
       />
-      <Catalog
-        title={cat.title}
-        intro={cat.description}
-        allLabel={page?.allLabel}
-        categories={categories ?? []}
-        activeSlug={kategori}
-        products={products ?? []}
-      />
+      <Catalog page={page} categories={categories ?? []} products={products ?? []} />
     </>
   );
 }

@@ -50,6 +50,13 @@ export const productType = defineType({
     defineField({ name: "summary", title: "Kısa Tanım", type: "string", group: "content", description: "Kartlarda ve başlık altında görünür. Örn: Şarjlı masa lambası · Ahşap gövde" }),
     defineField({ name: "description", title: "Açıklama", type: "array", group: "content", of: [defineArrayMember({ type: "block" })] }),
     defineField({
+      name: "nightImage",
+      title: "Gece Fotoğrafı",
+      type: "image",
+      group: "content",
+      description: "Lambanın yandığı hali (3D render). Ürün kartında üzerine gelince veya ampul butonuyla görünür; boşsa buton çıkmaz. 5:6 oranında olmalı.",
+    }),
+    defineField({
       name: "gallery",
       title: "Fotoğraflar",
       type: "array",

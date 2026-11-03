@@ -18,11 +18,15 @@ const lightImageFields = /* groq */ `{ asset->{ _id, url }, alt, hotspot, crop }
 
 const finishFields = /* groq */ `{ _id, name, slug, hex, finishType, ral, ralName }`;
 
+// Cards render every product on /urunler, so they skip the blur placeholder (base64 barely gzips; the card
+// shimmers instead) and the finish fields only the configurator needs.
 export const productCardFields = /* groq */ `{
   _id, name, slug, summary, priceUsd, premiumPriceUsd,
   "category": category->{ _id, title, slug },
-  "cover": gallery[0] ${imageFields},
-  "finishes": finishes[]->${finishFields},
+  "cover": gallery[0] ${lightImageFields},
+  "finishes": finishes[]->{ _id, name, hex, finishType },
+  "night": nightImage ${lightImageFields},
+  "kelvin": coalesce(kelvinOptions[0], category->kelvinOptions[0]),
   "variantPhotos": variantPhotos[]{ "finish": finish->{ _id }, "shade": shade->{ _id }, image ${lightImageFields} }
 }`;
 
@@ -36,6 +40,7 @@ export const layoutQuery = groq`{
     favicon { asset->{ _id, url } },
     contactInfo { phone, email, address, whatsappNumber, mapIframe },
     socialLinks[] { platform, url },
+    searchLabel, searchPlaceholder, searchAllLabel, searchEmptyText,
     gaId, gtmId, googleSearchConsoleId,
     defaultSeo { metaTitle, metaDescription },
     defaultOgImage ${imageFields}
@@ -82,7 +87,9 @@ export const blogPageQuery = groq`*[_type == "blogPage"][0] {
 
 // ─── Ürünler ───────────────────────────────────────────────────────────────────
 
-export const productsPageQuery = groq`*[_type == "productsPage"][0] { pageTitle, pageSubtitle, allLabel, seo }`;
+export const productsPageQuery = groq`*[_type == "productsPage"][0] {
+  pageTitle, pageSubtitle, allLabel, searchPlaceholder, countLabel, loadMoreLabel, emptyText, clearLabel, seo
+}`;
 
 const productOrder = /* groq */ `order(category->order asc, name asc)`;
 
@@ -90,11 +97,8 @@ export const productListQuery = groq`*[_type == "product" && defined(slug.curren
 
 export const productFallbackQuery = groq`*[_type == "product" && defined(slug.current)] | ${productOrder} [0...9] ${productCardFields}`;
 
-// A category page lists its own products and those of its direct children.
-export const productsByCategoryQuery = groq`*[_type == "product" && defined(slug.current) && (category->slug.current == $slug || category->parent->slug.current == $slug)] | ${productOrder} ${productCardFields}`;
-
 export const productCategoriesQuery = groq`*[_type == "productCategory" && defined(slug.current)] | order(order asc, title asc) {
-  _id, title, slug, order,
+  _id, title, slug, order, description,
   "parent": parent->{ _id, title, slug },
   "count": count(*[_type == "product" && (category._ref == ^._id || category->parent._ref == ^._id)])
 }`;
@@ -194,3 +198,10 @@ export const defaultSeoQuery = groq`*[_type == "siteSettings"][0] {
 }`;
 
 export const blogSlugsQuery = groq`*[_type == "blogPost" && defined(slug.current)] { "slug": slug.current }`;
+
+// Header search index: fetched by the browser on first open, so it carries only what a result row shows.
+export const searchIndexQuery = groq`*[_type == "product" && defined(slug.current)] | ${productOrder} {
+  _id, name, "slug": slug.current, summary,
+  "category": category->title,
+  "cover": gallery[0] ${lightImageFields}
+}`;

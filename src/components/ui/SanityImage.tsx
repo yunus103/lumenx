@@ -35,6 +35,7 @@ type SanityImageProps = {
    * @default false
    */
   noBlur?: boolean;
+  onLoad?: () => void;
 };
 
 export function SanityImage({
@@ -50,6 +51,7 @@ export function SanityImage({
   objectFit,
   quality = 75,
   noBlur = false,
+  onLoad,
 }: SanityImageProps) {
   if (!image?.asset) return null;
 
@@ -112,6 +114,7 @@ export function SanityImage({
       }}
       placeholder={blurDataURL ? "blur" : "empty"}
       blurDataURL={blurDataURL}
+      onLoad={onLoad}
     />
   );
 }

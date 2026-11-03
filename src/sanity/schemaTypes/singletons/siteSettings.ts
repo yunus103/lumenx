@@ -65,6 +65,10 @@ export const siteSettingsType = defineType({
       ],
     }),
     defineField({ name: "socialLinks", title: "Sosyal Medya Hesapları", type: "array", of: [{ type: "socialLink" }] }),
+    defineField({ name: "searchLabel", title: "Header Arama: Buton Metni", type: "string", initialValue: "Ürün ara" }),
+    defineField({ name: "searchPlaceholder", title: "Header Arama: Kutu Metni", type: "string", initialValue: "Ürün adı, kategori veya özellik" }),
+    defineField({ name: "searchAllLabel", title: "Header Arama: Tüm Sonuçlar Linki", type: "string", initialValue: "Tüm sonuçları gör" }),
+    defineField({ name: "searchEmptyText", title: "Header Arama: Sonuç Yok Metni", type: "string", initialValue: "Eşleşen ürün bulunamadı." }),
     defineField({ name: "gaId", title: "Google Analytics ID", type: "string", description: "Örn: G-XXXXXXXXXX" }),
     defineField({ name: "gtmId", title: "Google Tag Manager ID", type: "string", description: "Örn: GTM-XXXXXXX" }),
     defineField({
