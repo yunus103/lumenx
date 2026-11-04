@@ -68,7 +68,10 @@ export interface KitLamp {
   setLight(intensity: number, worldPos: THREE.Vector3, c?: THREE.Color): void;
 }
 
-export function buildLamp(spec: KitSpec): KitLamp {
+// `far`: a copy seen from metres away on a background table, no details and a sixth of the facets. Eleven lamps at
+// full detail were most of the scene's triangles, and of the time to build it.
+export function buildLamp(spec: KitSpec, far = false): KitLamp {
+  const round = far ? 24 : 160;
   const g = new THREE.Group();
   const add = (geo: THREE.BufferGeometry, mat: THREE.Material, cast = true) => {
     const m = new THREE.Mesh(geo, mat);
@@ -80,7 +83,7 @@ export function buildLamp(spec: KitSpec): KitLamp {
 
   /* body */
   const b = spec.body;
-  const prof = smoothProfile(b.profile);
+  const prof = smoothProfile(b.profile, far ? 32 : 220);
   const top = Math.max(...prof.map((p) => p.y));
   const lit: LinerUniforms[] = [];
   const byLiner = <M extends THREE.Material>(m: M) => {
@@ -93,19 +96,21 @@ export function buildLamp(spec: KitSpec): KitLamp {
   const noRing = new THREE.MeshDistanceMaterial({ colorWrite: false, depthWrite: false });
   // a satin lacquer: the lit table shows in it towards the silhouette, as in the photos, but only faintly
   wood.userData.envI = 0.2;
-  const bodyMesh = add(lathe(prof, 200), wood);
+  const bodyMesh = add(lathe(prof, far ? 24 : 200), wood);
   bodyMesh.customDistanceMaterial = noRing;
-  const rubber = new THREE.MeshStandardMaterial({ color: "#141312", roughness: 0.85 });
-  const foot = add(new THREE.CylinderGeometry(b.foot.r * CM, b.foot.r * CM * 0.97, b.foot.h * CM, 64), rubber);
-  foot.position.y = (b.foot.h * CM) / 2;
-  foot.customDistanceMaterial = noRing;
+  if (!far) {
+    const rubber = new THREE.MeshStandardMaterial({ color: "#141312", roughness: 0.85 });
+    const foot = add(new THREE.CylinderGeometry(b.foot.r * CM, b.foot.r * CM * 0.97, b.foot.h * CM, 64), rubber);
+    foot.position.y = (b.foot.h * CM) / 2;
+    foot.customDistanceMaterial = noRing;
+  }
 
   /* details on the body surface */
   const brass = new THREE.MeshPhysicalMaterial({ color: "#d9b26a", metalness: 1, roughness: 0.28 });
   const black = byLiner(new THREE.MeshStandardMaterial({ color: "#0c0c0d", roughness: 0.55 }));
   const steel = byLiner(new THREE.MeshStandardMaterial({ color: "#8d9096", metalness: 1, roughness: 0.35 }));
   const bodyBrass = byLiner(brass.clone());
-  for (const d of spec.details || []) {
+  for (const d of far ? [] : spec.details || []) {
     const y = d.y * CM;
     const r = radiusAt(prof, y);
     const ang = Math.asin(Math.min(1, (d.x * CM) / r)) + (d.side === "back" ? Math.PI : 0);
@@ -154,13 +159,13 @@ export function buildLamp(spec: KitSpec): KitLamp {
   outer.shadowSide = THREE.FrontSide;
   const t2 = s.thickness / 2;
   const rAt = (y: number) => s.rBottom + ((s.rTop - s.rBottom) * (y - y0)) / s.h;
-  add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, t2, false)), outer);
-  add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, -t2, true)), inner, false);
-  add(lathe(tapePoints(rAt, y0, s.tape, s.thickness, false)), tape, false);
-  add(lathe(tapePoints(rAt, y1, s.tape, s.thickness, true)), tape, false);
+  add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, t2, false), round), outer);
+  add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, -t2, true), round), inner, false);
+  add(lathe(tapePoints(rAt, y0, s.tape, s.thickness, false).filter((_, i, a) => !far || i % 3 === 0 || i === a.length - 1), round), tape, false);
+  add(lathe(tapePoints(rAt, y1, s.tape, s.thickness, true).filter((_, i, a) => !far || i % 3 === 0 || i === a.length - 1), round), tape, false);
   if (s.cap) {
     const capT = s.thickness;
-    const capGeo = lathe([v2(0, y1 - capT / 2), v2(s.rTop - 0.05, y1 - capT / 2), v2(s.rTop - 0.05, y1 + capT / 2), v2(0, y1 + capT / 2)], 120);
+    const capGeo = lathe([v2(0, y1 - capT / 2), v2(s.rTop - 0.05, y1 - capT / 2), v2(s.rTop - 0.05, y1 + capT / 2), v2(0, y1 + capT / 2)], far ? 24 : 120);
     const cap = fabricMaterial({ color: "#eee4cc", transmission: s.transmission * 1.6, ...linenSet([(2 * s.rTop) / LINEN_TILE, (2 * s.rTop) / LINEN_TILE]) });
     fabrics.push(cap);
     add(capGeo, cap, false);
@@ -169,8 +174,10 @@ export function buildLamp(spec: KitSpec): KitLamp {
     const uv = capGeo.attributes.uv;
     for (let i = 0; i < pos.count; i++) uv.setXY(i, (pos.getX(i) / (s.rTop * CM)) * 0.5 + 0.5, (pos.getZ(i) / (s.rTop * CM)) * 0.5 + 0.5);
     const tb = spec.topButton;
-    const btn = add(lathe([v2(0, 0), v2(tb.r, 0), v2(tb.r, tb.h * 0.2), v2(tb.r * 0.9, tb.h * 0.6), v2(tb.r * 0.55, tb.h * 0.92), v2(0, tb.h)], 64), brass);
-    btn.position.y = (y1 + capT / 2) * CM;
+    if (!far) {
+      const btn = add(lathe([v2(0, 0), v2(tb.r, 0), v2(tb.r, tb.h * 0.2), v2(tb.r * 0.9, tb.h * 0.6), v2(tb.r * 0.55, tb.h * 0.92), v2(0, tb.h)], 64), brass);
+      btn.position.y = (y1 + capT / 2) * CM;
+    }
   }
 
   /* light */

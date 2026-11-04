@@ -11,8 +11,8 @@ import { pointLight } from "../geometry";
 import { roomData } from "./room";
 import { tableware } from "./tableware";
 
-// A diner's place (seated at +z): dinner and bread plates, folded napkin under the fork, knife, a wine glass with
-// wine and a water tumbler. Plates and glasses are closed solids with real wall thickness, rim and foot.
+// A diner's place (seated at +z): dinner and bread plates, folded napkin under the fork, knife and a wine glass with
+// wine. Plates and glasses are closed solids with real wall thickness, rim and foot.
 export function placeSetting(v: Viewer, M: SceneMaterials, x: number, z: number, rot = 0, parent: THREE.Object3D = v.root) {
   const g = new THREE.Group();
   g.position.set(x, 0, z);
@@ -30,8 +30,8 @@ export function placeSetting(v: Viewer, M: SceneMaterials, x: number, z: number,
   wine.position.set(0.12, 0, -0.19);
   g.add(wine);
   v.mesh(w.wineGlass, M.glass, { parent: wine, cast: false });
-  v.mesh(w.wine, M.wine, { parent: wine, cast: false });
-  v.mesh(w.tumbler, M.glass, { parent: g, cast: false }).position.set(0.215, 0, -0.13);
+  // the wine first, for the glass to draw over it
+  v.mesh(w.wine, M.wine, { parent: wine, cast: false }).renderOrder = -1;
 }
 
 // Lamp geometry + its own lights.
@@ -63,6 +63,8 @@ export function buildTableScene(v: Viewer, model: ViewerModel, variant: Variant)
   const kit = model.family === "kit";
   // cutlery is polished steel: it shows the lit table and shade, not the (near black) night environment
   v.steelMat = M.steel;
+  v.glassMat = M.glass;
+  v.wineMat = M.wine;
   const hero = variant === "hero";
   // kit lamps light the table from a few centimetres up and are seen close: a solid walnut veneer (no repeating
   // planks) under a satin lacquer, which keeps their reflection soft instead of a blown-out dot
@@ -72,12 +74,15 @@ export function buildTableScene(v: Viewer, model: ViewerModel, variant: Variant)
     v.mats.push(topMat);
     Object.assign(topMat, { clearcoatRoughness: 0.75, specularIntensity: 0.25 });
   }
-  const top = v.mesh(new THREE.BoxGeometry(hero ? 1.5 : 1.3, 0.04, hero ? 0.9 : 1.05), topMat);
-  top.position.set(0, -0.02, hero ? 0 : -0.1);
+  // in the restaurant: a table for two around the lamp, as big as the room's bake has it (build.py hero table)
+  const inRoom = kitTop && variant !== "card";
+  const [topW, topD, topZ] = hero ? [1.5, 0.9, 0] : inRoom ? [1.1, 0.9, 0] : [1.3, 1.05, -0.1];
+  const top = v.mesh(new THREE.BoxGeometry(topW, 0.04, topD), topMat);
+  top.position.set(0, -0.02, topZ);
   const legGeo = new THREE.BoxGeometry(0.05, 0.71, 0.05);
   for (const [a, b] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) {
     const l = v.mesh(legGeo, M.floor);
-    l.position.set(a * 0.55, -0.395, b * 0.33 - (hero ? 0 : 0.1));
+    l.position.set(a * (topW / 2 - 0.1), -0.395, b * (topD / 2 - 0.1) + topZ);
   }
   const floor = v.mesh(new THREE.PlaneGeometry(30, 30).rotateX(-Math.PI / 2), M.woodMat([12, 12]), { cast: false });
   floor.position.y = -0.75;
@@ -103,7 +108,6 @@ export function buildTableScene(v: Viewer, model: ViewerModel, variant: Variant)
   } else {
     // kit lamps stand in a room with the table away from the wall: the lit shade reads against a dim background,
     // as in the product's table photo
-    const inRoom = kitTop && variant !== "card";
     const back = variant === "card" ? -1.3 : inRoom ? -1.5 : -0.625;
     const wall = v.mesh(new THREE.PlaneGeometry(8, 4), M.wall, { cast: false });
     wall.position.set(0, 1.2, back);
@@ -120,8 +124,9 @@ export function buildTableScene(v: Viewer, model: ViewerModel, variant: Variant)
       Object.assign(M.linen, { normalMap: weave.normalMap, roughnessMap: weave.roughnessMap, normalScale: new THREE.Vector2(0.8, 0.8) });
     }
     if (variant !== "card") {
-      placeSetting(v, M, -0.38, 0.12, 0.12);
-      placeSetting(v, M, 0.4, 0.15, -0.1);
+      // two diners face to face across the lamp, at the table's ends, where the chairs are
+      placeSetting(v, M, -0.38, 0, -Math.PI / 2);
+      placeSetting(v, M, 0.38, 0, Math.PI / 2);
     }
   }
   const info = tableLamp(v, model, v.root, M, false);

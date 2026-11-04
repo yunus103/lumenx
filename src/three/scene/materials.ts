@@ -1,8 +1,41 @@
-import { coarse } from "../env";
+import * as THREE from "three";
 import { texCache } from "../textures";
 import type { Viewer } from "../Viewer";
 
 export type SceneMaterials = ReturnType<typeof sceneMaterials>;
+
+// Thin glass, no refraction: what it reflects is added on top, what is behind it only loses a little light, more at
+// grazing angles where the eye looks along the wall. Blended over the frame, so it shows the curtains and everything
+// else behind it, for no extra scene pass (transmission's costs one, and that pass has no transparent objects in it).
+function thinGlass(v: Viewer) {
+  const m = v.mat(
+    {
+      color: "#000000",
+      roughness: 0.03,
+      ior: 1.5,
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.CustomBlending,
+      blendSrc: THREE.OneFactor,
+      blendDst: THREE.OneMinusSrcAlphaFactor,
+    },
+    true,
+  );
+  m.userData.envI = 0.45;
+  m.onBeforeCompile = (s) => {
+    s.fragmentShader = s.fragmentShader
+      // it mirrors the room, the shade and the table through the probe, not the bulb its shade hides
+      .replace("reflectedLight.directSpecular + reflectedLight.indirectSpecular", "reflectedLight.indirectSpecular")
+      .replace(
+        "#include <opaque_fragment>",
+        `#include <opaque_fragment>
+        float edge = pow(1. - saturate(dot(normal, normalize(vViewPosition))), 5.);
+        gl_FragColor.rgb *= 1. + edge;
+        gl_FragColor.a = .015 + .35 * edge;`,
+      );
+  };
+  return m;
+}
 
 // The furniture and tableware materials of a scene, created per build (the viewer disposes them on clear()).
 export function sceneMaterials(v: Viewer) {
@@ -19,16 +52,11 @@ export function sceneMaterials(v: Viewer) {
   return {
     woodMat,
     wall: v.mat({ color: "#6a625a", roughness: 0.95, bumpMap: plaster, bumpScale: 2 }),
-    // a touch under paper white: in the sun it stays porcelain instead of a blooming disc
-    ceramic: v.mat({ color: "#e6e2da", roughness: 0.35, clearcoat: 1, clearcoatRoughness: 0.12 }, true),
-    // transmission costs a full extra scene pass per frame; phones get a plain transparent glass. Glass has no
-    // diffuse colour of its own: a white one read as milk under a nearby lamp
-    glass: coarse
-      ? v.mat({ color: "#1c2026", metalness: 0, roughness: 0.05, transparent: true, opacity: 0.14, depthWrite: false, clearcoat: 1 }, true)
-      : v.mat({ color: "#ffffff", metalness: 0, roughness: 0.03, transmission: 1, thickness: 0.004, ior: 1.5, specularIntensity: 1 }, true),
+    // well under paper white and a soft glaze: a plate a hand from the lamp stays porcelain instead of a blooming disc
+    ceramic: v.mat({ color: "#b0aba2", roughness: 0.62, specularIntensity: 0.45, clearcoat: 0.15, clearcoatRoughness: 0.45 }, true),
+    glass: thinGlass(v),
     steel: v.mat({ color: "#d9d9d6", metalness: 1, roughness: 0.18 }),
-    // opaque: a transmissive wine would be missing from the glass's transmission pass (it only sees opaque objects)
-    wine: v.mat({ color: "#1c0206", roughness: 0.08, clearcoat: 1, clearcoatRoughness: 0.03 }, true),
+    wine: v.mat({ color: "#32030b", roughness: 0.06, clearcoat: 1, clearcoatRoughness: 0.03, envMapIntensity: 0.25, transparent: true, opacity: 0.92 }, true),
     linen: v.mat({ color: "#5e1424", roughness: 0.92, sheen: 1, sheenRoughness: 0.6, sheenColor: "#b04a5c" }, true),
     floor: v.mat({ color: "#2a2420", roughness: 0.7 }),
     rubber: v.mat({ color: "#111111", roughness: 0.9 }),

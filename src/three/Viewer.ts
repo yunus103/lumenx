@@ -16,12 +16,12 @@ import { coarse } from "./env";
 import { woodFromHex } from "./finishes";
 import type { KitLamp } from "./kit/build";
 import type { Mode } from "./models";
-import { CLAMP, KNEE } from "./passes";
+import { CLAMP, FINISH, FocusedRoomPass, KNEE } from "./passes";
 import { KIT_OUTPUT, kitLamp } from "./scene/lamps";
 import { buildLuminaireScene } from "./scene/luminaire";
 import { ROOM_FX, ROOM_LAMP_MIX, loadRoom, preloadRoom, type RoomData } from "./scene/room";
 import { buildTableScene } from "./scene/table";
-import type { Tableware } from "./scene/tableware";
+import { tableware, type Tableware } from "./scene/tableware";
 import type { Variant, ViewerModel, ViewerState } from "./types";
 
 export { loadTextures } from "./textures";
@@ -45,6 +45,8 @@ const MODES: Record<Mode, ModeLook> = {
 // Kit lamps at dusk: the lamp carries the scene (as in the product's own photos), so half the blue daylight and a
 // little more exposure
 const KIT_AKSAM: ModeLook = { ...MODES.aksam, env: 0.07, sun: 0.22, exp: 2.7 };
+// At night the sconces still light the room: with the lamp off the table must not be blacker than the ones around it
+const KIT_GECE: ModeLook = { ...MODES.gece, env: 0.025 };
 // Lamp output relative to daylight. Night/evening exposures compensate, so daylight can drown the lamp.
 const LAMP = 0.4;
 const REF_LUM = luminance(kLinear(3000));
@@ -86,6 +88,8 @@ export class Viewer {
   bodyMat: THREE.MeshPhysicalMaterial | THREE.MeshLambertMaterial | null = null;
   neckMat: THREE.MeshPhysicalMaterial | null = null;
   steelMat: THREE.MeshStandardMaterial | null = null;
+  glassMat: THREE.MeshStandardMaterial | null = null;
+  wineMat: THREE.MeshStandardMaterial | null = null;
   shadeMats: THREE.MeshStandardMaterial[] = [];
   bgShades: THREE.MeshStandardMaterial[] = [];
   probeHide: THREE.Object3D[] = [];
@@ -107,7 +111,12 @@ export class Viewer {
   private readonly shadeProbe = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide });
   private readonly bounce = new THREE.HemisphereLight(0xffffff, 0xffffff, 0);
   private readonly composer: EffectComposer;
+  private readonly bloom: UnrealBloomPass;
   private readonly knee: ShaderPass;
+  private readonly finish: ShaderPass;
+  private readonly drawPass: RenderPass;
+  private readonly focus: FocusedRoomPass | null = null;
+  private roomParts = new Set<THREE.Object3D>();
   private readonly ro: ResizeObserver;
   private readonly io: IntersectionObserver;
   private capEnv: THREE.WebGLRenderTarget | null = null;
@@ -115,6 +124,7 @@ export class Viewer {
   private target = new THREE.Vector3();
   private base: THREE.Vector3 | null = null;
   private moved = false;
+  private intro = 1;
   private camMoved = false;
   private keepCam = false;
   private dirty = true;
@@ -131,7 +141,7 @@ export class Viewer {
     this.host = host;
     this.opts = { interactive: true, preserve: false, ...opts };
     const r = (this.r = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: this.opts.preserve, powerPreference: "high-performance" }));
-    r.setPixelRatio((this.dpr = Math.min(devicePixelRatio || 1, this.opts.maxDpr || (coarse ? 1.5 : 1.75))));
+    r.setPixelRatio((this.dpr = Math.min(devicePixelRatio || 1, this.opts.maxDpr || (coarse ? 1.5 : 2))));
     r.toneMapping = this.tone = this.opts.tone === "aces" ? THREE.ACESFilmicToneMapping : THREE.NeutralToneMapping;
     r.shadowMap.enabled = true;
     r.shadowMap.type = THREE.PCFShadowMap;
@@ -164,13 +174,23 @@ export class Viewer {
 
     const rt = new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, samples: 4 });
     this.composer = new EffectComposer(r, rt);
-    this.composer.addPass(new RenderPass(this.scene, this.cam));
+    this.drawPass = new RenderPass(this.scene, this.cam);
+    this.composer.addPass(this.drawPass);
+    // phones go without the depth of field
+    if (!coarse) {
+      this.focus = new FocusedRoomPass(this.scene, this.cam, () => this.ctl?.target ?? this.target, (room) => this.showPart(room));
+      this.composer.addPass(this.focus);
+    }
     this.composer.addPass(new ShaderPass(CLAMP));
-    this.composer.addPass(new UnrealBloomPass(new THREE.Vector2(256, 256), 0.32, 0.4, 1.0));
+    this.bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), 0.32, 0.4, 1.0);
+    this.composer.addPass(this.bloom);
     this.knee = new ShaderPass(KNEE);
     this.knee.enabled = false;
     this.composer.addPass(this.knee);
     this.composer.addPass(new OutputPass());
+    this.finish = new ShaderPass(FINISH);
+    this.finish.enabled = false;
+    this.composer.addPass(this.finish);
 
     if (this.opts.interactive) {
       const c = (this.ctl = new OrbitControls(this.cam, r.domElement));
@@ -211,6 +231,11 @@ export class Viewer {
       // until the scene is built and its shaders compiled, a render would compile them synchronously
       if (!this.ready || !this.vis || document.hidden) return;
       // damping per second instead of per frame (same feel at 60 fps); on slow frames a drag would crawl
+      if (this.intro < 1) {
+        // capped per frame: a slow first frame must not skip the move
+        this.intro = this.moved ? 1 : Math.min(1, this.intro + Math.min(dt, 0.04) / 1.8);
+        this.fit();
+      }
       if (this.ctl) {
         this.ctl.dampingFactor = 1 - Math.pow(1 - 0.08, dt * 60);
         this.ctl.update();
@@ -232,6 +257,15 @@ export class Viewer {
       prevMoved = moved;
     };
     if (this.opts.interactive) this.raf = requestAnimationFrame(loop);
+  }
+
+  // Which part of the room scene is on show (FocusedRoomPass). The lights stay: the same lights mean the same shaders.
+  private showPart(room: boolean | null) {
+    if (this.room_) this.room_.group.visible = room !== false;
+    for (const o of this.root.children) {
+      if (o instanceof THREE.Light) continue;
+      o.visible = room === null || this.roomParts.has(o) === room;
+    }
   }
 
   // Weak GPUs: after half a second of dragging below ~35 fps, render fewer pixels. It never steps back up during
@@ -262,7 +296,12 @@ export class Viewer {
   private fit() {
     if (!this.base || this.moved) return;
     const k = Math.max(1, Math.pow(this.fitAspect / Math.max(this.cam.aspect, 0.3), 0.8));
-    this.cam.position.copy(this.target).add(this.base.clone().multiplyScalar(k));
+    const rest = this.base.clone().multiplyScalar(k);
+    if (this.intro < 1) {
+      const left = Math.pow(1 - this.intro, 3);
+      rest.applyAxisAngle(THREE.Object3D.DEFAULT_UP, -0.2 * left).multiplyScalar(1 + 0.1 * left);
+    }
+    this.cam.position.copy(this.target).add(rest);
     this.cam.lookAt(this.target);
     if (this.ctl) {
       this.ctl.target.copy(this.target);
@@ -303,6 +342,7 @@ export class Viewer {
   private clear() {
     this.root.traverse((o) => {
       if (o instanceof THREE.Mesh) o.geometry.dispose();
+      if (o instanceof THREE.InstancedMesh) o.dispose();
       if (o instanceof THREE.Light && o.shadow?.map) o.shadow.map.dispose();
     });
     this.mats.forEach((m) => m.dispose());
@@ -316,6 +356,10 @@ export class Viewer {
     this.bodyMat = null;
     this.neckMat = null;
     this.steelMat = null;
+    this.glassMat = null;
+    this.wineMat = null;
+    this.roomParts.clear();
+    this.setFocus(false);
     this.shadeMats = [];
     this.bgShades = [];
     this.probeHide = [];
@@ -382,6 +426,11 @@ export class Viewer {
     this.apply(s);
     await this.compile(); // anything the capture changed
     if (!this.alive) return;
+    // the first view settles onto the product, in the room only
+    if (this.room_ && this.ctl && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.intro = 0;
+      this.fit();
+    }
     this.composer.render();
     this.dirty = false;
     this.ready = true;
@@ -419,6 +468,7 @@ export class Viewer {
       g.position.set(x, 0, z);
       g.rotation.y = i * 2.4;
       this.root.add(g);
+      this.roomParts.add(g);
       const { lamp } = kitLamp(this, model.key, g, true);
       // receiveShadow stays: switching it would be another shader variant to compile
       lamp.group.traverse((o) => {
@@ -427,6 +477,31 @@ export class Viewer {
       return { lamp, pos: new THREE.Vector3(x, lamp.lampPos.y, z) };
     });
     if (this.ctl) this.ctl.maxDistance = 2;
+    this.setFocus(true);
+    this.addFarGlasses(R.meta.glasses);
+  }
+
+  private setFocus(on: boolean) {
+    if (!this.focus) return;
+    this.focus.enabled = on;
+    this.drawPass.enabled = !on;
+  }
+
+  // A wine glass at every place of the background tables: two draw calls, whatever their number
+  private addFarGlasses(spots: [number, number][]) {
+    const w = (this.ware ||= tableware());
+    if (!this.glassMat || !this.wineMat) return;
+    const at = new THREE.Matrix4();
+    const add = (geo: THREE.BufferGeometry, mat: THREE.Material, order: number) => {
+      const m = new THREE.InstancedMesh(geo, mat, spots.length);
+      spots.forEach(([x, z], i) => m.setMatrixAt(i, at.makeTranslation(x, 0, z)));
+      m.frustumCulled = false;
+      m.renderOrder = order;
+      this.root.add(m);
+      this.roomParts.add(m);
+    };
+    add(w.farWine, this.wineMat, -1);
+    add(w.farGlass, this.glassMat, 0);
   }
 
   private applyRoom(key: Mode, s: ViewerState, f: number, lc: THREE.Color) {
@@ -447,7 +522,7 @@ export class Viewer {
     const fx = ROOM_FX[key];
     const warm = kLinear(2700); // wall sconces are not the product: fixed warm
     R.fx.view.color.setScalar(fx.view);
-    R.fx.curtain.color.setRGB(0.86, 0.82, 0.74, THREE.LinearSRGBColorSpace).multiplyScalar(fx.curtain);
+    R.fx.curtain.color.setRGB(...fx.curtainTint, THREE.LinearSRGBColorSpace).multiplyScalar(fx.curtain);
     R.fx.sconce_glass.color.copy(warm).multiplyScalar(fx.glass);
     const wood = s.finish.wood ?? woodFromHex(s.finish.hex);
     this.bgKits.forEach(({ lamp, pos }) => {
@@ -494,6 +569,9 @@ export class Viewer {
     // mapped, so switching it only rebuilds the output pass, never the scene's materials)
     const kit = model.family === "kit";
     this.knee.enabled = kit;
+    this.finish.enabled = kit;
+    // kit lamps light plates from a hand away: more glow would melt their edges
+    this.bloom.strength = kit ? 0.16 : 0.32;
     this.r.toneMapping = kit ? THREE.NoToneMapping : this.tone;
     if (model.family === "luminaire") buildLuminaireScene(this, model, s);
     else buildTableScene(this, model, variant);
@@ -505,7 +583,7 @@ export class Viewer {
     const model = this.model!;
     const kit = model.family === "kit";
     const isT = model.family !== "luminaire";
-    const mode = kit && s.mode === "aksam" ? KIT_AKSAM : MODES[s.mode];
+    const mode = kit && s.mode === "aksam" ? KIT_AKSAM : kit && s.mode === "gece" ? KIT_GECE : MODES[s.mode];
     // same lumen output at every colour temperature: normalise luminance to the 3000 K colour
     const lc = kLinear(s.k);
     lc.multiplyScalar(REF_LUM / luminance(lc));
@@ -592,7 +670,7 @@ export class Viewer {
   // table scenes: what reflects the probe capture
   private reflectors(): Reflector[] {
     const body = this.bodyMat instanceof THREE.MeshStandardMaterial ? this.bodyMat : null;
-    return [body, this.neckMat, this.steelMat, ...(this.kit?.reflect || [])].filter((m): m is Reflector => !!m);
+    return [body, this.neckMat, this.steelMat, this.glassMat, ...(this.kit?.reflect || [])].filter((m): m is Reflector => !!m);
   }
 
   private capture(mode: ModeLook) {

@@ -35,10 +35,11 @@ const ROOM_ALBEDO: Record<string, [string | null, [number, number, number]?]> = 
 // what isn't lightmapped, per mode (before exposure): the street outside, the sheer curtains it backlights, the
 // sconces' frosted glass (and the black 'void' behind the wainscot, which stays black)
 // `lamps`: the background lamps' power relative to the evening. The day gain is 12, so they bake a twelfth as strong.
-export const ROOM_FX: Record<Mode, { view: number; curtain: number; glass: number; lamps: number }> = {
-  gunduz: { view: 1, curtain: 0.6, glass: 1.2, lamps: 0.0875 },
-  aksam: { view: 0.45, curtain: 0.04, glass: 2.5, lamps: 1 },
-  gece: { view: 0.32, curtain: 0.035, glass: 2.5, lamps: 1 },
+// `curtainTint`: daylight through the cloth, then the room's own warm light on it
+export const ROOM_FX: Record<Mode, { view: number; curtain: number; curtainTint: [number, number, number]; glass: number; lamps: number }> = {
+  gunduz: { view: 1, curtain: 0.6, curtainTint: [0.86, 0.82, 0.74], glass: 1.2, lamps: 0.0875 },
+  aksam: { view: 0.45, curtain: 0.04, curtainTint: [0.95, 0.74, 0.52], glass: 2.5, lamps: 1 },
+  gece: { view: 0.32, curtain: 0.03, curtainTint: [1, 0.68, 0.42], glass: 2.5, lamps: 1 },
 };
 
 // How much of each lamp layer a fabric-shaded lamp gives, fitted against the earlier bake that had the lamps inside
@@ -48,6 +49,7 @@ export interface RoomMeta {
   lightmap: Record<Mode | "lamp-down" | "lamp-up", number>;
   gain?: Partial<Record<Mode, number>>;
   tables: [number, number][];
+  glasses: [number, number][];
 }
 
 export interface RoomData {
@@ -87,8 +89,24 @@ function addLampLayers(shader: Parameters<THREE.Material["onBeforeCompile"]>[0])
     );
 }
 
-function roomTex(name: string, srgb = true) {
-  return new THREE.TextureLoader().loadAsync(`${ROOM_URL}${name}-${ROOM_RES}.webp`).then((t) => {
+// The cloth's gathers: the zig-zag of its mesh is too fine to see, and the room is drawn without normals
+function gatherCurtain(shader: Parameters<THREE.Material["onBeforeCompile"]>[0]) {
+  shader.vertexShader = shader.vertexShader
+    .replace("#include <common>", "#include <common>\nvarying float vAlong;")
+    .replace("#include <begin_vertex>", "#include <begin_vertex>\nvAlong = position.z;");
+  shader.fragmentShader = shader.fragmentShader
+    .replace("#include <common>", "#include <common>\nvarying float vAlong;")
+    .replace(
+      "#include <opaque_fragment>",
+      `#include <opaque_fragment>
+      float fold = .6 * sin(vAlong * 46.) + .4 * sin(vAlong * 97. + 1.3);
+      gl_FragColor.rgb *= 1. + .3 * fold;
+      gl_FragColor.a = clamp(gl_FragColor.a + .1 * fold, 0., 1.);`,
+    );
+}
+
+function roomTex(name: string, srgb = true, res = ROOM_RES) {
+  return new THREE.TextureLoader().loadAsync(`${ROOM_URL}${name}-${res}.webp`).then((t) => {
     // glTF UVs: no flip
     t.flipY = false;
     t.anisotropy = 8;
@@ -107,8 +125,8 @@ export function loadRoom(mode: Mode): Promise<RoomData> {
     const pending: Partial<Record<Mode, Promise<void>>> = {};
     // per-mode maps: the current mode's first, the others right after (a switch then finds them loaded)
     // the atlas's islands sit a few texels apart: smaller mips would blend neighbours (light is smooth anyway)
-    const atlasTex = (name: string) =>
-      roomTex(name).then((l) => {
+    const atlasTex = (name: string, res = ROOM_RES) =>
+      roomTex(name, true, res).then((l) => {
         l.channel = 1;
         l.wrapS = l.wrapT = THREE.ClampToEdgeWrapping;
         l.generateMipmaps = false;
@@ -126,7 +144,8 @@ export function loadRoom(mode: Mode): Promise<RoomData> {
       fetch(`${ROOM_URL}room.json`).then((r) => r.json() as Promise<RoomMeta>),
       Promise.all(names.map((n) => roomTex(n))),
       atlasTex("lm-lamp-down"),
-      atlasTex("lm-lamp-up"),
+      // only a soft glow on the walls: the half-size map everywhere
+      atlasTex("lm-lamp-up", "lo"),
       perMode(mode),
     ]);
     draco.dispose();
@@ -160,12 +179,20 @@ export function loadRoom(mode: Mode): Promise<RoomData> {
           opacity: 0.88,
           depthWrite: key !== "curtain",
         });
+        if (key === "curtain") {
+          fx[key].onBeforeCompile = gatherCurtain;
+          // nothing see-through is ever behind it, but the glasses are often in front
+          o.renderOrder = -2;
+        }
       }
     });
-    for (const m of MODES)
-      perMode(m).catch(() => {
-        delete pending[m];
-      });
+    // the other modes' maps once the first view is up, so they don't compete with what it still has to fetch
+    setTimeout(() => {
+      for (const m of MODES)
+        perMode(m).catch(() => {
+          delete pending[m];
+        });
+    }, 3000);
     return (roomData = {
       group: gltf.scene,
       meta,

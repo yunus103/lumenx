@@ -3,7 +3,7 @@ import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeom
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import { lathe, spline, type Pt } from "../geometry";
 
-export type Tableware = Record<"plate" | "bread" | "napkin" | "wineGlass" | "wine" | "tumbler", THREE.BufferGeometry>;
+export type Tableware = Record<"plate" | "bread" | "napkin" | "wineGlass" | "wine" | "farGlass" | "farWine", THREE.BufferGeometry>;
 
 // Tableware profiles (metres, radius and height), each a closed solid turned from the axis under it, outside
 // first, back to the axis inside or on top.
@@ -25,8 +25,8 @@ export function tableware(): Tableware {
   const wall = inner.filter(([, y]) => y < level).reverse().map(([r, y]): Pt => [r - 0.0004, y]);
   const r = wall[wall.length - 1][0];
   const wine: Pt[] = [[0, 0.0932], ...wall, [r, level], [0, level]];
-  // water tumbler: a heavy base and walls flaring a little to the rim
-  const tumbler: Pt[] = [[0, 0], [0.031, 0], [0.0322, 0.0015], [0.0345, 0.095], [0.0345, 0.0965], [0.0332, 0.0968], [0.0318, 0.095], [0.0296, 0.013], [0.025, 0.011], [0, 0.0105]];
+  // the background tables' glasses, seen from metres away: every third point, a sixth of the facets
+  const coarse = (pts: Pt[]) => pts.filter((_, i) => i % 3 === 0 || i === pts.length - 1);
   // napkin folded in three: the top layer stops short, so its fold shows as a step along the long side
   const nap = (w: number, y: number, dx: number) => new RoundedBoxGeometry(w, 0.005, 0.2, 2, 0.0022).translate(dx, y, 0);
   const napkin = mergeGeometries([nap(0.12, 0.0026, 0), nap(0.084, 0.0076, 0.016)]);
@@ -36,6 +36,7 @@ export function tableware(): Tableware {
     napkin,
     wineGlass: lathe(wineGlass),
     wine: lathe(wine, 64),
-    tumbler: lathe(tumbler),
+    farGlass: lathe(coarse(wineGlass), 16),
+    farWine: lathe(coarse(wine), 16),
   };
 }
