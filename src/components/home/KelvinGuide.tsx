@@ -42,7 +42,7 @@ export function KelvinGuide({ title, text }: { title?: string; text?: string }) 
               <img
                 key={f}
                 src={j === 1 || inView ? `/renders/kelvin-${f}.webp` : undefined}
-                alt={j === 1 ? "Altıgen LED armatürün yemek masası üzerindeki ışığı" : ""}
+                alt={j === 1 ? "Şarjlı masa lambasının restoran masası üzerindeki ışığı" : ""}
                 width={1800}
                 height={1180}
                 decoding="async"
