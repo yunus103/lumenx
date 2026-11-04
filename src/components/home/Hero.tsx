@@ -52,8 +52,8 @@ export function Hero(props: HeroProps) {
   };
 
   const caption = lv
-    ? `${props.heroCaption} · ${k} K · ${LEVEL_NAMES[lv].toLocaleLowerCase("tr")}`
-    : `${props.heroCaption} · kapalı`;
+    ? `${props.heroCaption}, ${k} K, ${LEVEL_NAMES[lv].toLocaleLowerCase("tr")}`
+    : `${props.heroCaption}, kapalı`;
 
   return (
     <section className="hero" id="top" aria-label="Giriş">

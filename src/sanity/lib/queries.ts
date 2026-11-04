@@ -57,11 +57,13 @@ export const layoutQuery = groq`{
 
 export const homePageQuery = groq`*[_type == "homePage"][0] {
   heroTitle, heroText, heroPrimaryLabel, heroPrimaryLink, heroSecondaryLabel, heroSecondaryLink, heroCaption,
+  "categoryCards": categoryCards[defined(category->slug.current)]{ _key, title, "slug": category->slug.current, image ${imageFields} },
   collectionTitle, collectionText, collectionLinkLabel,
   "featuredProducts": featuredProducts[]->${productCardFields},
   kelvinTitle, kelvinText,
-  projectsTitle, projectsText, stationsTitle, stationsText,
-  ctaTitle, ctaText, ctaQuoteLabel, ctaWhatsappLabel,
+  referencesTitle, referencesText, referencesLinkLabel,
+  blogTitle, blogLinkLabel,
+  ctaTitle, ctaSteps[]{ _key, title, text }, ctaNote, ctaQuoteLabel, ctaWhatsappLabel,
   seo
 }`;
 
