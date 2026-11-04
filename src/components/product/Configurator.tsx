@@ -7,7 +7,7 @@ import { useQuote } from "@/components/quote/QuoteProvider";
 import { WaIcon } from "@/components/quote/icons";
 import { finishInfo, finishKind, photoFor, shortName, waLink } from "@/lib/catalog";
 import { KINFO, nearestKelvin, rgbStr, swatchBg } from "@/lib/light";
-import { formatPrice } from "@/lib/price";
+import { usePrice } from "@/components/product/PriceProvider";
 import { finish3D, shade3D } from "@/three/finishes";
 import { MODELS, MODE_LABELS, hasModel, type Mode } from "@/three/models";
 import type { ViewerState } from "@/three/types";
@@ -166,8 +166,9 @@ export function Configurator({ product: p }: { product: Product }) {
             : "Fotoğraftaki renk seçiminizden farklı olabilir."
           : null;
 
-  const tierPrice = p.chargeOptions ? formatPrice(power === "premium" ? p.premiumPriceUsd : p.priceUsd) : null;
-  const price = tierPrice ?? formatPrice(p.priceUsd, p.premiumPriceUsd);
+  // the chosen tier's price; if only the other tier has one, that one
+  const tierPrice = p.chargeOptions ? (power === "premium" ? p.premiumPriceUsd : p.priceUsd) : undefined;
+  const price = usePrice(tierPrice || p.priceUsd, tierPrice ? undefined : p.premiumPriceUsd);
 
   const detailParts = [
     finish && `${finish.name} ${word === "gövde" ? "ahşap gövde" : "kasa"}`,
@@ -346,10 +347,11 @@ export function Configurator({ product: p }: { product: Product }) {
           <div className="cfg-head">
             <h1>{name}</h1>
             <span className="meta">{p.summary || p.category?.title}</span>
-            <div className="price">
-              {price ? (
+            <div className={`price${price.pending ? " wait" : ""}`}>
+              {price.text ? (
                 <>
-                  {price}’den başlayan fiyatlar<span>, adet ve kaplamaya göre değişir</span>
+                  Başlangıç fiyatı {price.text}
+                  <span>, adet ve kaplamaya göre değişir</span>
                 </>
               ) : (
                 <span>Adet ve seçeneklere göre projeye özel fiyatlandırılır</span>
@@ -499,6 +501,15 @@ export function Configurator({ product: p }: { product: Product }) {
                 </div>
               ))}
             </dl>
+            {price.text && (
+              <div className={`summary-price${price.pending ? " wait" : ""}`}>
+                <span>Başlangıç adet fiyatı</span>
+                <b>{price.text}</b>
+                <span>Toplam, {qty} adet</span>
+                <b className="total">{price.total(qty)}</b>
+                <p>Son fiyat adet ve seçeneklere göre teklifte belli olur.</p>
+              </div>
+            )}
           </div>
 
           <div className="buy actions-main">
@@ -520,7 +531,7 @@ export function Configurator({ product: p }: { product: Product }) {
         <Qty id="qty2" value={qty} onChange={setQty} />
         <button className="btn btn-amber" type="button" onClick={addToQuote}>
           <span className="pb-l">
-            Teklife ekle<small>{[finish?.name, shade?.name, k && `${k} K`].filter(Boolean).join(", ")}</small>
+            Teklife ekle<small>{(!price.pending && price.total(qty)) || [finish?.name, shade?.name, k && `${k} K`].filter(Boolean).join(", ")}</small>
           </span>
         </button>
         <a className="btn btn-line wa-mini" href={askHref} target="_blank" rel="noopener" aria-label="WhatsApp'tan sorun">

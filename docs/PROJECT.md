@@ -30,8 +30,9 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - **Referanslar:** a page of images and videos of installations. A global switch in `siteSettings` (`referencesEnabled`, default off) hides it from navigation and makes the route return 404.
 - **Prices:**
   - Each product has an **Ekonomik and a Premium price in USD** (`priceUsd`, `premiumPriceUsd`); if only one is filled, only that one is shown. Products with a single price use `priceUsd`.
-  - Shown in TL, converted with the daily rate (TCMB), labelled as a starting / quote price; the real price is negotiated.
-  - **One global switch** in `siteSettings` (not per product): show TL price / show no price. Built now so a later "hide prices" request costs nothing.
+  - Labelled "Başlangıç fiyatı"; the real price is negotiated in the quote. TL is converted with TCMB's USD forex selling rate and rounded to the nearest 10 TL. No VAT note for now.
+  - **One global switch** in `siteSettings.priceMode` (not per product): TL, USD or no price.
+  - **Rate:** `/api/usd-rate` reads TCMB's public XML; the CDN caches it for 6 hours and keeps the last good rate if TCMB fails. The browser converts, so a new rate never regenerates pages. With no rate at all, the TL mode shows no price.
 - **Kelvin:** options per product, with a category default (all table lamps are 2700 K). With a single option, the existing Kelvin card shows that one value as info instead of three choices.
 - **Product texts:** scraped texts get their obvious errors fixed (e.g. Light Design's Defne page says "aluminium body", it is wood) and are lightly rewritten so they don't duplicate Light Design word for word. Quick pass, not a copywriting project.
   - Where the original has product-specific prose, it is kept and edited: "Light Design", SEO keyword lists, slogans, FAQ blocks and spec lists removed, wrong materials fixed. About 2/3 of the originals are one shared template; those get a short text describing the product from its photo.

@@ -76,6 +76,21 @@ export const siteSettingsType = defineType({
       description: "Kapalıyken /referanslar sayfası 404 verir; menü ve site haritasındaki bağlantıları gizlenir.",
       initialValue: false,
     }),
+    defineField({
+      name: "priceMode",
+      title: "Fiyat Gösterimi",
+      type: "string",
+      description: "Ürün fiyatları dolar olarak girilir. TL seçeneğinde TCMB'nin günlük döviz satış kuruyla çevrilir ve en yakın 10 TL'ye yuvarlanır.",
+      options: {
+        list: [
+          { title: "TL olarak göster", value: "tl" },
+          { title: "Dolar olarak göster", value: "usd" },
+          { title: "Fiyat gösterme", value: "hidden" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "hidden",
+    }),
     defineField({ name: "notFoundTitle", title: "404 Sayfası: Başlık", type: "string", initialValue: "Bu sayfanın ışığı yanmıyor." }),
     defineField({
       name: "notFoundText",

@@ -1,6 +1,7 @@
 import { getLayoutData } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PriceProvider } from "@/components/product/PriceProvider";
 import { QuoteProvider } from "@/components/quote/QuoteProvider";
 import type { Navigation, NavItem } from "@/types";
 
@@ -29,7 +30,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     <QuoteProvider whatsappNumber={data?.settings?.contactInfo?.whatsappNumber}>
       <Header siteName={data?.settings?.siteName} links={navigation?.headerLinks} search={search} contact={contact} />
       <main id="main" data-inert-when-modal>
-        {children}
+        <PriceProvider mode={s?.priceMode ?? "hidden"}>{children}</PriceProvider>
       </main>
       <Footer settings={data?.settings} navigation={navigation} />
     </QuoteProvider>

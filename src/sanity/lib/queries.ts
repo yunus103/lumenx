@@ -42,6 +42,7 @@ export const layoutQuery = groq`{
     socialLinks[] { platform, url },
     searchLabel, searchPlaceholder, searchAllLabel, searchEmptyText,
     referencesEnabled,
+    priceMode,
     gaId, gtmId, googleSearchConsoleId,
     defaultSeo { metaTitle, metaDescription },
     defaultOgImage ${imageFields}

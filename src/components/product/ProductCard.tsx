@@ -6,7 +6,7 @@ import { SanityImage } from "@/components/ui/SanityImage";
 import { BulbIcon } from "@/components/quote/icons";
 import { finishKind, finishWord, photoFor, shortName } from "@/lib/catalog";
 import { swatchBg } from "@/lib/light";
-import { formatPrice } from "@/lib/price";
+import { usePrice } from "@/components/product/PriceProvider";
 import type { ProductCardData } from "@/types";
 
 const SIZES = "(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 400px";
@@ -25,7 +25,7 @@ export function ProductCard({ p, sizes = SIZES }: { p: ProductCardData; sizes?: 
   const { image } = photoFor(p.variantPhotos, p.cover, finishId);
   const nextImage = nextFinishId && photoFor(p.variantPhotos, p.cover, nextFinishId).image;
   const warm = () => p.night && setWantNight(true);
-  const price = formatPrice(p.priceUsd, p.premiumPriceUsd);
+  const price = usePrice(p.priceUsd, p.premiumPriceUsd);
 
   return (
     <div className={`card${lit ? " lit" : ""}`} onPointerEnter={warm} onFocus={warm}>
@@ -56,7 +56,7 @@ export function ProductCard({ p, sizes = SIZES }: { p: ProductCardData; sizes?: 
         <h3>
           <Link href={href}>{name}</Link>
         </h3>
-        {price && <span className="price">{price}’den</span>}
+        {price.text && <span className={`price${price.pending ? " wait" : ""}`}>Başlangıç fiyatı {price.text}</span>}
         <span className="meta">{p.summary || p.category?.title}</span>
         {!!p.finishes?.length && (
           <div className="dots">

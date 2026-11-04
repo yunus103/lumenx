@@ -63,6 +63,8 @@ export interface ContactInfo {
   mapIframe?: string;
 }
 
+export type PriceMode = "tl" | "usd" | "hidden";
+
 export interface SiteSettings {
   siteName: string;
   siteTagline?: string;
@@ -78,6 +80,7 @@ export interface SiteSettings {
   searchAllLabel?: string;
   searchEmptyText?: string;
   referencesEnabled?: boolean;
+  priceMode?: PriceMode;
   gaId?: string;
   gtmId?: string;
   googleSearchConsoleId?: string;
