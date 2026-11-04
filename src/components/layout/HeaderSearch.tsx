@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { SanityImage } from "@/components/ui/SanityImage";
 import { CloseIcon, SearchIcon } from "@/components/quote/icons";
@@ -26,11 +26,16 @@ function loadIndex() {
 
 const catalogHref = (q: string) => `/urunler?q=${encodeURIComponent(q.trim())}`;
 
-// The open panel turns the header solid through CSS (`.hdr:has(.hsearch-panel)`), so no state leaves here.
-export function HeaderSearch({ texts }: { texts?: SearchTexts }) {
+interface HeaderSearchProps {
+  texts?: SearchTexts;
+  /** Controlled by the header, so the search and the menus never overlap; it also closes it on navigation. */
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+// The open panel turns the header solid through CSS (`.hdr:has(.hsearch-panel)`).
+export function HeaderSearch({ texts, open, onOpenChange: setOpen }: HeaderSearchProps) {
   const router = useRouter();
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [items, setItems] = useState<SearchItem[] | null>(null);
   const [active, setActive] = useState(-1);
@@ -44,12 +49,6 @@ export function HeaderSearch({ texts }: { texts?: SearchTexts }) {
     if (next) loadIndex().then(setItems);
   };
 
-  const [prevPath, setPrevPath] = useState(pathname);
-  if (pathname !== prevPath) {
-    setPrevPath(pathname);
-    setOpen(false);
-  }
-
   useEffect(() => {
     if (!open) return;
     inputRef.current?.focus();
@@ -58,7 +57,7 @@ export function HeaderSearch({ texts }: { texts?: SearchTexts }) {
     };
     document.addEventListener("pointerdown", onDown);
     return () => document.removeEventListener("pointerdown", onDown);
-  }, [open]);
+  }, [open, setOpen]);
 
   const indexed = useMemo(
     () => items?.map((it) => ({ it, text: haystack(it.name, it.category, it.summary), name: fold(it.name) })) ?? [],

@@ -64,13 +64,23 @@ function edgeColor(src: string) {
 }
 
 function Qty({ id, value, onChange }: { id: string; value: number; onChange: (v: number) => void }) {
-  const set = (v: number) => onChange(Math.max(1, Math.min(9999, v | 0)));
+  const set = (v: number) => {
+    setDraft(null);
+    onChange(Math.max(1, Math.min(9999, v | 0)));
+  };
+  // what is being typed, so the field can be emptied on the way to a new number; blur falls back to the value
+  const [draft, setDraft] = useState<string | null>(null);
+  const type = (raw: string) => {
+    const n = parseInt(raw, 10);
+    if (n >= 1) onChange(Math.min(9999, n));
+    setDraft(raw);
+  };
   return (
     <div className="qty">
       <button type="button" aria-label="Azalt" onClick={() => set(value - 1)}>
         −
       </button>
-      <input id={id} type="number" inputMode="numeric" min={1} value={value} aria-label="Adet" onChange={(e) => set(parseInt(e.target.value, 10) || 1)} />
+      <input id={id} type="number" inputMode="numeric" min={1} value={draft ?? value} aria-label="Adet" onChange={(e) => type(e.target.value)} onBlur={() => setDraft(null)} />
       <button type="button" aria-label="Artır" onClick={() => set(value + 1)}>
         +
       </button>

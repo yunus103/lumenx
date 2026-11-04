@@ -69,6 +69,23 @@ export const siteSettingsType = defineType({
     defineField({ name: "searchPlaceholder", title: "Header Arama: Kutu Metni", type: "string", initialValue: "Ürün adı, kategori veya özellik" }),
     defineField({ name: "searchAllLabel", title: "Header Arama: Tüm Sonuçlar Linki", type: "string", initialValue: "Tüm sonuçları gör" }),
     defineField({ name: "searchEmptyText", title: "Header Arama: Sonuç Yok Metni", type: "string", initialValue: "Eşleşen ürün bulunamadı." }),
+    defineField({
+      name: "referencesEnabled",
+      title: "Referanslar Sayfası Açık",
+      type: "boolean",
+      description: "Kapalıyken /referanslar sayfası 404 verir; menü ve site haritasındaki bağlantıları gizlenir.",
+      initialValue: false,
+    }),
+    defineField({ name: "notFoundTitle", title: "404 Sayfası: Başlık", type: "string", initialValue: "Bu sayfanın ışığı yanmıyor." }),
+    defineField({
+      name: "notFoundText",
+      title: "404 Sayfası: Metin",
+      type: "text",
+      rows: 2,
+      initialValue: "Aradığınız sayfa taşınmış ya da kaldırılmış olabilir. Koleksiyon ve ana sayfa yerinde duruyor.",
+    }),
+    defineField({ name: "notFoundHomeLabel", title: "404 Sayfası: Ana Sayfa Butonu", type: "string", initialValue: "Ana sayfaya dön" }),
+    defineField({ name: "notFoundCatalogLabel", title: "404 Sayfası: Ürünler Butonu", type: "string", initialValue: "Ürünleri incele" }),
     defineField({ name: "gaId", title: "Google Analytics ID", type: "string", description: "Örn: G-XXXXXXXXXX" }),
     defineField({ name: "gtmId", title: "Google Tag Manager ID", type: "string", description: "Örn: GTM-XXXXXXX" }),
     defineField({

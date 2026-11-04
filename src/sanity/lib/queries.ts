@@ -41,13 +41,15 @@ export const layoutQuery = groq`{
     contactInfo { phone, email, address, whatsappNumber, mapIframe },
     socialLinks[] { platform, url },
     searchLabel, searchPlaceholder, searchAllLabel, searchEmptyText,
+    referencesEnabled,
     gaId, gtmId, googleSearchConsoleId,
     defaultSeo { metaTitle, metaDescription },
     defaultOgImage ${imageFields}
   },
   "navigation": *[_type == "navigation"][0] {
-    headerLinks[] { label, href, openInNewTab, subLinks[] { label, href, openInNewTab } },
-    footerLinks[] { label, href, openInNewTab, subLinks[] { label, href, openInNewTab } }
+    headerLinks[] { label, href, openInNewTab, description, subLinks[] { label, href, openInNewTab, description, image ${lightImageFields} } },
+    footerLinks[] { label, href, openInNewTab, subLinks[] { label, href, openInNewTab } },
+    "legalLinks": *[_type == "legalPage" && defined(slug.current)] | order(_createdAt asc, title asc) { linkLabel, "slug": slug.current }
   }
 }`;
 
@@ -64,17 +66,17 @@ export const homePageQuery = groq`*[_type == "homePage"][0] {
 }`;
 
 export const aboutPageQuery = groq`*[_type == "aboutPage"][0] {
-  heroTitle, heroSubtitle,
-  heroImage ${imageFields},
-  pageTitle, pageSubtitle, body,
-  mainImage ${imageFields},
+  heroTitle, pageTitle, body, "summary": pt::text(body[0]),
+  featuredProduct->{ name, "image": gallery[0] ${imageFields} },
   seo
 }`;
 
 export const contactPageQuery = groq`*[_type == "contactPage"][0] {
   heroTitle, heroSubtitle,
   heroImage ${imageFields},
-  pageTitle, pageSubtitle, showForm, formTitle, successMessage,
+  pageTitle, phoneLabel, whatsappLinkLabel, whatsappMessage, emailLabel, addressLabel, directionsLabel, mapTitle,
+  showForm, formTitle, formText, nameLabel, emailFieldLabel, phoneFieldLabel, subjectLabel, messageLabel, messagePlaceholder,
+  optionalLabel, consentLinkLabel, consentHref, consentText, submitLabel, sendingLabel, successTitle, successMessage, resetLabel, errorMessage,
   "contactInfo": *[_type == "siteSettings"][0].contactInfo,
   seo
 }`;
@@ -82,7 +84,15 @@ export const contactPageQuery = groq`*[_type == "contactPage"][0] {
 export const blogPageQuery = groq`*[_type == "blogPage"][0] {
   heroTitle, heroSubtitle,
   heroImage ${imageFields},
-  pageTitle, pageSubtitle, ctaLabel, ctaLink, seo
+  pageTitle, pageSubtitle, ctaLabel, ctaLink, allLabel, emptyText, backLabel, relatedTitle, seo
+}`;
+
+export const legalPageBySlugQuery = groq`*[_type == "legalPage" && slug.current == $slug][0] {
+  title, slug, updatedAt, updatedLabel, body, seo
+}`;
+
+export const notFoundQuery = groq`*[_type == "siteSettings"][0] {
+  siteName, notFoundTitle, notFoundText, notFoundHomeLabel, notFoundCatalogLabel
 }`;
 
 // ─── Ürünler ───────────────────────────────────────────────────────────────────
@@ -178,11 +188,14 @@ export const allSlugsForSitemapQuery = groq`{
     "about": *[_type == "aboutPage"][0] { _updatedAt, "noIndex": seo.noIndex },
     "contact": *[_type == "contactPage"][0] { _updatedAt, "noIndex": seo.noIndex },
     "blog": *[_type == "blogPage"][0] { _updatedAt, "noIndex": seo.noIndex },
-    "products": *[_type == "productsPage"][0] { _updatedAt, "noIndex": seo.noIndex }
+    "products": *[_type == "productsPage"][0] { _updatedAt, "noIndex": seo.noIndex },
+    "references": *[_type == "referencesPage"][0] { _updatedAt, "noIndex": seo.noIndex }
   },
+  "referencesEnabled": *[_type == "siteSettings"][0].referencesEnabled,
   "blogPosts": *[_type == "blogPost" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt },
   "products": *[_type == "product" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt },
-  "categories": *[_type == "productCategory" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt }
+  "categories": *[_type == "productCategory" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt },
+  "legalPages": *[_type == "legalPage" && defined(slug.current) && !(seo.noIndex == true)] { "slug": slug.current, _updatedAt }
 }`;
 
 // ─── Varsayılan SEO ────────────────────────────────────────────────────────────
@@ -204,4 +217,24 @@ export const searchIndexQuery = groq`*[_type == "product" && defined(slug.curren
   _id, name, "slug": slug.current, summary,
   "category": category->title,
   "cover": gallery[0] ${lightImageFields}
+}`;
+
+// ─── Referanslar ───────────────────────────────────────────────────────────────
+
+export const referencesPageQuery = groq`*[_type == "referencesPage"][0] {
+  pageTitle, pageSubtitle, productsLabel, photoLabel, videoLabel, emptyText, seo
+}`;
+
+// Only covers carry the blur placeholder; gallery items are thumbnails until the viewer opens them.
+export const referenceListQuery = groq`*[_type == "reference" && defined(cover.asset)] | order(order asc, _createdAt desc) {
+  _id, title, "slug": slug.current, location, year, summary,
+  logo ${lightImageFields},
+  cover ${imageFields},
+  // filter before dereferencing: a filter after the projection turns every item into null
+  "products": products[defined(@->slug.current)]->{ _id, name, slug, "cover": gallery[0] ${lightImageFields} },
+  media[]{
+    _key, _type, caption,
+    _type == "image" => ${lightImageFields},
+    _type == "referenceVideo" => { url, "fileUrl": file.asset->url, "mimeType": file.asset->mimeType, poster ${lightImageFields} }
+  }
 }`;

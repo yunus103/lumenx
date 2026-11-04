@@ -77,6 +77,7 @@ export interface SiteSettings {
   searchPlaceholder?: string;
   searchAllLabel?: string;
   searchEmptyText?: string;
+  referencesEnabled?: boolean;
   gaId?: string;
   gtmId?: string;
   googleSearchConsoleId?: string;
@@ -87,16 +88,27 @@ export interface SiteSettings {
   defaultOgImage?: SanityImage;
 }
 
+export interface NavSubLink {
+  label: string;
+  href?: string;
+  openInNewTab?: boolean;
+  description?: string;
+  image?: SanityImage;
+}
+
 export interface NavItem {
   label: string;
   href: string;
   openInNewTab?: boolean;
-  subLinks?: NavItem[];
+  /** Intro text of the header mega menu panel. */
+  description?: string;
+  subLinks?: NavSubLink[];
 }
 
 export interface Navigation {
   headerLinks?: NavItem[];
   footerLinks?: NavItem[];
+  legalLinks?: LegalLink[];
 }
 
 export interface SpecRow {
@@ -244,19 +256,48 @@ export interface BasePage {
   seo?: SeoSettings;
 }
 
-export interface AboutPage extends BasePage {
+export interface AboutPage {
+  heroTitle?: string;
   pageTitle: string;
-  pageSubtitle?: string;
   body?: PortableTextBlock[];
-  mainImage?: SanityImage;
+  /** Plain text of the first paragraph, the fallback meta description. */
+  summary?: string;
+  featuredProduct?: { name: string; image?: SanityImage };
+  seo?: SeoSettings;
 }
 
-export interface ContactPage extends BasePage {
-  pageTitle: string;
-  pageSubtitle?: string;
-  showForm?: boolean;
+/** The contact form's labels and messages, all from the contactPage singleton. */
+export interface ContactFormTexts {
   formTitle?: string;
+  formText?: string;
+  nameLabel?: string;
+  emailFieldLabel?: string;
+  phoneFieldLabel?: string;
+  subjectLabel?: string;
+  messageLabel?: string;
+  messagePlaceholder?: string;
+  optionalLabel?: string;
+  consentLinkLabel?: string;
+  consentHref?: string;
+  consentText?: string;
+  submitLabel?: string;
+  sendingLabel?: string;
+  successTitle?: string;
   successMessage?: string;
+  resetLabel?: string;
+  errorMessage?: string;
+}
+
+export interface ContactPage extends BasePage, ContactFormTexts {
+  pageTitle: string;
+  phoneLabel?: string;
+  whatsappLinkLabel?: string;
+  whatsappMessage?: string;
+  emailLabel?: string;
+  addressLabel?: string;
+  directionsLabel?: string;
+  mapTitle?: string;
+  showForm?: boolean;
   contactInfo?: SiteSettings["contactInfo"];
 }
 
@@ -267,7 +308,34 @@ export interface InnerPageWithCta extends BasePage {
   ctaLink?: string;
 }
 
-export type BlogPage = InnerPageWithCta;
+export interface BlogPage extends InnerPageWithCta {
+  allLabel?: string;
+  emptyText?: string;
+  backLabel?: string;
+  relatedTitle?: string;
+}
+
+export interface LegalLink {
+  linkLabel: string;
+  slug: string;
+}
+
+export interface LegalPage {
+  title: string;
+  slug: SanitySlug;
+  updatedAt?: string;
+  updatedLabel?: string;
+  body?: PortableTextBlock[];
+  seo?: SeoSettings;
+}
+
+export interface NotFoundTexts {
+  siteName?: string;
+  notFoundTitle?: string;
+  notFoundText?: string;
+  notFoundHomeLabel?: string;
+  notFoundCatalogLabel?: string;
+}
 
 export interface ProductsPage {
   pageTitle: string;
@@ -310,4 +378,31 @@ export interface BreadcrumbItem {
   label: string;
   href: string;
   active?: boolean;
+}
+
+export interface ReferencesPage {
+  pageTitle: string;
+  pageSubtitle?: string;
+  productsLabel?: string;
+  photoLabel?: string;
+  videoLabel?: string;
+  emptyText?: string;
+  seo?: SeoSettings;
+}
+
+export type ReferenceMedia =
+  | ({ _key: string; _type: "image"; caption?: string } & SanityImage)
+  | { _key: string; _type: "referenceVideo"; caption?: string; url?: string; fileUrl?: string; mimeType?: string; poster?: SanityImage };
+
+export interface Reference {
+  _id: string;
+  title: string;
+  slug?: string;
+  location?: string;
+  year?: number;
+  summary?: string;
+  logo?: SanityImage;
+  cover: SanityImage;
+  products?: { _id: string; name: string; slug: SanitySlug; cover?: SanityImage }[];
+  media?: ReferenceMedia[];
 }

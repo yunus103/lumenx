@@ -3,23 +3,41 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useQuote } from "@/components/quote/QuoteProvider";
 import { ListIcon } from "@/components/quote/icons";
 import { HeaderSearch } from "@/components/layout/HeaderSearch";
+import { HeaderNav } from "@/components/layout/HeaderNav";
+import { MobileMenu, type MenuContact } from "@/components/layout/MobileMenu";
 import type { NavItem, SiteSettings } from "@/types";
 
 interface HeaderProps {
   siteName?: string;
   links?: NavItem[];
   search?: Pick<SiteSettings, "searchLabel" | "searchPlaceholder" | "searchAllLabel" | "searchEmptyText">;
+  contact?: MenuContact;
 }
 
-export function Header({ siteName, links, search }: HeaderProps) {
+/** At most one header panel is open: the search, the mobile menu or one mega menu (by link index). */
+type Panel = "search" | "mobile" | number | null;
+
+export function Header({ siteName, links, search, contact }: HeaderProps) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
+  const [panel, setPanel] = useState<Panel>(null);
   const { count, bump, open } = useQuote();
+
+  const [prevPath, setPrevPath] = useState(pathname);
+  if (pathname !== prevPath) {
+    setPrevPath(pathname);
+    setPanel(null);
+  }
+
+  // Each panel may only close itself, so a late close from one never shuts the one that just opened.
+  const setSearch = useCallback((o: boolean) => setPanel((p) => (o ? "search" : p === "search" ? null : p)), []);
+  const setMobile = useCallback((o: boolean) => setPanel((p) => (o ? "mobile" : p === "mobile" ? null : p)), []);
+  const setMega = useCallback((i: number | null) => setPanel((p) => (i !== null ? i : typeof p === "number" ? null : p)), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(scrollY > 40);
@@ -38,22 +56,28 @@ export function Header({ siteName, links, search }: HeaderProps) {
           <Link className="logo" href="/" aria-label={`${siteName ?? "LUMENX"} ana sayfa`}>
             <Image src="/brand/lumenx-light.svg" alt={siteName ?? "LUMENX"} width={158} height={50} priority unoptimized />
           </Link>
-          <nav className="nav" aria-label="Ana menü">
-            {links?.map((l) => (
-              <Link key={l.href} href={isHome && l.href.startsWith("/#") ? l.href.slice(1) : l.href} target={l.openInNewTab ? "_blank" : undefined}>
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-          <HeaderSearch texts={search} />
-          {/* key restarts the bump animation on every add */}
-          <button className={`qbtn${bump ? " bump" : ""}`} key={bump} type="button" aria-haspopup="dialog" onClick={open}>
-            <ListIcon />
-            <span className="qlabel">Teklif listesi</span>
-            <span className="n" data-zero={count ? undefined : ""}>
-              {count}
-            </span>
-          </button>
+          <HeaderNav links={links} isHome={isHome} open={typeof panel === "number" ? panel : null} onOpenChange={setMega} />
+          <div className="hdr-tools">
+            <HeaderSearch texts={search} open={panel === "search"} onOpenChange={setSearch} />
+            {/* key restarts the bump animation on every add */}
+            <button
+              className={`qbtn${bump ? " bump" : ""}`}
+              key={bump}
+              type="button"
+              aria-haspopup="dialog"
+              onClick={() => {
+                setPanel(null);
+                open();
+              }}
+            >
+              <ListIcon />
+              <span className="qlabel">Teklif listesi</span>
+              <span className="n" data-zero={count ? undefined : ""}>
+                {count}
+              </span>
+            </button>
+            <MobileMenu links={links} contact={contact} isHome={isHome} open={panel === "mobile"} onOpenChange={setMobile} />
+          </div>
         </div>
       </header>
       {/* Only the home hero sits under the fixed header; every other page starts below it. */}

@@ -2,129 +2,82 @@ import { Metadata } from "next";
 import { cachedFetch } from "@/sanity/lib/client";
 import { contactPageQuery } from "@/sanity/lib/queries";
 import { buildMetadata } from "@/lib/seo";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { waLink } from "@/lib/catalog";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { PageHero } from "@/components/layout/PageHero";
+import { WaIcon } from "@/components/quote/icons";
 import { ContactPage as ContactPageType } from "@/types";
-import { RiPhoneLine, RiMailLine, RiMapPinLine } from "react-icons/ri";
-import { FaWhatsapp } from "react-icons/fa";
+
+// contactInfo comes from siteSettings, so a settings change has to refresh this page too.
+const getPage = () => cachedFetch<ContactPageType | null>(contactPageQuery, {}, { next: { tags: ["contact", "layout"] } });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await cachedFetch<ContactPageType>(contactPageQuery, {}, { next: { tags: ["contact"] } });
+  const data = await getPage();
   return buildMetadata({
-    title: data?.heroTitle || data?.pageTitle || "İletişim",
+    title: data?.pageTitle,
+    description: data?.heroSubtitle,
     canonicalPath: "/iletisim",
     pageSeo: data?.seo,
   });
 }
 
 export default async function ContactPage() {
-  const data = await cachedFetch<ContactPageType>(contactPageQuery, {}, { next: { tags: ["contact"] } });
-  const contact = data?.contactInfo;
-  const hasContactInfo = Boolean(
-    contact?.phone || contact?.email || contact?.address || contact?.whatsappNumber
-  );
+  const data = await getPage();
+  const c = data?.contactInfo;
 
   return (
-    <div className="flex flex-col gap-12 md:gap-16 pb-16">
-      {/* Page Hero */}
-      <PageHero
-        title={data?.heroTitle || data?.pageTitle || "İletişim"}
-        subtitle={data?.heroSubtitle || data?.pageSubtitle}
-        backgroundImage={data?.heroImage}
-      />
+    <div className="paper ct-page">
+      <PageHero title={data?.heroTitle ?? data?.pageTitle ?? ""} subtitle={data?.heroSubtitle} backgroundImage={data?.heroImage} />
 
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto space-y-12">
-          {/* İletişim Bilgileri (Site Ayarlarında tanımlıysa gösterilir) */}
-          {hasContactInfo && (
-            <FadeIn>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {contact?.phone && (
-                  <a
-                    href={`tel:${contact.phone}`}
-                    className="flex flex-col items-center text-center p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors"
-                  >
-                    <span className="p-3 rounded-full bg-primary/10 text-primary mb-3">
-                      <RiPhoneLine className="size-6" />
-                    </span>
-                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
-                      Telefon
-                    </span>
-                    <span className="text-sm font-medium text-foreground">{contact.phone}</span>
+      <section className="wrap ct">
+        <dl className="ct-info">
+          {(c?.phone || c?.whatsappNumber) && (
+            <div>
+              <dt className="ct-label">{data?.phoneLabel}</dt>
+              <dd>
+                {c?.phone && (
+                  <a className="ct-val num" href={`tel:${c.phone.replace(/[^\d+]/g, "")}`}>
+                    {c.phone}
                   </a>
                 )}
-
-                {contact?.email && (
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="flex flex-col items-center text-center p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors"
-                  >
-                    <span className="p-3 rounded-full bg-primary/10 text-primary mb-3">
-                      <RiMailLine className="size-6" />
-                    </span>
-                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
-                      E-posta
-                    </span>
-                    <span className="text-sm font-medium text-foreground">{contact.email}</span>
+                {c?.whatsappNumber && (
+                  <a className="btn btn-wa ct-wa" href={waLink(c.whatsappNumber, data?.whatsappMessage ?? "")} target="_blank" rel="noopener">
+                    <WaIcon />
+                    {data?.whatsappLinkLabel}
                   </a>
                 )}
-
-                {contact?.whatsappNumber && (
-                  <a
-                    href={`https://wa.me/${contact.whatsappNumber.replace(/[^0-9]/g, "")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center text-center p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors"
-                  >
-                    <span className="p-3 rounded-full bg-primary/10 text-primary mb-3">
-                      <FaWhatsapp className="size-6" />
-                    </span>
-                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
-                      WhatsApp
-                    </span>
-                    <span className="text-sm font-medium text-foreground">{contact.whatsappNumber}</span>
-                  </a>
-                )}
-
-                {contact?.address && (
-                  <div className="flex flex-col items-center text-center p-6 rounded-xl border border-border bg-card">
-                    <span className="p-3 rounded-full bg-primary/10 text-primary mb-3">
-                      <RiMapPinLine className="size-6" />
-                    </span>
-                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
-                      Adres
-                    </span>
-                    <span className="text-sm font-medium text-foreground">{contact.address}</span>
-                  </div>
-                )}
-              </div>
-            </FadeIn>
-          )}
-
-          {/* İletişim Formu (Sanity'de showForm aktifse gösterilir) */}
-          {data?.showForm && (
-            <div className="max-w-2xl mx-auto">
-              <FadeIn delay={0.15}>
-                <ContactForm
-                  formTitle={data?.formTitle}
-                  successMessage={data?.successMessage}
-                />
-              </FadeIn>
+              </dd>
             </div>
           )}
-
-          {/* Harita İframe (Site Ayarlarında tanımlıysa) */}
-          {contact?.mapIframe && (
-            <FadeIn delay={0.2}>
-              <div
-                className="w-full rounded-2xl overflow-hidden border border-border shadow-sm [&_iframe]:w-full [&_iframe]:h-[380px] [&_iframe]:border-0"
-                dangerouslySetInnerHTML={{ __html: contact.mapIframe }}
-              />
-            </FadeIn>
+          {c?.email && (
+            <div>
+              <dt className="ct-label">{data?.emailLabel}</dt>
+              <dd>
+                <a className="ct-val" href={`mailto:${c.email}`}>{c.email}</a>
+              </dd>
+            </div>
           )}
+          {c?.address && (
+            <div>
+              <dt className="ct-label">{data?.addressLabel}</dt>
+              <dd>
+                <address>{c.address}</address>
+                <a className="ct-link" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.address)}`} target="_blank" rel="noopener">
+                  {data?.directionsLabel}
+                </a>
+              </dd>
+            </div>
+          )}
+        </dl>
+
+        {data?.showForm && <ContactForm texts={data} />}
+      </section>
+
+      {c?.mapIframe && (
+        <div className="wrap ct-map-wrap">
+          <div className="ct-map" role="region" aria-label={data?.mapTitle} dangerouslySetInnerHTML={{ __html: c.mapIframe }} />
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -9,12 +9,15 @@ import { aboutPageType } from "./singletons/aboutPage";
 import { contactPageType } from "./singletons/contactPage";
 import { blogPageType } from "./singletons/blogPage";
 import { productsPageType } from "./singletons/productsPage";
+import { referencesPageType } from "./singletons/referencesPage";
+import { referenceType } from "./documents/reference";
 import { blogPostType } from "./documents/blogPost";
 import { blogCategoryType } from "./documents/blogCategory";
 import { productType } from "./documents/product";
 import { productCategoryType } from "./documents/productCategory";
 import { finishType } from "./documents/finish";
 import { shadeType } from "./documents/shade";
+import { legalPageType } from "./documents/legalPage";
 
 export const schemaTypes = [
   // Objects
@@ -30,6 +33,7 @@ export const schemaTypes = [
   contactPageType,
   blogPageType,
   productsPageType,
+  referencesPageType,
   // Collections
   blogPostType,
   blogCategoryType,
@@ -37,5 +41,7 @@ export const schemaTypes = [
   productCategoryType,
   finishType,
   shadeType,
+  referenceType,
+  legalPageType,
 ];
 

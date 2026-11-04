@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SanityImage } from "@/components/ui/SanityImage";
 import { Expand, X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -32,6 +32,13 @@ export function prefetchLightboxImage(image: SanityImageType) {
   }
 }
 
+export type LightboxSlide =
+  | { kind: "image"; image: SanityImageType; caption?: string }
+  /** An uploaded file; `poster` is a ready URL. */
+  | { kind: "video"; src: string; type?: string; poster?: string; caption?: string }
+  /** A YouTube / Vimeo player URL. */
+  | { kind: "embed"; src: string; title: string; caption?: string };
+
 const variants = {
   enter: (direction: number) => ({
     x: direction > 0 ? 300 : -300,
@@ -52,31 +59,74 @@ const variants = {
   }),
 };
 
-interface LightboxProps {
-  images: SanityImageType[];
-  /** Index of the open image; null keeps the lightbox closed. */
+interface MediaLightboxProps {
+  slides: LightboxSlide[];
+  /** Index of the open slide; null keeps the lightbox closed. */
   index: number | null;
   onIndexChange: (index: number) => void;
   onClose: () => void;
+  label?: string;
 }
 
-/** The fullscreen viewer alone, for galleries that render their own thumbnails. */
-export function Lightbox({ images, index, onIndexChange, onClose }: LightboxProps) {
+function Slide({ slide }: { slide: LightboxSlide }) {
+  if (slide.kind === "image") {
+    return (
+      <SanityImage
+        image={slide.image}
+        fill
+        fit="max"
+        quality={90}
+        sizes="(max-width: 1920px) 100vw, 1920px"
+        className="pointer-events-none select-none"
+        objectFit="contain"
+      />
+    );
+  }
+  // Only the open slide is mounted, so a video loads when it is shown and stops when the viewer moves on.
+  // Never autoplay: the visitor starts it, and with it the sound.
+  if (slide.kind === "video") {
+    return (
+      <video className="max-h-full max-w-full rounded-sm bg-black" controls playsInline preload="metadata" poster={slide.poster}>
+        <source src={slide.src} type={slide.type} />
+      </video>
+    );
+  }
+  return (
+    <div className="aspect-video w-full max-w-[calc(85vh*16/9)] overflow-hidden rounded-sm bg-black">
+      <iframe
+        src={slide.src}
+        title={slide.title}
+        className="h-full w-full border-0"
+        allow="fullscreen; picture-in-picture; encrypted-media"
+        allowFullScreen
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
+/** The fullscreen viewer for photos and videos, for galleries that render their own thumbnails. */
+export function MediaLightbox({ slides, index, onIndexChange, onClose, label = "Galeri" }: MediaLightboxProps) {
   const [direction, setDirection] = useState(0);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const isOpen = index !== null;
+  const slide = index !== null ? slides[index] : undefined;
 
   const paginate = useCallback(
     (newDirection: number) => {
       if (index === null) return;
       setDirection(newDirection);
-      onIndexChange((index + newDirection + images.length) % images.length);
+      onIndexChange((index + newDirection + slides.length) % slides.length);
     },
-    [index, images.length, onIndexChange]
+    [index, slides.length, onIndexChange]
   );
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (index === null) return;
       if (e.key === "Escape") onClose();
+      // a focused video uses the arrows to seek
+      if ((e.target as HTMLElement | null)?.tagName === "VIDEO") return;
       if (e.key === "ArrowLeft") paginate(-1);
       if (e.key === "ArrowRight") paginate(1);
     };
@@ -84,10 +134,42 @@ export function Lightbox({ images, index, onIndexChange, onClose }: LightboxProp
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [index, paginate, onClose]);
 
+  // Lock the page while open and hand focus back to the opener on close.
+  useEffect(() => {
+    if (!isOpen) return;
+    const opener = document.activeElement as HTMLElement | null;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    return () => {
+      document.body.style.overflow = "";
+      opener?.focus();
+    };
+  }, [isOpen]);
+
+  const arrow = (dir: -1 | 1, className: string, size: number) => (
+    <button
+      aria-label={dir < 0 ? "Önceki" : "Sonraki"}
+      className={className}
+      onClick={(e) => {
+        e.stopPropagation();
+        paginate(dir);
+      }}
+    >
+      {dir < 0 ? (
+        <ChevronLeft size={size} className="transform group-hover:-translate-x-2 transition-transform" />
+      ) : (
+        <ChevronRight size={size} className="transform group-hover:translate-x-2 transition-transform" />
+      )}
+    </button>
+  );
+
   return (
     <AnimatePresence initial={false} custom={direction}>
-      {index !== null && (
+      {index !== null && slide && (
         <motion.div
+          role="dialog"
+          aria-modal="true"
+          aria-label={label}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -96,10 +178,20 @@ export function Lightbox({ images, index, onIndexChange, onClose }: LightboxProp
         >
           {/* Top Bar */}
           <div className="absolute top-0 left-0 right-0 p-6 md:p-10 flex justify-between items-center z-10">
-            <div className="text-white font-display text-sm tracking-[0.2em] uppercase opacity-70">
-              {index + 1} <span className="mx-2 text-white/30">/</span> {images.length}
+            <div className="flex items-center gap-4">
+              <div className="text-white font-display text-sm tracking-[0.2em] uppercase opacity-70 tabular-nums">
+                {index + 1} <span className="mx-2 text-white/30">/</span> {slides.length}
+              </div>
+              {/* phones: swiping is off on videos (it would fight the player), so the arrows live up here */}
+              {slides.length > 1 && (
+                <div className="flex md:hidden">
+                  {arrow(-1, "w-10 h-10 flex items-center justify-center text-white/60 hover:text-white", 22)}
+                  {arrow(1, "w-10 h-10 flex items-center justify-center text-white/60 hover:text-white", 22)}
+                </div>
+              )}
             </div>
             <button
+              ref={closeRef}
               aria-label="Kapat"
               className="w-12 h-12 flex items-center justify-center text-white/50 hover:text-white transition-colors cursor-pointer group"
               onClick={(e) => {
@@ -112,32 +204,14 @@ export function Lightbox({ images, index, onIndexChange, onClose }: LightboxProp
           </div>
 
           {/* Navigation Arrows */}
-          {images.length > 1 && (
+          {slides.length > 1 && (
             <>
-              <button
-                aria-label="Önceki"
-                className="hidden md:flex absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center text-white/40 hover:text-white transition-all cursor-pointer z-20 group"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  paginate(-1);
-                }}
-              >
-                <ChevronLeft size={56} className="transform group-hover:-translate-x-2 transition-transform" />
-              </button>
-              <button
-                aria-label="Sonraki"
-                className="hidden md:flex absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center text-white/40 hover:text-white transition-all cursor-pointer z-20 group"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  paginate(1);
-                }}
-              >
-                <ChevronRight size={56} className="transform group-hover:translate-x-2 transition-transform" />
-              </button>
+              {arrow(-1, "hidden md:flex absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center text-white/40 hover:text-white transition-all cursor-pointer z-20 group", 56)}
+              {arrow(1, "hidden md:flex absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-16 h-16 items-center justify-center text-white/40 hover:text-white transition-all cursor-pointer z-20 group", 56)}
             </>
           )}
 
-          {/* Main Image Container */}
+          {/* Main Media Container */}
           <div className="relative w-full h-[70vh] md:h-[85vh] flex items-center justify-center overflow-hidden">
             <motion.div
               key={index}
@@ -150,7 +224,7 @@ export function Lightbox({ images, index, onIndexChange, onClose }: LightboxProp
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.3 },
               }}
-              drag="x"
+              drag={slide.kind === "image" ? "x" : false}
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={1}
               onDragEnd={(e, { offset, velocity }) => {
@@ -160,24 +234,36 @@ export function Lightbox({ images, index, onIndexChange, onClose }: LightboxProp
                   paginate(1);
                 }
               }}
-              className="absolute w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
+              className={`absolute w-full h-full flex items-center justify-center ${slide.kind === "image" ? "cursor-grab active:cursor-grabbing" : ""}`}
               onClick={(e) => e.stopPropagation()}
             >
-              <SanityImage
-                image={images[index]}
-                fill
-                fit="max"
-                quality={90}
-                sizes="(max-width: 1920px) 100vw, 1920px"
-                className="pointer-events-none select-none"
-                objectFit="contain"
-              />
+              <Slide slide={slide} />
             </motion.div>
           </div>
+
+          {slide.caption && (
+            <p className="absolute bottom-6 md:bottom-10 left-0 right-0 px-6 text-center text-sm text-white/70" onClick={(e) => e.stopPropagation()}>
+              {slide.caption}
+            </p>
+          )}
         </motion.div>
       )}
     </AnimatePresence>
   );
+}
+
+interface LightboxProps {
+  images: SanityImageType[];
+  /** Index of the open image; null keeps the lightbox closed. */
+  index: number | null;
+  onIndexChange: (index: number) => void;
+  onClose: () => void;
+}
+
+/** Photos only: the product gallery's viewer. */
+export function Lightbox({ images, ...props }: LightboxProps) {
+  const slides = useMemo(() => images.map((image): LightboxSlide => ({ kind: "image", image })), [images]);
+  return <MediaLightbox slides={slides} {...props} />;
 }
 
 interface LightboxGalleryProps {

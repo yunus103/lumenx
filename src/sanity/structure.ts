@@ -27,6 +27,8 @@ export const structure: StructureResolver = (S) =>
               .child(S.document().schemaType("contactPage").documentId("contactPage")),
             S.listItem().title("💡 Ürünler").id("productsPage").schemaType("productsPage")
               .child(S.document().schemaType("productsPage").documentId("productsPage")),
+            S.listItem().title("🏛 Referanslar").id("referencesPage").schemaType("referencesPage")
+              .child(S.document().schemaType("referencesPage").documentId("referencesPage")),
             S.listItem().title("📝 Blog").id("blogPage").schemaType("blogPage")
               .child(S.document().schemaType("blogPage").documentId("blogPage")),
           ])
@@ -37,6 +39,10 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem("finish").title("🎨 Gövde Renkleri"),
       S.documentTypeListItem("shade").title("🎨 Abajur Renkleri"),
       S.divider(),
+      S.documentTypeListItem("reference").title("🏛 Referanslar"),
+      S.divider(),
       S.documentTypeListItem("blogCategory").title("📝 Blog Kategorileri"),
       S.documentTypeListItem("blogPost").title("📝 Blog Yazıları"),
+      S.divider(),
+      S.documentTypeListItem("legalPage").title("⚖️ Yasal Metinler"),
     ]);

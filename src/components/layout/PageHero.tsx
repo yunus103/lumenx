@@ -1,5 +1,4 @@
 import { SanityImage } from "@/components/ui/SanityImage";
-import { FadeIn } from "@/components/ui/FadeIn";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SanityImage as SanityImageType, BreadcrumbItem } from "@/types";
 
@@ -11,54 +10,23 @@ interface PageHeroProps {
   className?: string;
 }
 
-export function PageHero({
-  title,
-  subtitle,
-  backgroundImage,
-  breadcrumbs,
-  className = "",
-}: PageHeroProps) {
+// The catalogue head (`.cat-head`) for every inner page: huge expanded title left, intro on its baseline right.
+// The image is no longer a background behind the text; when set, it runs as a wide frame under the head.
+export function PageHero({ title, subtitle, backgroundImage, breadcrumbs, className = "" }: PageHeroProps) {
   return (
-    <section className={`relative overflow-hidden bg-muted py-20 md:py-28 ${className}`}>
-      {/* Background Image / Fallback Gradient */}
-      {backgroundImage?.asset ? (
-        <div className="absolute inset-0 z-0">
-          <SanityImage
-            image={backgroundImage}
-            fill
-            sizes="100vw"
-            quality={85}
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-        </div>
-      ) : (
-        <div className="absolute inset-0 z-0 bg-gradient-to-r from-primary/10 via-primary/5 to-background" />
-      )}
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4">
-        <div className="max-w-3xl">
-          <FadeIn direction="up" duration={0.6}>
-            {/* Breadcrumbs */}
-            <Breadcrumbs
-              items={breadcrumbs}
-              className={`mb-6 ${backgroundImage?.asset ? "text-white/60 [&_a]:text-white/60 [&_a:hover]:text-white [&_span]:text-white" : ""}`}
-            />
-
-            <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 ${backgroundImage?.asset ? "text-white" : "text-foreground"}`}>
-              {title}
-            </h1>
-            
-            {subtitle && (
-              <p className={`text-lg md:text-xl font-normal leading-relaxed ${backgroundImage?.asset ? "text-white/80" : "text-muted-foreground"}`}>
-                {subtitle}
-              </p>
-            )}
-          </FadeIn>
-        </div>
+    <header className={`ph ${className}`}>
+      {breadcrumbs && <Breadcrumbs items={breadcrumbs} className="wrap ph-crumbs" />}
+      <div className="wrap cat-head">
+        <h1>{title}</h1>
+        {subtitle && <p>{subtitle}</p>}
       </div>
-    </section>
+      {backgroundImage?.asset && (
+        <div className="wrap">
+          <div className="ph-media">
+            <SanityImage image={backgroundImage} fill sizes="(max-width: 1280px) 100vw, 1184px" quality={85} priority />
+          </div>
+        </div>
+      )}
+    </header>
   );
 }

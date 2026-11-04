@@ -14,10 +14,12 @@ type SitemapPage = {
 };
 
 type SitemapData = {
-  pages?: Record<"home" | "about" | "contact" | "blog" | "products", SitemapPage | null>;
+  pages?: Record<"home" | "about" | "contact" | "blog" | "products" | "references", SitemapPage | null>;
+  referencesEnabled?: boolean;
   blogPosts?: SitemapItem[];
   products?: SitemapItem[];
   categories?: SitemapItem[];
+  legalPages?: SitemapItem[];
 };
 
 function lastModified(updatedAt?: string) {
@@ -29,7 +31,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const data = await cachedFetch<SitemapData>(
     allSlugsForSitemapQuery,
     {},
-    { next: { tags: ["sitemap"] } }
+    // "layout" too: flipping siteSettings.referencesEnabled only revalidates that tag.
+    { next: { tags: ["sitemap", "layout"] } }
   );
   const pages = data?.pages;
 
@@ -39,6 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/iletisim`, lastModified: lastModified(pages?.contact?._updatedAt), changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/urunler`, lastModified: lastModified(pages?.products?._updatedAt), changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/blog`, lastModified: lastModified(pages?.blog?._updatedAt), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/referanslar`, lastModified: lastModified(pages?.references?._updatedAt), changeFrequency: "monthly", priority: 0.7 },
   ];
 
   const staticRoutes = staticRouteEntries.filter((route) => {
@@ -48,6 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (path === "/iletisim") return !pages?.contact?.noIndex;
     if (path === "/blog") return !pages?.blog?.noIndex;
     if (path === "/urunler") return !pages?.products?.noIndex;
+    if (path === "/referanslar") return data?.referencesEnabled === true && !pages?.references?.noIndex;
     return true;
   });
 
@@ -57,6 +62,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastModified(p._updatedAt),
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })) || []),
+    ...(data?.legalPages?.map((p) => ({
+      url: `${base}/${p.slug}`,
+      lastModified: lastModified(p._updatedAt),
+      changeFrequency: "yearly" as const,
+      priority: 0.2,
     })) || []),
     ...(data?.categories?.map((c) => ({
       url: `${base}/urunler/${c.slug}`,

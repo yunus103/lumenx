@@ -52,6 +52,7 @@ const schema = z.object({
   phone: z.string().optional(),
   subject: z.string().optional(),
   message: z.string().min(10, "Mesaj en az 10 karakter olmalı"),
+  consent: z.literal(true), // KVKK consent; the form cannot submit without it
   honeypot: z.string().max(0), // Bot tuzağı — dolu gelirse spam
 });
 
@@ -129,6 +130,7 @@ export async function POST(request: NextRequest) {
         ${safeSubject ? `<p><strong>Konu:</strong> ${safeSubject}</p>` : ""}
         <p><strong>Mesaj:</strong></p>
         <p>${safeMessage}</p>
+        <p><strong>KVKK onayı:</strong> Verildi</p>
       `,
     });
 

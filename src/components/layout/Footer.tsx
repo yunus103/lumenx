@@ -55,6 +55,15 @@ export function Footer({ settings, navigation }: FooterProps) {
           <span>
             © {new Date().getFullYear()} {settings?.legalName}
           </span>
+          {!!navigation?.legalLinks?.length && (
+            <nav aria-label="Yasal metinler" className="foot-legal">
+              {navigation.legalLinks.map((l) => (
+                <Link key={l.slug} href={`/${l.slug}`} prefetch={false}>
+                  {l.linkLabel}
+                </Link>
+              ))}
+            </nav>
+          )}
           <span>Tasarım ve geliştirme: YayTech Studio</span>
         </div>
       </div>

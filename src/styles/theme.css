@@ -71,7 +71,7 @@
   --s-2: clamp(1.9rem, 3.4vw, 3.05rem);
   --s-3: clamp(1.3rem, 1.9vw, 1.6rem);
   --wrap: 1280px;
-  --hdr: 64px;
+  --hdr: 76px;
   --r: 6px;
   --ease: cubic-bezier(.2, .7, .2, 1);
   color-scheme: dark;
@@ -97,4 +97,4 @@
   --ring: var(--amber);
   --radius: var(--r);
 }
-@media (max-width: 759px) { :root { --hdr: 58px; } }
+@media (max-width: 759px) { :root { --hdr: 64px; } }

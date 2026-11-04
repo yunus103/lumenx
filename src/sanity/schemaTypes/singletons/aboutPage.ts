@@ -5,36 +5,40 @@ export const aboutPageType = defineType({
   title: "Hakkımızda",
   type: "document",
   groups: [
-    { name: "hero", title: "Page Hero Bölümü" },
     { name: "content", title: "Sayfa İçeriği" },
     { name: "seo", title: "SEO Ayarları" },
   ],
   fields: [
-    // Page Hero Group
-    defineField({ name: "heroTitle", title: "Hero Başlık", type: "string", group: "hero", description: "Sayfa üst kısmında duracak ana başlık. Boş bırakılırsa Sayfa Başlığı kullanılır." }),
-    defineField({ name: "heroSubtitle", title: "Hero Alt Başlık / Kısa Açıklama", type: "text", rows: 2, group: "hero", description: "Sayfa üst kısmında duracak kısa açıklama yazısı." }),
+    defineField({ name: "heroTitle", title: "Başlık", type: "string", group: "content", description: "Sayfanın büyük başlığı. Boş bırakılırsa Sayfa Adı kullanılır.", initialValue: "Hakkımızda" }),
+    defineField({ name: "pageTitle", title: "Sayfa Adı", type: "string", group: "content", description: "Tarayıcı sekmesi ve arama sonuçlarında görünen sayfa adı.", initialValue: "Hakkımızda", validation: (Rule) => Rule.required() }),
     defineField({
-      name: "heroImage",
-      title: "Hero Arka Plan Görseli",
-      type: "image",
-      group: "hero",
-      options: { hotspot: true },
-      fields: [defineField({ name: "alt", title: "Alt Metni", type: "string" })],
-      description: "Hero arka plan resmi. Yüklenmezse şık bir degrade renk arka planı kullanılır."
-    }),
-    // Content Group
-    defineField({ name: "pageTitle", title: "Sayfa Başlığı", type: "string", group: "content", validation: (Rule) => Rule.required() }),
-    defineField({ name: "pageSubtitle", title: "Giriş Alt Başlığı", type: "text", rows: 2, group: "content" }),
-    defineField({ name: "body", title: "Detaylı İçerik", type: "array", of: [{ type: "block" }], group: "content" }),
-    defineField({
-      name: "mainImage",
-      title: "Ana Görsel (Yandaki Resim)",
-      type: "image",
+      name: "featuredProduct",
+      title: "Görseldeki Ürün",
+      type: "reference",
+      to: [{ type: "product" }],
       group: "content",
-      options: { hotspot: true },
-      fields: [defineField({ name: "alt", title: "Alt Metni", type: "string", validation: (Rule) => Rule.required() })],
+      description: "Metnin yanında ürünün ilk fotoğrafı gösterilir.",
+      initialValue: { _ref: "product-ld-224c5b4f-a52d-4069-9485-e7142cb02518" },
     }),
-    // SEO Group
+    defineField({
+      name: "body",
+      title: "Metin",
+      type: "array",
+      of: [{ type: "block" }],
+      group: "content",
+      description: "İlk paragraf, SEO açıklaması boşsa arama sonuçlarında kullanılır.",
+      initialValue: [
+        "LUMENX, aydınlatma alanında kaliteli, güvenilir ve yenilikçi ürünler sunmak amacıyla kurulmuş bir markadır. Otel, restoran, kafe ve seçkin mekânların ihtiyaçlarını doğru analiz ederek, şarjlı masa lambalarından armatür ve şarj istasyonlarına uzanan ürün yelpazemizle hizmet veriyoruz.",
+        "Ürünlerimizi kalite, dayanıklılık ve performans kriterlerini esas alarak seçiyor, uzun ömürlü ve güvenli kullanım sağlamayı hedefliyoruz. Modele göre değişen gövde rengi ve abajur seçenekleriyle her mekâna uygun çözümler sunuyoruz.",
+        "Sektördeki gelişmeleri yakından takip eden ve müşteri memnuniyetini ön planda tutan bir anlayışla çalışıyoruz. Amacımız yalnızca ürün satışı yapmak değil; doğru ürün, doğru çözüm ve sürdürülebilir hizmet anlayışıyla müşterilerimize uzun vadeli değer katmaktır.",
+      ].map((text, i) => ({
+        _type: "block",
+        _key: `about-${i}`,
+        style: "normal",
+        markDefs: [],
+        children: [{ _type: "span", _key: `about-${i}-text`, text, marks: [] }],
+      })),
+    }),
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
   ],
 });

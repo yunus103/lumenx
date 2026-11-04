@@ -75,12 +75,15 @@ _type in [
   "contactPage",
   "blogPage",
   "productsPage",
+  "referencesPage",
   "blogPost",
   "blogCategory",
   "product",
   "productCategory",
   "finish",
   "shade",
+  "reference",
+  "legalPage",
   "faq"
 ]
 ```

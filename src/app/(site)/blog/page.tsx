@@ -6,10 +6,13 @@ import { BlogFilter } from "@/components/blog/BlogFilter";
 import { PageHero } from "@/components/layout/PageHero";
 import { BlogPage as BlogPageType, BlogPost, BlogCategory } from "@/types";
 
+const getPage = () => cachedFetch<BlogPageType | null>(blogPageQuery, {}, { next: { tags: ["blogPage"] } });
+
 export async function generateMetadata(): Promise<Metadata> {
-  const pageData = await cachedFetch<BlogPageType>(blogPageQuery, {}, { next: { tags: ["blogPage"] } });
+  const pageData = await getPage();
   return buildMetadata({
-    title: pageData?.heroTitle || pageData?.pageTitle || "Blog",
+    title: pageData?.heroTitle || pageData?.pageTitle,
+    description: pageData?.heroSubtitle || pageData?.pageSubtitle,
     canonicalPath: "/blog",
     pageSeo: pageData?.seo,
   });
@@ -19,21 +22,16 @@ export default async function BlogListPage() {
   const [posts, categories, pageData] = await Promise.all([
     cachedFetch<BlogPost[]>(blogListQuery, {}, { next: { tags: ["blog:list", "blog:categories"] } }),
     cachedFetch<BlogCategory[]>(blogCategoriesQuery, {}, { next: { tags: ["blog:categories"] } }),
-    cachedFetch<BlogPageType>(blogPageQuery, {}, { next: { tags: ["blogPage"] } })
+    getPage(),
   ]);
 
   return (
-    <div className="flex flex-col gap-12 md:gap-16 pb-16">
-      {/* Page Hero */}
-      <PageHero
-        title={pageData?.heroTitle || pageData?.pageTitle || "Blog"}
-        subtitle={pageData?.heroSubtitle || pageData?.pageSubtitle || "Yazılar, güncellemeler ve haberler."}
-        backgroundImage={pageData?.heroImage}
-      />
-
-      <div className="container mx-auto px-4">
-        <BlogFilter posts={posts} categories={categories} />
-      </div>
-    </div>
+    <>
+      {/* paper like the catalogue, so head, tabs and list read as one band */}
+      <PageHero className="paper" title={pageData?.heroTitle || pageData?.pageTitle || ""} subtitle={pageData?.heroSubtitle || pageData?.pageSubtitle} />
+      <section className="paper blog" aria-label={pageData?.pageTitle}>
+        <BlogFilter posts={posts ?? []} categories={categories ?? []} allLabel={pageData?.allLabel} emptyText={pageData?.emptyText} />
+      </section>
+    </>
   );
 }

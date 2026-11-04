@@ -1,87 +1,84 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import Link from "next/link";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import type { ContactFormTexts } from "@/types";
 
+// Mirrors the schema in /api/contact; the server validates again.
 const schema = z.object({
-  name: z.string().min(2, "İsim en az 2 karakter olmalı"),
-  email: z.string().email("Geçerli bir e-posta girin"),
+  name: z.string().trim().min(2, "Adınızı ve soyadınızı yazın."),
+  email: z.string().trim().email("Geçerli bir e-posta adresi yazın."),
   phone: z.string().optional(),
   subject: z.string().optional(),
-  message: z.string().min(10, "Mesaj en az 10 karakter olmalı"),
+  message: z.string().trim().min(10, "Mesajınız en az 10 karakter olmalı."),
+  consent: z.literal(true, { error: "Devam etmek için onay vermeniz gerekiyor." }),
 });
 
-type FormData = z.infer<typeof schema>;
+type Field = keyof z.infer<typeof schema>;
+type FieldErrors = Partial<Record<Field, string[]>>;
 type Status = "idle" | "loading" | "success" | "error";
-type FieldErrors = Partial<Record<keyof FormData, string[]>>;
 
-type ContactFormProps = {
-  formTitle?: string;
-  successMessage?: string;
-};
+const FIELD_ORDER: Field[] = ["name", "email", "phone", "subject", "message", "consent"];
+const EMPTY = { name: "", email: "", phone: "", subject: "", message: "", consent: false };
 
-export function ContactForm({
-  formTitle = "Bize Ulaşın",
-  successMessage = "Mesajınız alındı. En kısa sürede size dönüş yapacağız.",
-}: ContactFormProps) {
+export function ContactForm({ texts }: { texts: ContactFormTexts }) {
+  const t = texts;
+  const formRef = useRef<HTMLFormElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<Status>("idle");
-  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
+  const [serverError, setServerError] = useState<string | null>(null);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [values, setValues] = useState(EMPTY);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Alan hatasını temizle
-    if (fieldErrors[name as keyof FormData]) {
-      setFieldErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
+  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type } = e.target;
+    const next = type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
+    setValues((v) => ({ ...v, [name]: next }));
+    if (errors[name as Field]) setErrors((err) => ({ ...err, [name]: undefined }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("loading");
-    setFieldErrors({});
+  const focusFirstError = (errs: FieldErrors) => {
+    const first = FIELD_ORDER.find((f) => errs[f]?.length);
+    if (first) formRef.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
+  };
 
-    // Client-side validasyon
-    const result = schema.safeParse(formData);
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setServerError(null);
+
+    const result = schema.safeParse(values);
     if (!result.success) {
-      setFieldErrors(result.error.flatten().fieldErrors as FieldErrors);
-      setStatus("idle");
+      const errs = result.error.flatten().fieldErrors as FieldErrors;
+      setErrors(errs);
+      focusFirstError(errs);
       return;
     }
 
-    // Honeypot alanını al
-    const form = e.currentTarget;
-    const honeypot = (form.elements.namedItem("website") as HTMLInputElement)?.value || "";
+    setErrors({});
+    setStatus("loading");
+    const honeypot = (e.currentTarget.elements.namedItem("website") as HTMLInputElement).value;
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, honeypot }),
+        body: JSON.stringify({ ...result.data, honeypot }),
       });
-
       if (res.ok) {
         setStatus("success");
-      } else {
-        const data = await res.json();
-        if (data.error && typeof data.error === "object") {
-          setFieldErrors(data.error);
-        }
-        setStatus("error");
+        setValues(EMPTY);
+        requestAnimationFrame(() => successRef.current?.focus());
+        return;
       }
+      const data: { error?: string | FieldErrors } = await res.json().catch(() => ({}));
+      if (data.error && typeof data.error === "object") {
+        setErrors(data.error);
+        focusFirstError(data.error);
+      } else if (res.status === 429 && typeof data.error === "string") {
+        setServerError(data.error);
+      }
+      setStatus("error");
     } catch {
       setStatus("error");
     }
@@ -89,105 +86,86 @@ export function ContactForm({
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border bg-card p-8 text-center">
-        <div className="text-4xl mb-4">✅</div>
-        <p className="text-lg font-medium">{successMessage}</p>
+      <div className="cf-done" ref={successRef} tabIndex={-1} role="status">
+        <h2>{t.successTitle}</h2>
+        <p>{t.successMessage}</p>
+        <button type="button" className="btn btn-paper" onClick={() => setStatus("idle")}>
+          {t.resetLabel}
+        </button>
       </div>
     );
   }
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-      {formTitle && <h2 className="text-2xl font-bold">{formTitle}</h2>}
+  const err = (f: Field) => errors[f]?.[0];
+  const describe = (f: Field) => (err(f) ? `cf-${f}-err` : undefined);
+  const loading = status === "loading";
 
-      {/* Honeypot — spam botları için gizli alan */}
-      <div className="absolute opacity-0 pointer-events-none h-0 overflow-hidden" aria-hidden="true">
+  return (
+    <form ref={formRef} className="cf" onSubmit={onSubmit} noValidate aria-labelledby={t.formTitle ? "cfH" : undefined}>
+      {t.formTitle && <h2 id="cfH">{t.formTitle}</h2>}
+      {t.formText && <p className="cf-lede">{t.formText}</p>}
+
+      {/* honeypot: hidden from people and assistive tech, bots fill it */}
+      <div className="sr" aria-hidden="true">
         <input name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="name">Ad Soyad *</Label>
-          <Input
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Adınız Soyadınız"
-            aria-invalid={!!fieldErrors.name}
-          />
-          {fieldErrors.name && (
-            <p className="text-sm text-destructive">{fieldErrors.name[0]}</p>
-          )}
+      <div className="row2">
+        <div className="field">
+          <label htmlFor="cf-name">{t.nameLabel}</label>
+          <input id="cf-name" name="name" autoComplete="name" required value={values.name} onChange={onChange} aria-invalid={!!err("name")} aria-describedby={describe("name")} />
+          {err("name") && <p className="cf-err" id="cf-name-err">{err("name")}</p>}
         </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="email">E-posta *</Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="ornek@mail.com"
-            aria-invalid={!!fieldErrors.email}
-          />
-          {fieldErrors.email && (
-            <p className="text-sm text-destructive">{fieldErrors.email[0]}</p>
-          )}
+        <div className="field">
+          <label htmlFor="cf-email">{t.emailFieldLabel}</label>
+          <input id="cf-email" name="email" type="email" inputMode="email" autoComplete="email" required value={values.email} onChange={onChange} aria-invalid={!!err("email")} aria-describedby={describe("email")} />
+          {err("email") && <p className="cf-err" id="cf-email-err">{err("email")}</p>}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="phone">Telefon</Label>
-          <Input
-            id="phone"
-            name="phone"
-            type="tel"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="+90 555 000 00 00"
-          />
+      <div className="row2">
+        <div className="field">
+          <label htmlFor="cf-phone">
+            {t.phoneFieldLabel} <span className="cf-opt">({t.optionalLabel})</span>
+          </label>
+          <input id="cf-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" value={values.phone} onChange={onChange} />
         </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="subject">Konu</Label>
-          <Input
-            id="subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            placeholder="Mesajınızın konusu"
-          />
+        <div className="field">
+          <label htmlFor="cf-subject">
+            {t.subjectLabel} <span className="cf-opt">({t.optionalLabel})</span>
+          </label>
+          <input id="cf-subject" name="subject" autoComplete="organization" value={values.subject} onChange={onChange} />
         </div>
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="message">Mesaj *</Label>
-        <Textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Mesajınızı buraya yazın..."
-          rows={6}
-          aria-invalid={!!fieldErrors.message}
-        />
-        {fieldErrors.message && (
-          <p className="text-sm text-destructive">{fieldErrors.message[0]}</p>
-        )}
+      <div className="field">
+        <label htmlFor="cf-message">{t.messageLabel}</label>
+        <textarea id="cf-message" name="message" rows={6} required placeholder={t.messagePlaceholder} value={values.message} onChange={onChange} aria-invalid={!!err("message")} aria-describedby={describe("message")} />
+        {err("message") && <p className="cf-err" id="cf-message-err">{err("message")}</p>}
       </div>
 
-      {status === "error" && (
-        <p className="text-sm text-destructive">
-          Bir hata oluştu. Lütfen tekrar deneyin.
+      <div className="cf-consent">
+        <input id="cf-consent" name="consent" type="checkbox" required checked={values.consent} onChange={onChange} aria-invalid={!!err("consent")} aria-describedby={describe("consent")} />
+        <label htmlFor="cf-consent">
+          {t.consentHref && t.consentLinkLabel && (
+            <Link href={t.consentHref} target="_blank">
+              {t.consentLinkLabel}
+            </Link>
+          )}{" "}
+          {t.consentText}
+        </label>
+        {err("consent") && <p className="cf-err" id="cf-consent-err">{err("consent")}</p>}
+      </div>
+
+      <div className="cf-foot">
+        <button type="submit" className="btn cf-submit" disabled={loading} aria-busy={loading}>
+          {loading && <span className="cf-spin" aria-hidden="true" />}
+          {loading ? t.sendingLabel : t.submitLabel}
+        </button>
+        <p className="cf-status" role="alert">
+          {status === "error" && (serverError ?? t.errorMessage)}
         </p>
-      )}
-
-      <Button type="submit" disabled={status === "loading"} className="w-full sm:w-auto">
-        {status === "loading" ? "Gönderiliyor..." : "Gönder"}
-      </Button>
+      </div>
     </form>
   );
 }

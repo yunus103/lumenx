@@ -23,8 +23,19 @@ export const blogPageType = defineType({
       description: "Hero arka plan resmi. Yüklenmezse şık bir degrade renk arka planı kullanılır."
     }),
     // Content Group
-    defineField({ name: "pageTitle", title: "Sayfa Başlığı", type: "string", group: "content", validation: (Rule) => Rule.required() }),
-    defineField({ name: "pageSubtitle", title: "Alt Başlık / Kısa Yazı", type: "text", rows: 3, group: "content" }),
+    defineField({ name: "pageTitle", title: "Sayfa Başlığı", type: "string", group: "content", validation: (Rule) => Rule.required(), initialValue: "Blog" }),
+    defineField({
+      name: "pageSubtitle",
+      title: "Alt Başlık / Kısa Yazı",
+      type: "text",
+      rows: 3,
+      group: "content",
+      initialValue: "Mekân aydınlatması, şarjlı lambalar ve ışık rengi üzerine kısa rehberler.",
+    }),
+    defineField({ name: "allLabel", title: "Filtre: Tümü Metni", type: "string", group: "content", initialValue: "Tümü" }),
+    defineField({ name: "emptyText", title: "Boş Liste Metni", type: "string", group: "content", initialValue: "Henüz yazı yok." }),
+    defineField({ name: "backLabel", title: "Yazı Sayfası: Geri Linki", type: "string", group: "content", initialValue: "Tüm yazılar" }),
+    defineField({ name: "relatedTitle", title: "Yazı Sayfası: İlgili Yazılar Başlığı", type: "string", group: "content", initialValue: "İlgili yazılar" }),
     defineField({ name: "ctaLabel", title: "CTA Buton Metni", type: "string", group: "content", description: "Boş bırakılırsa CTA butonu gizlenir" }),
     defineField({ name: "ctaLink", title: "CTA Buton Linki", type: "string", group: "content" }),
     // SEO Group

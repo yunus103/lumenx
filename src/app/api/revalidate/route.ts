@@ -24,6 +24,8 @@ type CollectionConfig = {
 const collectionConfig: Record<string, CollectionConfig> = {
   blogPost: { detailPrefix: "blog:detail", listTag: "blog:list" },
   product: { detailPrefix: "product:detail", listTag: "product:list" },
+  // No detail page; the detail tag is unused but harmless.
+  reference: { detailPrefix: "reference:detail", listTag: "reference:list" },
 };
 
 // Shared catalogue data embedded in every product page and listing, so a change touches all of them.
@@ -37,6 +39,7 @@ const singletonTags: Record<string, string> = {
   contactPage: "contact",
   blogPage: "blogPage",
   productsPage: "productsPage",
+  referencesPage: "referencesPage",
 };
 
 const sitemapPageTypes = new Set([
@@ -45,6 +48,7 @@ const sitemapPageTypes = new Set([
   "contactPage",
   "blogPage",
   "productsPage",
+  "referencesPage",
 ]);
 
 function readSlug(value: unknown): string | undefined {
@@ -111,6 +115,15 @@ function getRevalidationTags(
     tags.add("blog:list");
     tags.add("blog:categories");
     tags.add("home:featured");
+    return [...tags];
+  }
+
+  // Legal pages also feed the footer's legal links, which live in the layout data.
+  if (documentType === "legalPage") {
+    if (currentSlug) tags.add(`legal:${currentSlug}`);
+    if (previousSlug) tags.add(`legal:${previousSlug}`);
+    tags.add("layout");
+    if (inventoryChanged) tags.add("sitemap");
     return [...tags];
   }
 
