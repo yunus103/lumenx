@@ -349,6 +349,36 @@ export interface ProductsPage {
   seo?: SeoSettings;
 }
 
+export interface CategoryCard {
+  _key: string;
+  title: string;
+  slug: string;
+  image?: SanityImage;
+  count: number;
+  models: { name: string; category?: string }[];
+}
+
+export interface SpotlightProduct {
+  _id: string;
+  name: string;
+  slug: SanitySlug;
+  category?: string;
+  /** Summary, else the Malzeme spec, else the description's first sentence. */
+  line?: string;
+  night: SanityImage;
+  finishes?: CardFinish[];
+}
+
+export interface ProductTab {
+  _key: string;
+  title: string;
+  products: ProductCardData[];
+}
+
+export interface MaterialFinish extends Finish {
+  products: { _id: string; name: string; slug: SanitySlug; category?: string; cover?: SanityImage; variantPhotos?: VariantPhoto[] }[];
+}
+
 export interface HomePage {
   heroTitle: string;
   heroText?: string;
@@ -357,11 +387,17 @@ export interface HomePage {
   heroSecondaryLabel?: string;
   heroSecondaryLink?: string;
   heroCaption?: string;
-  categoryCards?: { _key: string; title: string; slug: string; image?: SanityImage }[];
+  categoryCountLabel?: string;
+  categoryCards?: CategoryCard[];
+  spotlightTitle?: string;
+  spotlightLinkLabel?: string;
+  spotlightProducts?: SpotlightProduct[];
   collectionTitle?: string;
   collectionText?: string;
   collectionLinkLabel?: string;
-  featuredProducts?: ProductCardData[];
+  productTabs?: ProductTab[];
+  materialTitle?: string;
+  materialText?: string;
   kelvinTitle?: string;
   kelvinText?: string;
   referencesTitle?: string;

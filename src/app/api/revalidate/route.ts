@@ -95,9 +95,11 @@ function getRevalidationTags(
     if (currentSlug) tags.add(`${collection.detailPrefix}:${currentSlug}`);
     if (previousSlug) tags.add(`${collection.detailPrefix}:${previousSlug}`);
 
+    // The home page shows night and variant photos too, which affectsList does not track.
+    if (documentType === "product") tags.add("home:products");
+
     if (inventoryChanged || affectsList) {
       tags.add(collection.listTag);
-      tags.add("home:featured");
 
       if (documentType === "blogPost") {
         if (categoryId) tags.add(`blog:related:${categoryId}`);
@@ -114,7 +116,6 @@ function getRevalidationTags(
   if (documentType === "blogCategory") {
     tags.add("blog:list");
     tags.add("blog:categories");
-    tags.add("home:featured");
     return [...tags];
   }
 
@@ -130,7 +131,7 @@ function getRevalidationTags(
   if (catalogueTypes.has(documentType)) {
     tags.add("product:list");
     tags.add("product:all");
-    tags.add("home:featured");
+    tags.add("home:products");
     if (documentType === "productCategory" && inventoryChanged) tags.add("sitemap");
     return [...tags];
   }

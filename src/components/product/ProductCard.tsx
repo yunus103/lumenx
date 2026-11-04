@@ -11,7 +11,7 @@ import type { ProductCardData } from "@/types";
 
 const SIZES = "(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 400px";
 
-export function ProductCard({ p }: { p: ProductCardData }) {
+export function ProductCard({ p, sizes = SIZES }: { p: ProductCardData; sizes?: string }) {
   const [finishId, setFinishId] = useState(p.finishes?.[0]?._id);
   const [loaded, setLoaded] = useState(false);
   // Hovered swatch: its photo is rendered hidden with the same sizes, so the click swaps to a cached image.
@@ -31,11 +31,11 @@ export function ProductCard({ p }: { p: ProductCardData }) {
     <div className={`card${lit ? " lit" : ""}`} onPointerEnter={warm} onFocus={warm}>
       <div className="card-media" data-loading={image && !loaded ? "" : undefined}>
         <Link className="card-cover" href={href} tabIndex={-1} aria-hidden="true" />
-        {image && <SanityImage image={image} alt={p.name} fill sizes={SIZES} objectFit="cover" className="ph" onLoad={() => setLoaded(true)} />}
-        {nextImage && nextImage !== image && <SanityImage image={nextImage} alt="" fill sizes={SIZES} objectFit="cover" className="ph preload" />}
+        {image && <SanityImage image={image} alt={p.name} fill sizes={sizes} objectFit="cover" className="ph" onLoad={() => setLoaded(true)} />}
+        {nextImage && nextImage !== image && <SanityImage image={nextImage} alt="" fill sizes={sizes} objectFit="cover" className="ph preload" />}
         {p.night && (
           <>
-            {wantNight && <SanityImage image={p.night} alt="" fill sizes={SIZES} className="night" />}
+            {wantNight && <SanityImage image={p.night} alt="" fill sizes={sizes} className="night" />}
             {p.kelvin && <span className="card-tag">{p.kelvin} K</span>}
             <button
               className="card-light"
@@ -83,11 +83,11 @@ export function ProductCard({ p }: { p: ProductCardData }) {
   );
 }
 
-export function ProductGrid({ products }: { products: ProductCardData[] }) {
+export function ProductGrid({ products, sizes }: { products: ProductCardData[]; sizes?: string }) {
   return (
     <div className="pgrid">
       {products.map((p) => (
-        <ProductCard key={p._id} p={p} />
+        <ProductCard key={p._id} p={p} sizes={sizes} />
       ))}
     </div>
   );

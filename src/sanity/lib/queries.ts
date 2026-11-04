@@ -55,16 +55,46 @@ export const layoutQuery = groq`{
 
 // ─── Sayfalar ──────────────────────────────────────────────────────────────────
 
+// The card's category or any of its child categories.
+const inCardCategory = /* groq */ `_type == "product" && defined(slug.current) && (category._ref == ^.category._ref || category->parent._ref == ^.category._ref)`;
+
 export const homePageQuery = groq`*[_type == "homePage"][0] {
   heroTitle, heroText, heroPrimaryLabel, heroPrimaryLink, heroSecondaryLabel, heroSecondaryLink, heroCaption,
-  "categoryCards": categoryCards[defined(category->slug.current)]{ _key, title, "slug": category->slug.current, image ${imageFields} },
+  categoryCountLabel,
+  "categoryCards": categoryCards[defined(category->slug.current)]{
+    _key, title, "slug": category->slug.current, image ${imageFields},
+    "count": count(*[${inCardCategory}]),
+    "models": *[${inCardCategory}] | order(name asc)[0...8]{ name, "category": category->title }
+  },
+  spotlightTitle, spotlightLinkLabel,
+  "spotlightProducts": spotlightProducts[defined(@->nightImage.asset)]->{
+    _id, name, slug,
+    "category": category->title,
+    "line": coalesce(summary, specs[label == "Malzeme"][0].value, string::split(pt::text(description), ". ")[0]),
+    "night": nightImage ${imageFields},
+    "finishes": finishes[]->{ _id, name, hex, finishType }
+  },
   collectionTitle, collectionText, collectionLinkLabel,
-  "featuredProducts": featuredProducts[]->${productCardFields},
+  productTabs[]{ _key, title, "products": products[]->${productCardFields} },
+  materialTitle, materialText,
   kelvinTitle, kelvinText,
   referencesTitle, referencesText, referencesLinkLabel,
   blogTitle, blogLinkLabel,
   ctaTitle, ctaSteps[]{ _key, title, text }, ctaNote, ctaQuoteLabel, ctaWhatsappLabel,
   seo
+}`;
+
+// Home materials section: most used finishes first; within a finish, products with that finish's own photo first.
+export const homeMaterialsQuery = groq`*[_type == "finish" && count(*[_type == "product" && defined(slug.current) && ^._id in finishes[]._ref]) > 0]
+  | order(count(*[_type == "product" && defined(slug.current) && ^._id in finishes[]._ref]) desc, name asc) {
+  ...${finishFields},
+  "products": *[_type == "product" && defined(slug.current) && ^._id in finishes[]._ref]
+    | order(count(variantPhotos[finish._ref == ^.^._id]) desc, name asc)[0...4] {
+    _id, name, slug,
+    "category": category->title,
+    "cover": gallery[0] ${lightImageFields},
+    "variantPhotos": variantPhotos[finish._ref == ^.^._id]{ "finish": finish->{ _id }, "shade": shade->{ _id }, image ${lightImageFields} }
+  }
 }`;
 
 export const aboutPageQuery = groq`*[_type == "aboutPage"][0] {

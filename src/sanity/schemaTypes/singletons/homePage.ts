@@ -1,5 +1,7 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
+const productRef = (id: string) => ({ _key: id.slice(-12), _type: "reference", _ref: id });
+
 export const homePageType = defineType({
   name: "homePage",
   title: "Ana Sayfa",
@@ -7,7 +9,9 @@ export const homePageType = defineType({
   groups: [
     { name: "hero", title: "Hero", default: true },
     { name: "categories", title: "Kategori Kartları" },
-    { name: "collection", title: "Öne Çıkan Ürünler" },
+    { name: "spotlight", title: "Lamba Vitrini" },
+    { name: "collection", title: "Ürünler" },
+    { name: "materials", title: "Renkler" },
     { name: "kelvin", title: "Işık Rengi Rehberi" },
     { name: "references", title: "Referanslar" },
     { name: "blog", title: "Blog" },
@@ -38,11 +42,19 @@ export const homePageType = defineType({
     }),
 
     defineField({
+      name: "categoryCountLabel",
+      title: "Adet Etiketi",
+      type: "string",
+      group: "categories",
+      description: "Karttaki otomatik ürün sayısının yanında görünür.",
+      initialValue: "model",
+    }),
+    defineField({
       name: "categoryCards",
       title: "Kategori Kartları",
       type: "array",
       group: "categories",
-      description: "Kart, seçilen kategorinin ürün sayfasını açar. En fazla 3 kart.",
+      description: "Kart, seçilen kategorinin ürün sayfasını açar. İlk kart büyük gösterilir. Ürün sayısı ve model adları otomatik gelir. En fazla 3 kart.",
       validation: (Rule) => Rule.max(3),
       of: [
         defineArrayMember({
@@ -57,7 +69,7 @@ export const homePageType = defineType({
               title: "Görsel",
               type: "image",
               options: { hotspot: true },
-              description: "Dikey kırpılır (4:5). Başlık görselin altına biner.",
+              description: "Kartın oranına göre kırpılır. Başlık görselin altına biner.",
               fields: [defineField({ name: "alt", title: "Alt Metni", type: "string" })],
               validation: (Rule) => Rule.required(),
             }),
@@ -72,17 +84,125 @@ export const homePageType = defineType({
       ],
     }),
 
-    defineField({ name: "collectionTitle", title: "Başlık", type: "string", group: "collection", initialValue: "Öne çıkan ürünler" }),
-    defineField({ name: "collectionText", title: "Açıklama", type: "text", rows: 2, group: "collection", initialValue: "Otel, restoran ve kafeler için seçtiğimiz modeller." }),
+    defineField({ name: "spotlightTitle", title: "Başlık", type: "string", group: "spotlight", initialValue: "Akşamın ışığı." }),
+    defineField({ name: "spotlightLinkLabel", title: "Ürün Linki Metni", type: "string", group: "spotlight", initialValue: "İncele" }),
     defineField({
-      name: "featuredProducts",
-      title: "Öne Çıkan Ürünler",
+      name: "spotlightProducts",
+      title: "Ürünler",
+      type: "array",
+      group: "spotlight",
+      description: "Yalnızca gece görseli olan ürünler listelenir. İlk ürün açılışta gösterilir.",
+      of: [defineArrayMember({ type: "reference", to: [{ type: "product" }], options: { filter: "defined(nightImage.asset)" } })],
+      initialValue: [
+        "product-ld-405505e0-5065-4586-be5e-01198207b526",
+        "product-ld-16ccbe97-4597-44d6-bbec-bb6ab605ba85",
+        "product-ld-3fab830f-120e-4dbb-841c-098aa8ee595c",
+        "product-ld-224c5b4f-a52d-4069-9485-e7142cb02518",
+      ].map(productRef),
+    }),
+
+    defineField({ name: "collectionTitle", title: "Başlık", type: "string", group: "collection", initialValue: "Öne çıkan modeller" }),
+    defineField({
+      name: "collectionText",
+      title: "Açıklama",
+      type: "text",
+      rows: 2,
+      group: "collection",
+      initialValue: "Mantar başlıktan kumaş abajura, mozaik camdan metal gövdeye şarjlı masa lambaları.",
+    }),
+    defineField({
+      name: "productTabs",
+      title: "Sekmeler",
       type: "array",
       group: "collection",
-      description: "Boş bırakılırsa ilk 9 ürün gösterilir.",
-      of: [{ type: "reference", to: [{ type: "product" }] }],
+      description: "Her sekmede 8 ürün önerilir. Boş bırakılırsa sekmesiz olarak ilk 9 ürün gösterilir.",
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "productTab",
+          title: "Sekme",
+          fields: [
+            defineField({ name: "title", title: "Sekme Adı", type: "string", validation: (Rule) => Rule.required() }),
+            defineField({ name: "products", title: "Ürünler", type: "array", of: [defineArrayMember({ type: "reference", to: [{ type: "product" }] })], validation: (Rule) => Rule.max(8) }),
+          ],
+          preview: { select: { title: "title" } },
+        }),
+      ],
+      initialValue: [
+        {
+          _key: "mantar",
+          _type: "productTab",
+          title: "Mantar",
+          products: [
+            "product-ld-ea8350e3-5939-4c97-9767-0afa9b2f7307",
+            "product-ld-a57484be-a933-41f2-911f-705ad38a0502",
+            "product-ld-8e26eb3b-1397-43c3-9c19-6888efeddfbe",
+            "product-ld-c693a752-37d3-4920-8cc9-3a7a6c20bd54",
+            "product-ld-d0f36450-6a91-45d4-a411-e1feac5cc0be",
+            "product-ld-b33b8b6a-dda7-4ca1-aee6-54d4e2919868",
+            "product-ld-23f4e463-9962-4f27-a315-a6a5a08136b2",
+            "product-ld-86b0df9d-bf5b-41b5-acf8-3d63b6c07e33",
+          ].map(productRef),
+        },
+        {
+          _key: "abajurlu",
+          _type: "productTab",
+          title: "Abajurlu",
+          products: [
+            "product-ld-405505e0-5065-4586-be5e-01198207b526",
+            "product-ld-16ccbe97-4597-44d6-bbec-bb6ab605ba85",
+            "product-ld-09ea4837-08d7-4b4b-b578-33dc918b9d7f",
+            "product-ld-ff909f80-ad09-4bb8-ab78-b78163f330aa",
+            "product-ld-7a21c381-7432-4eb2-9e31-985659e29882",
+            "product-ld-01504d6a-723e-4c70-8cd5-0b519c2d5f9a",
+            "product-ld-3353e11b-25fe-407d-8947-a42204e808cf",
+            "product-ld-0e5278b6-d443-47a0-9de6-6c1e7301f7db",
+          ].map(productRef),
+        },
+        {
+          _key: "cam",
+          _type: "productTab",
+          title: "Cam ve Şeffaf",
+          products: [
+            "product-ld-bf2e0a7e-f362-4b4a-9b47-47d851d8170a",
+            "product-ld-44927384-6537-4eb1-8943-edf1ec0bd2fd",
+            "product-ld-42a7d8b8-7343-4afa-a4e9-dce5d601d53e",
+            "product-ld-a51b05eb-6ee0-4619-bdd6-e5114f572a02",
+            "product-ld-aa305435-7fa0-43b5-aad6-ed3c986976c5",
+            "product-ld-a50af761-c864-43d9-b062-7bdf3e0de23b",
+            "product-ld-cd0f2da8-cbf4-4dc8-a7bc-e03896624610",
+            "product-ld-71421c76-1b90-4fb3-826f-b7b461940701",
+          ].map(productRef),
+        },
+        {
+          _key: "metal",
+          _type: "productTab",
+          title: "Metal",
+          products: [
+            "product-ld-4efff342-d02d-4e01-834b-74c1ec671e23",
+            "product-ld-04330c72-48c2-4926-bf6f-c1d32559590f",
+            "product-ld-135ab0a4-e25b-42e0-ba20-5facfa9b6bbd",
+            "product-ld-ea9d7dbf-be9e-4047-a28a-70639f325aab",
+            "product-ld-7ffd4457-d99a-4513-ab53-0c4b78c61a92",
+            "product-ld-a2fa87b3-c843-4654-9b04-c5aaf6972992",
+            "product-ld-f114dacc-1337-402b-a884-89f6c7b27e6e",
+            "product-ld-785c9f30-1eec-49e6-af24-d56938bfa6e3",
+          ].map(productRef),
+        },
+      ],
     }),
     defineField({ name: "collectionLinkLabel", title: "Tüm Ürünler Linki", type: "string", group: "collection", initialValue: "Tüm ürünleri görün" }),
+
+    defineField({ name: "materialTitle", title: "Başlık", type: "string", group: "materials", initialValue: "Renk ve malzeme" }),
+    defineField({
+      name: "materialText",
+      title: "Açıklama",
+      type: "text",
+      rows: 2,
+      group: "materials",
+      description: "Renkler ve ürünler otomatik gelir; hiçbir üründe kullanılmayan renk gösterilmez.",
+      initialValue: "Metalik kaplamadan masif ahşaba, mekânınıza uyan gövde seçenekleri.",
+    }),
 
     defineField({ name: "kelvinTitle", title: "Başlık", type: "string", group: "kelvin", initialValue: "Her mekâna doğru ışık rengi." }),
     defineField({
@@ -91,7 +211,7 @@ export const homePageType = defineType({
       type: "text",
       rows: 3,
       group: "kelvin",
-      initialValue: "Işığın rengi mekânın havasını belirler. Sürgüyü kaydırarak aynı masanın farklı ışık renklerinde nasıl göründüğüne bakın.",
+      initialValue: "Işığın rengi mekânın havasını belirler. Sıcak beyazdan gün ışığına, aynı masa altı farklı ışıkta.",
     }),
 
     defineField({ name: "referencesTitle", title: "Başlık", type: "string", group: "references", description: "Bölüm yalnızca Referanslar sayfası açıkken görünür; görsel ilk referansın kapağıdır.", initialValue: "Referanslarımız" }),

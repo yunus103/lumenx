@@ -461,9 +461,21 @@ export class Viewer {
   // every material would be compiled a second time, synchronously, on the first frame.
   private compile() {
     this.r.setRenderTarget(this.composer.readBuffer);
-    const done = this.r.compileAsync(this.scene, this.cam);
+    const pending = this.r.compile(this.scene, this.cam);
     this.r.setRenderTarget(null);
-    return done;
+    // renderer.compileAsync's own polling throws once a material it waits for is disposed (leaving the page or
+    // rebuilding mid-compile), so it is done here: a disposed material has no program left to wait for.
+    return new Promise<void>((resolve) => {
+      const check = () => {
+        pending.forEach((m) => {
+          const { currentProgram: program } = this.r.properties.get(m) as { currentProgram?: { isReady(): boolean } };
+          if (!program || program.isReady()) pending.delete(m);
+        });
+        if (!this.alive || !pending.size) resolve();
+        else setTimeout(check, 10);
+      };
+      check();
+    });
   }
 
   private setup(model: ViewerModel, s: ViewerState, variant: Variant) {
