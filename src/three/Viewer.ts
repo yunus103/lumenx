@@ -19,7 +19,7 @@ import type { Mode } from "./models";
 import { CLAMP, KNEE } from "./passes";
 import { KIT_OUTPUT, kitLamp } from "./scene/lamps";
 import { buildLuminaireScene } from "./scene/luminaire";
-import { ROOM_FX, loadRoom, preloadRoom, type RoomData } from "./scene/room";
+import { ROOM_FX, ROOM_LAMP_MIX, loadRoom, preloadRoom, type RoomData } from "./scene/room";
 import { buildTableScene } from "./scene/table";
 import type { Tableware } from "./scene/tableware";
 import type { Variant, ViewerModel, ViewerState } from "./types";
@@ -404,7 +404,7 @@ export class Viewer {
   }
 
   // Every background table gets a copy of the lamp, following the main lamp's switch, level and colour temperature.
-  // Their light on the tables and the banquette is in the bake (a generic shaded lamp, always lit): the copies only glow.
+  // The copies only glow: their light on the tables and the banquette comes from the room's lamp layers (applyRoom).
   attachRoom(R: RoomData) {
     for (const o of this.placeholder) {
       o.removeFromParent();
@@ -454,6 +454,11 @@ export class Viewer {
       lamp.setFinish(wood);
       lamp.setLight(KIT_OUTPUT * f, pos, lc);
     });
+    // the same lamps' light in the room: the baked 2700 K colour at 2700 K, shifted as the UI's colour shifts
+    const power = (R.meta.gain?.[key] ?? 1) * fx.lamps * (f / LAMP);
+    const tint = new THREE.Color().setRGB(lc.r / warm.r, (0.64 * lc.g) / warm.g, (0.34 * lc.b) / warm.b, THREE.LinearSRGBColorSpace);
+    R.lampLight.down.copy(tint).multiplyScalar(R.meta.lightmap["lamp-down"] * ROOM_LAMP_MIX.down * power);
+    R.lampLight.up.copy(tint).multiplyScalar(R.meta.lightmap["lamp-up"] * ROOM_LAMP_MIX.up * power);
   }
 
   // Programs depend on the target they draw into: the scene is only ever drawn into linear render targets

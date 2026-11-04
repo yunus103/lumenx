@@ -34,14 +34,18 @@ const ROOM_ALBEDO: Record<string, [string | null, [number, number, number]?]> = 
 
 // what isn't lightmapped, per mode (before exposure): the street outside, the sheer curtains it backlights, the
 // sconces' frosted glass (and the black 'void' behind the wainscot, which stays black)
-export const ROOM_FX: Record<Mode, { view: number; curtain: number; glass: number }> = {
-  gunduz: { view: 1, curtain: 0.6, glass: 1.2 },
-  aksam: { view: 0.45, curtain: 0.04, glass: 2.5 },
-  gece: { view: 0.32, curtain: 0.035, glass: 2.5 },
+// `lamps`: the background lamps' power relative to the evening. The day gain is 12, so they bake a twelfth as strong.
+export const ROOM_FX: Record<Mode, { view: number; curtain: number; glass: number; lamps: number }> = {
+  gunduz: { view: 1, curtain: 0.6, glass: 1.2, lamps: 0.0875 },
+  aksam: { view: 0.45, curtain: 0.04, glass: 2.5, lamps: 1 },
+  gece: { view: 0.32, curtain: 0.035, glass: 2.5, lamps: 1 },
 };
 
+// How much of each lamp layer a fabric-shaded lamp gives, fitted against the earlier bake that had the lamps inside
+export const ROOM_LAMP_MIX = { down: 0.93, up: 0.06 };
+
 export interface RoomMeta {
-  lightmap: Record<Mode, number>;
+  lightmap: Record<Mode | "lamp-down" | "lamp-up", number>;
   gain?: Partial<Record<Mode, number>>;
   tables: [number, number][];
 }
@@ -54,10 +58,34 @@ export interface RoomData {
   lm: Partial<Record<Mode, THREE.Texture>>;
   view: Partial<Record<Mode, THREE.Texture>>;
   perMode: (m: Mode) => Promise<void>;
+  lampLight: { down: THREE.Color; up: THREE.Color };
 }
 
 let roomLoad: Promise<RoomData> | null = null;
 export let roomData: RoomData | null = null;
+
+// The background lamps follow the product's switch, level and colour, so their light is added to the mode's map at
+// draw time: two more fetches per pixel, no lights.
+const lampUniforms = {
+  lampDown: { value: null as THREE.Texture | null },
+  lampUp: { value: null as THREE.Texture | null },
+  lampDownLight: { value: new THREE.Color(0, 0, 0) },
+  lampUpLight: { value: new THREE.Color(0, 0, 0) },
+};
+
+function addLampLayers(shader: Parameters<THREE.Material["onBeforeCompile"]>[0]) {
+  Object.assign(shader.uniforms, lampUniforms);
+  shader.fragmentShader = shader.fragmentShader
+    .replace("#include <common>", "#include <common>\nuniform sampler2D lampDown, lampUp;\nuniform vec3 lampDownLight, lampUpLight;")
+    .replace(
+      "reflectedLight.indirectDiffuse += lightMapTexel.rgb * lightMapIntensity * RECIPROCAL_PI;",
+      // the layers are stored as square roots (encode.py): their faint bounce would not survive 8 bits otherwise
+      `reflectedLight.indirectDiffuse += lightMapTexel.rgb * lightMapIntensity * RECIPROCAL_PI;
+      vec3 lampD = texture2D(lampDown, vLightMapUv).rgb;
+      vec3 lampU = texture2D(lampUp, vLightMapUv).rgb;
+      reflectedLight.indirectDiffuse += lampD * lampD * lampDownLight + lampU * lampU * lampUpLight;`,
+    );
+}
 
 function roomTex(name: string, srgb = true) {
   return new THREE.TextureLoader().loadAsync(`${ROOM_URL}${name}-${ROOM_RES}.webp`).then((t) => {
@@ -78,24 +106,32 @@ export function loadRoom(mode: Mode): Promise<RoomData> {
     const view: RoomData["view"] = {};
     const pending: Partial<Record<Mode, Promise<void>>> = {};
     // per-mode maps: the current mode's first, the others right after (a switch then finds them loaded)
-    const perMode = (m: Mode) =>
-      (pending[m] ||= Promise.all([roomTex(`lm-${m}`), roomTex(`view-${m}`)]).then(([l, v]) => {
+    // the atlas's islands sit a few texels apart: smaller mips would blend neighbours (light is smooth anyway)
+    const atlasTex = (name: string) =>
+      roomTex(name).then((l) => {
         l.channel = 1;
         l.wrapS = l.wrapT = THREE.ClampToEdgeWrapping;
-        v.wrapS = v.wrapT = THREE.ClampToEdgeWrapping;
-        // the atlas's islands sit a few texels apart: smaller mips would blend neighbours (light is smooth anyway)
         l.generateMipmaps = false;
         l.minFilter = THREE.LinearFilter;
+        return l;
+      });
+    const perMode = (m: Mode) =>
+      (pending[m] ||= Promise.all([atlasTex(`lm-${m}`), roomTex(`view-${m}`)]).then(([l, v]) => {
+        v.wrapS = v.wrapT = THREE.ClampToEdgeWrapping;
         lm[m] = l;
         view[m] = v;
       }));
-    const [gltf, meta, texs] = await Promise.all([
+    const [gltf, meta, texs, lampDown, lampUp] = await Promise.all([
       new GLTFLoader().setDRACOLoader(draco).loadAsync(`${ROOM_URL}room.glb`),
       fetch(`${ROOM_URL}room.json`).then((r) => r.json() as Promise<RoomMeta>),
       Promise.all(names.map((n) => roomTex(n))),
+      atlasTex("lm-lamp-down"),
+      atlasTex("lm-lamp-up"),
       perMode(mode),
     ]);
     draco.dispose();
+    lampUniforms.lampDown.value = lampDown;
+    lampUniforms.lampUp.value = lampUp;
     const tex = Object.fromEntries(names.map((n, i) => [n, texs[i]]));
     const mats: Record<string, THREE.MeshBasicMaterial> = {};
     const fx: Record<string, THREE.MeshBasicMaterial> = {};
@@ -112,6 +148,7 @@ export function loadRoom(mode: Mode): Promise<RoomData> {
           lightMap: lm[mode],
           color: c ? new THREE.Color().setRGB(...c, THREE.LinearSRGBColorSpace) : 0xffffff,
         });
+        mats[key].onBeforeCompile = addLampLayers;
       } else {
         // 'void': the black board behind the wainscot (build.py)
         o.material = fx[key] ||= new THREE.MeshBasicMaterial({
@@ -129,7 +166,16 @@ export function loadRoom(mode: Mode): Promise<RoomData> {
       perMode(m).catch(() => {
         delete pending[m];
       });
-    return (roomData = { group: gltf.scene, meta, mats: Object.values(mats), fx, lm, view, perMode });
+    return (roomData = {
+      group: gltf.scene,
+      meta,
+      mats: Object.values(mats),
+      fx,
+      lm,
+      view,
+      perMode,
+      lampLight: { down: lampUniforms.lampDownLight.value, up: lampUniforms.lampUpLight.value },
+    });
   })().catch((err) => {
     roomLoad = null;
     throw err;

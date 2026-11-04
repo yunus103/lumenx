@@ -1,8 +1,10 @@
 {
  "lightmap": {
-  "gunduz": 0.8756,
-  "aksam": 0.24588,
-  "gece": 0.26067
+  "gunduz": 0.82098,
+  "aksam": 0.14688,
+  "gece": 0.10186,
+  "lamp-down": 0.27,
+  "lamp-up": 0.74
  },
  "tables": [
   [
