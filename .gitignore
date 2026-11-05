@@ -31,9 +31,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files
-# .env.local kasıtlı olarak takip edilmektedir (sadece placeholder içerir)
 .env*
-!.env.local
 
 # vercel
 .vercel

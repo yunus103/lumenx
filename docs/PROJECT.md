@@ -56,7 +56,7 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - **Frekans (`frekanselektrikaydinlatma.com`), some products.** WooCommerce; which ones is up to the client.
 - **The rest** (to reach ~250) comes from the client's product list.
 - **Import plan:** a Node script scrapes to JSON, downloads images, and imports into the single `production` dataset with `SANITY_API_WRITE_TOKEN` from `.env.local` (Editor rights; used only by scripts, never by the site). Idempotent: deterministic `_id`s from the source slug, so reruns update instead of duplicating.
-- `.env.local` is tracked in git (boilerplate convention); Yunus removes it from the history before going to Vercel.
+- `.env.local` is not in git (removed from the history on 2026-11-05); production values live in Vercel's environment variables.
 
 ## Demo (the reference implementation)
 
