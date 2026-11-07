@@ -24,6 +24,11 @@ const LINKS = [
   { slug: "alderamin-sarjli-masa-lambasi", modelKey: "alderamin", shades: ["krem", "kirmizi"], dropFinishes: ["finish-krem", "finish-kirmizi"] },
   { slug: "capella-sarjli-masa-lambasi", modelKey: "capella", shades: [] },
   { slug: "agena-sarjli-masa-lambasi", modelKey: "agena", shades: [] },
+  { slug: "mimosa-sarjli-masa-lambasi", modelKey: "mimosa", shades: [] },
+  { slug: "olena-sarjli-masa-lambasi", modelKey: "olena", shades: [] },
+  { slug: "sirius-sarjli-masa-lambasi", modelKey: "sirius", shades: [] },
+  { slug: "vita-sarjli-masa-lambasi", modelKey: "vita", shades: [] },
+  { slug: "nigora-sarjli-masa-lambasi", modelKey: "nigora", shades: [] },
 ];
 
 const tx = client.transaction();

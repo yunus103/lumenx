@@ -46,3 +46,6 @@ next-env.d.ts
 
 # render tool test frames and datasheets
 /public/renders/_test/
+
+# photo-to-profile tool output
+/tools/model/out/

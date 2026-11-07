@@ -115,6 +115,42 @@ const LINER = /* glsl */ `
   varying vec3 vLinerW;
   // radius of the turned body at height y (0 above it)
   float bodyR(float y) { float f = clamp(y / uTop, 0., 1.) * 16.; int i = int(min(f, 15.)); return y > uTop ? 0. : mix(uProf[i], uProf[i + 1], f - float(i)); }
+#ifdef KIT_WASH
+  uniform vec4 uWash; // LED disc height, inner and outer radius, stem radius (m, lamp-local)
+  uniform float uWashMetal;
+  uniform int uWashN;
+  // integral over the angle of max(u cos a + v, 0) / (A - B cos a)^2, from 0 to acos(c)
+  float washF(float c, float u, float v, float A, float B, float AmB, float ApB) {
+    float AB2 = AmB * ApB;
+    float I0 = 2. * inversesqrt(AB2) * atan(sqrt(ApB * max(1. - c, 0.)), sqrt(AmB * max(1. + c, 0.)));
+    float J = (B * sqrt(max(1. - c * c, 0.)) / (A - B * c) + A * I0) / AB2;
+    return u * (A * J - I0) / max(B, 1e-9) + v * J;
+  }
+  // Irradiance from the LED disc, a Lambertian ring facing down, in the patches' units. Close under the disc the
+  // patches can't resolve it (and their distance floor caps it), so it is integrated exactly around the axis: on a
+  // turned surface the normal lies in the plane through the axis. The surface's own tangent plane and the stem (a
+  // cylinder through the whole height) hide the rest. Rings are smoothstep-spaced to resolve both edges of the disc.
+  float ledWash(vec3 P, vec3 n) {
+    float p = max(length(P.xz), 1e-5), H = uWash.x - P.y;
+    if (H <= 0.) return 0.;
+    float nr = dot(n.xz, P.xz) / p, rs = uWash.w, E = 0.;
+    for (int k = 0; k < uWashN; k++) {
+      float t = (float(k) + .5) / float(uWashN);
+      float rho = uWash.y + (uWash.z - uWash.y) * t * t * (3. - 2. * t);
+      float dRho = 6. * t * (1. - t) * (uWash.z - uWash.y) / float(uWashN);
+      float u = nr * rho, v = n.y * H - nr * p;
+      u = abs(u) < 1e-7 ? 1e-7 : u;
+      float A = rho * rho + p * p + H * H, B = 2. * rho * p;
+      float AmB = (rho - p) * (rho - p) + H * H, ApB = (rho + p) * (rho + p) + H * H;
+      // cosines bounding the lit angles: the tangent plane, and the tangents from the point to the stem
+      float ct = clamp(-v / u, -1., 1.);
+      float cb = clamp((rs * rs - sqrt(max((p * p - rs * rs) * (rho * rho - rs * rs), 0.))) / (p * rho), -1., 1.);
+      float cLo = u > 0. ? 1. : ct, cHi = u > 0. ? max(ct, cb) : cb;
+      E += float(cHi < cLo) * 2. * (washF(cHi, u, v, A, B, AmB, ApB) - washF(cLo, u, v, A, B, AmB, ApB)) * rho * dRho;
+    }
+    return E * H * float(uGrid.x * uGrid.y) / (3.14159265 * (uWash.z * uWash.z - uWash.y * uWash.y));
+  }
+#endif
 `;
 // Diffuse is summed exactly over the patches; the specular highlight uses one light from their weighted mean
 // direction (an area source gives one broad highlight anyway), which keeps the shader small: one BRDF evaluation
@@ -151,8 +187,15 @@ const LINER_LIGHT = /* glsl */ `
       directLight.color = uLampColor * (uLampI * irr / nl);
       vec3 keep = reflectedLight.directDiffuse;
       RE_Direct(directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight);
+#ifdef KIT_WASH
+      reflectedLight.directDiffuse = keep;
+#else
       reflectedLight.directDiffuse = keep + uLampColor * uLampI * irr * BRDF_Lambert(material.diffuseColor);
+#endif
     }
+#ifdef KIT_WASH
+    reflectedLight.directDiffuse += uLampColor * uLampI * ledWash(P, nW) * BRDF_Lambert(material.diffuseColor + diffuseColor.rgb * metalnessFactor * uWashMetal);
+#endif
     // close to the table a downward face only sees the table in the body's own shadow
     float under = max(-nW.y, 0.), seen = mix(1., smoothstep(0., .06, P.y), under);
     // the table is wood: what it bounces back is the lamp's colour filtered by its orange-brown
@@ -185,7 +228,16 @@ export interface ShadeSpec {
   liner: number;
 }
 
-export function linerLit<M extends THREE.Material>(m: M, shade: ShadeSpec, prof: THREE.Vector2[], top: number): LinerUniforms {
+// The LED disc under a hat, for ledWash (m, lamp-local); `metal` as in HatSpec.led.wash.
+export interface WashSpec {
+  y: number;
+  rIn: number;
+  rOut: number;
+  stem: number;
+  metal: number;
+}
+
+export function linerLit<M extends THREE.Material>(m: M, shade: ShadeSpec, prof: THREE.Vector2[], top: number, wash?: WashSpec): LinerUniforms {
   const u: LinerUniforms = {
     uBase: { value: new THREE.Vector3() },
     uLampColor: { value: new THREE.Color() },
@@ -196,6 +248,11 @@ export function linerLit<M extends THREE.Material>(m: M, shade: ShadeSpec, prof:
     uTop: { value: top },
     uGrid: { value: new THREE.Vector2(ROWS, COLS) },
   };
+  if (wash) {
+    u.uWash = { value: new THREE.Vector4(wash.y, wash.rIn, wash.rOut, wash.stem) };
+    u.uWashMetal = { value: wash.metal };
+    u.uWashN = { value: 16 };
+  }
   const prev = m.onBeforeCompile;
   m.onBeforeCompile = (s, r) => {
     prev.call(m, s, r);
@@ -203,10 +260,10 @@ export function linerLit<M extends THREE.Material>(m: M, shade: ShadeSpec, prof:
     s.vertexShader =
       "varying vec3 vLinerW;\n" +
       s.vertexShader.replace("#include <project_vertex>", "#include <project_vertex>\nvLinerW = (modelMatrix * vec4(transformed, 1.)).xyz;");
-    s.fragmentShader = LINER + s.fragmentShader.replace("#include <lights_fragment_begin>", NO_LOCAL + LINER_LIGHT);
+    s.fragmentShader = (wash ? "#define KIT_WASH\n" : "") + LINER + s.fragmentShader.replace("#include <lights_fragment_begin>", NO_LOCAL + LINER_LIGHT);
   };
   const key = m.customProgramCacheKey.call(m);
-  m.customProgramCacheKey = () => key + "-liner";
+  m.customProgramCacheKey = () => key + (wash ? "-liner-wash" : "-liner");
   return u;
 }
 

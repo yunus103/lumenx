@@ -16,6 +16,7 @@ import {
   woodMaterial,
   type LinerUniforms,
   type RingUniforms,
+  type WashSpec,
 } from "./materials";
 import type { KitSpec, ProfilePoint } from "./specs";
 
@@ -114,14 +115,22 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   // under a hat the source is the LED disc: to the liner's lighting, a very flat cone looking down
   const hat = spec.hat;
   const source = spec.shade ?? { y: hat!.led.y - 0.1, h: 0.1, rBottom: hat!.led.rOut, rTop: 0, thickness: 0, tape: 0, transmission: 0, liner: 0 };
-  const byLiner = <M extends THREE.Material>(m: M) => {
-    lit.push(linerLit(m, source, prof, top));
+  const byLiner = <M extends THREE.Material>(m: M, wash?: WashSpec) => {
+    lit.push(linerLit(m, source, prof, top, wash));
     return m;
   };
   const wood = b.grain ? woodMaterial(INITIAL_WOOD, b.grain) : null;
   // far copies of a metal lamp skip the liner's highlight: on a few blurred pixels it only sparkles
   const metal = new THREE.MeshPhysicalMaterial({ metalness: 1, roughness: 0.3 });
-  const surface: THREE.MeshPhysicalMaterial = wood ? byLiner(wood) : far ? metal : byLiner(metal);
+  // the stem that hides part of the LED disc: the thinnest part of the body's upper half
+  const wash: WashSpec | undefined = hat?.led.wash && {
+    y: hat.led.y * CM,
+    rIn: hat.led.rIn * CM,
+    rOut: hat.led.rOut * CM,
+    stem: Math.min(...prof.filter((p) => p.x > 0 && p.y > top / 2).map((p) => p.x)),
+    metal: hat.led.wash.metal,
+  };
+  const surface: THREE.MeshPhysicalMaterial = wood ? byLiner(wood) : far ? metal : byLiner(metal, wash);
   const bodyLimit = wood || far ? null : brightnessLimited(surface);
   // the body stays out of the exit lights' shadow maps (point lights render distance materials); the table takes
   // its shadow from ringShadowed. Daylight shadows are unaffected.
@@ -282,7 +291,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
         u.uLamp.value.copy(worldPos);
         u.uLampColor.value.copy(c);
       }
-      // metal only takes a highlight from the LED; paint takes all of it as diffuse
+      // metal only takes a highlight from the LED (and its `wash` share as diffuse); paint takes all of it as diffuse
       const body = wood || surface.metalness > 0.5 ? L.body : L.body * PAINT_BODY;
       for (const u of lit) {
         u.uLampI.value = intensity * body;

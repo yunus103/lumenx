@@ -18,7 +18,15 @@ export interface Detail {
 // A metal hat over a downward LED disc, instead of a fabric shade.
 export interface HatSpec {
   profile: ProfilePoint[];
-  led: { y: number; rIn: number; rOut: number };
+  led: {
+    y: number;
+    rIn: number;
+    rOut: number;
+    // Opt-in, where the photos show it: the body takes the disc's light as an area source, so a stem right under it
+    // glows and fades down. `metal` is the share a metal finish scatters diffusely (0 polished, more for a sandy
+    // metallic powder coat); paint scatters it by its own colour.
+    wash?: { metal: number };
+  };
 }
 
 export interface KitSpec {

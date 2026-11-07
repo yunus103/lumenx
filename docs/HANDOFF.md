@@ -7,8 +7,8 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 1. **Hero and Kelvin scenes: done for now, closed.** Defne frames from the real viewer (`/dev-render`, development only: `window.shot({...})` in the console; 32 samples, WebP quality .93). Revisit the product, angle or design once all products are modelled. Hero: `pos [-1.3,.22,-.45]`, `target [.05,.16,-.14]`, fov 24, `aksam`; phone: `pos [-1.42,.26,-.5]`, `target [0,.2,0]`, fov 30. Kelvin: `pos [.34,.3,1.08]`, `target [0,.13,0]`, fov 30, `gece`. Frames the code expects: hero `hero-{d,m}-{off,2700,3000,4000}.webp` (d 2400×1350, m 1080×1350), Kelvin `kelvin-{2700,3000,3500,4000,5000,6500}.webp` (1800×1180). The hero caption in Sanity names the pictured product. `og.jpg` still shows the old Avior render. Kelvin options on products stay as they are (Yunus's call).
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** The strategy is agreed and in `docs/PROJECT.md` ("Modelling strategy"). Code-built kit, not Blender GLBs. Everything else is finished for now.
-   - **Numbers (2026-11-07):** 104 products uploaded of about 250, deadline roughly the end of 2026. In the kit: `defne`, `agena`. Old demo lamps still to rebuild from zero: `avior`, `alderamin`, `capella`.
-   - **Foundation done, Agena approved by Yunus** (`/urun/agena-sarjli-masa-lambasi`). The goal now is speed: go straight to the steps below.
+   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. In the kit and linked in Sanity: `defne`, `agena`, `mimosa`, `olena`, `sirius`, `vita`, `nigora`. Specs written, registered, not yet linked or independently reviewed: `baro`, `diya`, `fuga`, `gemini`, `meissa`, and `capella` (rebuilt from zero; `models.ts` still says `lamp` until it is reviewed). Old demo lamps still to rebuild: `avior`, `alderamin`.
+   - **Foundation done, Agena approved by Yunus** (`/urun/agena-sarjli-masa-lambasi`). Steps 1–4 below are done, step 5 is half done (see "Modelling session 2026-11-08").
    - **Permissions Yunus gave for this project:** browser and visual tests as many as needed, downloading or opening the datasheets, installing tool dependencies. Subagents are fine for modelling and checking in parallel, at Claude's discretion. Keep working on `main`; commit when he asks, and he normally asks after approving a stage. Still ask before a change that alters how an approved lamp looks.
    - **Next steps, in order:**
      1. **`tools/model/extract.py`:** photo to profile, plus an overlay image to check it. Rebuild it from these findings; the session's trial scripts were temporary. A threshold against the median border colour (Pillow and numpy are installed) came within about 1 mm of Defne's hand profile. It must handle white parts on the grey `#f1f1f1` background and the "TÜRK PATENT" logo at the top right. Glass needs a manual profile. Correct for the camera looking down: find the height where the base reaches full width (the base's ground plane, about 0.9 cm up on Agena), then true y = (photo y − that) × height / (photo height − that), and scale r by the same factor.
@@ -21,6 +21,38 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
    - **Defne guard before and after touching `kit/`:** on a fresh `/dev-render`, in this order, `window.shot` with `size [1000,800]`, `samples 4`, `quality .95`: gece, ceviz, k 2700, pos `[.34,.3,1.08]`, target `[0,.13,0]`, fov 30; gunduz, kayin, k 3000, off, pos `[-.5,.25,.7]`, target `[0,.12,0]`, fov 25; aksam, ceviz, k 3000, pos `[.2,.2,.45]`, target `[0,.1,0]`, fov 25. The aksam frame must not change at all; the other two vary by up to 15 levels on their own. Frames taken after another lamp in the same page differ too, so reload first.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
 5. **Vercel:** Yunus was going to create the project on 2026-11-05; the result isn't known here. When a deployment exists, check that `/api/usd-rate` returns a rate and `/dev-render` returns 404.
+
+## Modelling session 2026-11-08
+
+- **Tools:**
+  - `tools/model/extract.py <slug> --height <cm> [--split y] [--y0 px]` turns a photo into a profile and an overlay. It fits the hand profiles to 0.2–0.6 mm.
+  - `tools/data/datasheets.json` holds the text of 157 sheets. Heights are reliable. Diameters are often template values (Ø120/Ø100), and the height and width can be swapped (Vita).
+  - `tools/model/review.py <key> shots|sheet --slug <slug> --finish <f> [--upload] [--under] [--cam-height cm]` builds the review sheet (photo, day, night, 3/4, profile overlay, difference in mm) and the night card image.
+  - `tools/upload-night.mjs` uploads the night image. Sheets go to `tools/model/out/` (ignored by git).
+- **Routine per lamp:**
+  1. Write the spec and register it in `models.ts`.
+  2. Run `review.py shots` and paste the printed calls into a fresh `/dev-render` console.
+  3. Run `review.py sheet`.
+  4. Fix and repeat.
+  5. Add the lamp to `link-models.mjs` LINKS and run it.
+  6. Run `review.py sheet --upload` for the night image.
+  7. Send the local revalidate webhook.
+- **Time:** one lamp takes 9–11 minutes for a subagent on Opus. Five ran in parallel, each in its own browser tab. The shared brief, including the lessons below, was in the session scratchpad; rewrite it from this section.
+- **Lessons:**
+  - Render in a finish the product actually lists.
+  - Long straight runs need evenly spaced profile points, or the spline folds into faint rings.
+  - Look for seam grooves on the drums.
+  - Most specs use photo proportions with the datasheet height.
+  - The fitted photo camera can't match the base and the hat at once on some photos, so judge the hat by eye.
+- **Kit:** `hat.led.wash` (opt-in) lights the body under the hat from the LED disc, as the night photos show. It is on for Mimosa (`metal 0.2`) and Sirius. Defne's guard and Agena are unchanged.
+- **Powder coat texture was tried and reverted.** At a scale that doesn't shimmer it is invisible; larger, it reads as hammered metal.
+- **Open, next:**
+  1. **Finish calibration:** `bronz` renders shiny copper where the photos show matte taupe-brown paint (Baro, Mimosa). `eskitme` renders reddish where they show olive antique brass (Gemini, Nigora). Meissa's taupe isn't a listed finish, so it was rendered in `beyaz`. This changes approved lamps' finishes too.
+  2. An independent visual review of baro, capella, diya, fuga, gemini and meissa, then link them and upload their night images.
+  3. Night images for the first five aren't uploaded yet; Agena's is.
+  4. The second wave of the batch: mensa (`mensa-sarjli-masa-lambasi-1`), mila, pandora (`-ekonomik`), rena, sani, tole (`tole-sarjli-masa-lambasi-1`, datasheet 126/115 looks wrong).
+  5. **Sirius garson** has a different shape (a call-button cap, a deeper dome, a convex collar) and needs its own spec. Its top would need `topButton` on hat lamps.
+  6. A white diffuser band under some hats (Baro) and a brushed hat texture (Diya) aren't in the kit.
 
 ## Where things stand
 
