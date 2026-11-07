@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { coarse } from "../env";
 import { lathe, pleatedShade, pointLight } from "../geometry";
 import { buildLamp, type KitLamp } from "../kit/build";
-import { KIT } from "../kit/specs";
+import { kitSpec } from "../kit/specs";
 import { pleatTex } from "../textures";
 import type { Viewer } from "../Viewer";
 import type { SceneMaterials } from "./materials";
@@ -30,8 +30,9 @@ const KIT_SHADOW_FAR = 4;
 // inside the opening carry it. The lamp's own parts ignore them: the kit lights its body from the liner and
 // computes the fabric's glow in its shader, from the same intensity.
 export function kitLamp(v: Viewer, key: string, parent: THREE.Object3D, dummy: boolean): LampInfo & { lamp: KitLamp } {
-  const lamp = buildLamp(KIT[key], dummy);
+  const lamp = buildLamp(kitSpec(key), dummy);
   parent.add(lamp.group);
+  v.emitters.push(...lamp.emitters);
   const seen = new Set<THREE.Material>();
   lamp.group.traverse((o) => {
     if (!(o instanceof THREE.Mesh) || seen.has(o.material)) return;

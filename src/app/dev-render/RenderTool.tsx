@@ -19,9 +19,8 @@ interface Shot {
   finish?: string;
   samples?: number;
   quality?: number;
+  model?: string;
 }
-
-const DEFNE: ViewerModel = { key: "defne", family: "kit" };
 
 // Each frame averages renders shifted by less than a pixel, in linear light: antialiasing no real-time frame can
 // afford, with the viewer's lamp, room and post-processing otherwise untouched.
@@ -45,8 +44,9 @@ export function RenderTool() {
 
   useEffect(() => {
     let viewer: Viewer | null = null;
+    let opened = "";
 
-    const shot = async ({ out, size: [w, h], pos, target, fov, k = 2700, on = true, lvl = 2, mode = "gece", finish = "ceviz", samples = 24, quality = 0.86 }: Shot) => {
+    const shot = async ({ out, size: [w, h], pos, target, fov, k = 2700, on = true, lvl = 2, mode = "gece", finish = "ceviz", samples = 24, quality = 0.86, model = "defne" }: Shot) => {
       const m = await import("@/three/Viewer");
       const { loadRoom } = await import("@/three/scene/room");
       await m.loadTextures();
@@ -63,9 +63,11 @@ export function RenderTool() {
         power: "premium",
         mode,
       };
-      if (!viewer) {
-        viewer = new m.Viewer(host.current!, { interactive: false, preserve: true, maxDpr: 1 });
-        await viewer.open(DEFNE, state);
+      viewer ||= new m.Viewer(host.current!, { interactive: false, preserve: true, maxDpr: 1 });
+      if (opened !== model) {
+        const lamp: ViewerModel = { key: model, family: "kit" };
+        await viewer.open(lamp, state);
+        opened = model;
       }
       const v = viewer;
       v.resize();

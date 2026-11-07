@@ -43,3 +43,6 @@ next-env.d.ts
 
 # scraped product images (re-downloadable)
 /tools/data/images/
+
+# render tool test frames and datasheets
+/public/renders/_test/

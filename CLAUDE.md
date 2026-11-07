@@ -9,6 +9,7 @@ This repository is the boilerplate foundation. When maintaining the boilerplate,
 ## This project: LUMENX
 - Client site for the LUMENX lighting brand (Frekans Elektrik Aydınlatma). **Read `docs/PROJECT.md` first**: client, scope, decisions, product sources, the 3D demo to port, and the plan.
 - Project overrides of the rules below: routes are those in `docs/PROJECT.md` (`/hizmetler` and `/projeler` are removed, not kept passive).
+- Testing override (Yunus, 2026-11-07): browser and visual tests are allowed in this project without asking, as many as the work needs. Downloading the product datasheets and adding tool dependencies are allowed too.
 - Styling override: the demo's component CSS is ported 1:1 into `src/styles/components.css` (`@layer components`, imported from `globals.css`) instead of being rewritten as utilities; new styles may use either. Demo `--muted` is `--muted-c` and `.grid` is `.pgrid` (Tailwind/shadcn name clashes).
 
 ## Stack & Routes

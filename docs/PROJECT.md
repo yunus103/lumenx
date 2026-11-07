@@ -83,11 +83,11 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - `product.chargeOptions` marks the 81 products with Light Design's Ekonomik/Premium option.
 - **3D (ported 2026-11-02):** `three@0.169.0`, pinned exactly (the kit patches three's shader chunks by text). The engine is TypeScript under `src/three/`, imperative three.js with the demo's render pipeline unchanged (render on demand, `compileAsync`, shadows only after a build, probe capture, knee pass), not React Three Fiber:
   - `Viewer.ts` (renderer, composer, loop, camera, `open`/`apply`/`dispose`), `passes.ts`, `textures.ts`, `color.ts`, `geometry.ts`, `env.ts`.
-  - `kit/` (`materials.ts` wood/fabric/liner/ring shaders, `build.ts` the turned lamp, `specs.ts` per-product measurements), `scene/` (`table.ts`, `luminaire.ts`, `lamps.ts` kit + procedural lamps, `room.ts` baked restaurant, `tableware.ts`, `cutlery.ts`, `materials.ts`).
+  - `kit/` (`materials.ts` wood/fabric/liner/ring shaders, `build.ts` the turned lamp, `specs/` one file per lamp, loaded when its product opens), `scene/` (`table.ts`, `luminaire.ts`, `lamps.ts` kit + procedural lamps, `room.ts` baked restaurant, `tableware.ts`, `cutlery.ts`, `materials.ts`).
   - `models.ts` maps a `modelKey` to its family (kit, lamp, luminaire); `finishes.ts` maps finish/shade slugs to 3D materials (unknown finishes fall back by type). Both are pure data, usable during SSR.
   - React: `ProductViewer` (dynamic import, lifecycle, failure falls back to photos) and the configurator's controls (3D/Fotoğraf, Gündüz/Akşam/Gece, power, dimmer). `ViewerWarmup` preloads engine and room on the home page after idle.
   - Assets in `public/3d/` (room bake, textures, Draco decoder).
-  - **Adding a model:** a turned lamp = a spec in `kit/specs.ts` + `MODELS[key] = "kit"` + the product's `modelKey` (add it to `tools/link-models.mjs`).
+  - **Adding a model:** a turned lamp = a file in `kit/specs/` + `MODELS[key] = "kit"` + the product's `modelKey` (add it to `tools/link-models.mjs`).
 - `tools/link-models.mjs` sets `modelKey` and shades on Defne (Keten), Avior and Alderamin (Krem, Kırmızı; Light Design lists these as Alderamin body colours, the demo has them as shades), Capella. Rerun it after an import with `--overwrite`.
 - Kelvin options follow the category default (2700 K for table lamps); to offer 3000/4000 K like the demo, fill the product's Kelvin options in the Studio.
 - Static 3D assets (room, textures) go in `public/` with the code; product photos go to Sanity.
@@ -96,11 +96,16 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 
 ## Modelling strategy
 
-- Most products are rechargeable table lamps: turned shapes (base, body, shade or hat, top cap), so they fit the kit (`LatheGeometry` profiles + materials). Target 5–10 min per product.
+- Most products are rechargeable table lamps: turned shapes, so they fit the kit. One kit with optional parts (fabric shade or metal hat, wood or finish-coloured body) and shared materials, not one kit per material. The 5–10 minute target is unmeasured.
 - Defne is the quality bar the client approved.
-- Biggest speed-up to build: a script that extracts the lathe profile automatically from a studio photo on a plain background (Defne's profile was traced by hand at 39 px/cm).
-- The kit only knows wood bodies so far, while 80 of the 104 uploaded products are metal-finished: that is the first capability to add. The 5–10 minute target is unmeasured until then.
-- Outdoor fittings will need a second kit and room (later).
+- All table lamps are 2700 K (Yunus, 2026-11-07), so their specs use 2700.
+- Metal reads satin, as in the photos, not mirror-like: Yunus found the first roughness values (gold 0.17, chrome 0.05) too shiny.
+- By eye from the first photos, of the 104: about 60 metal or painted turned lamps, 13 fabric or wood, 7 glass, 5 lanterns and Arya, 6 mosaic or marble, 13 charging stations and sconces. Order: metal, fabric, glass. The mosaic and marble ones, stations and sconces stay in photo mode until the rest is done.
+- **Sources per product:** all its photos and its datasheet. Proportions come from the photos, absolute size from the datasheet's height (on Agena its diameters don't fit its own drawing). Photos look slightly down at the base, so the base's ground plane sits above the photo's lowest row: correct for that. Missing sizes come from similar products. The client is the last resort, only on a revision.
+- **Datasheets:** 86 products link one on arstar.com.tr, which blocks scripts with Cloudflare. Don't work around that: open them in the browser, where pdf.js on the page reads their text (dimensions, lumen) and renders the drawing.
+- Capella, Avior and Alderamin are old demo models, rebuilt from zero with the kit; the `lamp` family goes when they are done.
+- Next tools: a profile extractor (a plain threshold fits dark and metal lamps within about 1 mm on Defne, but white parts on the grey background and glass break it) and a review sheet of photo, day and night render per product. The sheet also gives the night image for the cards.
+- Outdoor fittings and armatures: decided when the list arrives. A plain showroom scene is cheaper than baking new rooms.
 
 ## Plan
 

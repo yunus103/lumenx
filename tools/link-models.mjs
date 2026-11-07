@@ -23,6 +23,7 @@ const LINKS = [
   { slug: "avior-sarjli-masa-lambasi", modelKey: "avior", shades: ["krem", "kirmizi"] },
   { slug: "alderamin-sarjli-masa-lambasi", modelKey: "alderamin", shades: ["krem", "kirmizi"], dropFinishes: ["finish-krem", "finish-kirmizi"] },
   { slug: "capella-sarjli-masa-lambasi", modelKey: "capella", shades: [] },
+  { slug: "agena-sarjli-masa-lambasi", modelKey: "agena", shades: [] },
 ];
 
 const tx = client.transaction();

@@ -137,7 +137,7 @@ export function buildTableScene(v: Viewer, model: ViewerModel, variant: Variant)
     if (!(o instanceof THREE.Mesh)) return;
     if (o.material === v.bodyMat || o.material === v.neckMat || v.emitters.some((e) => e.m === o.material)) v.probeHide.push(o);
   });
-  if (v.kit) v.probeHide.push(v.kit.body);
+  if (v.kit) v.probeHide.push(...v.kit.probeHide);
 
   // before setCamera: fit() uses it, and a NaN camera there sticks in OrbitControls' change detection
   v.fitAspect = 1.25;

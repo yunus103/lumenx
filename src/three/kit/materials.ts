@@ -272,6 +272,27 @@ export function ringShadowed(m: THREE.Material, prof: THREE.Vector2[], top: numb
   return u;
 }
 
+// MSAA resolves before exposure and the knee, so where a surface many times brighter than white meets a dark room, a
+// pixel it barely touches still comes out white, and a nearly upright edge shows in steps at any sample count. Limited
+// to about white before the resolve, the edge can grade. Hue is kept; the knee would flatten this light anyway.
+export function brightnessLimited<M extends THREE.Material>(m: M) {
+  const limit = { value: 1 };
+  const prev = m.onBeforeCompile;
+  m.onBeforeCompile = (s, r) => {
+    prev.call(m, s, r);
+    s.uniforms.uLimit = limit;
+    s.fragmentShader =
+      "uniform float uLimit;\n" +
+      s.fragmentShader.replace(
+        "#include <opaque_fragment>",
+        "outgoingLight *= min(1., uLimit / max(max(outgoingLight.r, max(outgoingLight.g, outgoingLight.b)), 1e-4));\n#include <opaque_fragment>"
+      );
+  };
+  const key = m.customProgramCacheKey.call(m);
+  m.customProgramCacheKey = () => key + "-limited";
+  return limit;
+}
+
 /* ---------- wood ---------- */
 
 export interface WoodParams {

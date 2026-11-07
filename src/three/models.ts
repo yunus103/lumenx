@@ -1,5 +1,5 @@
 // Which 3D model a product's `modelKey` opens. Pure data, safe to import anywhere.
-//  kit:       turned lamps built from a measured spec (kit/specs.ts), shown in the baked restaurant
+//  kit:       turned lamps built from a measured spec (kit/specs/), shown in the baked restaurant
 //  lamp:      first-generation procedural table lamps (scene/lamps.ts)
 //  luminaire: LED armatures over a dining table (scene/luminaire.ts)
 
@@ -7,6 +7,7 @@ export type ModelFamily = "kit" | "lamp" | "luminaire";
 
 export const MODELS: Record<string, ModelFamily> = {
   defne: "kit",
+  agena: "kit",
   avior: "lamp",
   alderamin: "lamp",
   capella: "lamp",

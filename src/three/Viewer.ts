@@ -13,10 +13,10 @@ import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { kLinear, luminance } from "./color";
 import { coarse } from "./env";
-import { woodFromHex } from "./finishes";
+import { loadKitSpec } from "./kit/specs";
 import type { KitLamp } from "./kit/build";
 import type { Mode } from "./models";
-import { CLAMP, FINISH, FocusedRoomPass, KNEE } from "./passes";
+import { CLAMP, FINISH, FocusedRoomPass, KNEE, StillFrame } from "./passes";
 import { KIT_OUTPUT, kitLamp } from "./scene/lamps";
 import { buildLuminaireScene } from "./scene/luminaire";
 import { ROOM_FX, ROOM_LAMP_MIX, loadRoom, preloadRoom, type RoomData } from "./scene/room";
@@ -47,6 +47,21 @@ const MODES: Record<Mode, ModeLook> = {
 const KIT_AKSAM: ModeLook = { ...MODES.aksam, env: 0.07, sun: 0.22, exp: 2.7 };
 // At night the sconces still light the room: with the lamp off the table must not be blacker than the ones around it
 const KIT_GECE: ModeLook = { ...MODES.gece, env: 0.025 };
+// Strip lights in metal's reflections: direction round the lamp (degrees, 0 towards the viewer's side), width (m at 1 m)
+const REFLECTION_CARDS: [number, number][] = [[38, 0.3], [-62, 0.42], [128, 0.5], [-142, 0.26]];
+// Frames averaged once the view is still, one per animation frame
+const STILL_SAMPLES = coarse ? 8 : 16;
+// Below this speed (pixels per second) the camera's glide is over to the eye, and only delays the sharp picture
+const GLIDE_END = 40;
+const halton = (i: number, base: number) => {
+  let f = 1;
+  let r = 0;
+  for (let n = i; n > 0; n = Math.floor(n / base)) {
+    f /= base;
+    r += f * (n % base);
+  }
+  return r;
+};
 // Lamp output relative to daylight. Night/evening exposures compensate, so daylight can drown the lamp.
 const LAMP = 0.4;
 const REF_LUM = luminance(kLinear(3000));
@@ -95,6 +110,7 @@ export class Viewer {
   probeHide: THREE.Object3D[] = [];
   placeholder: THREE.Mesh[] = [];
   bgKits: { lamp: KitLamp; pos: THREE.Vector3 }[] = [];
+  private cards: THREE.Group | null = null;
   room_: RoomData | null = null;
   fitAspect = 1.25;
 
@@ -116,6 +132,10 @@ export class Viewer {
   private readonly finish: ShaderPass;
   private readonly drawPass: RenderPass;
   private readonly focus: FocusedRoomPass | null = null;
+  private readonly still = new StillFrame();
+  private stillCount = 0;
+  private dragging = false;
+  private readonly lastCam = new THREE.Vector3();
   private roomParts = new Set<THREE.Object3D>();
   private readonly ro: ResizeObserver;
   private readonly io: IntersectionObserver;
@@ -195,13 +215,17 @@ export class Viewer {
     if (this.opts.interactive) {
       const c = (this.ctl = new OrbitControls(this.cam, r.domElement));
       c.enableDamping = true;
-      c.dampingFactor = 0.08;
+      c.dampingFactor = 0.12;
       c.enablePan = false;
       c.rotateSpeed = 0.65;
       c.zoomSpeed = 0.8;
       c.addEventListener("start", () => {
         this.moved = true;
+        this.dragging = true;
         this.opts.onInteract?.();
+      });
+      c.addEventListener("end", () => {
+        this.dragging = false;
       });
       // Pointer and wheel handlers move the camera themselves, so update() in the loop only sees the damping
       // remainder and often reports "unchanged". The change event catches every real move.
@@ -237,15 +261,17 @@ export class Viewer {
         this.fit();
       }
       if (this.ctl) {
-        this.ctl.dampingFactor = 1 - Math.pow(1 - 0.08, dt * 60);
+        this.ctl.dampingFactor = 1 - Math.pow(1 - 0.12, dt * 60);
         this.ctl.update();
+        this.endGlide(dt);
       }
       const moved = this.camMoved;
       this.camMoved = false;
       if (moved || this.dirty) {
         this.dirty = false;
+        this.stillCount = 0;
         this.composer.render();
-      }
+      } else if (this.stillCount < STILL_SAMPLES) this.refine();
       // dt only measures render cost when the previous frame rendered too
       if (moved && prevMoved) this.adapt(dt);
       // a still view can afford full resolution again
@@ -257,6 +283,31 @@ export class Viewer {
       prevMoved = moved;
     };
     if (this.opts.interactive) this.raf = requestAnimationFrame(loop);
+  }
+
+  // Turning damping off for one update drops what is left of the glide.
+  private endGlide(dt: number) {
+    const c = this.ctl!;
+    const px = (this.cam.position.distanceTo(this.lastCam) / this.cam.position.distanceTo(c.target) / THREE.MathUtils.degToRad(this.cam.fov)) * this.host.clientHeight;
+    this.lastCam.copy(this.cam.position);
+    if (this.dragging || !this.moved || !px || px / dt > GLIDE_END) return;
+    c.enableDamping = false;
+    c.update();
+    c.enableDamping = true;
+  }
+
+  // One more sample of a still view. The first is centred, so the picture doesn't shift when the averaging starts.
+  private refine() {
+    const n = this.stillCount++;
+    const w = this.host.clientWidth;
+    const h = this.host.clientHeight;
+    const px = 1 / this.r.getPixelRatio();
+    if (n) this.cam.setViewOffset(w, h, (halton(n, 2) - 0.5) * px, (halton(n, 3) - 0.5) * px, w, h);
+    this.composer.renderToScreen = false;
+    this.composer.render();
+    this.composer.renderToScreen = true;
+    if (n) this.cam.clearViewOffset();
+    this.still.add(this.r, this.composer.readBuffer.texture, n);
   }
 
   // Which part of the room scene is on show (FocusedRoomPass). The lights stay: the same lights mean the same shaders.
@@ -286,6 +337,8 @@ export class Viewer {
     this.r.setSize(w, h, false);
     this.composer.setPixelRatio(this.r.getPixelRatio());
     this.composer.setSize(w, h);
+    const size = this.r.getDrawingBufferSize(new THREE.Vector2());
+    this.still.setSize(size.x, size.y);
     this.cam.aspect = w / h;
     this.cam.updateProjectionMatrix();
     this.fit();
@@ -329,6 +382,7 @@ export class Viewer {
     this.ctl?.dispose();
     for (const p of this.composer.passes) p.dispose?.();
     this.composer.dispose();
+    this.still.dispose();
     this.roomEnv.dispose();
     this.cubeRT.dispose();
     this.pm.dispose();
@@ -410,7 +464,7 @@ export class Viewer {
   // page on the first frames, and the first frame is drawn before the caller reveals the canvas.
   async open(model: ViewerModel, s: ViewerState) {
     // kit table lamps open in the baked room in one step: the room is part of the first compile and frame
-    if (model.family === "kit") await preloadRoom(s.mode);
+    if (model.family === "kit") await Promise.all([preloadRoom(s.mode), loadKitSpec(model.key)]);
     if (!this.alive) return;
     this.setup(model, s, "detail");
     // the reflecting materials get the probe's (not yet captured) map now, so this first round compiles their
@@ -431,6 +485,8 @@ export class Viewer {
       this.intro = 0;
       this.fit();
     }
+    // its shaders and buffer now, not as a hitch when the first drag ends
+    this.still.add(this.r, this.composer.readBuffer.texture, 0);
     this.composer.render();
     this.dirty = false;
     this.ready = true;
@@ -524,16 +580,16 @@ export class Viewer {
     R.fx.view.color.setScalar(fx.view);
     R.fx.curtain.color.setRGB(...fx.curtainTint, THREE.LinearSRGBColorSpace).multiplyScalar(fx.curtain);
     R.fx.sconce_glass.color.copy(warm).multiplyScalar(fx.glass);
-    const wood = s.finish.wood ?? woodFromHex(s.finish.hex);
     this.bgKits.forEach(({ lamp, pos }) => {
-      lamp.setFinish(wood);
+      lamp.setFinish(s.finish);
       lamp.setLight(KIT_OUTPUT * f, pos, lc);
     });
     // the same lamps' light in the room: the baked 2700 K colour at 2700 K, shifted as the UI's colour shifts
     const power = (R.meta.gain?.[key] ?? 1) * fx.lamps * (f / LAMP);
     const tint = new THREE.Color().setRGB(lc.r / warm.r, (0.64 * lc.g) / warm.g, (0.34 * lc.b) / warm.b, THREE.LinearSRGBColorSpace);
     R.lampLight.down.copy(tint).multiplyScalar(R.meta.lightmap["lamp-down"] * ROOM_LAMP_MIX.down * power);
-    R.lampLight.up.copy(tint).multiplyScalar(R.meta.lightmap["lamp-up"] * ROOM_LAMP_MIX.up * power);
+    // the baked up layer is the fabric shades' glow; metal hats send nothing upward
+    R.lampLight.up.copy(tint).multiplyScalar(R.meta.lightmap["lamp-up"] * ROOM_LAMP_MIX.up * power * (this.kit?.glows === false ? 0 : 1));
   }
 
   // Programs depend on the target they draw into: the scene is only ever drawn into linear render targets
@@ -639,7 +695,8 @@ export class Viewer {
       e.m.emissiveIntensity = e.gain * f;
     });
     if (this.kit) {
-      this.kit.setFinish(s.finish.wood ?? woodFromHex(s.finish.hex));
+      this.kit.setFinish(s.finish);
+      this.kit.setExposure(mode.exp);
       this.kit.setLight(KIT_OUTPUT * f, this.kit.lampPos, lc);
     }
     this.lamps.forEach((l) => {
@@ -671,6 +728,30 @@ export class Viewer {
   private reflectors(): Reflector[] {
     const body = this.bodyMat instanceof THREE.MeshStandardMaterial ? this.bodyMat : null;
     return [body, this.neckMat, this.steelMat, this.glassMat, ...(this.kit?.reflect || [])].filter((m): m is Reflector => !!m);
+  }
+
+  // A product photographer's strip lights: tall bright panels around the lamp that exist only in the probe capture.
+  // Metal shows what surrounds it, and in a dark panelled room that is nothing; these give it the long bands that make
+  // it read as metal, as in the studio photos. They light nothing and never appear in the frame.
+  private reflectionCards(mode: ModeLook) {
+    if (!this.cards) {
+      this.cards = new THREE.Group();
+      // Upright walls seen from above reflect downward, flat tops upward. Ending just over the horizon, the panels stay
+      // out of the flat tops (a flat face shows one direction, so a panel there turns it all white); drawn over the
+      // table, which would otherwise hide them from the probe.
+      const m = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, toneMapped: false, depthTest: false, depthWrite: false });
+      for (const [deg, w] of REFLECTION_CARDS) {
+        const a = (deg * Math.PI) / 180;
+        const card = new THREE.Mesh(new THREE.PlaneGeometry(w, 1.02), m);
+        card.position.set(Math.sin(a), -0.39, Math.cos(a));
+        card.rotation.y = a;
+        card.renderOrder = 10;
+        this.cards.add(card);
+      }
+    }
+    const level = mode.env > 0.3 ? 2.4 : mode === KIT_AKSAM ? 0.8 : 0.4;
+    ((this.cards.children[0] as THREE.Mesh).material as THREE.MeshBasicMaterial).color.setRGB(level, level * 0.93, level * 0.84, THREE.LinearSRGBColorSpace);
+    return this.cards;
   }
 
   private capture(mode: ModeLook) {
@@ -712,7 +793,10 @@ export class Viewer {
       o.visible = false;
     });
     this.cubeCam.position.copy(this.probe);
+    const cards = this.kit?.glows === false ? this.reflectionCards(mode) : null;
+    if (cards) sc.add(cards);
     this.cubeCam.update(this.r, sc);
+    if (cards) sc.remove(cards);
     hide.forEach((o) => {
       o.visible = true;
     });

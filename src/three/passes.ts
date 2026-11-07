@@ -120,6 +120,70 @@ export class FocusedRoomPass extends Pass {
   }
 }
 
+// Averages finished frames of a still view, each shifted by less than a pixel. MSAA resolves before exposure and the
+// knee, so a bright metal edge against a dark room comes out nearly hard, in visible steps along slightly slanted lines.
+// Averaged after them, in linear light of the encoded image, it is the antialiasing of the pre-rendered stills.
+const SRGB_DECODE = "pow(max((c + .055) / 1.055, vec3(0.)), vec3(2.4))";
+export class StillFrame {
+  private readonly sum = new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, depthBuffer: false });
+  private readonly addQuad = new FullScreenQuad(
+    new THREE.ShaderMaterial({
+      uniforms: { tFrame: { value: null as THREE.Texture | null } },
+      vertexShader: VERTEX,
+      fragmentShader: `uniform sampler2D tFrame; varying vec2 vUv;
+        void main() {
+          vec3 c = texture2D(tFrame, vUv).rgb;
+          gl_FragColor = vec4(mix(${SRGB_DECODE}, c / 12.92, step(c, vec3(.04045))), 1.);
+        }`,
+      blending: THREE.CustomBlending,
+      blendSrc: THREE.OneFactor,
+      blendDst: THREE.OneFactor,
+      transparent: true,
+      depthTest: false,
+      depthWrite: false,
+    }),
+  );
+  private readonly showQuad = new FullScreenQuad(
+    new THREE.ShaderMaterial({
+      uniforms: { tSum: { value: this.sum.texture }, count: { value: 1 } },
+      vertexShader: VERTEX,
+      fragmentShader: `uniform sampler2D tSum; uniform float count; varying vec2 vUv;
+        void main() {
+          vec3 c = texture2D(tSum, vUv).rgb / count;
+          gl_FragColor = vec4(mix(1.055 * pow(max(c, vec3(0.)), vec3(1. / 2.4)) - .055, c * 12.92, step(c, vec3(.0031308))), 1.);
+        }`,
+      depthTest: false,
+      depthWrite: false,
+    }),
+  );
+
+  setSize(width: number, height: number) {
+    this.sum.setSize(width, height);
+  }
+
+  // adds a finished frame as sample number n and puts the average so far on screen
+  add(renderer: THREE.WebGLRenderer, frame: THREE.Texture, n: number) {
+    const autoClear = renderer.autoClear;
+    renderer.autoClear = false;
+    renderer.setRenderTarget(this.sum);
+    if (n === 0) renderer.clear();
+    (this.addQuad.material as THREE.ShaderMaterial).uniforms.tFrame.value = frame;
+    this.addQuad.render(renderer);
+    renderer.setRenderTarget(null);
+    (this.showQuad.material as THREE.ShaderMaterial).uniforms.count.value = n + 1;
+    this.showQuad.render(renderer);
+    renderer.autoClear = autoClear;
+  }
+
+  dispose() {
+    this.sum.dispose();
+    for (const q of [this.addQuad, this.showQuad]) {
+      q.material.dispose();
+      q.dispose();
+    }
+  }
+}
+
 // The photograph's last touches, on the encoded image: corners a little darker, and a dither of less than one step
 // of 8 bits against banding in the room's dark gradients, invisible on the product.
 export const FINISH = {

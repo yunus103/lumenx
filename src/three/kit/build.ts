@@ -1,9 +1,11 @@
 // Lamp kit: builds a lamp from a product spec (plain data, centimetres). Geometry is turned (lathe) from the
 // silhouette measured on the product photos; materials are shared between all products.
 import * as THREE from "three";
+import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import { lampColor } from "../color";
-import type { WoodFinish } from "../finishes";
+import { woodFromHex, type Finish3D, type WoodFinish } from "../finishes";
 import {
+  brightnessLimited,
   CM,
   LINEN_TILE,
   fabricMaterial,
@@ -15,17 +17,32 @@ import {
   type LinerUniforms,
   type RingUniforms,
 } from "./materials";
-import type { KitSpec } from "./specs";
+import type { KitSpec, ProfilePoint } from "./specs";
 
 const v2 = (r: number, y: number) => new THREE.Vector2(r * CM, y * CM);
 
 // Starting wood until the viewer applies the selected finish (before the first frame).
 const INITIAL_WOOD: WoodFinish = { early: "#c97f3b", late: "#94501f", rough: 0.55, clearcoat: 0.12 };
+const PAINT_BODY = 0.1;
+// the brightest a metal or painted body gets, relative to display white
+const BODY_LIMIT = 1.2;
 
 // Smooth Catmull-Rom through the measured points; corners at the ends stay where they are.
 function smoothProfile(pts: [number, number][], n = 220) {
   const curve = new THREE.SplineCurve(pts.map(([r, y]) => v2(r, y)));
   return curve.getSpacedPoints(n);
+}
+
+// The profile cut at its hard edges, each stretch smooth on its own: polished metal shows any rounding of an edge.
+function profileRuns(pts: ProfilePoint[], n: number) {
+  const runs: [number, number][][] = [[]];
+  pts.forEach(([r, y, corner], i) => {
+    runs[runs.length - 1].push([r, y]);
+    if (corner && i < pts.length - 1) runs.push([[r, y]]);
+  });
+  const length = (run: [number, number][]) => run.slice(1).reduce((s, [r, y], i) => s + Math.hypot(r - run[i][0], y - run[i][1]), 0);
+  const total = runs.reduce((s, run) => s + length(run), 0);
+  return runs.map((run) => smoothProfile(run, Math.max(1, Math.round((n * length(run)) / total))));
 }
 
 // One face of the conical wall, offset from the mid-surface. Point order sets the normal: bottom-up faces out.
@@ -48,6 +65,7 @@ function tapePoints(rAt: (y: number) => number, yEdge: number, len: number, t: n
 }
 
 const lathe = (pts: THREE.Vector2[], seg = 160) => new THREE.LatheGeometry(pts, seg);
+const turned = (runs: THREE.Vector2[][], seg: number) => (runs.length === 1 ? lathe(runs[0], seg) : mergeGeometries(runs.map((run) => lathe(run, seg))));
 
 // The viewer only talks to the lamp through this.
 export interface KitLamp {
@@ -59,12 +77,18 @@ export interface KitLamp {
   // the metals and the lacquered wood reflect the lit scene, so the viewer hands them its probe capture (taken
   // with the body hidden: the probe sits in front of it)
   reflect: THREE.MeshStandardMaterial[];
-  body: THREE.Mesh;
+  // left out of the probe capture: the probe sits in front of them
+  probeHide: THREE.Mesh[];
+  // LEDs the viewer drives directly, with their brightness
+  emitters: { m: THREE.MeshStandardMaterial; gain: number }[];
+  // a fabric shade glows upward too; a metal hat only lights downward
+  glows: boolean;
   footprint: number;
   exit: { y: number; r: number };
   height: number;
   receive(m: THREE.Material): void;
-  setFinish(f: WoodFinish): void;
+  setFinish(f: Finish3D): void;
+  setExposure(exposure: number): void;
   setLight(intensity: number, worldPos: THREE.Vector3, c?: THREE.Color): void;
 }
 
@@ -83,21 +107,31 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
 
   /* body */
   const b = spec.body;
-  const prof = smoothProfile(b.profile, far ? 32 : 220);
+  const runs = profileRuns(b.profile, far ? 32 : 220);
+  const prof = runs.flat();
   const top = Math.max(...prof.map((p) => p.y));
   const lit: LinerUniforms[] = [];
+  // under a hat the source is the LED disc: to the liner's lighting, a very flat cone looking down
+  const hat = spec.hat;
+  const source = spec.shade ?? { y: hat!.led.y - 0.1, h: 0.1, rBottom: hat!.led.rOut, rTop: 0, thickness: 0, tape: 0, transmission: 0, liner: 0 };
   const byLiner = <M extends THREE.Material>(m: M) => {
-    lit.push(linerLit(m, spec.shade, prof, top));
+    lit.push(linerLit(m, source, prof, top));
     return m;
   };
-  const wood = byLiner(woodMaterial(INITIAL_WOOD, b.grain));
+  const wood = b.grain ? woodMaterial(INITIAL_WOOD, b.grain) : null;
+  // far copies of a metal lamp skip the liner's highlight: on a few blurred pixels it only sparkles
+  const metal = new THREE.MeshPhysicalMaterial({ metalness: 1, roughness: 0.3 });
+  const surface: THREE.MeshPhysicalMaterial = wood ? byLiner(wood) : far ? metal : byLiner(metal);
+  const bodyLimit = wood || far ? null : brightnessLimited(surface);
   // the body stays out of the exit lights' shadow maps (point lights render distance materials); the table takes
   // its shadow from ringShadowed. Daylight shadows are unaffected.
   const noRing = new THREE.MeshDistanceMaterial({ colorWrite: false, depthWrite: false });
-  // a satin lacquer: the lit table shows in it towards the silhouette, as in the photos, but only faintly
-  wood.userData.envI = 0.2;
-  const bodyMesh = add(lathe(prof, far ? 24 : 200), wood);
+  // wood is a satin lacquer: the lit table shows in it towards the silhouette, as in the photos, but only faintly.
+  // Metal shows everything around it.
+  surface.userData.envI = wood ? 0.2 : 1;
+  const bodyMesh = add(turned(runs, far ? 24 : 200), surface);
   bodyMesh.customDistanceMaterial = noRing;
+  const probeHide = [bodyMesh];
   if (!far) {
     const rubber = new THREE.MeshStandardMaterial({ color: "#141312", roughness: 0.85 });
     const foot = add(new THREE.CylinderGeometry(b.foot.r * CM, b.foot.r * CM * 0.97, b.foot.h * CM, 64), rubber);
@@ -142,42 +176,56 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   }
 
   /* shade */
+  const fabrics: ReturnType<typeof fabricMaterial>[] = [];
   const s = spec.shade;
-  const y0 = s.y;
-  const y1 = s.y + s.h;
-  const circ = Math.PI * (s.rBottom + s.rTop);
-  const outer = fabricMaterial({ color: "#eee4cc", transmission: s.transmission, ...linenSet([Math.round(circ / LINEN_TILE), s.h / LINEN_TILE]) });
-  const inner = fabricMaterial({ color: "#efe6d2", transmission: s.liner, inward: true });
-  // the tape is folded over the rim: three layers of fabric, so lit from inside it reads as a band a little darker
-  // and warmer than the wall (~0.7x in the photos), not grey. Same weave scale as the wall, across the U.
-  const tapeLen = 2 * s.tape + Math.PI * (s.thickness / 2 + 0.08);
-  const tape = fabricMaterial({ color: "#e6d6b6", transmission: s.transmission * 0.6, ...linenSet([Math.round(circ / LINEN_TILE), tapeLen / LINEN_TILE]) });
-  const fabrics = [outer, inner, tape];
-  // The fabric casts shadows from its outer faces only: daylight from outside is blocked, but the glow light inside
-  // still gets out through the walls, as the light the fabric transmits does
-  // (tape and cap, a few millimetres of fabric, cast none: lit from inside they glow too)
-  outer.shadowSide = THREE.FrontSide;
-  const t2 = s.thickness / 2;
-  const rAt = (y: number) => s.rBottom + ((s.rTop - s.rBottom) * (y - y0)) / s.h;
-  add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, t2, false), round), outer);
-  add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, -t2, true), round), inner, false);
-  add(lathe(tapePoints(rAt, y0, s.tape, s.thickness, false).filter((_, i, a) => !far || i % 3 === 0 || i === a.length - 1), round), tape, false);
-  add(lathe(tapePoints(rAt, y1, s.tape, s.thickness, true).filter((_, i, a) => !far || i % 3 === 0 || i === a.length - 1), round), tape, false);
-  if (s.cap) {
-    const capT = s.thickness;
-    const capGeo = lathe([v2(0, y1 - capT / 2), v2(s.rTop - 0.05, y1 - capT / 2), v2(s.rTop - 0.05, y1 + capT / 2), v2(0, y1 + capT / 2)], far ? 24 : 120);
-    const cap = fabricMaterial({ color: "#eee4cc", transmission: s.transmission * 1.6, ...linenSet([(2 * s.rTop) / LINEN_TILE, (2 * s.rTop) / LINEN_TILE]) });
-    fabrics.push(cap);
-    add(capGeo, cap, false);
-    // Planar UVs for the disc so the weave doesn't pinch towards the centre
-    const pos = capGeo.attributes.position;
-    const uv = capGeo.attributes.uv;
-    for (let i = 0; i < pos.count; i++) uv.setXY(i, (pos.getX(i) / (s.rTop * CM)) * 0.5 + 0.5, (pos.getZ(i) / (s.rTop * CM)) * 0.5 + 0.5);
-    const tb = spec.topButton;
-    if (!far) {
-      const btn = add(lathe([v2(0, 0), v2(tb.r, 0), v2(tb.r, tb.h * 0.2), v2(tb.r * 0.9, tb.h * 0.6), v2(tb.r * 0.55, tb.h * 0.92), v2(0, tb.h)], 64), brass);
-      btn.position.y = (y1 + capT / 2) * CM;
+  if (s) {
+    const y0 = s.y;
+    const y1 = s.y + s.h;
+    const circ = Math.PI * (s.rBottom + s.rTop);
+    const outer = fabricMaterial({ color: "#eee4cc", transmission: s.transmission, ...linenSet([Math.round(circ / LINEN_TILE), s.h / LINEN_TILE]) });
+    const inner = fabricMaterial({ color: "#efe6d2", transmission: s.liner, inward: true });
+    // the tape is folded over the rim: three layers of fabric, so lit from inside it reads as a band a little darker
+    // and warmer than the wall (~0.7x in the photos), not grey. Same weave scale as the wall, across the U.
+    const tapeLen = 2 * s.tape + Math.PI * (s.thickness / 2 + 0.08);
+    const tape = fabricMaterial({ color: "#e6d6b6", transmission: s.transmission * 0.6, ...linenSet([Math.round(circ / LINEN_TILE), tapeLen / LINEN_TILE]) });
+    fabrics.push(outer, inner, tape);
+    // The fabric casts shadows from its outer faces only: daylight from outside is blocked, but the glow light inside
+    // still gets out through the walls, as the light the fabric transmits does
+    // (tape and cap, a few millimetres of fabric, cast none: lit from inside they glow too)
+    outer.shadowSide = THREE.FrontSide;
+    const t2 = s.thickness / 2;
+    const rAt = (y: number) => s.rBottom + ((s.rTop - s.rBottom) * (y - y0)) / s.h;
+    add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, t2, false), round), outer);
+    add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, -t2, true), round), inner, false);
+    add(lathe(tapePoints(rAt, y0, s.tape, s.thickness, false).filter((_, i, a) => !far || i % 3 === 0 || i === a.length - 1), round), tape, false);
+    add(lathe(tapePoints(rAt, y1, s.tape, s.thickness, true).filter((_, i, a) => !far || i % 3 === 0 || i === a.length - 1), round), tape, false);
+    if (s.cap) {
+      const capT = s.thickness;
+      const capGeo = lathe([v2(0, y1 - capT / 2), v2(s.rTop - 0.05, y1 - capT / 2), v2(s.rTop - 0.05, y1 + capT / 2), v2(0, y1 + capT / 2)], far ? 24 : 120);
+      const cap = fabricMaterial({ color: "#eee4cc", transmission: s.transmission * 1.6, ...linenSet([(2 * s.rTop) / LINEN_TILE, (2 * s.rTop) / LINEN_TILE]) });
+      fabrics.push(cap);
+      add(capGeo, cap, false);
+      // Planar UVs for the disc so the weave doesn't pinch towards the centre
+      const pos = capGeo.attributes.position;
+      const uv = capGeo.attributes.uv;
+      for (let i = 0; i < pos.count; i++) uv.setXY(i, (pos.getX(i) / (s.rTop * CM)) * 0.5 + 0.5, (pos.getZ(i) / (s.rTop * CM)) * 0.5 + 0.5);
+      const tb = spec.topButton;
+      if (!far && tb) {
+        const btn = add(lathe([v2(0, 0), v2(tb.r, 0), v2(tb.r, tb.h * 0.2), v2(tb.r * 0.9, tb.h * 0.6), v2(tb.r * 0.55, tb.h * 0.92), v2(0, tb.h)], 64), brass);
+        btn.position.y = (y1 + capT / 2) * CM;
+      }
     }
+  }
+
+  /* metal hat over an LED disc */
+  const emitters: KitLamp["emitters"] = [];
+  if (hat) {
+    const hatRuns = profileRuns(hat.profile, far ? 16 : 120);
+    probeHide.push(add(turned(hatRuns, round), surface));
+    const led = new THREE.MeshStandardMaterial({ color: "#f4efe6", roughness: 0.6, emissive: "#ffffff", emissiveIntensity: 0 });
+    const disc = add(new THREE.RingGeometry(hat.led.rIn * CM, hat.led.rOut * CM, round).rotateX(Math.PI / 2), led, false);
+    disc.position.y = hat.led.y * CM;
+    emitters.push({ m: led, gain: 6 });
   }
 
   /* light */
@@ -185,8 +233,10 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   const lampPos = new THREE.Vector3(0, L.y * CM, 0);
   const color = lampColor(L.kelvin);
   const cd = L.lumen / (4 * Math.PI);
-  const exit = { y: (s.y - 0.05) * CM, r: s.rBottom * 0.86 * CM };
+  // below a hat, far enough from it to clear the shadow camera's near plane: the hat stops the light going upward
+  const exit = s ? { y: (s.y - 0.05) * CM, r: s.rBottom * 0.86 * CM } : { y: (hat!.led.y - 0.5) * CM, r: hat!.led.rOut * 0.86 * CM };
   const rings: RingUniforms[] = [];
+  const heightCm = s ? s.y + s.h + s.thickness + (spec.topButton?.h || 0) : Math.max(...hat!.profile.map((p) => p[1]));
 
   return {
     group: g,
@@ -194,23 +244,35 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     color,
     cd,
     dimmer: L.dimmer,
-    reflect: [brass, bodyBrass, steel, wood],
-    body: bodyMesh,
+    reflect: [brass, bodyBrass, steel, surface],
+    probeHide,
+    emitters,
+    glows: !!s,
     footprint: Math.max(...prof.map((p) => p.x)),
     // where the viewer puts the light leaving the opening: just inside it and near the wall. Low enough that the
     // rim doesn't cut the pool into petals (the liner spreads the light, there is no sharp cut-off), far enough
     // from the neck that it isn't lit from millimetres.
     exit,
-    height: (y1 + s.thickness + (spec.topButton?.h || 0)) * CM,
+    height: heightCm * CM,
     // a surface under the lamp (the table) takes the body's shadow from the whole exit ring
     receive(m) {
       rings.push(ringShadowed(m, prof, top, exit));
     },
     setFinish(f) {
-      wood.userData.uniforms.uEarly.value.set(f.early);
-      wood.userData.uniforms.uLate.value.set(f.late);
-      wood.roughness = f.rough;
-      wood.clearcoat = f.clearcoat;
+      if (!wood) {
+        surface.color.set(f.hex);
+        surface.metalness = f.metal;
+        surface.roughness = far ? Math.max(f.rough, 0.55) : f.rough;
+        return;
+      }
+      const w = f.wood ?? woodFromHex(f.hex);
+      wood.userData.uniforms.uEarly.value.set(w.early);
+      wood.userData.uniforms.uLate.value.set(w.late);
+      wood.roughness = w.rough;
+      wood.clearcoat = w.clearcoat;
+    },
+    setExposure(exposure) {
+      if (bodyLimit) bodyLimit.value = BODY_LIMIT / exposure;
     },
     // intensity in the viewer's light units (0 = off), position in world space; colour defaults to the spec's
     setLight(intensity, worldPos, c = color) {
@@ -220,8 +282,10 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
         u.uLamp.value.copy(worldPos);
         u.uLampColor.value.copy(c);
       }
+      // metal only takes a highlight from the LED; paint takes all of it as diffuse
+      const body = wood || surface.metalness > 0.5 ? L.body : L.body * PAINT_BODY;
       for (const u of lit) {
-        u.uLampI.value = intensity * L.body;
+        u.uLampI.value = intensity * body;
         u.uBounce.value = L.bounce;
         u.uLampColor.value.copy(c);
         u.uBase.value.copy(worldPos).sub(lampPos);

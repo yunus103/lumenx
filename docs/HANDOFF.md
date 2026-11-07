@@ -1,4 +1,4 @@
-# HANDOFF: LUMENX site (updated 2026-11-07, sixth session)
+# HANDOFF: LUMENX site (updated 2026-11-07, seventh session)
 
 Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the state of the work and what comes next.
 
@@ -6,15 +6,26 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 
 1. **Hero and Kelvin scenes: done for now, closed.** Defne frames from the real viewer (`/dev-render`, development only: `window.shot({...})` in the console; 32 samples, WebP quality .93). Revisit the product, angle or design once all products are modelled. Hero: `pos [-1.3,.22,-.45]`, `target [.05,.16,-.14]`, fov 24, `aksam`; phone: `pos [-1.42,.26,-.5]`, `target [0,.2,0]`, fov 30. Kelvin: `pos [.34,.3,1.08]`, `target [0,.13,0]`, fov 30, `gece`. Frames the code expects: hero `hero-{d,m}-{off,2700,3000,4000}.webp` (d 2400×1350, m 1080×1350), Kelvin `kelvin-{2700,3000,3500,4000,5000,6500}.webp` (1800×1180). The hero caption in Sanity names the pictured product. `og.jpg` still shows the old Avior render. Kelvin options on products stay as they are (Yunus's call).
 2. **USD rate and price switch: done** (see "Prices" below).
-3. **Now: modelling. Start the next session by discussing it with Yunus;** nothing is decided and no modelling code is written. Yunus considers everything else finished for now. The client's full product list hasn't arrived, and that doesn't block starting. Code-built kit, not Blender GLBs; armatures, outdoor and garden, upright and hexagonal fittings are coming.
-   - **Numbers (2026-11-07):** 104 products uploaded of about 250, deadline roughly the end of 2026. Modelled: 4 of 83 table lamps (`defne`, `avior`, `alderamin`, `capella`), 0 of 9 charging stations, 0 of 8 waiter call buttons, 0 of 4 sconces and floor lamps. First finish of each product: 43 metallic, 37 powder coat, 13 none, 4 solid wood, 4 patina, 3 glossy.
-   - **Claude's proposal, not yet agreed:** Agena as the pilot (typical of the catalogue: metal body, metal hat, light from below rather than through fabric). Add metal to the kit and compare with the photo at Defne's quality bar. Then build the profile extraction tool, model 5 products of different types and measure the real time per product, then go into batches, with a night render per product. If the measurement says 250 won't fit, talk to the client early.
+3. **Now: modelling.** The strategy is agreed and in `docs/PROJECT.md` ("Modelling strategy"). Code-built kit, not Blender GLBs. Everything else is finished for now.
+   - **Numbers (2026-11-07):** 104 products uploaded of about 250, deadline roughly the end of 2026. In the kit: `defne`, `agena`. Old demo lamps still to rebuild from zero: `avior`, `alderamin`, `capella`.
+   - **Foundation done, Agena approved by Yunus** (`/urun/agena-sarjli-masa-lambasi`). The goal now is speed: go straight to the steps below.
+   - **Permissions Yunus gave for this project:** browser and visual tests as many as needed, downloading or opening the datasheets, installing tool dependencies. Subagents are fine for modelling and checking in parallel, at Claude's discretion. Keep working on `main`; commit when he asks, and he normally asks after approving a stage. Still ask before a change that alters how an approved lamp looks.
+   - **Next steps, in order:**
+     1. **`tools/model/extract.py`:** photo to profile, plus an overlay image to check it. Rebuild it from these findings; the session's trial scripts were temporary. A threshold against the median border colour (Pillow and numpy are installed) came within about 1 mm of Defne's hand profile. It must handle white parts on the grey `#f1f1f1` background and the "TÜRK PATENT" logo at the top right. Glass needs a manual profile. Correct for the camera looking down: find the height where the base reaches full width (the base's ground plane, about 0.9 cm up on Agena), then true y = (photo y − that) × height / (photo height − that), and scale r by the same factor.
+     2. **Datasheet harvest into `tools/data/`:** `product.datasheets[].url` for all 86, opened in the browser pane. On a PDF tab, import `pdfjs-dist@4.0.379` from jsdelivr, run `getDocument({data})` on a same-origin fetch, and read page 2's text for `\d+mm` and lumen. Posting the PDF to localhost from that tab failed, so bring text back as the script's return value and read drawings from a screenshot of a page-sized canvas. No `curl` with a browser's User-Agent.
+     3. **Review sheet:** per lamp, photo beside day and night renders from `/dev-render` (`window.shot({model, finish, mode, pos, target, fov, size, samples, out})`, Agena front view `pos [0,.2,1.05]`, `target [0,.11,0]`, fov 17). Set `on: false` for daytime. Also a silhouette match score. Same run: upload the night image to `nightImage` and add the lamp to `tools/link-models.mjs`. Keep the Browser pane showing (`mcp__ccd_view__show_pane`), or `requestAnimationFrame` stops and the product page never opens its 3D; `window.shot` itself still works when hidden.
+     4. **Five varied lamps, timed:** Mimosa, Olena, Sirius, Vita, Nigora. Report the real time per product to Yunus. Check live edges on the product page too, not only `/dev-render`.
+     5. **Batches of about 12 on subagents, one spec file each:** the rest of the roughly 60 metal lamps, including the waiter-call lamps (Capella and Sirius have same-named ones, probably the same shape), and Capella rebuilt from zero. Then fabric and pleated (Avior and Alderamin from zero, then delete the `lamp` family), then glass. Yunus reviews sheets, not lamps one by one.
+     6. **The ~150 new products** when the list arrives.
+   - **To fix along the way:** powder coat has no micro texture (visible in the photos of matte lamps), patina (`eskitme`) is plain, white paint looks a little pink in the evening, and background copies in chrome look whitish by day. No night image for Agena yet. Its underside LED is an assumption; other lamps' photos may show the real one. Moving edges keep slight steps on purpose.
+   - **Defne guard before and after touching `kit/`:** on a fresh `/dev-render`, in this order, `window.shot` with `size [1000,800]`, `samples 4`, `quality .95`: gece, ceviz, k 2700, pos `[.34,.3,1.08]`, target `[0,.13,0]`, fov 30; gunduz, kayin, k 3000, off, pos `[-.5,.25,.7]`, target `[0,.12,0]`, fov 25; aksam, ceviz, k 3000, pos `[.2,.2,.45]`, target `[0,.1,0]`, fov 25. The aksam frame must not change at all; the other two vary by up to 15 levels on their own. Frames taken after another lamp in the same page differ too, so reload first.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
 5. **Vercel:** Yunus was going to create the project on 2026-11-05; the result isn't known here. When a deployment exists, check that `/api/usd-rate` returns a rate and `/dev-render` returns 404.
 
 ## Where things stand
 
 Commits on `main`, pushed to GitHub; Yunus is connecting Vercel. Yunus works on one branch. On 2026-11-05 `.env.local` was removed from the whole history, which changed every commit hash and needed a force push; any other clone must be cloned again. Latest:
+- Latest commit: kit with optional parts, metal, Agena, still-view averaging (see `git log`)
 - `44f9023` price switch and daily TCMB rate
 - `47229d5` hero and Kelvin frames from the viewer, hero text stays still
 - `0c6894e` restaurant scene polish
@@ -124,7 +135,9 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
 - **An open tab can keep showing an old room map after a rebake**, combined with the new `room.json` scale: the view gets dark and old light seems to remain. Open a new tab before judging a bake.
 - **The Browser pane must be on show for the viewer.** The page waits on `requestAnimationFrame`, which stops in a hidden pane, so the scene seems stuck on "3D sahne hazırlanıyor".
 - **`WebGLRenderTarget` options:** pass no `depthTexture` rather than `undefined`: `undefined` crashes `clone()` in `EffectComposer`. Test the phone path (`coarse`) too; a mobile preset set before a reload does it.
-- **Browser checks only when Yunus allows them for that task;** otherwise he does the visual checks. Screenshots he sends of full pages can show lazy images as empty.
+- **Browser and visual checks are allowed in this project without asking** (2026-11-07). Screenshots Yunus sends of full pages can show lazy images as empty.
+- **`/dev-render` frames hide aliasing.** They average many samples, so judge edges on the real product page, or take a `samples: 1` shot for what a moving view shows. MSAA resolves before exposure and the knee, so 2x resolution with 8x MSAA still showed the same steps on a metal edge. Metal and painted bodies are therefore limited to 1.2 × white before the resolve (`brightnessLimited`), which leaves slight steps while moving. Once the view is still, `Viewer.refine` averages 16 shifted frames (8 on phones) after tone mapping, then draws nothing more. The camera's glide is cut below 40 px/s (`GLIDE_END`), since it took most of the wait: a hard flick went from 1.7 s to 0.75 s until sharp.
+- **Reflection panels on metal lamps** (`Viewer.reflectionCards`) exist only in the probe capture and stop just over the horizon. Higher, they turn flat tops white. Three's `anisotropy` was tried for spun plating and made the metal look like plastic, with radial streaks on the base; don't go back to it.
 
 ## Running it locally
 
@@ -155,13 +168,13 @@ To go through when the modelling discussion starts, since the refactor target (m
 
 1. **Viewer and scene builders are coupled.** Scene functions write into the viewer's public mutable fields. Cleaner: each family implements `build(ctx) → { lights, emitters, reflectors, probe, camera, applyState(s) }`, the viewer only orchestrates.
 2. **Three lamp code paths.** Kit lamps are data-driven; Avior, Alderamin, Capella are hard-coded with older lighting. Keep as legacy until remodelled, or convert to kit specs.
-3. **The kit only knows wood bodies.** Most products are metal-bodied; this is the main capability to add for the "5–10 min per product" plan.
+3. **Done:** the kit takes optional parts and metal or painted bodies.
 4. **One room, one family.** The restaurant room is tied to `family === "kit"`; it should be a property of the model or category.
 5. **3D params keyed by finish slug in code** (`src/three/finishes.ts`). Renaming a slug in Studio silently falls back. Store params on the `finish` doc, or validate slugs at build time.
 6. **State diffing** via `JSON.stringify(state)`; an explicit `visualKey` would be clearer if state grows.
 7. **Unused:** luminaire family, `hero`/`card` scene variants.
 8. **No render regression check.** A dev-only snapshot page like the demo's `tools/viewer-test.html` would make refactors checkable.
 
-The earlier recommendation was to refactor toward (1) with (3) as the first new capability and leave (2) as legacy. Claude's view on 2026-11-07 differs: add (3) first and refactor only where it actually slows the work, since (8) means a refactor could lower the lamp's quality unnoticed. Decide this with Yunus. Add a simple night render per product to the modelling routine (for the cards' light toggle and the home spotlight).
+Decided 2026-11-07: no Viewer refactor unless it actually slows the work. (2) goes away as the old lamps are rebuilt from zero. Add a simple night render per product to the modelling routine (for the cards' light toggle and the home spotlight).
 
 `three@0.169.0` stays pinned exactly (the kit patches shader chunks by string).
