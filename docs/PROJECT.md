@@ -24,10 +24,11 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 
 ## Decisions (2026-11-02)
 
-- **Routes:** `/`, `/hakkimizda`, `/urunler`, `/urunler/[kategori]`, `/urun/[slug]`, `/referanslar`, `/blog`, `/blog/[slug]`, `/iletisim`, `/studio`.
+- **Routes:** `/`, `/hakkimizda`, `/urunler`, `/urunler/[kategori]`, `/urun/[slug]`, `/referanslar`, `/blog`, `/blog/[slug]`, `/iletisim`, `/kvkk`, `/cerez-politikasi`, `/studio`. API: `/api/contact`, `/api/revalidate`, `/api/search-index`, `/api/usd-rate`. Development only (404 in production): `/dev-render`, which renders the home page's stills from the real viewer.
   - **Delete** the boilerplate's `/hizmetler` and `/projeler` (routes, schemas, queries, types, structure, revalidate config, webhook filter). This overrides the boilerplate's "never delete pages" rule for this project.
   - Product URLs are flat (`/urun/[slug]`) so a category change never breaks them; category pages exist for SEO ("şarjlı masa lambası").
-- **Referanslar:** a page of images and videos of installations. A global switch in `siteSettings` (`referencesEnabled`, default off) hides it from navigation and makes the route return 404.
+- **Referanslar:** a page of images and videos of installations (`reference` documents, `referencesPage` singleton, no detail pages). A global switch in `siteSettings` (`referencesEnabled`, default off) hides it from navigation and the sitemap and makes the route return 404.
+- **Legal:** `legalPage` documents behind `/kvkk` and `/cerez-politikasi`, linked in the footer. The texts are templates until they get a legal review.
 - **Prices:**
   - Each product has an **Ekonomik and a Premium price in USD** (`priceUsd`, `premiumPriceUsd`); if only one is filled, only that one is shown. Products with a single price use `priceUsd`.
   - Labelled "Başlangıç fiyatı"; the real price is negotiated in the quote. TL is converted with TCMB's USD forex selling rate and rounded to the nearest 10 TL. No VAT note for now.
@@ -42,6 +43,7 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - **Products first, models later:** upload all products without 3D first, then model them one by one. A product without a model shows its photo gallery and configurator without the viewer.
 - **3D data lives in code, catalogue data in Sanity:** a product has an optional `modelKey` string. Kit specs (profiles, grain, light tuning) are code in the repo, versioned in git, never edited by the client. Modelling a product = add its spec + fill `modelKey`.
 - **Environment:** the existing restaurant room covers all table lamps. An outdoor kit and room are discussed once the full product list arrives; not a blocker now.
+- **Schemas:** singletons `homePage`, `aboutPage`, `contactPage`, `productsPage`, `referencesPage`, `blogPage`, `navigation`, `siteSettings`; documents `product`, `productCategory`, `finish`, `shade`, `reference`, `legalPage`, `blogPost`, `blogCategory`.
 - **Catalogue schema (2026-11-02):** `product`, `productCategory` (a tree via `parent`, so a mega menu needs no schema change; URLs stay flat), shared `finish` (body colour with RAL; its slug is the 3D material key) and `shade`. Variant photos are keyed by finish (+ shade), the demo's `photoFor` logic; missing combinations fall back to the nearest photo, and Yunus fills gaps with AI-generated photos. Category holds the default Kelvin options and default spec table.
 - **Light Design's separate "Ekonomik" listings** (charging stations, Ezop, Meissa, Pandora, Plastica) stay separate products.
 - **Design:** the demo's design is ported as the starting point (header, hero, cards, Kelvin guide, quote drawer, configurator), not redesigned.
@@ -78,7 +80,7 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - Hero and Kelvin renders, brand SVGs are static files in `public/` (not CMS content). Kelvin names/uses (`KINFO`) and the light-colour maths are code (`src/lib/light.ts`), like the RAL table.
 - UI microcopy of the configurator and quote drawer stays in code; page texts and metadata come from Sanity (`homePage`, new `productsPage` singleton, `siteSettings.footerText`/`legalName`).
 - `tools/seed-content.mjs` creates the singletons from the schemas' `initialValue` plus LUMENX's contact data and menus (create-if-missing).
-- `product.chargeOptions` marks the 81 products with Light Design's Ekonomik/Premium option; prices show in USD until the TCMB rate (step 6).
+- `product.chargeOptions` marks the 81 products with Light Design's Ekonomik/Premium option.
 - **3D (ported 2026-11-02):** `three@0.169.0`, pinned exactly (the kit patches three's shader chunks by text). The engine is TypeScript under `src/three/`, imperative three.js with the demo's render pipeline unchanged (render on demand, `compileAsync`, shadows only after a build, probe capture, knee pass), not React Three Fiber:
   - `Viewer.ts` (renderer, composer, loop, camera, `open`/`apply`/`dispose`), `passes.ts`, `textures.ts`, `color.ts`, `geometry.ts`, `env.ts`.
   - `kit/` (`materials.ts` wood/fabric/liner/ring shaders, `build.ts` the turned lamp, `specs.ts` per-product measurements), `scene/` (`table.ts`, `luminaire.ts`, `lamps.ts` kit + procedural lamps, `room.ts` baked restaurant, `tableware.ts`, `cutlery.ts`, `materials.ts`).
@@ -97,18 +99,19 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - Most products are rechargeable table lamps: turned shapes (base, body, shade or hat, top cap), so they fit the kit (`LatheGeometry` profiles + materials). Target 5–10 min per product.
 - Defne is the quality bar the client approved.
 - Biggest speed-up to build: a script that extracts the lathe profile automatically from a studio photo on a plain background (Defne's profile was traced by hand at 39 px/cm).
+- The kit only knows wood bodies so far, while 80 of the 104 uploaded products are metal-finished: that is the first capability to add. The 5–10 minute target is unmeasured until then.
 - Outdoor fittings will need a second kit and room (later).
 
 ## Plan
 
 1. **Setup (Yunus):** repo from template (done: `yunus103/lumenx`), Sanity project + tokens in `.env.local`, Vercel project.
-2. **Scraper early:** real data (variant counts, missing photos, categories) shapes the catalogue and detail designs.
-3. **Design system port:** tokens into `src/styles/theme.css`, Saira via `next/font`, header, footer, Sanity-driven home page. Remove `/hizmetler` and `/projeler`.
-4. **Product schema, catalogue and detail pages**, with the 3D viewer port.
-5. **Other pages:** Hakkımızda, İletişim, Referanslar (switch), Blog styling, 404, KVKK / cookie text.
-6. **USD rate and prices** with the global switch.
-7. **Modelling in batches** (profile extraction tool first).
-8. **Finish:** SEO, real-phone tests, admin panel guide for the client.
+2. **Done:** scraper and import of the 104 Light Design products.
+3. **Done:** design system port, header, footer, Sanity-driven home page; `/hizmetler` and `/projeler` removed.
+4. **Done:** product schema, catalogue and detail pages, with the 3D viewer port.
+5. **Done:** Hakkımızda, İletişim, Referanslar (switch), Blog styling, 404, KVKK / cookie pages.
+6. **Done:** USD rate and prices with the global switch.
+7. **Next: modelling in batches.** The approach is discussed at the start of the next session.
+8. **Right before launch:** blog posts, KVKK and cookie review, webhook, contact form test with real SMTP values, SEO, real-phone tests, admin panel guide for the client, removal of the sample prices and content. Finish photos are Yunus's and have no rush.
 
 ## Open questions
 

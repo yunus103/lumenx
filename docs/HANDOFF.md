@@ -1,13 +1,16 @@
-# HANDOFF: LUMENX site (updated 2026-11-04, sixth session)
+# HANDOFF: LUMENX site (updated 2026-11-07, sixth session)
 
-Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the state of the work and what comes next. `PROJECT.md` does not yet record the routes and schemas added since 2026-11-02; they are listed here.
+Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the state of the work and what comes next.
 
 ## Next up
 
 1. **Hero and Kelvin scenes: done for now, closed.** Defne frames from the real viewer (`/dev-render`, development only: `window.shot({...})` in the console; 32 samples, WebP quality .93). Revisit the product, angle or design once all products are modelled. Hero: `pos [-1.3,.22,-.45]`, `target [.05,.16,-.14]`, fov 24, `aksam`; phone: `pos [-1.42,.26,-.5]`, `target [0,.2,0]`, fov 30. Kelvin: `pos [.34,.3,1.08]`, `target [0,.13,0]`, fov 30, `gece`. Frames the code expects: hero `hero-{d,m}-{off,2700,3000,4000}.webp` (d 2400×1350, m 1080×1350), Kelvin `kelvin-{2700,3000,3500,4000,5000,6500}.webp` (1800×1180). The hero caption in Sanity names the pictured product. `og.jpg` still shows the old Avior render. Kelvin options on products stay as they are (Yunus's call).
 2. **USD rate and price switch: done** (see "Prices" below).
-   **Now:** the rest that doesn't depend on the product list: contact form test, then the 5–6 blog posts. Claude's advice to Yunus on 2026-11-04, not yet decided: ask the client for the full product and USD price list now instead of waiting, and start the modelling review early. The deadline is the end of 2026, 104 of about 250 products are uploaded and 4 are modelled.
-3. **Products last.** Yunus gets the full product list from the client once everything else is done (if it doesn't come, carry on with the current products). Upload them all flat as now, then discuss the modelling strategy. Code-built kit, not Blender GLBs; armatures, outdoor and garden, upright and hexagonal fittings are coming. He only asked about the logic so far: nothing is decided.
+3. **Now: modelling. Start the next session by discussing it with Yunus;** nothing is decided and no modelling code is written. Yunus considers everything else finished for now. The client's full product list hasn't arrived, and that doesn't block starting. Code-built kit, not Blender GLBs; armatures, outdoor and garden, upright and hexagonal fittings are coming.
+   - **Numbers (2026-11-07):** 104 products uploaded of about 250, deadline roughly the end of 2026. Modelled: 4 of 83 table lamps (`defne`, `avior`, `alderamin`, `capella`), 0 of 9 charging stations, 0 of 8 waiter call buttons, 0 of 4 sconces and floor lamps. First finish of each product: 43 metallic, 37 powder coat, 13 none, 4 solid wood, 4 patina, 3 glossy.
+   - **Claude's proposal, not yet agreed:** Agena as the pilot (typical of the catalogue: metal body, metal hat, light from below rather than through fabric). Add metal to the kit and compare with the photo at Defne's quality bar. Then build the profile extraction tool, model 5 products of different types and measure the real time per product, then go into batches, with a night render per product. If the measurement says 250 won't fit, talk to the client early.
+4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
+5. **Vercel:** Yunus was going to create the project on 2026-11-05; the result isn't known here. When a deployment exists, check that `/api/usd-rate` returns a rate and `/dev-render` returns 404.
 
 ## Where things stand
 
@@ -112,7 +115,7 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
 
 - **`next dev` can keep serving old CSS, even without a restart.** Turbopack's cache held a stale `components.css` while the HTML was new, so new class names had no rules and a `fill` image spread over the whole page. In the sixth session it stopped picking up edits while running, and the price block looked broken. Stop it and `rm -rf .next` before starting again. To check, fetch the stylesheet from the running server and look for the new class. The server may be Yunus's own: Claude's attempt to kill one it hadn't started was refused, so ask Yunus to restart it.
 - **TCMB can take 3–9 seconds to answer,** and sometimes more: keep the route's timeout generous. Send plain requests; don't try to look like a browser.
-- **CSS class names are global.** `.ls-*` belongs to the unused `src/components/about/LightStage.tsx`; a new section using `.ls` picked up its `height: 340vh`. LightStage stays until the hero and Kelvin work is settled, then delete it and its CSS if unused.
+- **CSS class names are global.** A new section's class can pick up rules left by an old component: check for the name in `components.css` first.
 - **GROQ:** a filter after a projection returns `null` items. Use `products[defined(@->slug.current)]->{...}`, not `products[]->{...}[defined(slug.current)]`.
 - **framer-motion 12:** `useTransform(scrollValue, [range], [values])` driving opacity or scale is handed to a native ScrollTimeline that ignores the `useScroll` target and offsets. Pass a function instead.
 - **Glow elements that pass the viewport** widen the page on phones and the fixed header with it. Use `overflow-x: clip` on the section; `hidden` breaks sticky.
@@ -143,13 +146,12 @@ Scripts (all `node --no-warnings --env-file=.env.local tools/<script>`): `scrape
 - Missing finish photos (Yunus generates them with AI).
 - Kelvin options on products follow the category default (single 2700 K).
 - `.catalog .sec-head h1` in `components.css` is unused.
-- Update `PROJECT.md` with the new routes and schemas.
 - Restaurant scene: the armature (luminaire) scene wasn't checked after the viewer changes, as no product page opens it. Tiny glints beside a glass's foot on the table at some angles, and a small bright fleck on a plant leaf by day seen from very close, were left alone.
 - `frekans-demo/room-src/lm/pre-split/` (about 200 MB, gitignored) is an old bake backup; it can be deleted.
 
 ## 3D: notes for the architecture review
 
-The review waits until right before modelling, since the refactor target (metal kit lamps) depends on it.
+To go through when the modelling discussion starts, since the refactor target (metal kit lamps) depends on it.
 
 1. **Viewer and scene builders are coupled.** Scene functions write into the viewer's public mutable fields. Cleaner: each family implements `build(ctx) → { lights, emitters, reflectors, probe, camera, applyState(s) }`, the viewer only orchestrates.
 2. **Three lamp code paths.** Kit lamps are data-driven; Avior, Alderamin, Capella are hard-coded with older lighting. Keep as legacy until remodelled, or convert to kit specs.
@@ -160,6 +162,6 @@ The review waits until right before modelling, since the refactor target (metal 
 7. **Unused:** luminaire family, `hero`/`card` scene variants.
 8. **No render regression check.** A dev-only snapshot page like the demo's `tools/viewer-test.html` would make refactors checkable.
 
-Starting recommendation: refactor toward (1) with (3) as the first new capability; leave (2) as legacy. Add a simple night render per product to the modelling routine (for the cards' light toggle and the home spotlight).
+The earlier recommendation was to refactor toward (1) with (3) as the first new capability and leave (2) as legacy. Claude's view on 2026-11-07 differs: add (3) first and refactor only where it actually slows the work, since (8) means a refactor could lower the lamp's quality unnoticed. Decide this with Yunus. Add a simple night render per product to the modelling routine (for the cards' light toggle and the home spotlight).
 
 `three@0.169.0` stays pinned exactly (the kit patches shader chunks by string).

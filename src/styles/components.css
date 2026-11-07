@@ -814,29 +814,6 @@ body:has(.pbar) .foot { padding-bottom: calc(32px + var(--pbar, 0px)); }
 .ph-crumbs { margin-bottom: 18px; }
 .ph-media { position: relative; aspect-ratio: 21 / 9; margin-bottom: clamp(48px, 7vw, 96px); border-radius: var(--r); overflow: hidden; background: var(--paper-2); }
 
-/* about: the lamp switches on as you scroll. A tall section, a sticky stage; LightStage drives the colours. */
-/* clip, not hidden: hidden would break the sticky stage; the glow reaches past the viewport on phones */
-.ls { position: relative; height: 340vh; overflow-x: clip; }
-.ls-stage { position: sticky; top: calc(var(--hdr) + env(safe-area-inset-top, 0px)); height: calc(100svh - var(--hdr) - env(safe-area-inset-top, 0px)); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(32px, 6vw, 96px); }
-.ls-frame { position: relative; grid-column: 2; grid-row: 1; justify-self: center; height: min(calc(100svh - var(--hdr) - 80px), 820px); aspect-ratio: 4 / 5; max-width: 100%; }
-/* the photo's own backdrop dissolves into the surface, so the lamp stands in the room rather than in a box */
-/* closest-side keeps the fade inside the frame, so no edge or corner of either backdrop is ever visible */
-.ls-img { position: absolute; inset: 0; transition: none; -webkit-mask-image: radial-gradient(closest-side, #000 56%, rgba(0, 0, 0, .7) 67%, rgba(0, 0, 0, .32) 80%, rgba(0, 0, 0, .1) 91%, transparent 100%); mask-image: radial-gradient(closest-side, #000 56%, rgba(0, 0, 0, .7) 67%, rgba(0, 0, 0, .32) 80%, rgba(0, 0, 0, .1) 91%, transparent 100%); }
-.ls-img img { border-radius: 0; }
-.ls-runout { height: clamp(96px, 14vw, 180px); background: var(--paper-ink); }
-.ls-glow { position: absolute; inset: -22% -34%; pointer-events: none; background: radial-gradient(closest-side, rgba(242, 180, 103, .42), rgba(232, 157, 70, .14) 55%, transparent); }
-.ls-bloom { position: absolute; left: 18%; right: 18%; top: 10%; height: 48%; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(closest-side, rgba(255, 216, 168, .45), transparent); }
-.ls-copy { grid-column: 1; grid-row: 1; display: grid; align-items: center; }
-.ls-copy > * { grid-area: 1 / 1; }
-.ls-copy p { max-width: 24ch; font-size: clamp(1.35rem, 2.2vw, 2.1rem); font-weight: 300; font-stretch: 108%; line-height: 1.38; letter-spacing: -.005em; }
-.ls-night { display: grid; gap: 36px; justify-items: start; }
-/* the CTA stays reachable by keyboard before the light comes on */
-.ls-night:focus-within { opacity: 1 !important; transform: none !important; }
-.ls-static { height: auto; }
-.ls-static .ls-stage { position: static; height: auto; padding-block: clamp(64px, 9vw, 120px); }
-.ls-static .ls-copy { gap: 32px; }
-.ls-static .ls-copy > * { grid-area: auto; }
-
 /* about: plain text beside one product photo */
 .ab-body { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(40px, 7vw, 112px); align-items: start; padding-bottom: clamp(64px, 9vw, 120px); }
 .ab-text { max-width: 62ch; }
@@ -890,14 +867,6 @@ body:has(.pbar) .foot { padding-bottom: calc(32px + var(--pbar, 0px)); }
 @media (max-width: 960px) {
   .ph .cat-head { grid-template-columns: 1fr; }
   .ct, .ab-body { grid-template-columns: 1fr; }
-}
-@media (max-width: 860px) {
-  .ls { height: 280vh; }
-  .ls-stage { grid-template-columns: 1fr; align-content: center; gap: 24px; }
-  .ls-frame { grid-column: 1; height: min(50svh, 112vw); }
-  .ls-copy { grid-column: 1; grid-row: 2; align-items: start; }
-  .ls-copy p { max-width: 32ch; font-size: 1.2rem; }
-  .ls-night { gap: 24px; }
 }
 @media (max-width: 759px) {
   .ph-media { aspect-ratio: 4 / 3; }
