@@ -49,3 +49,4 @@ next-env.d.ts
 
 # photo-to-profile tool output
 /tools/model/out/
+__pycache__/
