@@ -350,6 +350,87 @@ export function brightnessLimited<M extends THREE.Material>(m: M) {
   return limit;
 }
 
+/* ---------- knurl ---------- */
+
+// A diamond knurl: two helices of V grooves with rounded crests, as a normal map (with an occlusion map for the
+// grooves) rather than geometry. One tile is one groove spacing around by the axial distance between crossings, in
+// cm, so the pattern is to scale. Mipmaps keep it from shimmering; where they average the grooves away, the shorter
+// mean normal becomes roughness (Toksvig), so far away it reads as a duller band instead of turning back into a
+// mirror-smooth tube.
+const KNURL_TILE = 128;
+const KNURL_SS = 4;
+// tooth height over pitch: flanks up to ~45 degrees
+const KNURL_DEPTH = 0.25;
+const TOKSVIG = /* glsl */ `
+  {
+    float nl = length(texture2D(normalMap, vNormalMapUv).xyz * 2. - 1.);
+    float a = roughnessFactor * roughnessFactor;
+    roughnessFactor = sqrt(sqrt(a * a + .6 * (1. - nl) / max(nl, .5)));
+  }
+`;
+
+function knurlMaps(around: number, along: number, pitch: number, cross: number) {
+  const nor = new Uint8Array(KNURL_TILE * KNURL_TILE * 4);
+  const ao = new Uint8Array(KNURL_TILE * KNURL_TILE * 4);
+  const depth = KNURL_DEPTH * pitch;
+  const frac = (x: number) => x - Math.floor(x);
+  for (let py = 0; py < KNURL_TILE; py++)
+    for (let px = 0; px < KNURL_TILE; px++) {
+      let nx = 0;
+      let ny = 0;
+      let nz = 0;
+      let occ = 0;
+      for (let k = 0; k < KNURL_SS * KNURL_SS; k++) {
+        const s = (px + ((k % KNURL_SS) + 0.5) / KNURL_SS) / KNURL_TILE;
+        const t = (py + (Math.floor(k / KNURL_SS) + 0.5) / KNURL_SS) / KNURL_TILE;
+        // the lower of the two helices' teeth (tooth 4q(1-q): groove at q = 0, crest at 0.5); the second one's
+        // grooves only `cross` as deep
+        const q1 = frac(s + t);
+        const q2 = frac(s - t);
+        const first = 4 * q1 * (1 - q1) < 1 - cross * (1 - 4 * q2 * (1 - q2));
+        const [q, dir, c] = first ? [q1, 1, 1] : [q2, -1, cross];
+        const slope = c * depth * (4 - 8 * q);
+        const gx = -slope / around;
+        const gy = (-slope * dir) / along;
+        const len = Math.hypot(gx, gy, 1);
+        nx += gx / len;
+        ny += gy / len;
+        nz += 1 / len;
+        occ += 0.3 + 0.7 * Math.sqrt(1 - c * (1 - 4 * q * (1 - q)));
+      }
+      const n = KNURL_SS * KNURL_SS;
+      const i = (py * KNURL_TILE + px) * 4;
+      nor[i] = Math.round((nx / n) * 127.5 + 127.5);
+      nor[i + 1] = Math.round((ny / n) * 127.5 + 127.5);
+      nor[i + 2] = Math.round((nz / n) * 127.5 + 127.5);
+      nor[i + 3] = 255;
+      ao[i] = ao[i + 1] = ao[i + 2] = Math.round((occ / n) * 255);
+      ao[i + 3] = 255;
+    }
+  return [nor, ao].map((data) => {
+    const t = new THREE.DataTexture(data, KNURL_TILE, KNURL_TILE);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    t.magFilter = THREE.LinearFilter;
+    t.minFilter = THREE.LinearMipmapLinearFilter;
+    t.generateMipmaps = true;
+    t.anisotropy = 8;
+    t.needsUpdate = true;
+    return t;
+  });
+}
+
+// `around`, `along`: the tile's size on the surface (cm); `pitch`: the grooves' spacing across them (cm); `cross` as in
+// the spec
+export function knurlMaterial(around: number, along: number, pitch: number, cross: number) {
+  const [normalMap, aoMap] = knurlMaps(around, along, pitch, cross);
+  const m = new THREE.MeshPhysicalMaterial({ metalness: 1, roughness: 0.3, normalMap, aoMap });
+  m.onBeforeCompile = (s) => {
+    s.fragmentShader = s.fragmentShader.replace("#include <normal_fragment_maps>", "#include <normal_fragment_maps>\n" + TOKSVIG);
+  };
+  m.customProgramCacheKey = () => "knurl";
+  return m;
+}
+
 /* ---------- wood ---------- */
 
 export interface WoodParams {

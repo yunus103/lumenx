@@ -9,6 +9,7 @@ import {
   CM,
   LINEN_TILE,
   fabricMaterial,
+  knurlMaterial,
   linenSet,
   linerLit,
   radiusAt,
@@ -138,9 +139,33 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   // wood is a satin lacquer: the lit table shows in it towards the silhouette, as in the photos, but only faintly.
   // Metal shows everything around it.
   surface.userData.envI = wood ? 0.2 : 1;
-  const bodyMesh = add(turned(runs, far ? 24 : 200), surface);
+  // a knurled grip is its own mesh: the runs between its two corners, in the same finish with the knurl's maps
+  const k = wood || far ? undefined : b.knurl;
+  const inGrip = (run: THREE.Vector2[]) => !!k && run.every((p) => p.y >= (k.from - 1e-4) * CM && p.y <= (k.to + 1e-4) * CM);
+  const bodyMesh = add(turned(k ? runs.filter((run) => !inGrip(run)) : runs, far ? 24 : 200), surface);
   bodyMesh.customDistanceMaterial = noRing;
   const probeHide = [bodyMesh];
+  let grip: THREE.MeshPhysicalMaterial | null = null;
+  let gripLimit: { value: number } | null = null;
+  if (k) {
+    const gripRuns = runs.filter(inGrip);
+    // a whole number of grooves around, so the pattern closes on itself
+    const a = (k.angle * Math.PI) / 180;
+    const r = Math.max(...gripRuns.flat().map((p) => p.x)) / CM;
+    const n = Math.max(1, Math.round((2 * Math.PI * r * Math.cos(a)) / k.pitch));
+    const around = (2 * Math.PI * r) / n;
+    const along = around / Math.tan(a);
+    grip = byLiner(knurlMaterial(around, along, around * Math.cos(a), k.cross ?? 1), wash);
+    gripLimit = brightnessLimited(grip);
+    grip.userData.envI = 1;
+    const geo = turned(gripRuns, 200);
+    const pos = geo.attributes.position;
+    const uv = geo.attributes.uv;
+    for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) * n, pos.getY(i) / CM / along);
+    const gripMesh = add(geo, grip);
+    gripMesh.customDistanceMaterial = noRing;
+    probeHide.push(gripMesh);
+  }
   if (!far) {
     const rubber = new THREE.MeshStandardMaterial({ color: "#141312", roughness: 0.85 });
     const foot = add(new THREE.CylinderGeometry(b.foot.r * CM, b.foot.r * CM * 0.97, b.foot.h * CM, 64), rubber);
@@ -253,7 +278,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     color,
     cd,
     dimmer: L.dimmer,
-    reflect: [brass, bodyBrass, steel, surface],
+    reflect: grip ? [brass, bodyBrass, steel, surface, grip] : [brass, bodyBrass, steel, surface],
     probeHide,
     emitters,
     glows: !!s,
@@ -269,9 +294,11 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     },
     setFinish(f) {
       if (!wood) {
-        surface.color.set(f.hex);
-        surface.metalness = f.metal;
-        surface.roughness = far ? Math.max(f.rough, 0.55) : f.rough;
+        for (const m of grip ? [surface, grip] : [surface]) {
+          m.color.set(f.hex);
+          m.metalness = f.metal;
+          m.roughness = far ? Math.max(f.rough, 0.55) : f.rough;
+        }
         return;
       }
       const w = f.wood ?? woodFromHex(f.hex);
@@ -282,6 +309,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     },
     setExposure(exposure) {
       if (bodyLimit) bodyLimit.value = BODY_LIMIT / exposure;
+      if (gripLimit) gripLimit.value = BODY_LIMIT / exposure;
     },
     // intensity in the viewer's light units (0 = off), position in world space; colour defaults to the spec's
     setLight(intensity, worldPos, c = color) {

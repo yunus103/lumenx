@@ -39,12 +39,12 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 | rena | rena-sarjli-masa-lambasi | siyah | photo pitched down; `--cam-height 44`, score 1.4 mm is perspective |
 | sani | sani-sarjli-masa-lambasi | satine-nikel | `--under` |
 | tole | tole-sarjli-masa-lambasi | gold | height 24.75 cm from photo proportions (datasheet 126 mm is wrong) |
-| aldebaran | aldebaran-sarjli-masa-lambasi | gold | hat Ø222 from photo vs datasheet 215 (client); brushed hat missing (kit, as Diya) |
+| aldebaran | aldebaran-sarjli-masa-lambasi | gold | hat Ø222 from photo vs datasheet 215 (client) |
 | aro | aro-sarjli-masa-lambasi | gold | hat Ø120 from photo vs datasheet 115 (client) |
-| casares | casares-sarjli-masa-lambasi | krom | Premium body, fitted on `--photo f2c581d5`; Ekonomik photos (rose, gold, siyah) show another shape (client); knurled grip renders smooth (kit) |
+| casares | casares-sarjli-masa-lambasi | krom | Premium body, fitted on `--photo f2c581d5`; knurled grip via `body.knurl` (kit, measured pitch 1.67 mm, 30°) |
 | esna | esna-sarjli-masa-lambasi | siyah | one photo only; the other six finishes unchecked |
 
-Open kit gaps: two-tone (Mensa, Bene, Nade), brushed finish (Diya, Aldebaran), patina streaks (Gemini), white diffuser band (Baro), knurled grip texture (Casares). Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
+Kit features added on demand: `body.knurl` (knurled grip, Casares). Open kit gaps: two-tone (Mensa, Bene, Nade), brushed finish (Diya), patina streaks (Gemini), white diffuser band (Baro). Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
 
 Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Luminaires (`kare`, `altigen`) are separate.
 
@@ -160,7 +160,6 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
   - "Türkiye'de üretiliyor" in `siteSettings.footerText`.
   - Finish hex and RAL values are the demo's estimates, and the home materials section shows RAL codes too.
   - Hat diameters where the photo and datasheet disagree: Aldebaran Ø222 (photo) vs 215, Aro Ø120 vs 115. The models follow the photos.
-  - Casares: Ekonomik and Premium photos show different bodies (Ekonomik ones look AI-generated). The model is Premium; Sanity's rose, gold and siyah variant photos show the Ekonomik shape.
 
 ## Pitfalls
 

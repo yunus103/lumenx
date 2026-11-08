@@ -3,7 +3,9 @@ import type { KitSpec } from ".";
 // The Premium Casares (Light Design's Premium photos and the restaurant photos), not the rounder Ekonomik one in some
 // of the shop's variant photos. Height 300 mm from the datasheet, proportions from the krom photo: a Ø133 hat, as the
 // datasheet's Ø130, over a Ø109 base. The base top is flat and polished: what looks like a cone under the stem's foot
-// is its mirror image (plain in the gold photo). The knurled grip on the lower stem is drawn smooth. The hat's
+// is its mirror image (plain in the gold photo). The lower stem is a diamond-knurled grip, from the foot's top to the
+// seam: helices at about 30 degrees to the axis, 1.67 mm apart across the grooves (measured on the krom photo); the
+// ones rising to the left are deeper in every photo, the crossing ones show faintly. The hat's
 // underside isn't shown: a flat plate with the LED ring, as Vita's. Charge port and touch key are underneath, unseen;
 // the ring on the hat's top is drawn as a fine groove.
 const casares: KitSpec = {
@@ -23,6 +25,7 @@ const casares: KitSpec = {
       [1.01, 27.45], [1.11, 27.7], [1.19, 27.92], [1.27, 28.12], [1.38, 28.3], [1.45, 28.4, 1], [0, 28.4],
     ],
     foot: { r: 4.95, h: 1.05 },
+    knurl: { from: 5.35, to: 15.2, pitch: 0.167, angle: 30, cross: 0.45 },
   },
   hat: {
     profile: [

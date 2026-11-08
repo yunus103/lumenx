@@ -35,6 +35,11 @@ export interface KitSpec {
     grain?: Grain;
     profile: ProfilePoint[];
     foot: { r: number; h: number };
+    // Opt-in: a diamond-knurled grip, drawn as a normal map on the profile's runs between two of its corners (`from`,
+    // `to`: heights in cm, each a corner point). `pitch` is the distance between neighbouring grooves of one helix,
+    // across them (cm); `angle` the helices' angle to the axis (degrees, ±). `cross`: how deep the second helix's
+    // grooves are, relative to the first's (default 1, a full diamond). Same finish as the body.
+    knurl?: { from: number; to: number; pitch: number; angle: number; cross?: number };
   };
   shade?: ShadeSpec;
   hat?: HatSpec;
