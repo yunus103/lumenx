@@ -23,13 +23,14 @@ export interface Shade3D {
 }
 
 const FINISHES: Record<string, Finish3D> = {
-  gold: { hex: "#D4AF62", metal: 1, rough: 0.27 },
-  // bronz and eskitme: calibrated against the product photos in the day render (2026-11-08)
+  gold: { hex: "#DFD898", metal: 1, rough: 0.24 },
+  // gold, bronz and eskitme: calibrated against the product photos in the day render (2026-11-08). eskitme stays at
+  // metal 0.5 or below so the kit lights it as paint: the photos show a satin painted finish, not shiny metal at night.
   bronz: { hex: "#966B55", metal: 1, rough: 0.26 },
   rose: { hex: "#DCA690", metal: 1, rough: 0.26 },
   krom: { hex: "#E2E4E8", metal: 1, rough: 0.13 },
   "satine-nikel": { hex: "#B9B5AC", metal: 1, rough: 0.34 },
-  eskitme: { hex: "#8C8970", metal: 0.85, rough: 0.5 },
+  eskitme: { hex: "#8C8973", metal: 0.45, rough: 0.62 },
   siyah: { hex: "#141415", metal: 0, rough: 0.46 },
   beyaz: { hex: "#EDECE6", metal: 0, rough: 0.5 },
   // oiled, satin: a thin clearcoat, never 0 (that would switch the program on a finish change)

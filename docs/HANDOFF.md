@@ -7,7 +7,7 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 1. **Hero and Kelvin scenes: done for now, closed.** Defne frames from the real viewer (`/dev-render`, development only: `window.shot({...})` in the console; 32 samples, WebP quality .93). Revisit the product, angle or design once all products are modelled. Hero: `pos [-1.3,.22,-.45]`, `target [.05,.16,-.14]`, fov 24, `aksam`; phone: `pos [-1.42,.26,-.5]`, `target [0,.2,0]`, fov 30. Kelvin: `pos [.34,.3,1.08]`, `target [0,.13,0]`, fov 30, `gece`. Frames the code expects: hero `hero-{d,m}-{off,2700,3000,4000}.webp` (d 2400×1350, m 1080×1350), Kelvin `kelvin-{2700,3000,3500,4000,5000,6500}.webp` (1800×1180). The hero caption in Sanity names the pictured product. `og.jpg` still shows the old Avior render. Kelvin options on products stay as they are (Yunus's call).
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** The strategy is agreed and in `docs/PROJECT.md` ("Modelling strategy"). Code-built kit, not Blender GLBs. Everything else is finished for now.
-   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. In the kit, reviewed, linked in Sanity, with night images: `defne`, `agena`, `mimosa`, `olena`, `sirius`, `vita`, `nigora`, `baro`, `capella` (rebuilt from zero), `diya`, `fuga`, `gemini`, `meissa`. Old demo lamps still to rebuild: `avior`, `alderamin`.
+   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. 13 lamps are in the kit; see "Modelled lamps" below.
    - **Foundation done, Agena approved by Yunus** (`/urun/agena-sarjli-masa-lambasi`). Steps 1–4 below are done, step 5 is half done (see "Modelling session 2026-11-08").
    - **Permissions Yunus gave for this project:** browser and visual tests as many as needed, downloading or opening the datasheets, installing tool dependencies. Subagents are fine for modelling and checking in parallel, at Claude's discretion. Keep working on `main`; commit when he asks, and he normally asks after approving a stage. Still ask before a change that alters how an approved lamp looks.
    - **Next steps, in order:**
@@ -21,6 +21,28 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
    - **Defne guard before and after touching `kit/`:** on a fresh `/dev-render`, in this order, `window.shot` with `size [1000,800]`, `samples 4`, `quality .95`: gece, ceviz, k 2700, pos `[.34,.3,1.08]`, target `[0,.13,0]`, fov 30; gunduz, kayin, k 3000, off, pos `[-.5,.25,.7]`, target `[0,.12,0]`, fov 25; aksam, ceviz, k 3000, pos `[.2,.2,.45]`, target `[0,.1,0]`, fov 25. The aksam frame must not change at all; the other two vary by up to 15 levels on their own. Frames taken after another lamp in the same page differ too, so reload first.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
 5. **Vercel:** Yunus was going to create the project on 2026-11-05; the result isn't known here. When a deployment exists, check that `/api/usd-rate` returns a rate and `/dev-render` returns 404.
+
+## Modelled lamps
+
+Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a night card image unless noted. "Finish" is the one the photo shows, used for the review and the night image. Update this table with every batch.
+
+| Key | Sanity slug | Finish | Notes |
+| --- | --- | --- | --- |
+| defne | defne-sarjli-masa-lambasi | ceviz | wood, keten shade; the guard lamp |
+| agena | agena-sarjli-masa-lambasi | bronz | approved by Yunus |
+| mimosa | mimosa-sarjli-masa-lambasi | bronz | stem glow (`hat.led.wash`) |
+| olena | olena-sarjli-masa-lambasi | beyaz | |
+| sirius | sirius-sarjli-masa-lambasi | bronz | stem glow; Sirius garson needs its own spec |
+| vita | vita-sarjli-masa-lambasi | gold | |
+| nigora | nigora-sarjli-masa-lambasi | eskitme | |
+| baro | baro-sarjli-masa-lambasi | eskitme | white diffuser band missing (kit) |
+| capella | capella-sarjli-masa-lambasi | bronz | rebuilt from zero |
+| diya | diya-sarjli-masa-lambasi | gold | brushed hat missing (kit) |
+| fuga | fuga-sarjli-masa-lambasi | siyah | |
+| gemini | gemini-sarjli-masa-lambasi | eskitme | patina streaks missing (kit) |
+| meissa | meissa-sarjli-masa-lambasi | eskitme | photo tilted, fit judged by eye |
+
+Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Luminaires (`kare`, `altigen`) are separate.
 
 ## Modelling session 2026-11-08
 
@@ -46,12 +68,16 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
   - The fitted photo camera can't match the base and the hat at once on some photos, so judge the hat by eye.
 - **Kit:** `hat.led.wash` (opt-in) lights the body under the hat from the LED disc, as the night photos show. It is on for Mimosa (`metal 0.2`) and Sirius. Defne's guard and Agena are unchanged.
 - **Powder coat texture was tried and reverted.** At a scale that doesn't shimmer it is invisible; larger, it reads as hammered metal.
-- **Finish calibration (done):** `bronz` is now `#966B55`, metal 1, rough 0.26. Eleven bronz photos (Agena, Capella, Sirius and others) show polished copper-bronze metal, so it stays metal, just less orange. `eskitme` is now `#8C8970`, metal 0.85, rough 0.5, an olive antique brass. Baro's and Meissa's taupe photos are this eskitme, so they render in it. Agena changes in both finishes; Yunus should look. The Sanity swatch hexes (`#9A5A35`, `#6B4E31`) were not changed. Gemini's patina streaks and Mila's copper-looking "eskitme" photo stay outliers.
+- **Finish calibration (done):** calibrated against product photos in the day render, values in `src/three/finishes.ts`.
+  - `bronz` `#966B55`, metal 1, rough 0.26. Eleven bronz photos show polished copper-bronze metal, so it stays metal, just less orange.
+  - `gold` `#DFD898`, metal 1, rough 0.24. Ten of fourteen gold photos are pale lemon brass; Agena, Sirius, Evora and Pollux are warmer outliers.
+  - `eskitme` `#8C8973`, metal 0.45, rough 0.62: an olive taupe that reads as satin paint. It must stay at metal 0.5 or below, because `build.ts` `setLight` lights bodies above 0.5 as metal and they shine gold at night. Baro's and Meissa's taupe photos are this finish. Gemini's brassy brushed photo is the outlier.
+  - The Sanity swatch hexes were not changed. The datasheets' colour block is the same 8 colours in all 155 sheets (even Alderamin), a template, so it says nothing about which finishes a product really has.
 - **Review of the second six (done):** each got one fix: Baro's hat boss became a crisp step, Capella's stem nut got shorter and upright, Diya's flare points were resampled (the reflection had scalloped edges), Gemini's drum shoulder got tighter. Fuga and Meissa were unchanged. Meissa scores 1.3 mm only because its photo is tilted; a matching camera gives a 1.21 vs 1.20 width ratio.
 - **Sanity slugs differ from the Light Design ones** for some products (Meissa is `meissa-sarjli-masa-lambasi`, without `-ekonomik`), and `review.py --upload` fails on those. Check the Sanity slug first.
 - **Revalidate locally:** the route needs a signed body with `operation`. Sign it with `encodeSignatureHeader` from `@sanity/webhook` and `SANITY_WEBHOOK_SECRET`, then POST `{_type:"product", operation:"update", slug, affectsList:true}` per product.
 - **Open, next:**
-  1. **Finish gaps:** matte paint in an eskitme colour (Meissa and Baro photos are matte; eskitme is metal, so they shine at night). `gold` renders deeper than Diya's pale brass. White diffuser band under Baro's hat. Diya's brushed hat. Powder grit.
+  1. **Kit gaps, add when a lamp needs them:** white diffuser band under a hat (Baro), brushed hat (Diya), patina streaks (Gemini), powder grit.
   2. The second wave of the batch: mensa (`mensa-sarjli-masa-lambasi-1`), mila, pandora (`-ekonomik`), rena, sani, tole (`tole-sarjli-masa-lambasi-1`, datasheet 126/115 looks wrong).
   3. **Sirius garson** has a different shape (a call-button cap, a deeper dome, a convex collar) and needs its own spec. Its top would need `topButton` on hat lamps.
 
