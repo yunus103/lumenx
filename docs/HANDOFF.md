@@ -7,7 +7,7 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 1. **Hero and Kelvin scenes: done for now, closed.** Defne frames from the real viewer (`/dev-render`, development only: `window.shot({...})` in the console; 32 samples, WebP quality .93). Revisit the product, angle or design once all products are modelled. Hero: `pos [-1.3,.22,-.45]`, `target [.05,.16,-.14]`, fov 24, `aksam`; phone: `pos [-1.42,.26,-.5]`, `target [0,.2,0]`, fov 30. Kelvin: `pos [.34,.3,1.08]`, `target [0,.13,0]`, fov 30, `gece`. Frames the code expects: hero `hero-{d,m}-{off,2700,3000,4000}.webp` (d 2400×1350, m 1080×1350), Kelvin `kelvin-{2700,3000,3500,4000,5000,6500}.webp` (1800×1180). The hero caption in Sanity names the pictured product. `og.jpg` still shows the old Avior render. Kelvin options on products stay as they are (Yunus's call).
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** The strategy is agreed and in `docs/PROJECT.md` ("Modelling strategy"). Code-built kit, not Blender GLBs. Everything else is finished for now.
-   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. 13 lamps are in the kit; see "Modelled lamps" below.
+   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. 19 lamps are in the kit; see "Modelled lamps" below.
    - **Foundation done, Agena approved by Yunus** (`/urun/agena-sarjli-masa-lambasi`). Steps 1–4 below are done, step 5 is half done (see "Modelling session 2026-11-08").
    - **Permissions Yunus gave for this project:** browser and visual tests as many as needed, downloading or opening the datasheets, installing tool dependencies. Subagents are fine for modelling and checking in parallel, at Claude's discretion. Keep working on `main`; commit when he asks, and he normally asks after approving a stage. Still ask before a change that alters how an approved lamp looks.
    - **Next steps, in order:**
@@ -41,6 +41,12 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 | fuga | fuga-sarjli-masa-lambasi | siyah | |
 | gemini | gemini-sarjli-masa-lambasi | eskitme | patina streaks missing (kit) |
 | meissa | meissa-sarjli-masa-lambasi | eskitme | photo tilted, fit judged by eye |
+| mensa | mensa-sarjli-masa-lambasi | eskitme | photo is two-tone (brass stem, glossy taupe body), kit gap |
+| mila | mila-sarjli-masa-lambasi | bronz | fitted on the `mila-rozze-bronze` photo (`--photo a9fa5739`) |
+| pandora | pandora-sarjli-masa-lambasi | eskitme | photo is warm brown satin paint, no matching finish listed |
+| rena | rena-sarjli-masa-lambasi | siyah | photo pitched down; `--cam-height 44`, score 1.4 mm is perspective |
+| sani | sani-sarjli-masa-lambasi | satine-nikel | `--under` |
+| tole | tole-sarjli-masa-lambasi | gold | height 24.75 cm from photo proportions (datasheet 126 mm is wrong) |
 
 Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Luminaires (`kare`, `altigen`) are separate.
 
@@ -59,7 +65,7 @@ Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Lumin
   5. Add the lamp to `link-models.mjs` LINKS and run it.
   6. Run `review.py sheet --upload` for the night image.
   7. Send the local revalidate webhook.
-- **Time:** one lamp takes 9–11 minutes for a subagent on Opus. Five ran in parallel, each in its own browser tab. The shared brief, including the lessons below, was in the session scratchpad; rewrite it from this section.
+- **Time:** batch 2 (6 lamps, one Opus agent each, in parallel, shared brief) took 6–10 minutes per agent and about 140k tokens each; all six passed a look at their sheets with no separate review. Linking and night images run afterwards on one Sonnet agent. Earlier: one lamp takes 9–11 minutes for a subagent on Opus. Five ran in parallel, each in its own browser tab. The shared brief, including the lessons below, was in the session scratchpad; rewrite it from this section.
 - **Lessons:**
   - Render in a finish the product actually lists.
   - Long straight runs need evenly spaced profile points, or the spline folds into faint rings.
@@ -78,8 +84,9 @@ Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Lumin
 - **Revalidate locally:** the route needs a signed body with `operation`. Sign it with `encodeSignatureHeader` from `@sanity/webhook` and `SANITY_WEBHOOK_SECRET`, then POST `{_type:"product", operation:"update", slug, affectsList:true}` per product.
 - **Open, next:**
   1. **Kit gaps, add when a lamp needs them:** white diffuser band under a hat (Baro), brushed hat (Diya), patina streaks (Gemini), powder grit.
-  2. The second wave of the batch: mensa (`mensa-sarjli-masa-lambasi-1`), mila, pandora (`-ekonomik`), rena, sani, tole (`tole-sarjli-masa-lambasi-1`, datasheet 126/115 looks wrong).
-  3. **Sirius garson** has a different shape (a call-button cap, a deeper dome, a convex collar) and needs its own spec. Its top would need `topButton` on hat lamps.
+  2. **Finish questions for the client:** Pandora's warm brown paint and Mensa's glossy taupe aren't any listed finish; the datasheet's Bronz swatch is dark brown while the bronz photos show copper-bronze metal.
+  3. **Kit gap seen in batch 2:** two-tone lamps (Mensa: brass stem on a painted body).
+  4. **Sirius garson** has a different shape (a call-button cap, a deeper dome, a convex collar) and needs its own spec. Its top would need `topButton` on hat lamps.
 
 ## Where things stand
 
