@@ -6,19 +6,11 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 
 1. **Hero and Kelvin scenes: done for now, closed.** Defne frames from the real viewer (`/dev-render`, development only: `window.shot({...})` in the console; 32 samples, WebP quality .93). Revisit the product, angle or design once all products are modelled. Hero: `pos [-1.3,.22,-.45]`, `target [.05,.16,-.14]`, fov 24, `aksam`; phone: `pos [-1.42,.26,-.5]`, `target [0,.2,0]`, fov 30. Kelvin: `pos [.34,.3,1.08]`, `target [0,.13,0]`, fov 30, `gece`. Frames the code expects: hero `hero-{d,m}-{off,2700,3000,4000}.webp` (d 2400×1350, m 1080×1350), Kelvin `kelvin-{2700,3000,3500,4000,5000,6500}.webp` (1800×1180). The hero caption in Sanity names the pictured product. `og.jpg` still shows the old Avior render. Kelvin options on products stay as they are (Yunus's call).
 2. **USD rate and price switch: done** (see "Prices" below).
-3. **Now: modelling.** The strategy is agreed and in `docs/PROJECT.md` ("Modelling strategy"). Code-built kit, not Blender GLBs. Everything else is finished for now.
-   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. 19 lamps are in the kit; see "Modelled lamps" below.
-   - **Foundation done, Agena approved by Yunus** (`/urun/agena-sarjli-masa-lambasi`). Steps 1–4 below are done, step 5 is half done (see "Modelling session 2026-11-08").
-   - **Permissions Yunus gave for this project:** browser and visual tests as many as needed, downloading or opening the datasheets, installing tool dependencies. Subagents are fine for modelling and checking in parallel, at Claude's discretion. Keep working on `main`; commit when he asks, and he normally asks after approving a stage. Still ask before a change that alters how an approved lamp looks.
-   - **Next steps, in order:**
-     1. **`tools/model/extract.py`:** photo to profile, plus an overlay image to check it. Rebuild it from these findings; the session's trial scripts were temporary. A threshold against the median border colour (Pillow and numpy are installed) came within about 1 mm of Defne's hand profile. It must handle white parts on the grey `#f1f1f1` background and the "TÜRK PATENT" logo at the top right. Glass needs a manual profile. Correct for the camera looking down: find the height where the base reaches full width (the base's ground plane, about 0.9 cm up on Agena), then true y = (photo y − that) × height / (photo height − that), and scale r by the same factor.
-     2. **Datasheet harvest into `tools/data/`:** `product.datasheets[].url` for all 86, opened in the browser pane. On a PDF tab, import `pdfjs-dist@4.0.379` from jsdelivr, run `getDocument({data})` on a same-origin fetch, and read page 2's text for `\d+mm` and lumen. Posting the PDF to localhost from that tab failed, so bring text back as the script's return value and read drawings from a screenshot of a page-sized canvas. No `curl` with a browser's User-Agent.
-     3. **Review sheet:** per lamp, photo beside day and night renders from `/dev-render` (`window.shot({model, finish, mode, pos, target, fov, size, samples, out})`, Agena front view `pos [0,.2,1.05]`, `target [0,.11,0]`, fov 17). Set `on: false` for daytime. Also a silhouette match score. Same run: upload the night image to `nightImage` and add the lamp to `tools/link-models.mjs`. Keep the Browser pane showing (`mcp__ccd_view__show_pane`), or `requestAnimationFrame` stops and the product page never opens its 3D; `window.shot` itself still works when hidden.
-     4. **Five varied lamps, timed:** Mimosa, Olena, Sirius, Vita, Nigora. Report the real time per product to Yunus. Check live edges on the product page too, not only `/dev-render`.
-     5. **Batches of about 12 on subagents, one spec file each:** the rest of the roughly 60 metal lamps, including the waiter-call lamps (Capella and Sirius have same-named ones, probably the same shape), and Capella rebuilt from zero. Then fabric and pleated (Avior and Alderamin from zero, then delete the `lamp` family), then glass. Yunus reviews sheets, not lamps one by one.
-     6. **The ~150 new products** when the list arrives.
-   - **To fix along the way:** powder coat has no micro texture (visible in the photos of matte lamps), patina (`eskitme`) is plain, white paint looks a little pink in the evening, and background copies in chrome look whitish by day. No night image for Agena yet. Its underside LED is an assumption; other lamps' photos may show the real one. Moving edges keep slight steps on purpose.
-   - **Defne guard before and after touching `kit/`:** on a fresh `/dev-render`, in this order, `window.shot` with `size [1000,800]`, `samples 4`, `quality .95`: gece, ceviz, k 2700, pos `[.34,.3,1.08]`, target `[0,.13,0]`, fov 30; gunduz, kayin, k 3000, off, pos `[-.5,.25,.7]`, target `[0,.12,0]`, fov 25; aksam, ceviz, k 3000, pos `[.2,.2,.45]`, target `[0,.1,0]`, fov 25. The aksam frame must not change at all; the other two vary by up to 15 levels on their own. Frames taken after another lamp in the same page differ too, so reload first.
+3. **Now: modelling.** Strategy in `docs/PROJECT.md` ("Modelling strategy"): code-built kit, not Blender GLBs.
+   - **How:** run `/model-lamps` (project skill, `.claude/skills/model-lamps/`): it takes the next batch (default 6) from its `queue.md`, models each lamp with its own agent, links them with night images, pushes, and tells Yunus what to check. The procedure, tools, brief and lessons live there; this file keeps the state.
+   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. 19 lamps are in the kit (table below), 74 in the queue, then the ~150 new products when the list arrives.
+   - **Permissions Yunus gave:** browser and visual tests, opening the datasheets, tool dependencies, subagents at Claude's discretion. For modelling batches: no questions, push at the end, kit changes allowed as long as the Defne guard proves approved lamps unchanged. Work on `main`.
+   - **To fix along the way:** white paint looks a little pink in the evening; background copies in chrome look whitish by day; Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
 5. **Vercel:** Yunus was going to create the project on 2026-11-05; the result isn't known here. When a deployment exists, check that `/api/usd-rate` returns a rate and `/dev-render` returns 404.
 
@@ -50,38 +42,12 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 
 Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Luminaires (`kare`, `altigen`) are separate.
 
-## Modelling session 2026-11-08
+## Modelling decisions
 
-- **Tools:**
-  - `tools/model/extract.py <slug> --height <cm> [--split y] [--y0 px]` turns a photo into a profile and an overlay. It fits the hand profiles to 0.2–0.6 mm.
-  - `tools/data/datasheets.json` holds the text of 157 sheets. Heights are reliable. Diameters are often template values (Ø120/Ø100), and the height and width can be swapped (Vita).
-  - `tools/model/review.py <key> shots|sheet --slug <slug> --finish <f> [--upload] [--under] [--cam-height cm]` builds the review sheet (photo, day, night, 3/4, profile overlay, difference in mm) and the night card image.
-  - `tools/upload-night.mjs` uploads the night image. Sheets go to `tools/model/out/` (ignored by git).
-- **Routine per lamp:**
-  1. Write the spec and register it in `models.ts`.
-  2. Run `review.py shots` and paste the printed calls into a fresh `/dev-render` console.
-  3. Run `review.py sheet`.
-  4. Fix and repeat.
-  5. Add the lamp to `link-models.mjs` LINKS and run it.
-  6. Run `review.py sheet --upload` for the night image.
-  7. Send the local revalidate webhook.
-- **Time:** batch 2 (6 lamps, one Opus agent each, in parallel, shared brief) took 6–10 minutes per agent and about 140k tokens each; all six passed a look at their sheets with no separate review. Linking and night images run afterwards on one Sonnet agent. Earlier: one lamp takes 9–11 minutes for a subagent on Opus. Five ran in parallel, each in its own browser tab. The shared brief, including the lessons below, was in the session scratchpad; rewrite it from this section.
-- **Lessons:**
-  - Render in a finish the product actually lists.
-  - Long straight runs need evenly spaced profile points, or the spline folds into faint rings.
-  - Look for seam grooves on the drums.
-  - Most specs use photo proportions with the datasheet height.
-  - The fitted photo camera can't match the base and the hat at once on some photos, so judge the hat by eye.
-- **Kit:** `hat.led.wash` (opt-in) lights the body under the hat from the LED disc, as the night photos show. It is on for Mimosa (`metal 0.2`) and Sirius. Defne's guard and Agena are unchanged.
-- **Powder coat texture was tried and reverted.** At a scale that doesn't shimmer it is invisible; larger, it reads as hammered metal.
-- **Finish calibration (done):** calibrated against product photos in the day render, values in `src/three/finishes.ts`.
-  - `bronz` `#966B55`, metal 1, rough 0.26. Eleven bronz photos show polished copper-bronze metal, so it stays metal, just less orange.
-  - `gold` `#DFD898`, metal 1, rough 0.24. Ten of fourteen gold photos are pale lemon brass; Agena, Sirius, Evora and Pollux are warmer outliers.
-  - `eskitme` `#8C8973`, metal 0.45, rough 0.62: an olive taupe that reads as satin paint. It must stay at metal 0.5 or below, because `build.ts` `setLight` lights bodies above 0.5 as metal and they shine gold at night. Baro's and Meissa's taupe photos are this finish. Gemini's brassy brushed photo is the outlier.
-  - The Sanity swatch hexes were not changed. The datasheets' colour block is the same 8 colours in all 155 sheets (even Alderamin), a template, so it says nothing about which finishes a product really has.
-- **Review of the second six (done):** each got one fix: Baro's hat boss became a crisp step, Capella's stem nut got shorter and upright, Diya's flare points were resampled (the reflection had scalloped edges), Gemini's drum shoulder got tighter. Fuga and Meissa were unchanged. Meissa scores 1.3 mm only because its photo is tilted; a matching camera gives a 1.21 vs 1.20 width ratio.
-- **Sanity slugs differ from the Light Design ones** for some products (Meissa is `meissa-sarjli-masa-lambasi`, without `-ekonomik`), and `review.py --upload` fails on those. Check the Sanity slug first.
-- **Revalidate locally:** the route needs a signed body with `operation`. Sign it with `encodeSignatureHeader` from `@sanity/webhook` and `SANITY_WEBHOOK_SECRET`, then POST `{_type:"product", operation:"update", slug, affectsList:true}` per product.
+- **Finishes are calibrated against the product photos** (`src/three/finishes.ts`): `bronz` `#966B55` polished copper-bronze metal; `gold` `#DFD898` pale lemon brass (Agena, Sirius, Evora, Pollux photos are warmer); `eskitme` `#8C8973`, metal 0.45, a satin olive taupe, which must stay at metal 0.5 or below or `build.ts` lights it as metal and it shines gold at night. Sanity swatch hexes are unchanged.
+- **The datasheets' colour block is a template** (the same 8 colours in all 155 sheets, even Alderamin), so it says nothing about a product's real finishes; Sanity's lists come from the shop.
+- **Kit:** `hat.led.wash` (opt-in) lights the body under the hat at night (Mimosa, Sirius). A powder-coat texture was tried and reverted: invisible at a scale that doesn't shimmer, hammered-looking above it.
+- **Revalidate locally** with a signed body: see `.claude/skills/model-lamps/night.md`.
 - **Open, next:**
   1. **Kit gaps, add when a lamp needs them:** white diffuser band under a hat (Baro), brushed hat (Diya), patina streaks (Gemini), powder grit.
   2. **Finish questions for the client:** Pandora's warm brown paint and Mensa's glossy taupe aren't any listed finish; the datasheet's Bronz swatch is dark brown while the bronz photos show copper-bronze metal.
