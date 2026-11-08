@@ -8,8 +8,8 @@ const gemini: KitSpec = {
   body: {
     profile: [
       [0, 0.6], [4.69, 0.6, 1], [4.75, 0.63], [4.77, 0.72, 1],
-      // drum wall, a soft roll into the flat top
-      [4.77, 3.69, 1], [4.75, 3.86], [4.69, 3.99], [4.6, 4.08], [4.47, 4.13], [4.32, 4.14, 1],
+      // drum wall, a roll of about 3 mm into the flat top (the photo's edge highlight is that narrow)
+      [4.77, 3.84, 1], [4.76, 3.95], [4.73, 4.04], [4.67, 4.1], [4.58, 4.135], [4.47, 4.14, 1],
       // collar at the stem's foot, with a fine groove near its bottom
       [0.93, 4.14, 1], [0.93, 4.19, 1], [0.9, 4.22, 1], [0.93, 4.25, 1],
       [0.93, 4.42], [0.9, 4.52], [0.84, 4.58, 1], [0.735, 4.6, 1],

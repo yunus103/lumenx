@@ -18,9 +18,9 @@ export const MODELS: Record<string, ModelFamily> = {
   fuga: "kit",
   gemini: "kit",
   meissa: "kit",
+  capella: "kit",
   avior: "lamp",
   alderamin: "lamp",
-  capella: "lamp",
   kare: "luminaire",
   altigen: "luminaire",
 };

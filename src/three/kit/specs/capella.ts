@@ -9,10 +9,10 @@ const capella: KitSpec = {
       [0, 0.6], [4.6, 0.6, 1], [4.69, 0.63], [4.73, 0.7], [4.74, 0.8, 1],
       // drum wall, a small roll into the flat top
       [4.7, 4.24, 1], [4.69, 4.31], [4.66, 4.35], [4.61, 4.36, 1],
-      [1.1, 4.36, 1],
-      // ring round the foot of the stem
-      [1.1, 4.68], [1.08, 4.74], [1.03, 4.76, 1],
-      [0.87, 4.76, 1], [0.87, 19.3, 1], [0, 19.3],
+      [1.05, 4.36, 1],
+      // nut round the foot of the stem: short, upright, a small chamfer on top (the photo's facets can't be turned)
+      [1.05, 4.5], [1.05, 4.64], [1.035, 4.69], [1.0, 4.7, 1],
+      [0.87, 4.7, 1], [0.87, 19.3, 1], [0, 19.3],
     ],
     foot: { r: 4.68, h: 0.6 },
   },
