@@ -2,7 +2,7 @@ import type { KitSpec } from ".";
 
 // Height 220 mm from the datasheet, proportions from the photo: its Ø120 hat and Ø100 base are Agena's numbers again
 // and don't fit the photo, where the hat is 1.3 bases wide and the height 1.73 hats. Touch key and charge port are
-// underneath, unseen. The white diffuser band under the hat is not in the kit (its LED is a flat disc), so the band is metal here.
+// underneath, unseen. Under the hat a white opal band 2 mm high (5 px of the hat's 80), as wide as the hat's wall.
 const baro: KitSpec = {
   body: {
     profile: [
@@ -19,12 +19,13 @@ const baro: KitSpec = {
   },
   hat: {
     profile: [
-      [1, 19], [6.28, 19, 1], [6.3, 19.2, 1], [6.38, 19.2, 1],
+      [1, 19.2], [6.38, 19.2, 1],
       [6.38, 20.1], [6.38, 20.8], [6.38, 21.5, 1], [6.35, 21.65], [6.26, 21.75], [6.1, 21.8, 1],
       // low boss on top: a short upright wall with a rounded edge, as the photo shows it, not a ramp
       [3.42, 21.8, 1], [3.415, 21.88], [3.4, 21.94], [3.36, 21.98], [3.3, 21.995], [3.2, 22, 1], [0, 22],
     ],
     led: { y: 18.99, rIn: 1.1, rOut: 6.25 },
+    opal: { y: 18.99, h: 0.21, r: 6.3, transmission: 0.02 },
   },
   light: { kelvin: 2700, lumen: 550, y: 18.99, dimmer: [0.4, 0.7, 1], body: 0.03, bounce: 200 },
 };

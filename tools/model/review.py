@@ -91,16 +91,34 @@ def turned(profile: list) -> np.ndarray:
     return np.concatenate([catmull_rom(np.array(r, float), 60 * len(r)) for r in runs])
 
 
+def faceted(outline: np.ndarray, f: dict | None) -> np.ndarray:
+    """An N-sided part's (Facets in specs/index.ts) half-width as the front camera sees it, in place of r."""
+    if not f:
+        return outline
+    half = math.pi / f["n"]
+    corner = 1 / math.cos(half) if f["across"] == "flats" else 1
+    centres = np.radians(f.get("angle", 0)) + 2 * half * np.arange(f["n"])
+    corners = np.concatenate([centres - half, centres + half]) - np.radians(FRONT["azimuth"])
+    seen = corner * (np.sin(corners).max() + (-np.sin(corners)).max()) / 2
+    lo, hi = f.get("from", -np.inf) - 1e-4, f.get("to", np.inf) + 1e-4
+    out = outline.copy()
+    inside = (out[:, 1] >= lo) & (out[:, 1] <= hi)
+    out[inside, 0] *= seen
+    return out
+
+
 def parts(spec: dict) -> list[np.ndarray]:
     """(r, y) outlines of every turned part, in cm, as build.ts makes them."""
-    out = [turned(spec["body"]["profile"])]
+    out = [faceted(turned(spec["body"]["profile"]), spec["body"].get("facets"))]
     f = spec["body"]["foot"]
     out.append(np.array([[0, 0], [f["r"], 0], [f["r"], f["h"]], [0, f["h"]]], float))
     if hat := spec.get("hat"):
-        out.append(turned(hat["profile"]))
+        out.append(faceted(turned(hat["profile"]), hat.get("facets")))
+        if o := hat.get("opal"):
+            out.append(np.array([[0, o["y"]], [o["r"], o["y"]], [o["r"], o["y"] + o["h"]], [0, o["y"] + o["h"]]], float))
     if s := spec.get("shade"):
         y0, y1, t2 = s["y"], s["y"] + s["h"], s["thickness"] / 2
-        pad, tape = t2 + 0.08, s["tape"]  # the tape folded over each rim
+        pad, tape = (t2, 0) if s.get("opal") else (t2 + 0.08, s["tape"])  # the tape folded over each rim
         r_at = lambda y: s["rBottom"] + (s["rTop"] - s["rBottom"]) * (y - y0) / s["h"]  # noqa: E731
         out.append(np.array([
             [0, y1 + t2], [r_at(y1) + pad, y1 + pad], [r_at(y1 - tape) + pad, y1 - tape], [r_at(y1 - tape) + t2, y1 - tape],

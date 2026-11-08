@@ -9,14 +9,14 @@ Light Design slugs can differ from the Sanity slug (`-1`, `-ekonomik`); the coor
 - [x] aro | aro-sarjli-masa-lambasi | cylinder hat, bell-shaped body
 - [x] casares | casares-sarjli-masa-lambasi | flat disc hat, disc base
 - [x] esna | esna-sarjli-masa-lambasi | mushroom hat flowing into the body
-- [ ] evora | evora-sarjli-masa-lambasi | classic mushroom; its gold photo is warmer than the gold finish
-- [ ] ezop | ezop-sarjli-masa-lambasi | thin rod, small disc hat
-- [ ] geminga | geminga-sarjli-masa-lambasi | small cone hat, very thin stem
-- [ ] heli | heli-sarjli-masa-lambasi | small dome hat, tall thin stem
-- [ ] hint | hint-sarjli-masa-lambasi | flat hat, thick column body
-- [ ] karo | karo-sarjli-masa-lambasi | layered hat: flat disc on a cone
-- [ ] konra | konra-sarjli-masa-lambasi | mushroom hat, long cone body
-- [ ] melma | melma-sarjli-masa-lambasi | small cone hat, slender stem
+- [x] evora | evora-sarjli-masa-lambasi | classic mushroom; its gold photo is warmer than the gold finish
+- [x] ezop | ezop-sarjli-masa-lambasi | thin rod, small disc hat
+- [x] geminga | geminga-sarjli-masa-lambasi | small cone hat, very thin stem
+- [x] heli | heli-sarjli-masa-lambasi | small dome hat, tall thin stem
+- [x] hint | hint-sarjli-masa-lambasi | flat hat, thick column body
+- [x] karo | karo-sarjli-masa-lambasi | layered hat: flat disc on a cone
+- [x] konra | konra-sarjli-masa-lambasi | mushroom hat, long cone body
+- [x] melma | melma-sarjli-masa-lambasi | small cone hat, slender stem
 - [ ] merle | merle-sarjli-masa-lambasi | flat hat, thin tall stem
 - [ ] mira | mira-sarjli-masa-lambasi | dome hat, round base
 - [ ] mirach | mirach-sarjli-masa-lambasi | small mushroom hat, thin stem

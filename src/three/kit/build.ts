@@ -12,6 +12,7 @@ import {
   knurlMaterial,
   linenSet,
   linerLit,
+  opalMaterial,
   radiusAt,
   ringShadowed,
   woodMaterial,
@@ -19,7 +20,7 @@ import {
   type RingUniforms,
   type WashSpec,
 } from "./materials";
-import type { KitSpec, ProfilePoint } from "./specs";
+import type { Facets, KitSpec, ProfilePoint } from "./specs";
 
 const v2 = (r: number, y: number) => new THREE.Vector2(r * CM, y * CM);
 
@@ -68,6 +69,81 @@ function tapePoints(rAt: (y: number) => number, yEdge: number, len: number, t: n
 
 const lathe = (pts: THREE.Vector2[], seg = 160) => new THREE.LatheGeometry(pts, seg);
 const turned = (runs: THREE.Vector2[][], seg: number) => (runs.length === 1 ? lathe(runs[0], seg) : mergeGeometries(runs.map((run) => lathe(run, seg))));
+
+// One run turned as an N-sided polygon (see Facets): `a`, `b` are how far its start and end are the polygon rather
+// than the circle, blended along the run. Normals are flat across each side and smooth along the profile.
+function facetedRun(run: THREE.Vector2[], a: number, b: number, seg: number, f: Facets) {
+  const half = Math.PI / f.n;
+  const toCorner = f.across === "flats" ? 1 / Math.cos(half) : 1;
+  // a side is flat whatever its subdivision; a blend towards the circle needs the circle's
+  const m = a === 1 && b === 1 ? 1 : Math.ceil(seg / f.n);
+  const P = run.length;
+  const len = [0];
+  for (let i = 1; i < P; i++) len.push(len[i - 1] + run[i].distanceTo(run[i - 1]));
+  // the profile normal as LatheGeometry takes it: across the neighbours
+  const pn = run.map((_, i) => {
+    const d = run[Math.min(i + 1, P - 1)].clone().sub(run[Math.max(i - 1, 0)]);
+    return new THREE.Vector2(d.y, -d.x).normalize();
+  });
+  const pos: number[] = [];
+  const nor: number[] = [];
+  const uv: number[] = [];
+  const cols = f.n * (m + 1);
+  const n3 = new THREE.Vector3();
+  for (let k = 0; k < f.n; k++) {
+    const th = ((f.angle ?? 0) * Math.PI) / 180 + 2 * k * half;
+    for (let j = 0; j <= m; j++) {
+      const t = j / m;
+      const phi = th - half + 2 * half * t;
+      // on the side's chord, for a unit circumradius
+      const cx = ((1 - t) * Math.sin(th - half) + t * Math.sin(th + half)) * toCorner;
+      const cz = ((1 - t) * Math.cos(th - half) + t * Math.cos(th + half)) * toCorner;
+      for (let i = 0; i < P; i++) {
+        const s = a + (b - a) * (len[i] / len[P - 1]);
+        const r = run[i].x;
+        pos.push(r * (s * cx + (1 - s) * Math.sin(phi)), run[i].y, r * (s * cz + (1 - s) * Math.cos(phi)));
+        const hx = s * Math.sin(th) + (1 - s) * Math.sin(phi);
+        const hz = s * Math.cos(th) + (1 - s) * Math.cos(phi);
+        const hl = Math.hypot(hx, hz);
+        n3.set((pn[i].x * hx) / hl, pn[i].y, (pn[i].x * hz) / hl).normalize();
+        nor.push(n3.x, n3.y, n3.z);
+        uv.push((k * (m + 1) + j) / (cols - 1), i / (P - 1));
+      }
+    }
+  }
+  const idx: number[] = [];
+  for (let c = 0; c < cols - 1; c++) {
+    // the next side starts on the same corner, with its own normal: no quad between them
+    if (c % (m + 1) === m) continue;
+    for (let i = 0; i < P - 1; i++) {
+      const p = c * P + i;
+      const q = p + P;
+      idx.push(p, q, p + 1, q + 1, p + 1, q);
+    }
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+  geo.setAttribute("normal", new THREE.Float32BufferAttribute(nor, 3));
+  geo.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2));
+  geo.setIndex(idx);
+  return geo;
+}
+
+// The runs turned round, or N-sided where `f` says. A flat step takes its sides from its neighbours, so it closes
+// the gap between a faceted run and a round one (or the axis).
+function shaped(runs: THREE.Vector2[][], seg: number, f?: Facets) {
+  if (!f) return turned(runs, seg);
+  const lo = ((f.from ?? -Infinity) - 1e-4) * CM;
+  const hi = ((f.to ?? Infinity) + 1e-4) * CM;
+  const flat = runs.map((run) => run.every((p) => Math.abs(p.y - run[0].y) < 1e-9));
+  const inside = runs.map((run, i) => !flat[i] && run.every((p) => p.y >= lo && p.y <= hi));
+  return mergeGeometries(
+    runs.map((run, i) => {
+      const [a, b] = inside[i] ? [1, 1] : flat[i] ? [+!!inside[i - 1], +!!inside[i + 1]] : [0, 0];
+      return a || b ? facetedRun(run, a, b, seg, f) : lathe(run, seg);
+    })
+  );
+}
 
 // The viewer only talks to the lamp through this.
 export interface KitLamp {
@@ -142,7 +218,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   // a knurled grip is its own mesh: the runs between its two corners, in the same finish with the knurl's maps
   const k = wood || far ? undefined : b.knurl;
   const inGrip = (run: THREE.Vector2[]) => !!k && run.every((p) => p.y >= (k.from - 1e-4) * CM && p.y <= (k.to + 1e-4) * CM);
-  const bodyMesh = add(turned(k ? runs.filter((run) => !inGrip(run)) : runs, far ? 24 : 200), surface);
+  const bodyMesh = add(shaped(k ? runs.filter((run) => !inGrip(run)) : runs, far ? 24 : 200, b.facets), surface);
   bodyMesh.customDistanceMaterial = noRing;
   const probeHide = [bodyMesh];
   let grip: THREE.MeshPhysicalMaterial | null = null;
@@ -216,13 +292,14 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     const y0 = s.y;
     const y1 = s.y + s.h;
     const circ = Math.PI * (s.rBottom + s.rTop);
-    const outer = fabricMaterial({ color: "#eee4cc", transmission: s.transmission, ...linenSet([Math.round(circ / LINEN_TILE), s.h / LINEN_TILE]) });
-    const inner = fabricMaterial({ color: "#efe6d2", transmission: s.liner, inward: true });
+    const outer = s.opal
+      ? opalMaterial(s.transmission)
+      : fabricMaterial({ color: "#eee4cc", transmission: s.transmission, ...linenSet([Math.round(circ / LINEN_TILE), s.h / LINEN_TILE]) });
+    const inner = s.opal ? opalMaterial(s.liner, true) : fabricMaterial({ color: "#efe6d2", transmission: s.liner, inward: true });
     // the tape is folded over the rim: three layers of fabric, so lit from inside it reads as a band a little darker
     // and warmer than the wall (~0.7x in the photos), not grey. Same weave scale as the wall, across the U.
     const tapeLen = 2 * s.tape + Math.PI * (s.thickness / 2 + 0.08);
-    const tape = fabricMaterial({ color: "#e6d6b6", transmission: s.transmission * 0.6, ...linenSet([Math.round(circ / LINEN_TILE), tapeLen / LINEN_TILE]) });
-    fabrics.push(outer, inner, tape);
+    fabrics.push(outer, inner);
     // The fabric casts shadows from its outer faces only: daylight from outside is blocked, but the glow light inside
     // still gets out through the walls, as the light the fabric transmits does
     // (tape and cap, a few millimetres of fabric, cast none: lit from inside they glow too)
@@ -231,12 +308,22 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     const rAt = (y: number) => s.rBottom + ((s.rTop - s.rBottom) * (y - y0)) / s.h;
     add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, t2, false), round), outer);
     add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, -t2, true), round), inner, false);
-    add(lathe(tapePoints(rAt, y0, s.tape, s.thickness, false).filter((_, i, a) => !far || i % 3 === 0 || i === a.length - 1), round), tape, false);
-    add(lathe(tapePoints(rAt, y1, s.tape, s.thickness, true).filter((_, i, a) => !far || i % 3 === 0 || i === a.length - 1), round), tape, false);
+    // an opal wall is moulded: no tape, just its rims
+    if (s.opal) {
+      add(lathe([v2(s.rBottom - t2, y0), v2(s.rBottom + t2, y0)], round), outer, false);
+      add(lathe([v2(s.rTop + t2, y1), v2(s.rTop - t2, y1)], round), outer, false);
+    } else {
+      const tape = fabricMaterial({ color: "#e6d6b6", transmission: s.transmission * 0.6, ...linenSet([Math.round(circ / LINEN_TILE), tapeLen / LINEN_TILE]) });
+      fabrics.push(tape);
+      add(lathe(tapePoints(rAt, y0, s.tape, s.thickness, false).filter((_, i, a) => !far || i % 3 === 0 || i === a.length - 1), round), tape, false);
+      add(lathe(tapePoints(rAt, y1, s.tape, s.thickness, true).filter((_, i, a) => !far || i % 3 === 0 || i === a.length - 1), round), tape, false);
+    }
     if (s.cap) {
       const capT = s.thickness;
       const capGeo = lathe([v2(0, y1 - capT / 2), v2(s.rTop - 0.05, y1 - capT / 2), v2(s.rTop - 0.05, y1 + capT / 2), v2(0, y1 + capT / 2)], far ? 24 : 120);
-      const cap = fabricMaterial({ color: "#eee4cc", transmission: s.transmission * 1.6, ...linenSet([(2 * s.rTop) / LINEN_TILE, (2 * s.rTop) / LINEN_TILE]) });
+      const cap = s.opal
+        ? opalMaterial(s.transmission * 1.6)
+        : fabricMaterial({ color: "#eee4cc", transmission: s.transmission * 1.6, ...linenSet([(2 * s.rTop) / LINEN_TILE, (2 * s.rTop) / LINEN_TILE]) });
       fabrics.push(cap);
       add(capGeo, cap, false);
       // Planar UVs for the disc so the weave doesn't pinch towards the centre
@@ -255,11 +342,17 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   const emitters: KitLamp["emitters"] = [];
   if (hat) {
     const hatRuns = profileRuns(hat.profile, far ? 16 : 120);
-    probeHide.push(add(turned(hatRuns, round), surface));
+    probeHide.push(add(shaped(hatRuns, round, hat.facets), surface));
     const led = new THREE.MeshStandardMaterial({ color: "#f4efe6", roughness: 0.6, emissive: "#ffffff", emissiveIntensity: 0 });
     const disc = add(new THREE.RingGeometry(hat.led.rIn * CM, hat.led.rOut * CM, round).rotateX(Math.PI / 2), led, false);
     disc.position.y = hat.led.y * CM;
     emitters.push({ m: led, gain: 6 });
+    const o = hat.opal;
+    if (o) {
+      const band = opalMaterial(o.transmission);
+      fabrics.push(band);
+      add(turned([[v2(hat.led.rOut, o.y), v2(o.r, o.y)], [v2(o.r, o.y), v2(o.r, o.y + o.h)]], round), band, false);
+    }
   }
 
   /* light */

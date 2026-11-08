@@ -224,6 +224,8 @@ export interface ShadeSpec {
   thickness: number;
   tape: number;
   cap?: boolean;
+  // Opt-in: smooth white opal (milky acrylic) instead of linen: no weave, no tape, glossy; the same glow
+  opal?: boolean;
   transmission: number;
   liner: number;
 }
@@ -617,6 +619,17 @@ export function fabricMaterial(o: FabricOptions): FabricMaterial {
       );
   };
   m.customProgramCacheKey = () => "fabric" + (o.map ? 1 : 0);
+  return m;
+}
+
+// Opal (milky acrylic or glass): the fabric's glow from the lamp inside, without the weave, on a smooth, fairly glossy
+// white instead of matte cloth.
+export function opalMaterial(transmission: number, inward = false) {
+  const m = fabricMaterial({ color: "#f3f1ec", transmission, inward });
+  m.sheen = 0;
+  m.roughness = 0.3;
+  m.clearcoat = 0.6;
+  m.clearcoatRoughness = 0.08;
   return m;
 }
 

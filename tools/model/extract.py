@@ -40,6 +40,9 @@ GRAD_T = 4.0  # a blurred white-on-grey edge still clears this
 GRAD_FLOOR = 3.0  # an edge pixel must itself differ a little from the background, so the edge isn't grown outward
 EDGE_SPAN = 16  # px inward from the outermost lamp pixel sampled for the inside level, past any halo or ringing
 GAP = 8  # px of background a row walk may cross on one side only
+HALO_RATIO = 0.3
+HALO_MAX = 25.0  # ringing on the scraped cutouts stays under this; a lit white rim can be fainter still, see _trim_halo
+HALO_SPAN = 16  # rows
 DP_TOL = 0.03  # cm
 CORNER_DEG = 35.0
 CORNER_ARM = 0.15  # cm
@@ -195,11 +198,30 @@ def silhouette(img: np.ndarray) -> Silhouette:
     ends = np.r_[breaks, rows.size - 1]
     i = int(np.argmax(rows[ends] - rows[starts]))
     top, bottom = int(rows[starts[i]]), int(rows[ends[i]])
+    top, bottom = _trim_halo(d, axis, left, right, valid, top, 1), _trim_halo(d, axis, left, right, valid, bottom, -1)
     outside = np.ones(h, bool)
     outside[top : bottom + 1] = False
     left[outside | ~valid] = np.nan
     right[outside | ~valid] = np.nan
     return Silhouette(top, bottom, axis, left, right, steep_l, steep_r)
+
+
+def _trim_halo(d: np.ndarray, axis: float, left: np.ndarray, right: np.ndarray, valid: np.ndarray, end: int, step: int) -> int:
+    """First real lamp row from end (top, step +1, or bottom, step -1). Compression ringing leaves faint rows past a
+    dark part's crisp end: they are dropped when they are faint in absolute terms and next to the strongest row within
+    HALO_SPAN, and the part's own end rises sharply. A lit white top fades in over many rows and is kept whole."""
+
+    def peak(y: int) -> float:
+        return float(d[y, int(axis - left[y]) : int(axis + right[y]) + 1].max(initial=0)) if valid[y] else 0.0
+
+    def inner(y: int) -> float:
+        return max(peak(y + k * step) for k in range(1, HALO_SPAN + 1))
+
+    y = end
+    while abs(y - end) < HALO_SPAN and peak(y) < HALO_MAX and peak(y) < HALO_RATIO * inner(y):
+        y += step
+    sharp = peak(y + 2 * step) >= 0.5 * max(peak(y), inner(y))
+    return y if sharp else end
 
 
 def _smooth(r: np.ndarray, k: int = 5) -> np.ndarray:

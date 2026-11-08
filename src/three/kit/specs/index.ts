@@ -7,6 +7,29 @@ import type { Grain, ShadeSpec } from "../materials";
 // r, y; a third value marks a hard edge, where the smooth curve stops and a new one starts
 export type ProfilePoint = [r: number, y: number, corner?: 1];
 
+// Opt-in: N flat sides instead of round, over the profile's runs between `from` and `to` (heights in cm; the whole
+// part when left out). Each side is flat across and follows the profile up, rolls included, with a sharp edge between
+// sides. The profile's r is the half-width across the corners or across the flats. A flat step next to the range (a
+// top face, the bottom) morphs from the polygon to a circle across its width, so round parts meet it without a gap:
+// end the range on such a step, or on the axis. `angle` turns the polygon (degrees; 0 puts a flat facing the front).
+// The foot and the LED disc stay round: keep them inside the flats. Details on the faceted part sit on the circle.
+export interface Facets {
+  n: number;
+  across: "corners" | "flats";
+  from?: number;
+  to?: number;
+  angle?: number;
+}
+
+// Opt-in: a smooth white opal band (milky acrylic) under the hat, from `y` up `h` at radius `r`, closed underneath
+// up to the LED disc. Glossy white by day; at night it glows from the LED like a shade (`transmission` as there).
+export interface OpalBand {
+  y: number;
+  h: number;
+  r: number;
+  transmission: number;
+}
+
 export interface Detail {
   type: "button" | "usbc" | "hole";
   y: number;
@@ -27,6 +50,8 @@ export interface HatSpec {
     // metallic powder coat); paint scatters it by its own colour.
     wash?: { metal: number };
   };
+  facets?: Facets;
+  opal?: OpalBand;
 }
 
 export interface KitSpec {
@@ -40,6 +65,7 @@ export interface KitSpec {
     // across them (cm); `angle` the helices' angle to the axis (degrees, ±). `cross`: how deep the second helix's
     // grooves are, relative to the first's (default 1, a full diamond). Same finish as the body.
     knurl?: { from: number; to: number; pitch: number; angle: number; cross?: number };
+    facets?: Facets;
   };
   shade?: ShadeSpec;
   hat?: HatSpec;

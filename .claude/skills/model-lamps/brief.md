@@ -63,6 +63,7 @@ Lessons so far:
   - Also: `satine-nikel`, `krom`, `rose`, `siyah`, `beyaz`.
   - If no listed finish matches the photo, use the closest and say so; it becomes a question for the client.
 - **`hat.led.wash`.** It lights the stem/body under the hat at night and is opt-in. Turn it on only if the night photos show it.
+- **Opt-in parts (see `specs/index.ts`).** `body.knurl` knurled grip (Casares); `body.facets` / `hat.facets` N-sided parts (Melma, Ezop): count sides from face-width ratios and check edges are straight, polished round drums show reflection bands too; `shade.opal` / `hat.opal` smooth white opal diffuser (Karo, Baro), not the fabric shade.
 - **Scope.** Do not upload night images and do not link the product; the coordinator does that for the whole batch.
 - **Files.** Do not create files outside your spec and `tools/model/out/`.
 

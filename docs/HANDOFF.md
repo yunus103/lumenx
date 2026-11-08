@@ -8,7 +8,7 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** Strategy in `docs/PROJECT.md` ("Modelling strategy"): code-built kit, not Blender GLBs.
    - **How:** run `/model-lamps` (project skill, `.claude/skills/model-lamps/`): it takes the next batch (default 6) from its `queue.md`, models each lamp with its own agent, links them with night images, pushes, and tells Yunus what to check. The procedure, tools, brief and lessons live there; this file keeps the state.
-   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. 23 lamps are in the kit (table below), 70 in the queue, then the ~150 new products when the list arrives.
+   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. 31 lamps are in the kit (table below), 62 in the queue, then the ~150 new products when the list arrives.
    - **Permissions Yunus gave:** browser and visual tests, opening the datasheets, tool dependencies, subagents at Claude's discretion. For modelling batches: no questions, push at the end, kit changes allowed as long as the Defne guard proves approved lamps unchanged. Work on `main`.
    - **To fix along the way:** white paint looks a little pink in the evening; background copies in chrome look whitish by day; Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
@@ -27,7 +27,7 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 | sirius | sirius-sarjli-masa-lambasi | bronz | stem glow; Sirius garson needs its own spec |
 | vita | vita-sarjli-masa-lambasi | gold | |
 | nigora | nigora-sarjli-masa-lambasi | eskitme | |
-| baro | baro-sarjli-masa-lambasi | eskitme | white diffuser band missing (kit) |
+| baro | baro-sarjli-masa-lambasi | eskitme | white opal band under the hat via `hat.opal` (2026-11-08) |
 | capella | capella-sarjli-masa-lambasi | bronz | rebuilt from zero |
 | diya | diya-sarjli-masa-lambasi | gold | brushed hat missing (kit) |
 | fuga | fuga-sarjli-masa-lambasi | siyah | |
@@ -43,8 +43,16 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 | aro | aro-sarjli-masa-lambasi | gold | hat Ø120 from photo vs datasheet 115 (client) |
 | casares | casares-sarjli-masa-lambasi | krom | Premium body, fitted on `--photo f2c581d5`; knurled grip via `body.knurl` (kit, measured pitch 1.67 mm, 30°) |
 | esna | esna-sarjli-masa-lambasi | siyah | one photo only; the other six finishes unchecked |
+| evora | evora-sarjli-masa-lambasi | beyaz | `--under`; hat Ø127 photo vs 130 datasheet (client); chrome finial renders in body finish (kit); `evora-krom` photo looks like satin nickel |
+| geminga | geminga-sarjli-masa-lambasi | bronz | `--slug geminga-sarjli-masa-lambasi-1 --under` (upload by Sanity slug) |
+| heli | heli-sarjli-masa-lambasi | rose | `--under`; hat Ø131 and drawing ratio vs datasheet 120×280 (client) |
+| hint | hint-sarjli-masa-lambasi | siyah | photo is the Uzun variant, height 230 mm derived (datasheet 175 is Kısa; client); photo dark olive, between siyah and eskitme |
+| konra | konra-sarjli-masa-lambasi | beyaz | hat Ø111 from photo vs 130 datasheet (client); Mermer option not renderable (kit) |
+| ezop | ezop-sarjli-masa-lambasi | rose | `--cam-height 40`; octagonal drum (`body.facets`), real corners probably softer; hat reviewed and fixed |
+| karo | karo-sarjli-masa-lambasi | gold | `--cam-height 39.5`; opal drum (`shade.opal`); hat Ø186 photo vs 170 datasheet (client); upper hat cone up to ~7 mm narrower than the photo, judged by eye |
+| melma | melma-sarjli-masa-lambasi | rose | octagonal hat (`hat.facets`); rubber foot is a cylinder, the photo's tapers (kit) |
 
-Kit features added on demand: `body.knurl` (knurled grip, Casares). Open kit gaps: two-tone (Mensa, Bene, Nade), brushed finish (Diya), patina streaks (Gemini), white diffuser band (Baro). Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
+Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets`/`hat.facets` (N-sided parts, Melma, Ezop), `shade.opal` and `hat.opal` (opal diffuser, Karo, Baro). `extract.py` trims compression halo from silhouettes (scores of lamps fitted before shift up to ~2%). Open kit gaps: two-tone (Mensa, Bene, Nade), brushed finish (Diya), patina streaks (Gemini), metal finial on a painted hat (Evora), marble body (Konra Mermer), tapered rubber foot (Melma). Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
 
 Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Luminaires (`kare`, `altigen`) are separate.
 
@@ -159,7 +167,9 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
   - Premium stations: the text says "aynı anda dokuz lamba" on all sizes; capacity was taken from the name.
   - "Türkiye'de üretiliyor" in `siteSettings.footerText`.
   - Finish hex and RAL values are the demo's estimates, and the home materials section shows RAL codes too.
-  - Hat diameters where the photo and datasheet disagree: Aldebaran Ø222 (photo) vs 215, Aro Ø120 vs 115. The models follow the photos.
+  - Hat diameters where the photo and datasheet disagree: Aldebaran Ø222 (photo) vs 215, Aro Ø120 vs 115, Evora Ø127 vs 130, Heli Ø131 vs 120, Karo Ø186 vs 170, Konra Ø111 vs 130. The models follow the photos.
+  - Hint: the photo is the Uzun variant; its height (modelled 230 mm) is unknown, the datasheet is the Kısa (175 mm).
+  - Melma: is the only photo rose or bronz? The datasheet's bronze render is much darker.
 
 ## Pitfalls
 
