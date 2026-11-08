@@ -8,7 +8,7 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** Strategy in `docs/PROJECT.md` ("Modelling strategy"): code-built kit, not Blender GLBs.
    - **How:** run `/model-lamps` (project skill, `.claude/skills/model-lamps/`): it takes the next batch (default 6) from its `queue.md`, models each lamp with its own agent, links them with night images, pushes, and tells Yunus what to check. The procedure, tools, brief and lessons live there; this file keeps the state.
-   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. 19 lamps are in the kit (table below), 74 in the queue, then the ~150 new products when the list arrives.
+   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. 23 lamps are in the kit (table below), 70 in the queue, then the ~150 new products when the list arrives.
    - **Permissions Yunus gave:** browser and visual tests, opening the datasheets, tool dependencies, subagents at Claude's discretion. For modelling batches: no questions, push at the end, kit changes allowed as long as the Defne guard proves approved lamps unchanged. Work on `main`.
    - **To fix along the way:** white paint looks a little pink in the evening; background copies in chrome look whitish by day; Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
@@ -39,6 +39,12 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 | rena | rena-sarjli-masa-lambasi | siyah | photo pitched down; `--cam-height 44`, score 1.4 mm is perspective |
 | sani | sani-sarjli-masa-lambasi | satine-nikel | `--under` |
 | tole | tole-sarjli-masa-lambasi | gold | height 24.75 cm from photo proportions (datasheet 126 mm is wrong) |
+| aldebaran | aldebaran-sarjli-masa-lambasi | gold | hat Ø222 from photo vs datasheet 215 (client); brushed hat missing (kit, as Diya) |
+| aro | aro-sarjli-masa-lambasi | gold | hat Ø120 from photo vs datasheet 115 (client) |
+| casares | casares-sarjli-masa-lambasi | krom | Premium body, fitted on `--photo f2c581d5`; Ekonomik photos (rose, gold, siyah) show another shape (client); knurled grip renders smooth (kit) |
+| esna | esna-sarjli-masa-lambasi | siyah | one photo only; the other six finishes unchecked |
+
+Open kit gaps: two-tone (Mensa, Bene, Nade), brushed finish (Diya, Aldebaran), patina streaks (Gemini), white diffuser band (Baro), knurled grip texture (Casares). Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
 
 Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Luminaires (`kare`, `altigen`) are separate.
 
@@ -153,6 +159,8 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
   - Premium stations: the text says "aynı anda dokuz lamba" on all sizes; capacity was taken from the name.
   - "Türkiye'de üretiliyor" in `siteSettings.footerText`.
   - Finish hex and RAL values are the demo's estimates, and the home materials section shows RAL codes too.
+  - Hat diameters where the photo and datasheet disagree: Aldebaran Ø222 (photo) vs 215, Aro Ø120 vs 115. The models follow the photos.
+  - Casares: Ekonomik and Premium photos show different bodies (Ekonomik ones look AI-generated). The model is Premium; Sanity's rose, gold and siyah variant photos show the Ekonomik shape.
 
 ## Pitfalls
 

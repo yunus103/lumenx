@@ -5,10 +5,10 @@ Ordered: the next batch is the first unchecked rows. Format: `- [ ] key | Sanity
 Light Design slugs can differ from the Sanity slug (`-1`, `-ekonomik`); the coordinator resolves them from `source.url`.
 
 ## Metal, hat lamps (the kit's home ground)
-- [ ] aldebaran | aldebaran-sarjli-masa-lambasi | dome hat, bullet-shaped body
-- [ ] aro | aro-sarjli-masa-lambasi | cylinder hat, bell-shaped body
-- [ ] casares | casares-sarjli-masa-lambasi | flat disc hat, disc base
-- [ ] esna | esna-sarjli-masa-lambasi | mushroom hat flowing into the body
+- [x] aldebaran | aldebaran-sarjli-masa-lambasi | dome hat, bullet-shaped body
+- [x] aro | aro-sarjli-masa-lambasi | cylinder hat, bell-shaped body
+- [x] casares | casares-sarjli-masa-lambasi | flat disc hat, disc base
+- [x] esna | esna-sarjli-masa-lambasi | mushroom hat flowing into the body
 - [ ] evora | evora-sarjli-masa-lambasi | classic mushroom; its gold photo is warmer than the gold finish
 - [ ] ezop | ezop-sarjli-masa-lambasi | thin rod, small disc hat
 - [ ] geminga | geminga-sarjli-masa-lambasi | small cone hat, very thin stem

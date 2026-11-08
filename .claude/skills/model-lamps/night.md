@@ -38,7 +38,7 @@ for (const p of payloads) {
 
 Finally, check one product page:
 - Open http://localhost:3000/urun/<one sanity-slug> in your tab and front it with `mcp__Claude_Browser__tabs_select`. Background tabs don't paint.
-- Wait about 6 s, then confirm `document.querySelectorAll('canvas').length >= 1` and that there are no console errors.
+- Poll for up to 60 s (in calls under 40 s each) until `document.querySelectorAll('canvas').length >= 1`, and check there are no console errors. In dev the scene takes ~40 s, and it waits for a frame: if the pane is hidden, take a `computer` screenshot to make it paint.
 
 Close your tab.
 
