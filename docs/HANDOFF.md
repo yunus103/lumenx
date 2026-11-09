@@ -181,16 +181,30 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
 
 - Add `reference`, `referencesPage` and `legalPage` to the webhook filter in the Sanity dashboard (README is already updated), and check that `aboutPage`, `contactPage` and the others are there.
 - KVKK and cookie texts are templates and need a legal review.
-- Confirm with the client:
-  - Weight: Light Design lists "1 kg" on every product (shown as "Yaklaşık 1 kg").
-  - Garson Çağrı Butonu looks standalone but inherits the table-lamp spec table.
-  - Plastica: the name suggests plastic, the source says aluminium/sheet steel.
-  - Premium stations: the text says "aynı anda dokuz lamba" on all sizes; capacity was taken from the name.
-  - "Türkiye'de üretiliyor" in `siteSettings.footerText`.
-  - Finish hex and RAL values are the demo's estimates, and the home materials section shows RAL codes too.
-  - Hat diameters where the photo and datasheet disagree: Aldebaran Ø222 (photo) vs 215, Aro Ø120 vs 115, Evora Ø127 vs 130, Heli Ø131 vs 120, Karo Ø186 vs 170, Konra Ø111 vs 130. The models follow the photos.
-  - Hint: the photo is the Uzun variant; its height (modelled 230 mm) is unknown, the datasheet is the Kısa (175 mm).
-  - Melma: is the only photo rose or bronz? The datasheet's bronze render is much darker.
+- **Client questions** (the one list; Yunus asks them in one go. Every modelling batch adds its questions here; remove a line once answered):
+  - General:
+    - Weight: Light Design lists "1 kg" on every product (shown as "Yaklaşık 1 kg").
+    - Garson Çağrı Butonu looks standalone but inherits the table-lamp spec table.
+    - Plastica: the name suggests plastic, the source says aluminium/sheet steel.
+    - Premium stations: the text says "aynı anda dokuz lamba" on all sizes; capacity was taken from the name.
+    - "Türkiye'de üretiliyor" in `siteSettings.footerText`.
+    - Finish hex and RAL values are the demo's estimates, and the home materials section shows RAL codes too.
+    - Datasheets: most give "100mm Alt" for the base, which rarely matches the photo (Mona ~96, Mirach ~94, Mula 85, Neptun 91). Is it a template value? Real base diameters per product?
+  - Colours (photo shows a colour no listed finish matches, or a doubtful one; the model uses the nearest):
+    - Mira: glossy red-brown paint (modelled bronz).
+    - Mona: dark warm brown-grey satin paint (modelled eskitme).
+    - Pandora: warm brown satin paint (modelled eskitme).
+    - Hint: dark olive, between siyah and eskitme (modelled siyah).
+    - Mirach: darker, more mirror-like brass than our gold; is it gold?
+    - Melma: is the only photo rose or bronz? The datasheet's bronze render is much darker.
+    - Evora: the `evora-krom` photo looks like satin nickel; which is it?
+    - Mensa: photo is two-tone (brass stem, glossy taupe body); is that a standard option?
+  - Dimensions (photo vs datasheet; the models follow the photos):
+    - Hat diameters: Aldebaran Ø222 vs 215, Aro Ø120 vs 115, Evora Ø127 vs 130, Heli Ø131 vs 120, Karo Ø186 vs 170, Konra Ø111 vs 130, Merle Ø183 vs 175, Mira Ø113.5 vs 120, Mula Ø111 vs 120.
+    - Hint: the photo is the Uzun variant; its height (modelled 230 mm) is unknown, the datasheet is the Kısa (175 mm).
+    - Tole: datasheet height 126 mm; photo proportions give 247.5 mm.
+    - Mirach: what is the datasheet's "50mm"? Matches nothing on the lamp.
+    - Heli: drawing ratio disagrees with the datasheet's 120×280.
 
 ## Pitfalls
 

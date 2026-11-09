@@ -69,7 +69,7 @@ To add one, run one Opus agent: "Add `<feature>` to the kit (`src/three/kit/`), 
 
 ### 6. Record, commit, push
 
-- HANDOFF "Modelled lamps": a row per lamp (key, Sanity slug, finish, notes: flags, doubts, gaps). Update the lamp count in "Next up". Add new open items (kit gaps, client questions); remove what was solved.
+- HANDOFF "Modelled lamps": a row per lamp (key, Sanity slug, finish, notes: flags, doubts, gaps). Update the lamp count in "Next up". Add new open items (kit gaps); remove what was solved. Every client question (unmatched finish, photo vs datasheet size, unexplained datasheet value) also goes into the one "Client questions" list under "For Yunus or the client", in its group (colours, dimensions, general): Yunus asks them in one go.
 - `queue.md`: tick the done rows (`[x]`), keep notes that still matter for later lamps.
 - `npx tsc --noEmit`, then commit on `main` and push. Message: "Add <n> kit lamps: <Names>". End with the Co-Authored-By line.
 
