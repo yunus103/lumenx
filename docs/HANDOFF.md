@@ -8,7 +8,7 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** Strategy in `docs/PROJECT.md` ("Modelling strategy"): code-built kit, not Blender GLBs.
    - **How:** run `/model-lamps` (project skill, `.claude/skills/model-lamps/`): it takes the next batch (default 6) from its `queue.md`, models each lamp with its own agent, links them with night images, pushes, and tells Yunus what to check. The procedure, tools, brief and lessons live there; this file keeps the state.
-   - **Numbers (2026-11-08):** 104 products uploaded of about 250, deadline roughly the end of 2026. 31 lamps are in the kit (table below), 62 in the queue, then the ~150 new products when the list arrives.
+   - **Numbers (2026-11-09):** 104 products uploaded of about 250, deadline roughly the end of 2026. 37 lamps are in the kit (table below), 59 in the queue, then the ~150 new products when the list arrives.
    - **Permissions Yunus gave:** browser and visual tests, opening the datasheets, tool dependencies, subagents at Claude's discretion. For modelling batches: no questions, push at the end, kit changes allowed as long as the Defne guard proves approved lamps unchanged. Work on `main`.
    - **To fix along the way:** white paint looks a little pink in the evening; background copies in chrome look whitish by day; Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
@@ -51,8 +51,29 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 | ezop | ezop-sarjli-masa-lambasi | rose | `--cam-height 40`; octagonal drum (`body.facets`), real corners probably softer; hat reviewed and fixed |
 | karo | karo-sarjli-masa-lambasi | gold | `--cam-height 39.5`; opal drum (`shade.opal`); hat Ø186 photo vs 170 datasheet (client); upper hat cone up to ~7 mm narrower than the photo, judged by eye |
 | melma | melma-sarjli-masa-lambasi | rose | octagonal hat (`hat.facets`); rubber foot is a cylinder, the photo's tapers (kit) |
+| merle | merle-sarjli-masa-lambasi | siyah | `--cam-height 31.5`; white slot as `hat.opal` band, light exit guessed (no night photo); hat Ø183 photo vs 175 datasheet (client) |
+| mira | mira-sarjli-masa-lambasi | bronz | photo is glossy red-brown paint, no listed finish matches (client); hat Ø113.5 photo vs 120 datasheet (client) |
+| mirach | mirach-sarjli-masa-lambasi | gold | `--under`; photo brass darker/more mirror-like than gold; hat reads slightly bell-shaped vs the photo's hemisphere; datasheet "50mm" unexplained (client) |
+| mona | mona-sarjli-masa-lambasi | eskitme | photo is dark warm brown-grey satin paint, nearest listed is eskitme (client, like Pandora) |
+| mula | mula-sarjli-masa-lambasi | bronz | re-extracted `--y0 24 --split 8.6` to include the foot; hat Ø111 photo vs 120 datasheet |
+| neptun | neptun-sarjli-masa-lambasi | gold | base Ø91 photo vs 100 datasheet (client) |
 
 Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets`/`hat.facets` (N-sided parts, Melma, Ezop), `shade.opal` and `hat.opal` (opal diffuser, Karo, Baro). `extract.py` trims compression halo from silhouettes (scores of lamps fitted before shift up to ~2%). Open kit gaps: two-tone (Mensa, Bene, Nade), brushed finish (Diya), patina streaks (Gemini), metal finial on a painted hat (Evora), marble body (Konra Mermer), tapered rubber foot (Melma). Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
+
+**Yunus's feedback, to fix later (2026-11-09):**
+- **Geminga base top:** in the photo the drum's top is a plain dome that rounds over into the wall and the neck, no visible crease. Ours reads as a flat-topped drum with a concave, outward-flaring neck on it, and a fold line where they meet (visible in the 3/4 and day renders). The silhouette fit is fine (0.19 mm), so it's the 3D reading: soften the shoulder and the neck join into one convex dome.
+- **Konra texture:** the white body and hat show none of the product's texture. The real one is white with thin black hand-drawn marble veins over hat and body (Yunus's photo, 2026-11-09). Same gap as "marble body" below; needs a vein texture, not plain paint.
+
+**Product-specific details not yet in the kit** (kept as a list so they can become kit features if more lamps need them; rule: add to the kit when a lamp looks clearly wrong without it or it shows up on two lamps):
+
+| Missing | Lamp | What it shows now |
+| --- | --- | --- |
+| Chrome finial | Evora | finial in body colour, photo chrome |
+| Tapered rubber foot | Melma | straight cylinder, photo tapers down a few mm |
+| Marble body | Konra | Mermer option not renderable, only metal/paint |
+| Two-tone | Mensa, Bene, Nade (upcoming) | one colour |
+| Brushed surface | Diya | plain gloss |
+| Patina streaks | Gemini | plain eskitme |
 
 Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Luminaires (`kare`, `altigen`) are separate.
 

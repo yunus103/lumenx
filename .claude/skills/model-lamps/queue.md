@@ -17,12 +17,12 @@ Light Design slugs can differ from the Sanity slug (`-1`, `-ekonomik`); the coor
 - [x] karo | karo-sarjli-masa-lambasi | layered hat: flat disc on a cone
 - [x] konra | konra-sarjli-masa-lambasi | mushroom hat, long cone body
 - [x] melma | melma-sarjli-masa-lambasi | small cone hat, slender stem
-- [ ] merle | merle-sarjli-masa-lambasi | flat hat, thin tall stem
-- [ ] mira | mira-sarjli-masa-lambasi | dome hat, round base
-- [ ] mirach | mirach-sarjli-masa-lambasi | small mushroom hat, thin stem
-- [ ] mona | mona-sarjli-masa-lambasi | cylinder hat, truncated cone body
-- [ ] mula | mula-sarjli-masa-lambasi | wide dome hat, short body
-- [ ] neptun | neptun-sarjli-masa-lambasi | thin cone body, small pointed hat
+- [x] merle | merle-sarjli-masa-lambasi | flat hat, thin tall stem
+- [x] mira | mira-sarjli-masa-lambasi | dome hat, round base
+- [x] mirach | mirach-sarjli-masa-lambasi | small mushroom hat, thin stem
+- [x] mona | mona-sarjli-masa-lambasi | cylinder hat, truncated cone body
+- [x] mula | mula-sarjli-masa-lambasi | wide dome hat, short body
+- [x] neptun | neptun-sarjli-masa-lambasi | thin cone body, small pointed hat
 - [ ] orben | orben-sarjli-masa-lambasi | mushroom hat merging into a cone
 - [ ] oxford | oxford-sarjli-masa-lambasi | wide mushroom hat, sturdy body
 - [ ] polaris | polaris-sarjli-masa-lambasi | dome hat, thin stem, round base
