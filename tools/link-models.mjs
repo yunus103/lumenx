@@ -58,6 +58,10 @@ const LINKS = [
   { slug: "mona-sarjli-masa-lambasi", modelKey: "mona", shades: [] },
   { slug: "mula-sarjli-masa-lambasi", modelKey: "mula", shades: [] },
   { slug: "neptun-sarjli-masa-lambasi", modelKey: "neptun", shades: [] },
+  { slug: "orben-sarjli-masa-lambasi", modelKey: "orben", shades: [] },
+  { slug: "oxford-sarjli-masa-lambasi", modelKey: "oxford", shades: [] },
+  { slug: "polaris-sarjli-masa-lambasi", modelKey: "polaris", shades: [] },
+  { slug: "rigel-sarjli-masa-lambasi", modelKey: "rigel", shades: [] },
 ];
 
 const tx = client.transaction();

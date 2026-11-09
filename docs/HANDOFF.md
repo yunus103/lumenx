@@ -8,7 +8,7 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** Strategy in `docs/PROJECT.md` ("Modelling strategy"): code-built kit, not Blender GLBs.
    - **How:** run `/model-lamps` (project skill, `.claude/skills/model-lamps/`): it takes the next batch (default 6) from its `queue.md`, models each lamp with its own agent, links them with night images, pushes, and tells Yunus what to check. The procedure, tools, brief and lessons live there; this file keeps the state.
-   - **Numbers (2026-11-09):** 104 products uploaded of about 250, deadline roughly the end of 2026. 37 lamps are in the kit (table below), 59 in the queue, then the ~150 new products when the list arrives.
+   - **Numbers (2026-11-09):** 104 products uploaded of about 250, deadline roughly the end of 2026. 41 lamps are in the kit (table below), 55 in the queue, then the ~150 new products when the list arrives.
    - **Permissions Yunus gave:** browser and visual tests, opening the datasheets, tool dependencies, subagents at Claude's discretion. For modelling batches: no questions, push at the end, kit changes allowed as long as the Defne guard proves approved lamps unchanged. Work on `main`.
    - **To fix along the way:** white paint looks a little pink in the evening; background copies in chrome look whitish by day; Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
@@ -57,8 +57,12 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 | mona | mona-sarjli-masa-lambasi | eskitme | photo is dark warm brown-grey satin paint, nearest listed is eskitme (client, like Pandora) |
 | mula | mula-sarjli-masa-lambasi | bronz | re-extracted `--y0 24 --split 8.6` to include the foot; hat Ø111 photo vs 120 datasheet |
 | neptun | neptun-sarjli-masa-lambasi | gold | base Ø91 photo vs 100 datasheet (client) |
+| orben | orben-sarjli-masa-lambasi | beyaz | one photo only; white hat reads pinkish in the evening (known white-paint issue) |
+| oxford | oxford-sarjli-masa-lambasi | beyaz | `--photo a4adac08 --cam-height 15`; white photo looks retouched (straight hat edge vs elliptic foot), mean 0.74 mm judged by eye; Mermer variant looks like another body (client), not renderable (marble kit gap) |
+| polaris | polaris-sarjli-masa-lambasi | siyah | `--under`; photo is dark bottle-green satin, no listed finish matches (client); hat is a cone, not a dome |
+| rigel | rigel-sarjli-masa-lambasi | gold | `--photo 9f2b781a` (gold photo; default is `gumus`); hat is a cone, not a dome |
 
-Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets`/`hat.facets` (N-sided parts, Melma, Ezop), `shade.opal` and `hat.opal` (opal diffuser, Karo, Baro). `extract.py` trims compression halo from silhouettes (scores of lamps fitted before shift up to ~2%). Open kit gaps: two-tone (Mensa, Bene, Nade), brushed finish (Diya), patina streaks (Gemini), metal finial on a painted hat (Evora), marble body (Konra Mermer), tapered rubber foot (Melma). Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
+Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets`/`hat.facets` (N-sided parts, Melma, Ezop), `shade.opal` and `hat.opal` (opal diffuser, Karo, Baro). `extract.py` trims compression halo from silhouettes (scores of lamps fitted before shift up to ~2%). Open kit gaps: two-tone (Mensa, Bene, Nade), brushed finish (Diya), patina streaks (Gemini), metal finial on a painted hat (Evora), marble body (Konra Mermer, Oxford Mermer: now on two lamps, add with Yunus's Konra texture fix), tapered rubber foot (Melma). Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
 
 **Yunus's feedback, to fix later (2026-11-09):**
 - **Geminga base top:** in the photo the drum's top is a plain dome that rounds over into the wall and the neck, no visible crease. Ours reads as a flat-topped drum with a concave, outward-flaring neck on it, and a fold line where they meet (visible in the 3/4 and day renders). The silhouette fit is fine (0.19 mm), so it's the 3D reading: soften the shoulder and the neck join into one convex dome.
@@ -70,7 +74,7 @@ Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets
 | --- | --- | --- |
 | Chrome finial | Evora | finial in body colour, photo chrome |
 | Tapered rubber foot | Melma | straight cylinder, photo tapers down a few mm |
-| Marble body | Konra | Mermer option not renderable, only metal/paint |
+| Marble body | Konra, Oxford | Mermer option not renderable, only metal/paint |
 | Two-tone | Mensa, Bene, Nade (upcoming) | one colour |
 | Brushed surface | Diya | plain gloss |
 | Patina streaks | Gemini | plain eskitme |
@@ -198,12 +202,15 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
     - Mirach: darker, more mirror-like brass than our gold; is it gold?
     - Melma: is the only photo rose or bronz? The datasheet's bronze render is much darker.
     - Evora: the `evora-krom` photo looks like satin nickel; which is it?
+    - Polaris: dark bottle-green satin paint (modelled siyah).
+    - Rigel: the `gumus` photo looks like satin nickel; is gümüş = satine-nikel?
+    - Oxford: the Mermer photo has a thicker hat and a wider neck than the white one; is it the same body?
     - Mensa: photo is two-tone (brass stem, glossy taupe body); is that a standard option?
   - Dimensions (photo vs datasheet; the models follow the photos):
     - Hat diameters: Aldebaran Ø222 vs 215, Aro Ø120 vs 115, Evora Ø127 vs 130, Heli Ø131 vs 120, Karo Ø186 vs 170, Konra Ø111 vs 130, Merle Ø183 vs 175, Mira Ø113.5 vs 120, Mula Ø111 vs 120.
     - Hint: the photo is the Uzun variant; its height (modelled 230 mm) is unknown, the datasheet is the Kısa (175 mm).
     - Tole: datasheet height 126 mm; photo proportions give 247.5 mm.
-    - Mirach: what is the datasheet's "50mm"? Matches nothing on the lamp.
+    - Mirach and Polaris: what is the datasheet's "50mm"? Matches nothing on either lamp.
     - Heli: drawing ratio disagrees with the datasheet's 120×280.
 
 ## Pitfalls

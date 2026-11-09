@@ -23,10 +23,10 @@ Light Design slugs can differ from the Sanity slug (`-1`, `-ekonomik`); the coor
 - [x] mona | mona-sarjli-masa-lambasi | cylinder hat, truncated cone body
 - [x] mula | mula-sarjli-masa-lambasi | wide dome hat, short body
 - [x] neptun | neptun-sarjli-masa-lambasi | thin cone body, small pointed hat
-- [ ] orben | orben-sarjli-masa-lambasi | mushroom hat merging into a cone
-- [ ] oxford | oxford-sarjli-masa-lambasi | wide mushroom hat, sturdy body
-- [ ] polaris | polaris-sarjli-masa-lambasi | dome hat, thin stem, round base
-- [ ] rigel | rigel-sarjli-masa-lambasi | small dome hat; lists `gumus`, which has no 3D value yet (falls back by type)
+- [x] orben | orben-sarjli-masa-lambasi | mushroom hat merging into a cone
+- [x] oxford | oxford-sarjli-masa-lambasi | wide mushroom hat, sturdy body
+- [x] polaris | polaris-sarjli-masa-lambasi | dome hat, thin stem, round base
+- [x] rigel | rigel-sarjli-masa-lambasi | small dome hat; lists `gumus`, which has no 3D value yet (falls back by type)
 - [ ] suma | suma-sarjli-masa-lambasi | mushroom into cone; datasheet is image-only
 - [ ] toledo | toledo-sarjli-masa-lambasi | dome hat, cylinder body; lists `gri`
 - [ ] torino | torino-sarjli-masa-lambasi | wide dome, thick cylinder body
