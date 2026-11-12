@@ -30,6 +30,8 @@ const diya: KitSpec = {
       [0.6, 13.23], [0.5, 13.36], [0.33, 13.46], [0, 13.51],
     ],
     led: { y: 9.79, rIn: 0.98, rOut: 4.56 },
+    // the gold photo shows fine horizontal brushing on the hat; the base is polished
+    brush: 0.5,
   },
   light: { kelvin: 2700, lumen: 550, y: 9.79, dimmer: [0.4, 0.7, 1], body: 0.03, bounce: 200 },
 };

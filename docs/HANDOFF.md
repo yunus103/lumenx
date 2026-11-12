@@ -1,4 +1,4 @@
-# HANDOFF: LUMENX site (updated 2026-11-07, seventh session)
+# HANDOFF: LUMENX site (updated 2026-11-13, ninth session)
 
 Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the state of the work and what comes next.
 
@@ -8,9 +8,9 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** Strategy in `docs/PROJECT.md` ("Modelling strategy"): code-built kit, not Blender GLBs.
    - **How:** run `/model-lamps` (project skill, `.claude/skills/model-lamps/`): it takes the next batch (default 6) from its `queue.md`, models each lamp with its own agent, links them with night images, pushes, and tells Yunus what to check. The procedure, tools, brief and lessons live there; this file keeps the state.
-   - **Numbers (2026-11-09):** 104 products uploaded of about 250, deadline roughly the end of 2026. 41 lamps are in the kit (table below), 55 in the queue, then the ~150 new products when the list arrives.
+   - **Numbers (2026-11-13):** 104 products uploaded of about 250, deadline roughly the end of 2026. 53 lamps are in the kit (table below), 43 in the queue (3 of them lanterns, which need their own parts), then the ~150 new products when the list arrives.
    - **Permissions Yunus gave:** browser and visual tests, opening the datasheets, tool dependencies, subagents at Claude's discretion. For modelling batches: no questions, push at the end, kit changes allowed as long as the Defne guard proves approved lamps unchanged. Work on `main`.
-   - **To fix along the way:** white paint looks a little pink in the evening; background copies in chrome look whitish by day; Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
+   - **To fix along the way:** white paint looks a little pink in the evening (now on Orben, Verona, Suma, Bene: worth a look); background copies in chrome look whitish by day; Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
 5. **Vercel:** Yunus was going to create the project on 2026-11-05; the result isn't known here. When a deployment exists, check that `/api/usd-rate` returns a rate and `/dev-render` returns 404.
 
@@ -61,8 +61,20 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 | oxford | oxford-sarjli-masa-lambasi | beyaz | `--photo a4adac08 --cam-height 15`; white photo looks retouched (straight hat edge vs elliptic foot), mean 0.74 mm judged by eye; Mermer variant looks like another body (client), not renderable (marble kit gap) |
 | polaris | polaris-sarjli-masa-lambasi | siyah | `--under`; photo is dark bottle-green satin, no listed finish matches (client); hat is a cone, not a dome |
 | rigel | rigel-sarjli-masa-lambasi | gold | `--photo 9f2b781a` (gold photo; default is `gumus`); hat is a cone, not a dome |
+| suma | suma-sarjli-masa-lambasi | beyaz | `--cam-height 18.5`; re-extracted `--y0 18`; the studio photo's base sits 2.5 mm off the hat's axis, so the score (0.58 mm) overstates the error; rounded foot (`foot.round`) |
+| toledo | toledo-sarjli-masa-lambasi | siyah | `--photo 4a6d08a1 --cam-height 21.5`; a tall bell, not a dome on a cylinder; five finish photos are ~3.5% squatter (resized?); the `toledo-siyah` photo is the grey (`gri`, no 3D value yet) |
+| torino | torino-sarjli-masa-lambasi | gold | one photo; dome on a cone over a drum; brushed (`brush 0.5`); hat Ø125.5 vs datasheet 135 (client) |
+| vela | vela-sarjli-masa-lambasi | eskitme | one photo; brushed antique brass via `antique` (eskitme stays paint elsewhere); hat Ø132 vs 120 (client) |
+| verona | verona-sarjli-masa-lambasi | beyaz | `--cam-height 13.7`; fit photo is a sage-green render (no such finish); chrome and white touch key (button `ring`/`centre`); its lifestyle photos are Flos Bellhop; hat Ø141 vs 120 (client) |
+| zamora | zamora-sarjli-masa-lambasi | satine-nikel | `--slug zamora-sarjli-masa-lambasi-1 --photo c3233e52 --cam-height 23.5` (upload by Sanity slug); chrome ball finial (`hat.fixed krom`); LED under the hat guessed, no night photo; kirmizi, fistik-yesil, gokyuzu-mavisi, krem fall back to swatch paint |
+| bene | bene-sarjli-masa-lambasi | gold | `--cam-height 10`; glossy white dome as `hat.fixed beyaz rough 0.06`; the sheet's 3.1 mm is white-on-white (0.11 mm against the datasheet cover); only a gold photo, so the white dome on other finishes is unconfirmed (client) |
+| nade | nade-sarjli-masa-lambasi | siyah | `--cam-height 32`; smooth opal bowl (`hat.opal` profile), the queue's "steps" were JPEG blocks; the sheet's 1.0 mm is white-on-white (0.16 mm on the datasheet's grey copy) |
+| bella | bella-sarjli-masa-lambasi | siyah | `--cam-height 47.5`; re-extracted `--height 39 --y0 36`; max 4.5 mm is an extractor notch; the white hat interior in the night photo isn't renderable (kit gap) |
+| carina | carina-sarjli-masa-lambasi | gold | opal bell (`shade.profile`), finial follows the finish (`topButton.finish body`, `shape`); alabaster veining missing (texture gap, like Konra); bell Ø~107 (gold photos) vs ~100 (others, datasheet) (client) |
+| furud | furud-sarjli-masa-lambasi | rose | `--cam-height 48`; re-extracted `--height 34`; clear glass tube (`glass`) with an opal candle (`opal`); night look guessed (no night photo); the score band at 7.5–12.5 cm is the tool missing the faint glass edge |
+| kuma | kuma-sarjli-masa-lambasi | rose | `--cam-height 28.5`; re-extracted `--height 30 --image c1766ff2 --y0 46`; brushed; the radial highlight on the lid's top isn't renderable; hat Ø115 vs 130 (client) |
 
-Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets`/`hat.facets` (N-sided parts, Melma, Ezop), `shade.opal` and `hat.opal` (opal diffuser, Karo, Baro). `extract.py` trims compression halo from silhouettes (scores of lamps fitted before shift up to ~2%). Open kit gaps: two-tone (Mensa, Bene, Nade), brushed finish (Diya), patina streaks (Gemini), metal finial on a painted hat (Evora), marble body (Konra Mermer, Oxford Mermer: now on two lamps, add with Yunus's Konra texture fix), tapered rubber foot (Melma). Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
+Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets`/`hat.facets` (N-sided parts, Melma, Ezop), `shade.opal` and `hat.opal` (opal diffuser, Karo, Baro). `extract.py` trims compression halo from silhouettes (scores of lamps fitted before shift up to ~2%). Added 2026-11-13, all opt-in, the Defne guard passed each time: `body.fixed`/`hat.fixed` (zones in a fixed finish, optional `rough`; Zamora and Evora finials, Bene's dome), button `ring`/`centre` (Verona), `foot.rBottom`/`round` (Suma, Melma, Bella), `shade.profile` and `hat.opal.profile` (opal parts of any shape; Carina, Nade), top-level `opal` and `glass` (Furud), `topButton.finish`/`shape` (Carina), `body.brush`/`hat.brush` (Torino, Diya, Kuma, Bene) and `antique` (brushed antique brass for one finish; Vela, Gemini). How to use them is in the model-lamps brief. Open kit gaps: the table below. Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
 
 **Yunus's feedback, to fix later (2026-11-09):**
 - **Geminga base top:** in the photo the drum's top is a plain dome that rounds over into the wall and the neck, no visible crease. Ours reads as a flat-topped drum with a concave, outward-flaring neck on it, and a fold line where they meet (visible in the 3/4 and day renders). The silhouette fit is fine (0.19 mm), so it's the 3D reading: soften the shoulder and the neck join into one convex dome.
@@ -72,12 +84,11 @@ Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets
 
 | Missing | Lamp | What it shows now |
 | --- | --- | --- |
-| Chrome finial | Evora | finial in body colour, photo chrome |
-| Tapered rubber foot | Melma | straight cylinder, photo tapers down a few mm |
-| Marble body | Konra, Oxford | Mermer option not renderable, only metal/paint |
-| Two-tone | Mensa, Bene, Nade (upcoming) | one colour |
-| Brushed surface | Diya | plain gloss |
-| Patina streaks | Gemini | plain eskitme |
+| Marble / alabaster veining | Konra, Oxford, Carina | plain paint or plain opal; now on three lamps, the next texture job (with Yunus's Konra feedback) |
+| Two-tone stem | Mensa | one colour; `body.fixed` can do it once the client confirms the brass stem |
+| White hat interior | Bella | the hat's inside is one finish; the night photo shows it cream |
+| Radial highlight on spun flat discs | Kuma | the lid top reads plain (needs anisotropy, which was ruled out) |
+| Ribbed clear glass | Dulcet, Mariner, Regulus Cam (upcoming) | `glass` is smooth |
 
 Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Luminaires (`kare`, `altigen`) are separate.
 
@@ -88,10 +99,10 @@ Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Lumin
 - **Kit:** `hat.led.wash` (opt-in) lights the body under the hat at night (Mimosa, Sirius). A powder-coat texture was tried and reverted: invisible at a scale that doesn't shimmer, hammered-looking above it.
 - **Revalidate locally** with a signed body: see `.claude/skills/model-lamps/night.md`.
 - **Open, next:**
-  1. **Kit gaps, add when a lamp needs them:** white diffuser band under a hat (Baro), brushed hat (Diya), patina streaks (Gemini), powder grit.
+  1. **Kit gaps, add when a lamp needs them:** the table under "Modelled lamps"; powder grit.
   2. **Finish questions for the client:** Pandora's warm brown paint and Mensa's glossy taupe aren't any listed finish; the datasheet's Bronz swatch is dark brown while the bronz photos show copper-bronze metal.
-  3. **Kit gap seen in batch 2:** two-tone lamps (Mensa: brass stem on a painted body).
-  4. **Sirius garson** has a different shape (a call-button cap, a deeper dome, a convex collar) and needs its own spec. Its top would need `topButton` on hat lamps.
+  3. **Sirius garson** has a different shape (a call-button cap, a deeper dome, a convex collar) and needs its own spec. Its top would need `topButton` on hat lamps.
+  4. **`gri` has no 3D value** (Toledo, Bilham): it falls back to its swatch `#8B8C88` as paint; the Toledo grey photo is warmer. Calibrate it when a grey lamp is reviewed.
 
 ## Where things stand
 
@@ -193,7 +204,9 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
     - Premium stations: the text says "aynı anda dokuz lamba" on all sizes; capacity was taken from the name.
     - "Türkiye'de üretiliyor" in `siteSettings.footerText`.
     - Finish hex and RAL values are the demo's estimates, and the home materials section shows RAL codes too.
-    - Datasheets: most give "100mm Alt" for the base, which rarely matches the photo (Mona ~96, Mirach ~94, Mula 85, Neptun 91). Is it a template value? Real base diameters per product?
+    - Datasheets: most give "100mm Alt" for the base, which rarely matches the photo (Mona ~96, Mirach ~94, Mula 85, Neptun 91, Bene ~78, Vela 110, Furud ~121). Is it a template value? Real base diameters per product?
+    - Photos: Verona's four lifestyle photos on Light Design are the Flos Bellhop (another brand's product). Several photo file names don't match their colour (Toledo, Carina; Kuma's eskitme variant is the rose photo).
+    - Lanterns: Azha, Bilham and Enif are frame lanterns with a candle; they need their own parts and stay in photo mode for now.
   - Colours (photo shows a colour no listed finish matches, or a doubtful one; the model uses the nearest):
     - Mira: glossy red-brown paint (modelled bronz).
     - Mona: dark warm brown-grey satin paint (modelled eskitme).
@@ -206,8 +219,19 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
     - Rigel: the `gumus` photo looks like satin nickel; is gümüş = satine-nikel?
     - Oxford: the Mermer photo has a thicker hat and a wider neck than the white one; is it the same body?
     - Mensa: photo is two-tone (brass stem, glossy taupe body); is that a standard option?
+    - Verona: the main photo is sage green; is there a green finish? (modelled beyaz, which the other photos show)
+    - Vela: the photo is brushed antique brass; is that this lamp's "eskitme"? (modelled so)
+    - Bene: does the dome stay white on every finish, and is it painted metal or opal (an opal dome would glow at night)?
+    - Nade: do the other finishes keep the white bowl?
+    - Evora: the chrome finial is modelled on every finish, but the gold photo shows a gold one.
+    - Zamora: the krem photo has a thinner stem; is it the same model?
+    - Toledo: the chrome photo shows a different stem fitting at the base (a nut and a cone) from the other six.
   - Dimensions (photo vs datasheet; the models follow the photos):
-    - Hat diameters: Aldebaran Ø222 vs 215, Aro Ø120 vs 115, Evora Ø127 vs 130, Heli Ø131 vs 120, Karo Ø186 vs 170, Konra Ø111 vs 130, Merle Ø183 vs 175, Mira Ø113.5 vs 120, Mula Ø111 vs 120.
+    - Hat diameters: Aldebaran Ø222 vs 215, Aro Ø120 vs 115, Evora Ø127 vs 130, Heli Ø131 vs 120, Karo Ø186 vs 170, Konra Ø111 vs 130, Merle Ø183 vs 175, Mira Ø113.5 vs 120, Mula Ø111 vs 120, Verona Ø141 vs 120, Zamora Ø138 vs 130, Torino Ø125.5 vs 135, Vela Ø132 vs 120, Kuma Ø115 vs 130, Bene Ø106 vs 115, Bella Ø215 vs 200 (top Ø130 vs 120).
+    - Torino: is the 160 mm height with or without the knob? Is the black base a separate rubber foot?
+    - Carina: bell Ø~107 (gold photos) or ~100 (chrome, rose, satin photos and datasheet)? The datasheet shows an older version.
+    - Furud: datasheet Ø40 tube and Ø110 base vs ~35 and ~121 in the photos and drawing.
+    - Bella: LED housing under the hat Ø116 in the night photo vs ~60 in the drawing.
     - Hint: the photo is the Uzun variant; its height (modelled 230 mm) is unknown, the datasheet is the Kısa (175 mm).
     - Tole: datasheet height 126 mm; photo proportions give 247.5 mm.
     - Mirach and Polaris: what is the datasheet's "50mm"? Matches nothing on either lamp.

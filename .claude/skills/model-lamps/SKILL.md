@@ -25,7 +25,8 @@ State lives in `docs/HANDOFF.md`, section "Modelled lamps" (the table of finishe
 
 ### 1. Prepare (you, a few minutes)
 
-- Check the dev server: `curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/dev-render` must be 200; otherwise `preview_start` with name `dev` and wait.
+- Check the dev server: `curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/dev-render` must be 200; otherwise `preview_start` with name `dev` and wait. A redirect to `/login` means another project holds port 3000 (Yunus's own server: never stop it): start LUMENX on another port (a temporary `launch.json` entry with `npm run dev -- -p 3100`, reverted before the commit) and tell every agent the port.
+- Look at each lamp's overlay first: frame lanterns and other non-turned lamps can't be kit lamps; move them to their own queue group and take the next lamps instead.
 - For each lamp, in one Sanity query (client setup as in `tools/link-models.mjs`, run with `node --env-file=.env.local`): the Sanity slug, `finishes[]->slug.current`, `source.url` (the Light Design page; its slug can differ, e.g. `-1` or `-ekonomik`), `modelKey` (must be empty unless rebuilding).
 - The profile: `tools/model/out/<lightdesign-slug>.json`. If missing, run `python tools/model/extract.py <lightdesign-slug> --height <cm>` with the height from `tools/data/datasheets.json`; the modeller can redo it.
 - Register every key as `kit` in `src/three/models.ts` yourself (the modellers must not touch it; parallel edits collide).
@@ -87,3 +88,5 @@ Finish the stage you are in, then commit what is complete: lamps with a fitted s
 ## Measured so far (2026-11-08)
 
 Batch of 6: modellers 6–10 min and 120–147k tokens each in parallel; linking and night images one Sonnet agent, about 8 min and 100k; the whole batch about 30 min and 1M tokens.
+
+Batch of 12 with extra care (2026-11-13, all photos, magnified crops): modellers 19–40 min and 235–330k tokens each; three kit agents (fixed zones, foot, opal profiles; brushing and antique brass; glass and finials) 21–36 min and 230–350k each; the whole night about 3 h and 5.5M tokens.

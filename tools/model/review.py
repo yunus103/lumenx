@@ -107,16 +107,45 @@ def faceted(outline: np.ndarray, f: dict | None) -> np.ndarray:
     return out
 
 
+def foot(f: dict) -> np.ndarray:
+    """The rubber foot's outline: a plain one as a box, a tapered or rounded one as footGeometry in build.ts."""
+    r, h = f["r"], f["h"]
+    if "rBottom" not in f and not f.get("round"):
+        return np.array([[0, 0], [r, 0], [r, h], [0, h]], float)
+    rb, rd = f.get("rBottom", r * 0.97), f.get("round", 0)
+    wx, wy = (r - rb) / math.hypot(r - rb, h), h / math.hypot(r - rb, h)
+    t = rd / math.tan(math.acos(-wx) / 2)
+    end = math.atan2(wy * t - rd, t + wx * t)
+    a = -math.pi / 2 + (end + math.pi / 2) * np.linspace(0, 1, 9)
+    edge = np.stack([rb - t + rd * np.cos(a), rd + rd * np.sin(a)], 1) if rd > 0 else np.array([[rb, 0]])
+    return np.concatenate([[[0, 0]], edge, [[r, h], [0, h]]]).astype(float)
+
+
+def top_button(tb: dict, yb: float) -> np.ndarray:
+    """The top button's outline on a part ending at yb: its `shape` (units of r and h) or the default dome."""
+    shape = tb.get("shape") or [[0, 0], [1, 0], [1, 0.2], [0.9, 0.6], [0.55, 0.92], [0, 1]]
+    pts = np.array([[p[0] * tb["r"], yb + p[1] * tb["h"]] for p in shape], float)
+    return turned([[*q, *p[2:]] for q, p in zip(pts.tolist(), shape)]) if tb.get("shape") else pts
+
+
 def parts(spec: dict) -> list[np.ndarray]:
     """(r, y) outlines of every turned part, in cm, as build.ts makes them."""
     out = [faceted(turned(spec["body"]["profile"]), spec["body"].get("facets"))]
-    f = spec["body"]["foot"]
-    out.append(np.array([[0, 0], [f["r"], 0], [f["r"], f["h"]], [0, f["h"]]], float))
+    out.append(foot(spec["body"]["foot"]))
     if hat := spec.get("hat"):
         out.append(faceted(turned(hat["profile"]), hat.get("facets")))
-        if o := hat.get("opal"):
+        if (o := hat.get("opal")) and "profile" in o:
+            out.append(turned(o["profile"]))
+        elif o:
             out.append(np.array([[0, o["y"]], [o["r"], o["y"]], [o["r"], o["y"] + o["h"]], [0, o["y"] + o["h"]]], float))
-    if s := spec.get("shade"):
+    for own in ("opal", "glass"):  # a lamp's own opal part, clear glass (its outer surface)
+        if p := spec.get(own):
+            out.append(turned(p["profile"]))
+    if (s := spec.get("shade")) and "profile" in s:
+        out.append(turned(s["profile"]))
+        if tb := spec.get("topButton"):
+            out.append(top_button(tb, max(p[1] for p in s["profile"])))
+    elif s:
         y0, y1, t2 = s["y"], s["y"] + s["h"], s["thickness"] / 2
         pad, tape = (t2, 0) if s.get("opal") else (t2 + 0.08, s["tape"])  # the tape folded over each rim
         r_at = lambda y: s["rBottom"] + (s["rTop"] - s["rBottom"]) * (y - y0) / s["h"]  # noqa: E731
@@ -125,8 +154,7 @@ def parts(spec: dict) -> list[np.ndarray]:
             [r_at(y0 + tape) + t2, y0 + tape], [r_at(y0 + tape) + pad, y0 + tape], [r_at(y0) + pad, y0 - pad], [0, y0 - pad],
         ]))
         if tb := spec.get("topButton"):
-            yb, r, h = y1 + t2, tb["r"], tb["h"]
-            out.append(np.array([[0, yb], [r, yb], [r, yb + h * 0.2], [r * 0.9, yb + h * 0.6], [r * 0.55, yb + h * 0.92], [0, yb + h]]))
+            out.append(top_button(tb, y1 + t2))
     return out
 
 

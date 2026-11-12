@@ -62,6 +62,18 @@ const LINKS = [
   { slug: "oxford-sarjli-masa-lambasi", modelKey: "oxford", shades: [] },
   { slug: "polaris-sarjli-masa-lambasi", modelKey: "polaris", shades: [] },
   { slug: "rigel-sarjli-masa-lambasi", modelKey: "rigel", shades: [] },
+  { slug: "suma-sarjli-masa-lambasi", modelKey: "suma", shades: [] },
+  { slug: "toledo-sarjli-masa-lambasi", modelKey: "toledo", shades: [] },
+  { slug: "torino-sarjli-masa-lambasi", modelKey: "torino", shades: [] },
+  { slug: "vela-sarjli-masa-lambasi", modelKey: "vela", shades: [] },
+  { slug: "verona-sarjli-masa-lambasi", modelKey: "verona", shades: [] },
+  { slug: "zamora-sarjli-masa-lambasi", modelKey: "zamora", shades: [] },
+  { slug: "bene-sarjli-masa-lambasi", modelKey: "bene", shades: [] },
+  { slug: "nade-sarjli-masa-lambasi", modelKey: "nade", shades: [] },
+  { slug: "bella-sarjli-masa-lambasi", modelKey: "bella", shades: [] },
+  { slug: "carina-sarjli-masa-lambasi", modelKey: "carina", shades: [] },
+  { slug: "furud-sarjli-masa-lambasi", modelKey: "furud", shades: [] },
+  { slug: "kuma-sarjli-masa-lambasi", modelKey: "kuma", shades: [] },
 ];
 
 const tx = client.transaction();

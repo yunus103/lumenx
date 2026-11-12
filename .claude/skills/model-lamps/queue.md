@@ -27,21 +27,18 @@ Light Design slugs can differ from the Sanity slug (`-1`, `-ekonomik`); the coor
 - [x] oxford | oxford-sarjli-masa-lambasi | wide mushroom hat, sturdy body
 - [x] polaris | polaris-sarjli-masa-lambasi | dome hat, thin stem, round base
 - [x] rigel | rigel-sarjli-masa-lambasi | small dome hat; lists `gumus`, which has no 3D value yet (falls back by type)
-- [ ] suma | suma-sarjli-masa-lambasi | mushroom into cone; datasheet is image-only
-- [ ] toledo | toledo-sarjli-masa-lambasi | dome hat, cylinder body; lists `gri`
-- [ ] torino | torino-sarjli-masa-lambasi | wide dome, thick cylinder body
-- [ ] vela | vela-sarjli-masa-lambasi | flat dome hat, round base
-- [ ] verona | verona-sarjli-masa-lambasi | dome hat, cylinder body
-- [ ] zamora | zamora-sarjli-masa-lambasi | classic mushroom
-- [ ] bene | bene-sarjli-masa-lambasi | two-tone: white dome on a metal cone. Kit gap (two-tone), shared with Mensa and Nade: add it in this batch
-- [ ] nade | nade-sarjli-masa-lambasi | two-tone: light inner face of the dome
-- [ ] azha | azha-sarjli-masa-lambasi | generic description, check the photos; no datasheet (404)
-- [ ] bella | bella-sarjli-masa-lambasi | generic description, check the photos
-- [ ] bilham | bilham-sarjli-masa-lambasi | generic description; Ekonomik datasheet 404
-- [ ] carina | carina-sarjli-masa-lambasi | generic description, check the photos
-- [ ] enif | enif-sarjli-masa-lambasi | generic description; no datasheet (404)
-- [ ] furud | furud-sarjli-masa-lambasi | aluminium body
-- [ ] kuma | kuma-sarjli-masa-lambasi | generic description, check the photos
+- [x] suma | suma-sarjli-masa-lambasi | mushroom into cone; datasheet is image-only
+- [x] toledo | toledo-sarjli-masa-lambasi | tall bell on a thin stem; lists `gri` (no 3D value yet)
+- [x] torino | torino-sarjli-masa-lambasi | dome hat on a cone body over a drum
+- [x] vela | vela-sarjli-masa-lambasi | flat dome hat, round base
+- [x] verona | verona-sarjli-masa-lambasi | dome hat, cylinder body
+- [x] zamora | zamora-sarjli-masa-lambasi | classic mushroom
+- [x] bene | bene-sarjli-masa-lambasi | white dome (`hat.fixed`) on a metal cone
+- [x] nade | nade-sarjli-masa-lambasi | black dome with a smooth white opal bowl under it (`hat.opal` profile)
+- [x] bella | bella-sarjli-masa-lambasi | generic description, check the photos
+- [x] carina | carina-sarjli-masa-lambasi | generic description, check the photos
+- [x] furud | furud-sarjli-masa-lambasi | glass tube with an opal candle on a disc base
+- [x] kuma | kuma-sarjli-masa-lambasi | generic description, check the photos
 - [ ] lofen | lofen-sarjli-masa-lambasi | generic description, check the photos
 - [ ] minkar | minkar-sarjli-masa-lambasi | aluminium body; its "gold" photo shows another colour
 - [ ] navi | navi-sarjli-masa-lambasi | generic description, check the photos
@@ -51,6 +48,11 @@ Light Design slugs can differ from the Sanity slug (`-1`, `-ekonomik`); the coor
 - [ ] mozaik-sutun | mozaik-sutun-sarjli-masa-lambasi | column form; the slug says mosaic, check for glass
 - [ ] arya | arya-sarjli-masa-lambasi | small swivelling spot head: not fully turned, needs a tilted part
 - [ ] solio | solio-sarjli-masa-lambasi | cylinder hat cut at an angle: not turned, needs a kit part
+
+## Lanterns (not turned: a frame, glass and a candle; need their own parts)
+- [ ] azha | azha-sarjli-masa-lambasi | rectangular frame with a handle, opal candle inside
+- [ ] bilham | bilham-sarjli-masa-lambasi | two uprights and a handle bar, glass cylinder, candle; Ekonomik datasheet 404
+- [ ] enif | enif-sarjli-masa-lambasi | square frame with a wire handle, candle
 
 ## Waiter-call lamps (need `topButton` on hat lamps: add it with the first one)
 - [ ] sirius-garson | sirius-garson-cagirma-masa-lambasi | not the Sirius shape: call-button cap, deeper dome, convex collar, 240 mm

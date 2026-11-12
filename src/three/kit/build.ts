@@ -3,24 +3,27 @@
 import * as THREE from "three";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import { lampColor } from "../color";
-import { woodFromHex, type Finish3D, type WoodFinish } from "../finishes";
+import { finish3D, woodFromHex, type Finish3D, type WoodFinish } from "../finishes";
 import {
   brightnessLimited,
   CM,
   LINEN_TILE,
   fabricMaterial,
+  glassMaterial,
   knurlMaterial,
   linenSet,
   linerLit,
   opalMaterial,
   radiusAt,
   ringShadowed,
+  surfaceTreated,
   woodMaterial,
   type LinerUniforms,
   type RingUniforms,
+  type ShadeSpec,
   type WashSpec,
 } from "./materials";
-import type { Facets, KitSpec, ProfilePoint } from "./specs";
+import type { Facets, FixedFinish, GlassPart, KitSpec, OpalShell, ProfilePoint } from "./specs";
 
 const v2 = (r: number, y: number) => new THREE.Vector2(r * CM, y * CM);
 
@@ -29,6 +32,8 @@ const INITIAL_WOOD: WoodFinish = { early: "#c97f3b", late: "#94501f", rough: 0.5
 const PAINT_BODY = 0.1;
 // the brightest a metal or painted body gets, relative to display white
 const BODY_LIMIT = 1.2;
+// how strongly clear glass shows the lamp's light caught in its walls (glassMaterial)
+const GLASS_GLOW = 0.003;
 
 // Smooth Catmull-Rom through the measured points; corners at the ends stay where they are.
 function smoothProfile(pts: [number, number][], n = 220) {
@@ -145,6 +150,63 @@ function shaped(runs: THREE.Vector2[][], seg: number, f?: Facets) {
   );
 }
 
+// A tapered or rounded rubber foot (KitSpec body.foot): the wall runs from rBottom at the floor up to r, its bottom
+// edge rounded with a fillet tangent to the floor and the wall.
+function footGeometry({ r, h, rBottom = r * 0.97, round = 0 }: KitSpec["body"]["foot"]) {
+  const wall = new THREE.Vector2(r - rBottom, h).normalize();
+  // the fillet touches the floor this far in from the corner, under its centre
+  const t = round / Math.tan(Math.acos(-wall.x) / 2);
+  const end = Math.atan2(wall.y * t - round, t + wall.x * t);
+  const edge = Array.from({ length: round > 0 ? 9 : 1 }, (_, i) => {
+    const a = -Math.PI / 2 + ((end + Math.PI / 2) * i) / 8;
+    return round > 0 ? v2(rBottom - t + round * Math.cos(a), round + round * Math.sin(a)) : v2(rBottom, 0);
+  });
+  return turned([[v2(0, 0), edge[0]], [...edge, v2(r, h)], [v2(r, h), v2(0, h)]], 64);
+}
+
+// A glass wall (GlassPart): the outer surface's runs, the inner one offset `thickness` inward along the normal (at a
+// corner along the mitre, so both runs meet), and a half-round rim over each open end. Every face's normal points out
+// of the glass, so the inner surface faces the axis.
+function glassGeometry({ profile, thickness }: GlassPart, n: number, seg: number) {
+  const runs = profileRuns(profile, n);
+  const t = thickness * CM;
+  // outward: right of the bottom-up direction of travel
+  const out = (a: THREE.Vector2, b: THREE.Vector2) => new THREE.Vector2(b.y - a.y, a.x - b.x).normalize();
+  const normals = runs.map((run) => run.map((_, i) => out(run[Math.max(i - 1, 0)], run[Math.min(i + 1, run.length - 1)])));
+  const inner = runs.map((run, k) =>
+    run.map((p, i) => {
+      const nrm = normals[k][i];
+      const other = i === 0 && k > 0 ? normals[k - 1].at(-1)! : i === run.length - 1 && k < runs.length - 1 ? normals[k + 1][0] : nrm;
+      const mitre = nrm.clone().add(other).normalize();
+      return p.clone().addScaledVector(mitre, -t / mitre.dot(nrm));
+    })
+  );
+  // from the outer end round to the inner one, bulging along `along` (away from the profile)
+  const rim = (p: THREE.Vector2, nrm: THREE.Vector2, along: THREE.Vector2, toInner: boolean) => {
+    const c = p.clone().addScaledVector(nrm, -t / 2);
+    const pts = Array.from({ length: 13 }, (_, i) => {
+      const a = (Math.PI * i) / 12;
+      return c.clone().addScaledVector(nrm, (Math.cos(a) * t) / 2).addScaledVector(along, (Math.sin(a) * t) / 2);
+    });
+    return toInner ? pts : pts.reverse();
+  };
+  const first = runs[0];
+  const last = runs.at(-1)!;
+  const pieces = [...runs, ...inner.map((run) => [...run].reverse())];
+  if (last.at(-1)!.x > 1e-6) pieces.push(rim(last.at(-1)!, normals.at(-1)!.at(-1)!, last.at(-1)!.clone().sub(last.at(-2)!).normalize(), true));
+  if (first[0].x > 1e-6) pieces.push(rim(first[0], normals[0][0], first[0].clone().sub(first[1]).normalize(), false));
+  return turned(pieces, seg);
+}
+
+function opalSource({ profile }: OpalShell): ShadeSpec {
+  const ys = profile.map((p) => p[1]);
+  const r = Math.max(...profile.map((p) => p[0]));
+  const y = Math.min(...ys);
+  return { y, h: Math.max(...ys) - y, rBottom: r, rTop: r, thickness: 0, tape: 0, transmission: 0, liner: 0 };
+}
+
+const within = (run: THREE.Vector2[], from: number, to: number) => run.every((p) => p.y >= (from - 1e-4) * CM && p.y <= (to + 1e-4) * CM);
+
 // The viewer only talks to the lamp through this.
 export interface KitLamp {
   group: THREE.Group;
@@ -191,7 +253,13 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   const lit: LinerUniforms[] = [];
   // under a hat the source is the LED disc: to the liner's lighting, a very flat cone looking down
   const hat = spec.hat;
-  const source = spec.shade ?? { y: hat!.led.y - 0.1, h: 0.1, rBottom: hat!.led.rOut, rTop: 0, thickness: 0, tape: 0, transmission: 0, liner: 0 };
+  // with no hat or shade, the lamp's own opal part (KitSpec opal) is the source: to the liner, a straight shade as tall
+  // and wide as it
+  const source =
+    spec.shade ??
+    (hat
+      ? { y: hat.led.y - 0.1, h: 0.1, rBottom: hat.led.rOut, rTop: 0, thickness: 0, tape: 0, transmission: 0, liner: 0 }
+      : opalSource(spec.opal!));
   const byLiner = <M extends THREE.Material>(m: M, wash?: WashSpec) => {
     lit.push(linerLit(m, source, prof, top, wash));
     return m;
@@ -215,12 +283,47 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   // wood is a satin lacquer: the lit table shows in it towards the silhouette, as in the photos, but only faintly.
   // Metal shows everything around it.
   surface.userData.envI = wood ? 0.2 : 1;
+  // parts in a fixed finish (FixedFinish, button rings and centres): one material per finish, lit as metal or paint
+  // by its own metalness, as the body is by the selected finish's
+  const fixed = new Map<string, { m: THREE.MeshPhysicalMaterial; u: LinerUniforms; limit: { value: number } }>();
+  const fixedMat = (slug: string, rough?: number) => {
+    const key = rough === undefined ? slug : `${slug}@${rough}`;
+    let z = fixed.get(key);
+    if (!z) {
+      const f = finish3D({ slug: { current: slug } });
+      const m = new THREE.MeshPhysicalMaterial({ color: f.hex, metalness: f.metal, roughness: rough ?? f.rough });
+      m.userData.envI = 1;
+      z = { m, u: linerLit(m, source, prof, top, wash), limit: brightnessLimited(m) };
+      fixed.set(key, z);
+    }
+    return z.m;
+  };
+  // the runs of each fixed-finish zone as their own meshes, the rest in the selected finish
+  const zoned = (all: THREE.Vector2[][], zones: FixedFinish[] = []) => ({
+    rest: all.filter((run) => !zones.some((z) => within(run, z.from, z.to))),
+    zones: zones.map((z) => ({ runs: all.filter((run) => within(run, z.from, z.to)), mat: fixedMat(z.finish, z.rough) })),
+  });
   // a knurled grip is its own mesh: the runs between its two corners, in the same finish with the knurl's maps
   const k = wood || far ? undefined : b.knurl;
-  const inGrip = (run: THREE.Vector2[]) => !!k && run.every((p) => p.y >= (k.from - 1e-4) * CM && p.y <= (k.to + 1e-4) * CM);
-  const bodyMesh = add(shaped(k ? runs.filter((run) => !inGrip(run)) : runs, far ? 24 : 200, b.facets), surface);
+  const inGrip = (run: THREE.Vector2[]) => !!k && within(run, k.from, k.to);
+  const bodyZones = zoned(runs.filter((run) => !inGrip(run)), far ? [] : b.fixed);
+  // brushed or antique metal (body.brush, hat.brush, antique): one patch on the body's material, each part's brush
+  // strength as a vertex attribute
+  const surf = wood || far || !(b.brush || hat?.brush || spec.antique) ? null : surfaceTreated(surface);
+  const brushed = (geo: THREE.BufferGeometry, v = 0) => {
+    if (surf) geo.setAttribute("kitBrush", new THREE.Float32BufferAttribute(new Float32Array(geo.attributes.position.count).fill(v), 1));
+    return geo;
+  };
+  const antique = surf && spec.antique;
+  const antiqueAs = antique && finish3D({ slug: { current: antique.finish } });
+  const bodyMesh = add(brushed(shaped(bodyZones.rest, far ? 24 : 200, b.facets), b.brush), surface);
   bodyMesh.customDistanceMaterial = noRing;
   const probeHide = [bodyMesh];
+  for (const z of bodyZones.zones) {
+    const zone = add(shaped(z.runs, 200, b.facets), z.mat);
+    zone.customDistanceMaterial = noRing;
+    probeHide.push(zone);
+  }
   let grip: THREE.MeshPhysicalMaterial | null = null;
   let gripLimit: { value: number } | null = null;
   if (k) {
@@ -244,8 +347,9 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   }
   if (!far) {
     const rubber = new THREE.MeshStandardMaterial({ color: "#141312", roughness: 0.85 });
-    const foot = add(new THREE.CylinderGeometry(b.foot.r * CM, b.foot.r * CM * 0.97, b.foot.h * CM, 64), rubber);
-    foot.position.y = (b.foot.h * CM) / 2;
+    const plain = b.foot.rBottom === undefined && !b.foot.round;
+    const foot = add(plain ? new THREE.CylinderGeometry(b.foot.r * CM, b.foot.r * CM * 0.97, b.foot.h * CM, 64) : footGeometry(b.foot), rubber);
+    if (plain) foot.position.y = (b.foot.h * CM) / 2;
     foot.customDistanceMaterial = noRing;
   }
 
@@ -266,9 +370,17 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     holder.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), n);
     g.add(holder);
     const rr = d.r * CM;
-    if (d.type === "button") {
+    if (d.type === "button" && d.centre) {
+      // a ring with a flat top round a centre sunk a hair below it, a fine groove between them
+      const rc = d.centre.r;
+      const ring = [[v2(d.r, -0.3), v2(d.r, 0.02)], [v2(d.r, 0.02), v2(d.r * 0.92, 0.06)], [v2(d.r * 0.92, 0.06), v2(rc, 0.06)], [v2(rc, 0.06), v2(rc, 0.03)]];
+      holder.add(new THREE.Mesh(turned(ring, 48), d.ring ? fixedMat(d.ring) : bodyBrass));
+      const ri = rc - 0.015;
+      const centre = [[v2(ri, 0.03), v2(ri, 0.05)], [v2(ri, 0.05), v2(ri * 0.94, 0.055)], [v2(ri * 0.94, 0.055), v2(0, 0.055)]];
+      holder.add(new THREE.Mesh(turned(centre, 48), fixedMat(d.centre.finish)));
+    } else if (d.type === "button") {
       const geo = lathe([v2(0, -0.3), v2(d.r, -0.3), v2(d.r, 0.02), v2(d.r * 0.92, 0.06), v2(0, 0.06)], 48);
-      holder.add(new THREE.Mesh(geo, bodyBrass));
+      holder.add(new THREE.Mesh(geo, d.ring ? fixedMat(d.ring) : bodyBrass));
     } else if (d.type === "usbc") {
       const disc = new THREE.Mesh(new THREE.CylinderGeometry(rr, rr, 0.006, 48), black);
       disc.position.y = -0.0028;
@@ -306,10 +418,21 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     outer.shadowSide = THREE.FrontSide;
     const t2 = s.thickness / 2;
     const rAt = (y: number) => s.rBottom + ((s.rTop - s.rBottom) * (y - y0)) / s.h;
-    add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, t2, false), round), outer);
-    add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, -t2, true), round), inner, false);
-    // an opal wall is moulded: no tape, just its rims
-    if (s.opal) {
+    if (s.profile) {
+      // one turned surface: the outer material on its front faces, the liner on its back faces (their normals point
+      // out, so the liner takes its glow as an outer face does)
+      const shell = shaped(profileRuns(s.profile, far ? 32 : 160), round);
+      add(shell, outer);
+      inner.side = THREE.BackSide;
+      add(shell, inner, false);
+    } else {
+      add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, t2, false), round), outer);
+      add(lathe(wallPoints(s.rBottom, s.rTop, y0, y1, -t2, true), round), inner, false);
+    }
+    // an opal wall is moulded: no tape, just its rims (a profiled one has them in its profile)
+    if (s.profile) {
+      // nothing to add
+    } else if (s.opal) {
       add(lathe([v2(s.rBottom - t2, y0), v2(s.rBottom + t2, y0)], round), outer, false);
       add(lathe([v2(s.rTop + t2, y1), v2(s.rTop - t2, y1)], round), outer, false);
     } else {
@@ -330,25 +453,51 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
       const pos = capGeo.attributes.position;
       const uv = capGeo.attributes.uv;
       for (let i = 0; i < pos.count; i++) uv.setXY(i, (pos.getX(i) / (s.rTop * CM)) * 0.5 + 0.5, (pos.getZ(i) / (s.rTop * CM)) * 0.5 + 0.5);
-      const tb = spec.topButton;
-      if (!far && tb) {
-        const btn = add(lathe([v2(0, 0), v2(tb.r, 0), v2(tb.r, tb.h * 0.2), v2(tb.r * 0.9, tb.h * 0.6), v2(tb.r * 0.55, tb.h * 0.92), v2(0, tb.h)], 64), brass);
-        btn.position.y = (y1 + capT / 2) * CM;
-      }
     }
+    const tb = spec.topButton;
+    if (!far && tb && (s.cap || s.profile)) {
+      const geo = tb.shape
+        ? turned(profileRuns(tb.shape.map(([r, y, c]): ProfilePoint => [r * tb.r, y * tb.h, c]), 60), 64)
+        : lathe([v2(0, 0), v2(tb.r, 0), v2(tb.r, tb.h * 0.2), v2(tb.r * 0.9, tb.h * 0.6), v2(tb.r * 0.55, tb.h * 0.92), v2(0, tb.h)], 64);
+      const btn = add(brushed(geo, b.brush), tb.finish === "body" ? surface : tb.finish ? fixedMat(tb.finish) : brass);
+      btn.position.y = (s.profile ? Math.max(...s.profile.map((p) => p[1])) : y1 + s.thickness / 2) * CM;
+    }
+  }
+
+  // an opal part turned from its own profile, as a profiled shade: one surface, its back faces the inside
+  const opalShell = (o: OpalShell) => {
+    const shell = shaped(profileRuns(o.profile, far ? 16 : 120), round);
+    const out = opalMaterial(o.transmission);
+    const inside = opalMaterial(o.transmission);
+    inside.side = THREE.BackSide;
+    fabrics.push(out, inside);
+    add(shell, out, false);
+    add(shell, inside, false);
+  };
+  if (spec.opal) opalShell(spec.opal);
+
+  /* clear glass */
+  const reflectGlass: THREE.MeshStandardMaterial[] = [];
+  if (spec.glass) {
+    const glass = glassMaterial(GLASS_GLOW);
+    fabrics.push(glass);
+    reflectGlass.push(glass);
+    add(glassGeometry(spec.glass, far ? 32 : 160, round), glass, false);
   }
 
   /* metal hat over an LED disc */
   const emitters: KitLamp["emitters"] = [];
   if (hat) {
-    const hatRuns = profileRuns(hat.profile, far ? 16 : 120);
-    probeHide.push(add(shaped(hatRuns, round, hat.facets), surface));
+    const hatZones = zoned(profileRuns(hat.profile, far ? 16 : 120), far ? [] : hat.fixed);
+    probeHide.push(add(brushed(shaped(hatZones.rest, round, hat.facets), hat.brush), surface));
+    for (const z of hatZones.zones) probeHide.push(add(shaped(z.runs, round, hat.facets), z.mat));
     const led = new THREE.MeshStandardMaterial({ color: "#f4efe6", roughness: 0.6, emissive: "#ffffff", emissiveIntensity: 0 });
     const disc = add(new THREE.RingGeometry(hat.led.rIn * CM, hat.led.rOut * CM, round).rotateX(Math.PI / 2), led, false);
     disc.position.y = hat.led.y * CM;
     emitters.push({ m: led, gain: 6 });
     const o = hat.opal;
-    if (o) {
+    if (o && "profile" in o) opalShell(o);
+    else if (o) {
       const band = opalMaterial(o.transmission);
       fabrics.push(band);
       add(turned([[v2(hat.led.rOut, o.y), v2(o.r, o.y)], [v2(o.r, o.y), v2(o.r, o.y + o.h)]], round), band, false);
@@ -361,9 +510,12 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   const color = lampColor(L.kelvin);
   const cd = L.lumen / (4 * Math.PI);
   // below a hat, far enough from it to clear the shadow camera's near plane: the hat stops the light going upward
-  const exit = s ? { y: (s.y - 0.05) * CM, r: s.rBottom * 0.86 * CM } : { y: (hat!.led.y - 0.5) * CM, r: hat!.led.rOut * 0.86 * CM };
+  // an own opal part (no shade, no hat) lets its light out as a shade does, through the bottom of `source`
+  const exit = hat && !s ? { y: (hat.led.y - 0.5) * CM, r: hat.led.rOut * 0.86 * CM } : { y: (source.y - 0.05) * CM, r: source.rBottom * 0.86 * CM };
   const rings: RingUniforms[] = [];
-  const heightCm = s ? s.y + s.h + s.thickness + (spec.topButton?.h || 0) : Math.max(...hat!.profile.map((p) => p[1]));
+  const heightCm = s
+    ? (s.profile ? Math.max(...s.profile.map((p) => p[1])) : s.y + s.h + s.thickness) + (spec.topButton?.h || 0)
+    : Math.max(...(hat ?? spec.opal!).profile.map((p) => p[1]), ...(spec.glass?.profile.map((p) => p[1]) ?? []));
 
   return {
     group: g,
@@ -371,10 +523,10 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     color,
     cd,
     dimmer: L.dimmer,
-    reflect: grip ? [brass, bodyBrass, steel, surface, grip] : [brass, bodyBrass, steel, surface],
+    reflect: [...(grip ? [brass, bodyBrass, steel, surface, grip] : [brass, bodyBrass, steel, surface]), ...[...fixed.values()].map((z) => z.m), ...reflectGlass],
     probeHide,
     emitters,
-    glows: !!s,
+    glows: !!s || !hat,
     footprint: Math.max(...prof.map((p) => p.x)),
     // where the viewer puts the light leaving the opening: just inside it and near the wall. Low enough that the
     // rim doesn't cut the pool into petals (the liner spreads the light, there is no sharp cut-off), far enough
@@ -387,10 +539,19 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     },
     setFinish(f) {
       if (!wood) {
+        // antique keeps the finish's metalness here, so setLight lights it as the finish (paint: no gold shine at
+        // night); the shader raises it for the reflections
+        const ant = !!antique && !!antiqueAs && f.hex === antiqueAs.hex && f.metal === antiqueAs.metal;
         for (const m of grip ? [surface, grip] : [surface]) {
-          m.color.set(f.hex);
+          m.color.set(ant ? antique.hex : f.hex);
           m.metalness = f.metal;
-          m.roughness = far ? Math.max(f.rough, 0.55) : f.rough;
+          m.roughness = far ? Math.max(f.rough, 0.55) : ant ? antique.rough : f.rough;
+        }
+        if (surf) {
+          surf.uBrushOn.value = +(f.metal > 0.5 && f.rough >= 0.2);
+          surf.uAntique.value = +ant;
+          surf.uAMetal.value = antique ? antique.metal : 1;
+          surf.uPatina.value = antique ? antique.patina : 0;
         }
         return;
       }
@@ -403,6 +564,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     setExposure(exposure) {
       if (bodyLimit) bodyLimit.value = BODY_LIMIT / exposure;
       if (gripLimit) gripLimit.value = BODY_LIMIT / exposure;
+      for (const z of fixed.values()) z.limit.value = BODY_LIMIT / exposure;
     },
     // intensity in the viewer's light units (0 = off), position in world space; colour defaults to the spec's
     setLight(intensity, worldPos, c = color) {
@@ -414,12 +576,14 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
       }
       // metal only takes a highlight from the LED (and its `wash` share as diffuse); paint takes all of it as diffuse
       const body = wood || surface.metalness > 0.5 ? L.body : L.body * PAINT_BODY;
-      for (const u of lit) {
-        u.uLampI.value = intensity * body;
+      const liner = (u: LinerUniforms, k: number) => {
+        u.uLampI.value = intensity * k;
         u.uBounce.value = L.bounce;
         u.uLampColor.value.copy(c);
         u.uBase.value.copy(worldPos).sub(lampPos);
-      }
+      };
+      for (const u of lit) liner(u, body);
+      for (const { m, u } of fixed.values()) liner(u, m.metalness > 0.5 ? L.body : L.body * PAINT_BODY);
       for (const u of rings) u.uBase.value.copy(worldPos).sub(lampPos);
     },
   };

@@ -64,8 +64,17 @@ Lessons so far:
   - If no listed finish matches the photo, use the closest and say so; it becomes a question for the client.
 - **`hat.led.wash`.** It lights the stem/body under the hat at night and is opt-in. Turn it on only if the night photos show it.
 - **Opt-in parts (see `specs/index.ts`).** `body.knurl` knurled grip (Casares); `body.facets` / `hat.facets` N-sided parts (Melma, Ezop): count sides from face-width ratios and check edges are straight, polished round drums show reflection bands too; `shade.opal` / `hat.opal` smooth white opal diffuser (Karo, Baro), not the fabric shade.
+  - `body.fixed` / `hat.fixed: [{ from, to, finish }]`: profile runs between two corner heights (cm, like `knurl`) keep one finish whatever the buyer picks: a chrome finial (Zamora, Evora), a white dome on a metal body. Use only when the photos of several finishes show that part unchanged.
+  - Button `ring` / `centre`: `{ type: "button", …, ring: "krom", centre: { finish: "beyaz", r: 0.6 } }` (Verona); brass when left out.
+  - `body.foot.rBottom` / `round`: a tapered and/or rounded rubber foot (Suma, Melma).
+  - `shade.profile` (with `opal: true`): an opal shade turned from any profile, e.g. a bell; `y`/`h`/`rBottom`/`rTop` still set the light and the opening. `hat.opal: { profile, transmission }`: an opal part with its own profile under the hat, e.g. a bowl (Nade); put `light.y` inside it and keep `led.rOut` inside its top radius. Top-level `opal: { profile, transmission }`: an opal part with no hat or shade (Furud's candle).
+  - `glass: { profile, thickness }` (top level): clear glass turned from its outer profile, wall `thickness` cm; open ends get a round rim (Furud's tube). A cone shade is a sloped profile.
+  - `fixed[].rough`: roughness override for a zone, e.g. a glossy white dome `rough: 0.06` (Bene).
+  - `topButton.finish`: `"body"` follows the selected finish, a slug fixes it, brass when left out. `topButton.shape`: the finial outline in units of r and h (Carina).
+  - `body.brush` / `hat.brush` (0–1): fine brushing round the axis on brushed metal finishes (0.5 = Torino's satin brass). Top-level `antique: { finish, hex, rough, metal, patina }`: that finish renders as brushed antique brass with patina (Vela, Gemini on `eskitme`).
 - **Scope.** Do not upload night images and do not link the product; the coordinator does that for the whole batch.
-- **Files.** Do not create files outside your spec and `tools/model/out/`.
+- **Files.** Do not create files outside your spec and `tools/model/out/`. Scratch scripts go in a temp subfolder named after your key: the scratchpad is shared, and generic names (`gen.py`, `cmp.py`) have been overwritten by other agents.
+- **White on white.** The extractor can't see white parts on a white shop photo (Bene, Nade). Look for a grey-background copy, e.g. the datasheet cover rendered with pdf.js, and score against it.
 
 ## Report (short, English)
 - Finish used and why. Key dimensions and their sources.

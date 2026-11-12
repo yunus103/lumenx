@@ -17,6 +17,7 @@ const gemini: KitSpec = {
       [0.76, 23.73, 1], [0.95, 23.73], [0.99, 23.76], [1, 23.81, 1], [1, 24.45, 1], [0, 24.45],
     ],
     foot: { r: 4.5, h: 0.6 },
+    brush: 0.4,
   },
   hat: {
     profile: [
@@ -26,7 +27,10 @@ const gemini: KitSpec = {
       [0.89, 26.68, 1], [0.89, 27.5, 1], [0.86, 27.64], [0.78, 27.76], [0.64, 27.86], [0.4, 27.95], [0, 28],
     ],
     led: { y: 24.44, rIn: 1, rOut: 5.94 },
+    brush: 0.4,
   },
+  // the eskitme photo is brushed antique brass: olive brass metal under dark streaks of patina, not paint
+  antique: { finish: "eskitme", hex: "#948F6C", rough: 0.32, metal: 0.85, patina: 1 },
   light: { kelvin: 2700, lumen: 550, y: 24.44, dimmer: [0.4, 0.7, 1], body: 0.03, bounce: 200 },
 };
 

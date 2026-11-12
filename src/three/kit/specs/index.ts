@@ -30,12 +30,58 @@ export interface OpalBand {
   transmission: number;
 }
 
+// Opt-in: an opal part turned from its own profile (r, y in cm, corners as anywhere) instead of the band: a stepped
+// bowl hanging under the hat (Nade). It glows from the light (`light.y`) like a shade, outside and, through any
+// opening, inside; it casts no shadow, so the light still reaches the table through it. The same at the spec's top
+// level (`opal`) is a lamp's only light-giving part, with no hat or shade: a candle in a glass tube (Furud).
+export interface OpalShell {
+  profile: ProfilePoint[];
+  transmission: number;
+}
+
+// Opt-in: the profile's runs between two of its corners (`from`, `to`: heights in cm, like `knurl`) keep one finish
+// whatever the buyer picks (`finish`: a slug from finishes.ts, lit as metal or paint by its own metalness), e.g. a
+// chrome ball finial on a painted or brass lamp. `rough` overrides the finish's roughness on that zone (a glossy
+// white dome: `beyaz` is satin, 0.5). Far copies draw it in the body's finish.
+export interface FixedFinish {
+  from: number;
+  to: number;
+  finish: string;
+  rough?: number;
+}
+
+// Opt-in: clear glass turned from its own profile: the outer surface (r, y in cm, corners as anywhere, bottom-up),
+// the wall `thickness` cm thick inward from it. An open end (r above 0) is a rounded rim; an end on the axis closes
+// it. Thin glass, no refraction: what is inside or behind it shows through, its faces reflect the room and darken
+// towards the silhouette, and at night it catches the lamp's light along its walls and rims. Casts no shadow.
+export interface GlassPart {
+  profile: ProfilePoint[];
+  thickness: number;
+}
+
+// Opt-in, per spec: the body and hat drawn as antique brass whenever the buyer picks `finish` (a slug from finishes.ts,
+// e.g. "eskitme", calibrated as paint for the lamps whose photos show paint). Then `hex` is the brass under the
+// patina, `rough` its roughness, `metal` its metalness for the reflections, and `patina` (0-1) how much of it the dark
+// streaks cover; the parts' `brush` lines apply too. At night it stays lit as the finish is (as paint when the
+// finish's metalness is 0.5 or below), so the LED doesn't make it shine gold.
+export interface Antique {
+  finish: string;
+  hex: string;
+  rough: number;
+  metal: number;
+  patina: number;
+}
+
 export interface Detail {
   type: "button" | "usbc" | "hole";
   y: number;
   x: number;
   side: "front" | "back";
   r: number;
+  // Opt-in, buttons: the button's finish (a slug from finishes.ts; brass when left out), and a flat centre inset in
+  // another finish, `r` in cm (a chrome ring round a white key: `ring: "krom", centre: { finish: "beyaz", r: 0.6 }`)
+  ring?: string;
+  centre?: { finish: string; r: number };
 }
 
 // A metal hat over a downward LED disc, instead of a fabric shade.
@@ -51,7 +97,9 @@ export interface HatSpec {
     wash?: { metal: number };
   };
   facets?: Facets;
-  opal?: OpalBand;
+  opal?: OpalBand | OpalShell;
+  fixed?: FixedFinish[];
+  brush?: number;
 }
 
 export interface KitSpec {
@@ -59,17 +107,32 @@ export interface KitSpec {
     // turned wood draws its own grain; without one the body takes the selected finish as metal or paint
     grain?: Grain;
     profile: ProfilePoint[];
-    foot: { r: number; h: number };
+    // Opt-in `rBottom`: the wall's radius at the floor (a taper; r * 0.97 when left out); `round`: the bottom edge
+    // rounded over with this radius (cm), tangent to the floor and the wall
+    foot: { r: number; h: number; rBottom?: number; round?: number };
     // Opt-in: a diamond-knurled grip, drawn as a normal map on the profile's runs between two of its corners (`from`,
     // `to`: heights in cm, each a corner point). `pitch` is the distance between neighbouring grooves of one helix,
     // across them (cm); `angle` the helices' angle to the axis (degrees, ±). `cross`: how deep the second helix's
     // grooves are, relative to the first's (default 1, a full diamond). Same finish as the body.
     knurl?: { from: number; to: number; pitch: number; angle: number; cross?: number };
     facets?: Facets;
+    fixed?: FixedFinish[];
+    // Opt-in: fine brushing lines round the axis (0-1, how strongly they break up the reflections; 0.5 is Torino's
+    // satin brushed brass), on brushed metal finishes only (metalness above 0.5 and roughness 0.2 or more: not krom,
+    // not paint) and with `antique`. A side view shows fine horizontal streaks, a flat top concentric ones. Not on
+    // `fixed` zones or the knurl. The same on the hat (`hat.brush`).
+    brush?: number;
   };
   shade?: ShadeSpec;
   hat?: HatSpec;
-  topButton?: { r: number; h: number };
+  antique?: Antique;
+  // `shape` (opt-in): the button's outline in units of r and h, [0, 0] to [0, 1] (the default dome when left out:
+  // [[0, 0], [1, 0], [1, 0.2], [0.9, 0.6], [0.55, 0.92], [0, 1]]). `finish` (opt-in): "body" for the selected finish,
+  // or a slug from finishes.ts; brass when left out.
+  topButton?: { r: number; h: number; shape?: ProfilePoint[]; finish?: string };
+  // Opt-in, see OpalShell and GlassPart. A lamp without a shade or a hat needs `opal`.
+  opal?: OpalShell;
+  glass?: GlassPart;
   details?: Detail[];
   light: { kelvin: number; lumen: number; y: number; dimmer: number[]; body: number; bounce: number };
 }

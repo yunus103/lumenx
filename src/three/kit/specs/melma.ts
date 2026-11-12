@@ -21,7 +21,8 @@ const melma: KitSpec = {
       // a thin plate under the hat, running up into its recess
       [0.6, 24.98, 1], [0.6, 25.42, 1], [0, 25.42],
     ],
-    foot: { r: 3.85, h: 0.6 },
+    // the rubber foot tapers down to the floor
+    foot: { r: 4, h: 0.6, rBottom: 3.75, round: 0.1 },
   },
   hat: {
     // a straight cone with a softly rounded top edge

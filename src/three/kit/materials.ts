@@ -2,6 +2,7 @@
 // lit liner and shade the table from its whole exit ring. Shader text is the demo's, unchanged.
 import * as THREE from "three";
 import { ASSETS, coarse } from "../env";
+import type { ProfilePoint } from "./specs";
 
 export const CM = 0.01;
 
@@ -226,6 +227,10 @@ export interface ShadeSpec {
   cap?: boolean;
   // Opt-in: smooth white opal (milky acrylic) instead of linen: no weave, no tape, glossy; the same glow
   opal?: boolean;
+  // Opt-in, with `opal`: the wall turned from this profile (r, y in cm; a bell closed at the top) instead of the cone,
+  // its inside seen through the opening. y, h, rBottom and rTop still describe the inside the light fills and the
+  // opening it leaves by; `cap` and `tape` are unused, `topButton` sits on the profile's top.
+  profile?: ProfilePoint[];
   transmission: number;
   liner: number;
 }
@@ -433,6 +438,99 @@ export function knurlMaterial(around: number, along: number, pitch: number, cros
   return m;
 }
 
+/* ---------- brushed and antique metal ---------- */
+
+export interface SurfaceUniforms {
+  uBrushOn: U<number>;
+  uAntique: U<number>;
+  uAMetal: U<number>;
+  uPatina: U<number>;
+}
+
+// Brushing lines run round the axis: a function of (r, y) only, so they follow the turning on walls, cones and flat
+// tops alike. Each octave is two independent line sets swapped along the circle, so lines end and others start
+// instead of closing into rings. Octaves finer than the pixel footprint fade out (no shimmer while the view moves);
+// what they took away goes into roughness, so far off the part reads as satin rather than turning to a mirror.
+// A line shifts the reflectance most, roughness and the normal only a little: more of either broke the night LED's
+// broad highlight into rings, and a tilted normal displaces highlights into smears rather than streaks.
+const SURFACE = /* glsl */ `
+  uniform float uBrushOn, uAntique, uAMetal, uPatina;
+  varying vec3 vKitP, vKitC;
+  varying float vKitB;
+  float kitLines(vec2 q, vec3 P, float fw, out float lost) {
+    float s = 0.;
+    lost = 0.;
+    for (int i = 0; i < 4; i++) {
+      float f = 13. * exp2(float(i)), o = float(i) * 7.31;
+      float fade = 1. - smoothstep(.4, .8, fw * f), finer = 1. - smoothstep(.4, .8, fw * f * 2.);
+      float m = smoothstep(.2, .8, n3(P * f / 12. + o));
+      float l = mix(n3(vec3(q * f, o)), n3(vec3(q * f + 41.7, o + 3.)), m) - .5;
+      // mostly the finest lines the pixel resolves: brushing reads as a grain at the limit of what is seen, close up
+      // or far off; coarser lines would show as blotches
+      s += fade * (1. - .75 * finer) * l * .45;
+      lost += 1. - fade;
+    }
+    return s;
+  }
+  // antique patina: soft dark patches where the dark tone stayed in the brushing (deeper in its grooves, so the lines
+  // show through), a few cm long round the part and a third of that tall; not contoured streaks, which read as wood
+  // grain, and not drawn along the profile, which closes them into rings on flat tops
+  float kitPatina(vec3 P) {
+    vec3 S = P * vec3(1., 3., 1.);
+    return smoothstep(.3, .75, n3(S * .3 + 3.) * .7 + n3(S * .9 + 13.) * .3);
+  }
+`;
+
+export function surfaceTreated(m: THREE.MeshPhysicalMaterial): SurfaceUniforms {
+  const u: SurfaceUniforms = { uBrushOn: { value: 0 }, uAntique: { value: 0 }, uAMetal: { value: 1 }, uPatina: { value: 0 } };
+  const prev = m.onBeforeCompile;
+  m.onBeforeCompile = (s, r) => {
+    prev.call(m, s, r);
+    Object.assign(s.uniforms, u);
+    s.vertexShader =
+      "attribute float kitBrush;\nvarying vec3 vKitP, vKitC;\nvarying float vKitB;\n" +
+      s.vertexShader.replace(
+        "#include <project_vertex>",
+        "#include <project_vertex>\nvKitP = transformed * 100.;\nvKitC = (modelViewMatrix * vec4(-transformed.z, 0., transformed.x, 0.)).xyz;\nvKitB = kitBrush;"
+      );
+    s.fragmentShader =
+      NOISE +
+      SURFACE +
+      s.fragmentShader
+        .replace(
+          "#include <color_fragment>",
+          /* glsl */ `
+          #include <color_fragment>
+          vec2 kitQ = vec2(length(vKitP.xz), vKitP.y);
+          float kitFw = length(fwidth(kitQ)), kitLost;
+          float kitB = vKitB * max(uBrushOn, uAntique);
+          float kitL = kitLines(kitQ, vKitP, kitFw, kitLost) * kitB;
+          float kitDark = kitPatina(vKitP) * clamp(.8 + kitL * 1.5, 0., 1.) * uPatina * uAntique;
+          diffuseColor.rgb *= mix(vec3(1.), vec3(.42, .38, .3), kitDark) * (1. - kitL * .4);
+        `
+        )
+        .replace(
+          "#include <roughnessmap_fragment>",
+          "#include <roughnessmap_fragment>\nroughnessFactor = clamp(sqrt(roughnessFactor * roughnessFactor + kitB * kitLost * .012) + kitL * .12 + kitDark * .18, .02, 1.);"
+        )
+        .replace("#include <metalnessmap_fragment>", "#include <metalnessmap_fragment>\nmetalnessFactor = mix(metalnessFactor, uAMetal, uAntique);")
+        // each line tilts the normal slightly along the profile (across the lines)
+        .replace(
+          "#include <normal_fragment_maps>",
+          /* glsl */ `
+          #include <normal_fragment_maps>
+          {
+            vec3 kitT = cross(normalize(vKitC + 1e-7), normal);
+            normal = normalize(normal + kitT * kitL * .08);
+          }
+        `
+        );
+  };
+  const key = m.customProgramCacheKey.call(m);
+  m.customProgramCacheKey = () => key + "-surface";
+  return u;
+}
+
 /* ---------- wood ---------- */
 
 export interface WoodParams {
@@ -556,7 +654,7 @@ export interface FabricOptions extends Partial<LinenSet> {
 }
 
 export interface FabricMaterial extends THREE.MeshPhysicalMaterial {
-  userData: { uniforms: FabricUniforms };
+  userData: { uniforms: FabricUniforms; envI?: number };
 }
 
 // Backlit fabric: besides the usual reflection, the shade glows with the light it transmits. The glow is
@@ -630,6 +728,56 @@ export function opalMaterial(transmission: number, inward = false) {
   m.roughness = 0.3;
   m.clearcoat = 0.6;
   m.clearcoatRoughness = 0.08;
+  return m;
+}
+
+// Clear glass (KitSpec glass): thin, no refraction, blended over the frame as the scene's wine glasses are
+// (transmission's pass has no transparent objects in it). It adds what it reflects of the probe and darkens what is
+// behind it a little, more towards the silhouette, where the eye looks along the wall. At night the lamp's light
+// caught in the wall shows along it, strongest where the wall is seen edge-on. Both faces of each wall draw.
+export function glassMaterial(glow: number) {
+  const m = new THREE.MeshPhysicalMaterial({
+    color: "#000000",
+    roughness: 0.03,
+    ior: 1.5,
+    side: THREE.DoubleSide,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.CustomBlending,
+    blendSrc: THREE.OneFactor,
+    blendDst: THREE.OneMinusSrcAlphaFactor,
+  }) as FabricMaterial;
+  m.userData.envI = 1;
+  const u: FabricUniforms = {
+    uLamp: { value: new THREE.Vector3() },
+    uLampI: { value: 0 },
+    uLampColor: { value: new THREE.Color() },
+    uGlow: { value: glow },
+  };
+  m.userData.uniforms = u;
+  m.onBeforeCompile = (s) => {
+    Object.assign(s.uniforms, u);
+    s.vertexShader =
+      "varying vec3 vWPos;\n" + s.vertexShader.replace("#include <project_vertex>", "#include <project_vertex>\nvWPos = (modelMatrix * vec4(transformed, 1.)).xyz;");
+    s.fragmentShader =
+      "varying vec3 vWPos;\nuniform vec3 uLamp, uLampColor;\nuniform float uLampI, uGlow;\n" +
+      s.fragmentShader
+        // it mirrors the room, the table and the lit lamp through the probe, not the LED inside it
+        .replace("reflectedLight.directSpecular + reflectedLight.indirectSpecular", "reflectedLight.indirectSpecular")
+        .replace(
+          "#include <opaque_fragment>",
+          /* glsl */ `
+          #include <opaque_fragment>
+          float grazing = 1. - saturate(abs(dot(normal, normalize(vViewPosition))));
+          float edge = pow(grazing, 5.);
+          gl_FragColor.rgb *= 1. + edge;
+          vec3 toL = uLamp - vWPos;
+          gl_FragColor.rgb += uLampColor * uLampI * uGlow * (.015 + grazing * grazing * grazing) / max(dot(toL, toL), 4e-4);
+          gl_FragColor.a = .015 + .35 * edge;
+        `
+        );
+  };
+  m.customProgramCacheKey = () => "kit-glass";
   return m;
 }
 
