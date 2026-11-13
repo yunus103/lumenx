@@ -74,6 +74,18 @@ const LINKS = [
   { slug: "carina-sarjli-masa-lambasi", modelKey: "carina", shades: [] },
   { slug: "furud-sarjli-masa-lambasi", modelKey: "furud", shades: [] },
   { slug: "kuma-sarjli-masa-lambasi", modelKey: "kuma", shades: [] },
+  { slug: "lofen-sarjli-masa-lambasi", modelKey: "lofen", shades: [] },
+  { slug: "minkar-sarjli-masa-lambasi", modelKey: "minkar", shades: [] },
+  { slug: "navi-sarjli-masa-lambasi", modelKey: "navi", shades: [] },
+  { slug: "nerio-sarjli-masa-lambasi", modelKey: "nerio", shades: [] },
+  { slug: "plastica-sarjli-masa-lambasi", modelKey: "plastica", shades: [] },
+  { slug: "sirius-garson-cagirma-masa-lambasi", modelKey: "sirius-garson", shades: [] },
+  { slug: "capella-garson-cagirma-masa-lambasi", modelKey: "capella-garson", shades: [] },
+  { slug: "alpheca-garson-cagirma-masa-lambasi", modelKey: "alpheca", shades: [] },
+  { slug: "caph-garson-cagirma-masa-lambasi", modelKey: "caph", shades: [] },
+  { slug: "menkent-garson-cagirma-masa-lambasi", modelKey: "menkent", shades: [] },
+  { slug: "pollux-garson-cagirma-masa-lambasi", modelKey: "pollux", shades: [] },
+  { slug: "wolf-garson-cagirma-masa-lambasi", modelKey: "wolf", shades: [] },
 ];
 
 const tx = client.transaction();

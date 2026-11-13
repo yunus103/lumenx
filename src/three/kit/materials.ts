@@ -879,12 +879,12 @@ export function fabricMaterial(o: FabricOptions): FabricMaterial {
 }
 
 // Opal (milky acrylic or glass): the fabric's glow from the lamp inside, without the weave, on a smooth, fairly glossy
-// white instead of matte cloth.
-export function opalMaterial(transmission: number, inward = false) {
-  const m = fabricMaterial({ color: "#f3f1ec", transmission, inward });
+// white instead of matte cloth. `rough` makes it satin (that roughness, no clearcoat), `tint` its colour (OpalShell).
+export function opalMaterial(transmission: number, inward = false, rough?: number, tint?: string) {
+  const m = fabricMaterial({ color: tint ?? "#f3f1ec", transmission, inward });
   m.sheen = 0;
-  m.roughness = 0.3;
-  m.clearcoat = 0.6;
+  m.roughness = rough ?? 0.3;
+  m.clearcoat = rough === undefined ? 0.6 : 0;
   m.clearcoatRoughness = 0.08;
   return m;
 }
@@ -893,10 +893,12 @@ export function opalMaterial(transmission: number, inward = false) {
 // (transmission's pass has no transparent objects in it). It adds what it reflects of the probe and darkens what is
 // behind it a little, more towards the silhouette, where the eye looks along the wall. At night the lamp's light
 // caught in the wall shows along it, strongest where the wall is seen edge-on. Both faces of each wall draw.
-export function glassMaterial(glow: number) {
+// `frost` (0-1, GlassPart) makes it frosted: each face a rough milky white layer of that opacity over what is behind,
+// lit by the room only (no wall glow: Wolf's button sits above the hat).
+export function glassMaterial(glow: number, frost = 0) {
   const m = new THREE.MeshPhysicalMaterial({
-    color: "#000000",
-    roughness: 0.03,
+    color: frost ? "#eeece6" : "#000000",
+    roughness: frost ? 0.5 : 0.03,
     ior: 1.5,
     side: THREE.DoubleSide,
     transparent: true,
@@ -910,7 +912,7 @@ export function glassMaterial(glow: number) {
     uLamp: { value: new THREE.Vector3() },
     uLampI: { value: 0 },
     uLampColor: { value: new THREE.Color() },
-    uGlow: { value: glow },
+    uGlow: { value: frost ? 0 : glow },
   };
   m.userData.uniforms = u;
   m.onBeforeCompile = (s) => {
@@ -920,6 +922,8 @@ export function glassMaterial(glow: number) {
     s.fragmentShader =
       "varying vec3 vWPos;\nuniform vec3 uLamp, uLampColor;\nuniform float uLampI, uGlow;\n" +
       s.fragmentShader
+        // frosted glass is lit, so like the lamp's other parts it takes no light from the viewer's local lights
+        .replace("#include <lights_fragment_begin>", frost ? NO_LOCAL : "#include <lights_fragment_begin>")
         // it mirrors the room, the table and the lit lamp through the probe, not the LED inside it
         .replace("reflectedLight.directSpecular + reflectedLight.indirectSpecular", "reflectedLight.indirectSpecular")
         .replace(
@@ -928,14 +932,15 @@ export function glassMaterial(glow: number) {
           #include <opaque_fragment>
           float grazing = 1. - saturate(abs(dot(normal, normalize(vViewPosition))));
           float edge = pow(grazing, 5.);
-          gl_FragColor.rgb *= 1. + edge;
+          ${frost ? `float a = ${frost.toFixed(3)} + ${(1 - frost).toFixed(3)} * edge;
+          gl_FragColor.rgb *= a;` : "gl_FragColor.rgb *= 1. + edge;"}
           vec3 toL = uLamp - vWPos;
           gl_FragColor.rgb += uLampColor * uLampI * uGlow * (.015 + grazing * grazing * grazing) / max(dot(toL, toL), 4e-4);
-          gl_FragColor.a = .015 + .35 * edge;
+          gl_FragColor.a = ${frost ? "a" : ".015 + .35 * edge"};
         `
         );
   };
-  m.customProgramCacheKey = () => "kit-glass";
+  m.customProgramCacheKey = () => "kit-glass" + frost;
   return m;
 }
 

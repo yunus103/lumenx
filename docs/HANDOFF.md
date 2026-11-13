@@ -1,4 +1,4 @@
-# HANDOFF: LUMENX site (updated 2026-11-13, ninth session)
+# HANDOFF: LUMENX site (updated 2026-11-14, tenth session)
 
 Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the state of the work and what comes next.
 
@@ -8,7 +8,7 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** Strategy in `docs/PROJECT.md` ("Modelling strategy"): code-built kit, not Blender GLBs.
    - **How:** run `/model-lamps` (project skill, `.claude/skills/model-lamps/`): it takes the next batch (default 6) from its `queue.md`, models each lamp with its own agent, links them with night images, pushes, and tells Yunus what to check. The procedure, tools, brief and lessons live there; this file keeps the state.
-   - **Numbers (2026-11-13):** 104 products uploaded of about 250, deadline roughly the end of 2026. 53 lamps are in the kit (table below), 43 in the queue (3 of them lanterns, which need their own parts), then the ~150 new products when the list arrives.
+   - **Numbers (2026-11-14):** 104 products uploaded of about 250, deadline roughly the end of 2026. 65 lamps are in the kit (table below), 30 in the queue (4 of them lanterns, which need their own parts; Arya and Solio need tilted or cut parts), then the ~150 new products when the list arrives.
    - **Permissions Yunus gave:** browser and visual tests, opening the datasheets, tool dependencies, subagents at Claude's discretion. For modelling batches: no questions, push at the end, kit changes allowed as long as the Defne guard proves approved lamps unchanged. Work on `main`.
    - **To fix along the way:** Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
@@ -73,8 +73,20 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 | carina | carina-sarjli-masa-lambasi | gold | opal bell (`shade.profile`), finial follows the finish (`topButton.finish body`, `shape`); alabaster (`shade.alabaster`, 2026-11-13); bell Ø~107 (gold photos) vs ~100 (others, datasheet) (client) |
 | furud | furud-sarjli-masa-lambasi | rose | `--cam-height 48`; re-extracted `--height 34`; clear glass tube (`glass`) with an opal candle (`opal`); night look guessed (no night photo); the score band at 7.5–12.5 cm is the tool missing the faint glass edge |
 | kuma | kuma-sarjli-masa-lambasi | rose | `--cam-height 28.5`; re-extracted `--height 30 --image c1766ff2 --y0 46`; brushed; the radial highlight on the lid's top isn't renderable; hat Ø115 vs 130 (client) |
+| lofen | lofen-sarjli-masa-lambasi | bronz | `--under`; two-tone: black drum, stem and bowl (`body.fixed siyah`), white hat underside (`hat.inside beyaz`), hat and base disc in the finish; LED in the bowl guessed (no night photo); hat Ø156 vs datasheet 200 (client) |
+| minkar | minkar-sarjli-masa-lambasi | bronz | `--photo 62fdc447`; re-extracted `--image 62fdc447`; grey matte dome as `opal` with `rough 0.5, tint #b5b5b3` (glows at night, unconfirmed); the "gold" photo is deeper brass than `gold` |
+| navi | navi-sarjli-masa-lambasi | siyah | `--under`; drum Ø106 vs 100; the "navi-gold" photo is rose, "navi-bronz" dark brown |
+| nerio | nerio-sarjli-masa-lambasi | bronz | `--photo 811a`; a smaller Casares (knurled stem); base Ø95 photo vs 90 datasheet (client) |
+| plastica | plastica-sarjli-masa-lambasi | siyah | `--slug plastica-sarjli-masa-lambasi-ekonomik --photo 10f255df` (upload by Sanity slug); re-extracted `--image 10f255df --split 19` (banner photos broke it); `mavi`, `pembe` fall back to swatch paint; stem glow (`wash`) weaker than the night photo; hat Ø133 / base Ø111 |
+| sirius-garson | sirius-garson-cagirma-masa-lambasi | bronz | `--slug sirius-garson-cagirma-masalambasi-1 --photo 1fe72cfe --cam-height 40`; hexagonal stem (`body.facets 6`); satin-nickel call button (`hat.fixed`), chrome on the krom photo; hat Ø127 vs 120 (client) |
+| capella-garson | capella-garson-cagirma-masa-lambasi | satine-nikel | `--slug capella-garon-cagirma --photo 7cab`; re-extracted `--image 7cab`; clear acrylic call button as top-level `glass`; hat Ø111 vs 115 |
+| alpheca | alpheca-garson-cagirma-masa-lambasi | gold | `--slug alphecca-garson-cagirma`; brushed (`brush 0.5`); call button in the finish (hat profile); stem glow from the white photo |
+| caph | caph-garson-cagirma-masa-lambasi | bronz | `--slug caph-garson-cagirma --photo d3d11d56 --cam-height 37`; re-extracted `--image d3d11d56 --y0 23 --split 18.3`; button follows the finish, so the siyah lamp's button is black where its photo shows nickel (kit gap); hat Ø126 / base Ø121 vs 100 (client); gold photo has an extra neck bead |
+| menkent | menkent-garson-cagirma-masa-lambasi | siyah | `--slug menkent-garson-cagirma --cam-height 24`; clear `glass` button on a chrome pin; hat top face `hat.fixed satine-nikel` (reads silver on every photo; could be a studio reflection, client) |
+| pollux | pollux-garson-cagirma-masa-lambasi | rose | `--slug pollux-garson-cagirma --photo 098f7dc5 --cam-height 24`; a cone hat, not a bell; clear `glass` button over a chrome pin (`hat.fixed krom`); composite photo, hat top judged by eye |
+| wolf | wolf-garson-cagirma-masa-lambasi | gold | `--slug wolf-garson-cagirma-masalambasi`; one photo, between gold and bronz (client); frosted call button as `glass` with `frost 0.3` over a brass post, a bit milkier than the photo; max 4 mm is the hat rim on a pitched photo |
 
-Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets`/`hat.facets` (N-sided parts, Melma, Ezop), `shade.opal` and `hat.opal` (opal diffuser, Karo, Baro). `extract.py` trims compression halo from silhouettes (scores of lamps fitted before shift up to ~2%). Added 2026-11-13, all opt-in, the Defne guard passed each time: `body.fixed`/`hat.fixed` (zones in a fixed finish, optional `rough`; Zamora and Evora finials, Bene's dome), button `ring`/`centre` (Verona), `foot.rBottom`/`round` (Suma, Melma, Bella), `shade.profile` and `hat.opal.profile` (opal parts of any shape; Carina, Nade), top-level `opal` and `glass` (Furud), `topButton.finish`/`shape` (Carina), `body.brush`/`hat.brush` (Torino, Diya, Kuma, Bene) and `antique` (brushed antique brass for one finish; Vela, Gemini). How to use them is in the model-lamps brief. Later on 2026-11-13: `marble` (a veined stone print on one finish; Konra `beyaz`, Oxford `siyah`), `shade.alabaster` (cloudy alabaster in an opal shade, also at night; Carina) and `hat.inside` (a lit painted hat interior that replaces the LED disc; Bella). Open kit gaps: the table below. Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
+Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets`/`hat.facets` (N-sided parts, Melma, Ezop), `shade.opal` and `hat.opal` (opal diffuser, Karo, Baro). `extract.py` trims compression halo from silhouettes (scores of lamps fitted before shift up to ~2%). Added 2026-11-13, all opt-in, the Defne guard passed each time: `body.fixed`/`hat.fixed` (zones in a fixed finish, optional `rough`; Zamora and Evora finials, Bene's dome), button `ring`/`centre` (Verona), `foot.rBottom`/`round` (Suma, Melma, Bella), `shade.profile` and `hat.opal.profile` (opal parts of any shape; Carina, Nade), top-level `opal` and `glass` (Furud), `topButton.finish`/`shape` (Carina), `body.brush`/`hat.brush` (Torino, Diya, Kuma, Bene) and `antique` (brushed antique brass for one finish; Vela, Gemini). How to use them is in the model-lamps brief. Later on 2026-11-13: `marble` (a veined stone print on one finish; Konra `beyaz`, Oxford `siyah`), `shade.alabaster` (cloudy alabaster in an opal shade, also at night; Carina) and `hat.inside` (a lit painted hat interior that replaces the LED disc; Bella). Added 2026-11-14: `glass.frost` (frosted translucent plastic; Wolf's button) and `opal.rough`/`tint` (a matte grey opal; Minkar). Waiter-call buttons need no `topButton`: hat profile, `hat.fixed` or a top-level `glass` cap (Sirius, Pollux, Menkent garson). Open kit gaps: the table below. Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
 
 **Product-specific details not yet in the kit** (kept as a list so they can become kit features if more lamps need them; rule: add to the kit when a lamp looks clearly wrong without it or it shows up on two lamps):
 
@@ -83,6 +95,7 @@ Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets
 | Two-tone stem | Mensa | one colour; `body.fixed` can do it once the client confirms the brass stem |
 | Radial highlight on spun flat discs | Kuma | the lid top reads plain (needs anisotropy, which was ruled out) |
 | Ribbed clear glass | Dulcet, Mariner, Regulus Cam (upcoming) | `glass` is smooth |
+| Button finish per finish (one finish overrides) | Caph | the button follows the finish, so siyah gets a black button where the photo shows nickel |
 | Finer marble | Konra, Oxford | the photos' veins are finer and hairier, with drips on Oxford; ours read a little like cracks |
 
 Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Luminaires (`kare`, `altigen`) are separate.
@@ -201,7 +214,9 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
     - Datasheets: most give "100mm Alt" for the base, which rarely matches the photo (Mona ~96, Mirach ~94, Mula 85, Neptun 91, Bene ~78, Vela 110, Furud ~121). Is it a template value? Real base diameters per product?
     - Photos: Verona's four lifestyle photos on Light Design are the Flos Bellhop (another brand's product). Several photo file names don't match their colour (Toledo, Carina; Kuma's eskitme variant is the rose photo).
     - Marble: Konra and Oxford show Mermer photos, but Sanity has no Mermer finish. The 3D puts the marble on Konra beyaz and Oxford siyah, so a plain white Konra or plain black Oxford never shows. Is Mermer a separate option (then it becomes its own finish), and do plain ones exist?
-    - Lanterns: Azha, Bilham and Enif are frame lanterns with a candle; they need their own parts and stay in photo mode for now.
+    - Waiter-call buttons (Sirius, Capella, Caph, Menkent, Pollux, Wolf garson): clear, frosted acrylic or metal? Do they light up when a waiter is called?
+    - Lofen: the Krom photo shows another lamp (all chrome, big bowl, collars, no base disc). Do the black drum, stem, bowl and the white underside stay on every finish? The datasheet render differs (black finial, narrower hat); which is current?
+    - Lanterns: Azha, Bilham, Enif and Pico are frame lanterns with a candle; they need their own parts and stay in photo mode for now.
   - Colours (photo shows a colour no listed finish matches, or a doubtful one; the model uses the nearest):
     - Mira: glossy red-brown paint (modelled bronz).
     - Mona: dark warm brown-grey satin paint (modelled eskitme).
@@ -215,6 +230,11 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
     - Oxford: the Mermer photo has a thicker hat and a wider neck than the white one; is it the same body?
     - Rose: the rose photos vary by about ±3° in hue (Kuma, Mula more copper; Sirius, Minkar pinker). Is there one rose tone?
     - Gri: the Toledo grey looks like a flecked metallic powder coat; is "Gri" textured?
+    - Minkar: is the dome an opal diffuser that glows, or painted; white or grey? The "gold" photo is deeper brass than gold. Datasheets say ABS / N66, the shop aluminium.
+    - Navi: the "navi-gold" photo is rose; "navi-bronz" is dark brown, not the copper-bronze of other bronz photos.
+    - Wolf: is the only photo gold or bronz?
+    - Menkent: is the hat's top face a separate silver part?
+    - Caph: does the gold version have an extra neck bead, and is the black lamp's button nickel?
     - Mensa: photo is two-tone (brass stem, glossy taupe body); is that a standard option?
     - Verona: the main photo is sage green; is there a green finish? (modelled beyaz, which the other photos show)
     - Vela: the photo is brushed antique brass; is that this lamp's "eskitme"? (modelled so)
@@ -224,7 +244,8 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
     - Zamora: the krem photo has a thinner stem; is it the same model?
     - Toledo: the chrome photo shows a different stem fitting at the base (a nut and a cone) from the other six.
   - Dimensions (photo vs datasheet; the models follow the photos):
-    - Hat diameters: Aldebaran Ø222 vs 215, Aro Ø120 vs 115, Evora Ø127 vs 130, Heli Ø131 vs 120, Karo Ø186 vs 170, Konra Ø111 vs 130, Merle Ø183 vs 175, Mira Ø113.5 vs 120, Mula Ø111 vs 120, Verona Ø141 vs 120, Zamora Ø138 vs 130, Torino Ø125.5 vs 135, Vela Ø132 vs 120, Kuma Ø115 vs 130, Bene Ø106 vs 115, Bella Ø215 vs 200 (top Ø130 vs 120).
+    - Hat diameters: Aldebaran Ø222 vs 215, Aro Ø120 vs 115, Evora Ø127 vs 130, Heli Ø131 vs 120, Karo Ø186 vs 170, Konra Ø111 vs 130, Merle Ø183 vs 175, Mira Ø113.5 vs 120, Mula Ø111 vs 120, Verona Ø141 vs 120, Zamora Ø138 vs 130, Torino Ø125.5 vs 135, Vela Ø132 vs 120, Kuma Ø115 vs 130, Bene Ø106 vs 115, Bella Ø215 vs 200 (top Ø130 vs 120), Lofen Ø156 vs 200, Sirius garson Ø127 vs 120, Caph Ø126 vs 100 (base Ø121), Plastica Ø133 vs 120, Wolf Ø134 vs 130.
+    - Base diameters: Nerio Ø95 vs 90, Navi Ø106 vs 100, Plastica Ø111 vs 100.
     - Torino: is the 160 mm height with or without the knob? Is the black base a separate rubber foot?
     - Carina: bell Ø~107 (gold photos) or ~100 (chrome, rose, satin photos and datasheet)? The datasheet shows an older version.
     - Furud: datasheet Ø40 tube and Ø110 base vs ~35 and ~121 in the photos and drawing.

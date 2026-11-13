@@ -497,8 +497,8 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   // an opal part turned from its own profile, as a profiled shade: one surface, its back faces the inside
   const opalShell = (o: OpalShell) => {
     const shell = shaped(profileRuns(o.profile, far ? 16 : 120), round);
-    const out = opalMaterial(o.transmission);
-    const inside = opalMaterial(o.transmission);
+    const out = opalMaterial(o.transmission, false, o.rough, o.tint);
+    const inside = opalMaterial(o.transmission, false, o.rough, o.tint);
     inside.side = THREE.BackSide;
     fabrics.push(out, inside);
     add(shell, out, false);
@@ -509,7 +509,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   /* clear glass */
   const reflectGlass: THREE.MeshStandardMaterial[] = [];
   if (spec.glass) {
-    const glass = glassMaterial(GLASS_GLOW);
+    const glass = glassMaterial(GLASS_GLOW, spec.glass.frost);
     fabrics.push(glass);
     reflectGlass.push(glass);
     add(glassGeometry(spec.glass, far ? 32 : 160, round), glass, false);

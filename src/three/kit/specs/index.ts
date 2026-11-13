@@ -37,6 +37,9 @@ export interface OpalBand {
 export interface OpalShell {
   profile: ProfilePoint[];
   transmission: number;
+  // Opt-in: satin instead of glossy (this roughness, no clearcoat) and a colour instead of white (Minkar's grey dome)
+  rough?: number;
+  tint?: string;
 }
 
 // Opt-in: the profile's runs between two of its corners (`from`, `to`: heights in cm, like `knurl`) keep one finish
@@ -57,6 +60,8 @@ export interface FixedFinish {
 export interface GlassPart {
   profile: ProfilePoint[];
   thickness: number;
+  // Opt-in: frosted milky glass or plastic, each face this opaque (0-1) (Wolf's call button)
+  frost?: number;
 }
 
 // Opt-in, per spec: the body and hat drawn as antique brass whenever the buyer picks `finish` (a slug from finishes.ts,

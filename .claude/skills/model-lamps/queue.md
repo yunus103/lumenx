@@ -39,13 +39,11 @@ Light Design slugs can differ from the Sanity slug (`-1`, `-ekonomik`); the coor
 - [x] carina | carina-sarjli-masa-lambasi | generic description, check the photos
 - [x] furud | furud-sarjli-masa-lambasi | glass tube with an opal candle on a disc base
 - [x] kuma | kuma-sarjli-masa-lambasi | generic description, check the photos
-- [ ] lofen | lofen-sarjli-masa-lambasi | generic description, check the photos
-- [ ] minkar | minkar-sarjli-masa-lambasi | aluminium body; its "gold" photo shows another colour
-- [ ] navi | navi-sarjli-masa-lambasi | generic description, check the photos
-- [ ] nerio | nerio-sarjli-masa-lambasi | generic description, check the photos
-- [ ] pico | pico-sarjli-masa-lambasi | compact; no datasheet (404)
-- [ ] plastica | plastica-sarjli-masa-lambasi | economy plastic series: black, blue and other colours
-- [ ] mozaik-sutun | mozaik-sutun-sarjli-masa-lambasi | column form; the slug says mosaic, check for glass
+- [x] lofen | lofen-sarjli-masa-lambasi | generic description, check the photos
+- [x] minkar | minkar-sarjli-masa-lambasi | aluminium body; its "gold" photo shows another colour
+- [x] navi | navi-sarjli-masa-lambasi | generic description, check the photos
+- [x] nerio | nerio-sarjli-masa-lambasi | generic description, check the photos
+- [x] plastica | plastica-sarjli-masa-lambasi | economy plastic series: black, blue and other colours
 - [ ] arya | arya-sarjli-masa-lambasi | small swivelling spot head: not fully turned, needs a tilted part
 - [ ] solio | solio-sarjli-masa-lambasi | cylinder hat cut at an angle: not turned, needs a kit part
 
@@ -53,15 +51,16 @@ Light Design slugs can differ from the Sanity slug (`-1`, `-ekonomik`); the coor
 - [ ] azha | azha-sarjli-masa-lambasi | rectangular frame with a handle, opal candle inside
 - [ ] bilham | bilham-sarjli-masa-lambasi | two uprights and a handle bar, glass cylinder, candle; Ekonomik datasheet 404
 - [ ] enif | enif-sarjli-masa-lambasi | square frame with a wire handle, candle
+- [ ] pico | pico-sarjli-masa-lambasi | white square frame lantern with a leather strap handle (seen 2026-11-14); datasheet `pico-sarjli-masa-lambasi` 300×150 mm
 
-## Waiter-call lamps (need `topButton` on hat lamps: add it with the first one)
-- [ ] sirius-garson | sirius-garson-cagirma-masa-lambasi | not the Sirius shape: call-button cap, deeper dome, convex collar, 240 mm
-- [ ] capella-garson | capella-garson-cagirma-masa-lambasi | Capella with a call button; compare with `capella.ts`
-- [ ] alpheca | alpheca-garson-cagirma-masa-lambasi | cylinder hat, short sturdy body
-- [ ] caph | caph-garson-cagirma-masa-lambasi | mushroom hat, thin body
-- [ ] menkent | menkent-garson-cagirma-masa-lambasi | cylinder hat with a visible bulb inside, dome base
-- [ ] pollux | pollux-garson-cagirma-masa-lambasi | bell form, dome hat
-- [ ] wolf | wolf-garson-cagirma-masa-lambasi | compact mushroom
+## Waiter-call lamps (buttons done in the hat profile, `hat.fixed` or top-level `glass`; see sirius-garson, pollux, wolf)
+- [x] sirius-garson | sirius-garson-cagirma-masa-lambasi | not the Sirius shape: call-button cap, deeper dome, convex collar, 240 mm
+- [x] capella-garson | capella-garson-cagirma-masa-lambasi | Capella with a call button; compare with `capella.ts`
+- [x] alpheca | alpheca-garson-cagirma-masa-lambasi | cylinder hat, short sturdy body
+- [x] caph | caph-garson-cagirma-masa-lambasi | mushroom hat, thin body
+- [x] menkent | menkent-garson-cagirma-masa-lambasi | cylinder hat with a visible bulb inside, dome base
+- [x] pollux | pollux-garson-cagirma-masa-lambasi | bell form, dome hat
+- [x] wolf | wolf-garson-cagirma-masa-lambasi | compact mushroom
 - [ ] garson-cagri-butonu | garson-cagri-butonu | a table call button, not a lamp: a small turned cylinder
 
 ## Wood (like Defne)
@@ -86,6 +85,7 @@ Light Design slugs can differ from the Sanity slug (`-1`, `-ekonomik`); the coor
 - [ ] newyork-cam | newyork-cam-sarjli-masa-lambasi | decorative glass
 - [ ] sargas-mozaik | sargas-mozaik-sarjli-masa-lambasi | mosaic glass head, metal body; three sizes
 - [ ] segen-mozaik | segen-mozaik-sarjli-masa-lambasi | mushroom-shaped mosaic glass head
+- [ ] mozaik-sutun | mozaik-sutun-sarjli-masa-lambasi | turned copper column (Ottoman lantern look) around a green mosaic glass cylinder, finial on top; LD slug `sutun-sarjli-masa-lambasi`, 330 mm; needs a mosaic glass kit part like Sargas, Segen, Dubhe
 - [ ] dubhe | dubhe-sarjli-masa-lambasi | coloured mosaic glass globe; datasheet image-only
 
 ## Wall and floor (not table lamps: decide the scene first)
