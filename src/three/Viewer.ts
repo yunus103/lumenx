@@ -43,8 +43,9 @@ const MODES: Record<Mode, ModeLook> = {
   gece: { env: 0.004, bg: "#030303", sun: 0, sunColor: "#000000", exp: 3.1 },
 };
 // Kit lamps at dusk: the lamp carries the scene (as in the product's own photos), so half the blue daylight and a
-// little more exposure
-const KIT_AKSAM: ModeLook = { ...MODES.aksam, env: 0.07, sun: 0.22, exp: 2.7 };
+// little more exposure. The window light is a neutral grey of the same luminance as the room's blue: blue-violet
+// over the warm bounce off the table turned white paint pink where the LED doesn't reach (hat tops), not cream.
+const KIT_AKSAM: ModeLook = { ...MODES.aksam, env: 0.07, sun: 0.22, sunColor: "#a7a7a7", exp: 2.7 };
 // At night the sconces still light the room: with the lamp off the table must not be blacker than the ones around it
 const KIT_GECE: ModeLook = { ...MODES.gece, env: 0.025 };
 // Strip lights in metal's reflections: direction round the lamp (degrees, 0 towards the viewer's side), width (m at 1 m)
@@ -532,6 +533,14 @@ export class Viewer {
       });
       return { lamp, pos: new THREE.Vector3(x, lamp.lampPos.y, z) };
     });
+    // the copies reflect the probe capture as the hero lamp does; set now, so the compile that follows has their final
+    // programs (at open() the capture map doesn't exist yet and open() sets it)
+    if (this.capEnv)
+      this.bgKits.forEach(({ lamp }) =>
+        lamp.reflect.forEach((m) => {
+          m.envMap = this.capEnv!.texture;
+        })
+      );
     if (this.ctl) this.ctl.maxDistance = 2;
     this.setFocus(true);
     this.addFarGlasses(R.meta.glasses);
@@ -727,7 +736,8 @@ export class Viewer {
   // table scenes: what reflects the probe capture
   private reflectors(): Reflector[] {
     const body = this.bodyMat instanceof THREE.MeshStandardMaterial ? this.bodyMat : null;
-    return [body, this.neckMat, this.steelMat, this.glassMat, ...(this.kit?.reflect || [])].filter((m): m is Reflector => !!m);
+    const copies = this.bgKits.flatMap(({ lamp }) => lamp.reflect);
+    return [body, this.neckMat, this.steelMat, this.glassMat, ...(this.kit?.reflect || []), ...copies].filter((m): m is Reflector => !!m);
   }
 
   // A product photographer's strip lights: tall bright panels around the lamp that exist only in the probe capture.

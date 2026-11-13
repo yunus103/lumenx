@@ -2,7 +2,7 @@ import type { KitSpec } from ".";
 
 // Height 260 mm from the datasheet, proportions from the gold photo: base Ø97, bell Ø107. The krom/rose/saten photos
 // draw the bell ~5% narrower against the base, and the datasheet (an older drawing and photo: a conical bell, no cup)
-// labels both 100 mm. The alabaster bell is the opal shade (plain, no veining). Charge port, battery light and touch
+// labels both 100 mm. The alabaster bell is the opal shade with `alabaster` clouding. Charge port, battery light and touch
 // key are underneath (datasheet), unseen.
 const carina: KitSpec = {
   body: {
@@ -34,6 +34,7 @@ const carina: KitSpec = {
       [1.34, 25.02, 1], [0, 25.02],
     ],
     y: 18.0, h: 6.6, rBottom: 5.0, rTop: 1.9, thickness: 0.3, tape: 0, transmission: 0.011, liner: 0.03,
+    alabaster: { scale: 2, strength: 1 },
   },
   // the finial: the body's metal in every photo, a bullet-shaped dome on a short upright edge (gold photo silhouette)
   topButton: {

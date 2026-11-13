@@ -27,6 +27,8 @@ const konra: KitSpec = {
     ],
     led: { y: 16.33, rIn: 1.85, rOut: 5.3 },
   },
+  // the Mermer option (Light Design; not a finish in Sanity): a glossy white print with thin black veins, on beyaz
+  marble: { finish: "beyaz", vein: "#0d0d0d", scale: 6, width: 0.55, rough: 0.2 },
   light: { kelvin: 2700, lumen: 550, y: 16.33, dimmer: [0.4, 0.7, 1], body: 0.03, bounce: 200 },
 };
 

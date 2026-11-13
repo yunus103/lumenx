@@ -23,6 +23,8 @@ const oxford: KitSpec = {
     ],
     led: { y: 17.62, rIn: 1.65, rOut: 7.27 },
   },
+  // the Mermer option (Light Design; not a finish in Sanity): a black print with white veins, on siyah
+  marble: { finish: "siyah", vein: "#e6e3dc", scale: 6, width: 0.6 },
   light: { kelvin: 2700, lumen: 550, y: 17.62, dimmer: [0.4, 0.7, 1], body: 0.03, bounce: 200 },
 };
 

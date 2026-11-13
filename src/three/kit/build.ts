@@ -5,6 +5,7 @@ import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js
 import { lampColor } from "../color";
 import { finish3D, woodFromHex, type Finish3D, type WoodFinish } from "../finishes";
 import {
+  alabastered,
   brightnessLimited,
   CM,
   LINEN_TILE,
@@ -13,6 +14,7 @@ import {
   knurlMaterial,
   linenSet,
   linerLit,
+  marbled,
   opalMaterial,
   radiusAt,
   ringShadowed,
@@ -32,6 +34,27 @@ const INITIAL_WOOD: WoodFinish = { early: "#c97f3b", late: "#94501f", rough: 0.5
 const PAINT_BODY = 0.1;
 // the brightest a metal or painted body gets, relative to display white
 const BODY_LIMIT = 1.2;
+// a painted hat inside (HatSpec inside) lit by its hidden LED: the light it gives off (the viewer's emitter gain) and
+// how bright it may get. Lit paint near the LED is far brighter than white, so the knee turns it pale cream there and
+// leaves it warm further out, as in Bella's night photo; the limit still keeps its edges from stepping.
+const INSIDE_GAIN = 3;
+const INSIDE_LIMIT = 4;
+// The inside's light along each of its runs (the emissive map's v: the profile runs from the stem out): full at the
+// inner end, by the LED in the housing's edge, falling to a third at the rim.
+let insideFade: THREE.DataTexture | undefined;
+function fadeOut() {
+  if (insideFade) return insideFade;
+  const n = 32;
+  const px = new Uint8Array(n * 4);
+  for (let i = 0; i < n; i++) {
+    const v = Math.round(255 * (0.33 + 0.67 * (1 - i / (n - 1)) ** 1.5));
+    px.set([v, v, v, 255], i * 4);
+  }
+  insideFade = new THREE.DataTexture(px, 1, n);
+  insideFade.magFilter = insideFade.minFilter = THREE.LinearFilter;
+  insideFade.needsUpdate = true;
+  return insideFade;
+}
 // how strongly clear glass shows the lamp's light caught in its walls (glassMaterial)
 const GLASS_GLOW = 0.003;
 
@@ -285,23 +308,25 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   surface.userData.envI = wood ? 0.2 : 1;
   // parts in a fixed finish (FixedFinish, button rings and centres): one material per finish, lit as metal or paint
   // by its own metalness, as the body is by the selected finish's
-  const fixed = new Map<string, { m: THREE.MeshPhysicalMaterial; u: LinerUniforms; limit: { value: number } }>();
-  const fixedMat = (slug: string, rough?: number) => {
-    const key = rough === undefined ? slug : `${slug}@${rough}`;
+  const fixed = new Map<string, { m: THREE.MeshPhysicalMaterial; u: LinerUniforms; limit: { value: number }; top: number }>();
+  // `lit`: its own material, which the viewer also drives as an emitter (HatSpec inside)
+  const fixedMat = (slug: string, rough?: number, lit = false) => {
+    const key = (rough === undefined ? slug : `${slug}@${rough}`) + (lit ? "@lit" : "");
     let z = fixed.get(key);
     if (!z) {
       const f = finish3D({ slug: { current: slug } });
       const m = new THREE.MeshPhysicalMaterial({ color: f.hex, metalness: f.metal, roughness: rough ?? f.rough });
       m.userData.envI = 1;
-      z = { m, u: linerLit(m, source, prof, top, wash), limit: brightnessLimited(m) };
+      if (lit) m.emissiveMap = fadeOut();
+      z = { m, u: linerLit(m, source, prof, top, wash), limit: brightnessLimited(m), top: lit ? INSIDE_LIMIT : BODY_LIMIT };
       fixed.set(key, z);
     }
     return z.m;
   };
   // the runs of each fixed-finish zone as their own meshes, the rest in the selected finish
-  const zoned = (all: THREE.Vector2[][], zones: FixedFinish[] = []) => ({
+  const zoned = (all: THREE.Vector2[][], zones: (FixedFinish & { lit?: boolean })[] = []) => ({
     rest: all.filter((run) => !zones.some((z) => within(run, z.from, z.to))),
-    zones: zones.map((z) => ({ runs: all.filter((run) => within(run, z.from, z.to)), mat: fixedMat(z.finish, z.rough) })),
+    zones: zones.map((z) => ({ runs: all.filter((run) => within(run, z.from, z.to)), mat: fixedMat(z.finish, z.rough, z.lit) })),
   });
   // a knurled grip is its own mesh: the runs between its two corners, in the same finish with the knurl's maps
   const k = wood || far ? undefined : b.knurl;
@@ -316,6 +341,10 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   };
   const antique = surf && spec.antique;
   const antiqueAs = antique && finish3D({ slug: { current: antique.finish } });
+  // a marble print (KitSpec marble): one patch on the body's material, which the hat and a body-finish button share
+  const marble = wood ? undefined : spec.marble;
+  const marb = marble && marbled(surface, marble.vein, marble.scale, marble.width / 10);
+  const marbleAs = marble && finish3D({ slug: { current: marble.finish } });
   const bodyMesh = add(brushed(shaped(bodyZones.rest, far ? 24 : 200, b.facets), b.brush), surface);
   bodyMesh.customDistanceMaterial = noRing;
   const probeHide = [bodyMesh];
@@ -408,6 +437,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
       ? opalMaterial(s.transmission)
       : fabricMaterial({ color: "#eee4cc", transmission: s.transmission, ...linenSet([Math.round(circ / LINEN_TILE), s.h / LINEN_TILE]) });
     const inner = s.opal ? opalMaterial(s.liner, true) : fabricMaterial({ color: "#efe6d2", transmission: s.liner, inward: true });
+    if (s.opal && s.alabaster) for (const m of [outer, inner]) alabastered(m, s.alabaster.scale, s.alabaster.strength);
     // the tape is folded over the rim: three layers of fabric, so lit from inside it reads as a band a little darker
     // and warmer than the wall (~0.7x in the photos), not grey. Same weave scale as the wall, across the U.
     const tapeLen = 2 * s.tape + Math.PI * (s.thickness / 2 + 0.08);
@@ -488,13 +518,17 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   /* metal hat over an LED disc */
   const emitters: KitLamp["emitters"] = [];
   if (hat) {
-    const hatZones = zoned(profileRuns(hat.profile, far ? 16 : 120), far ? [] : hat.fixed);
+    const inside = far ? undefined : hat.inside;
+    const hatZones = zoned(profileRuns(hat.profile, far ? 16 : 120), far ? [] : [...(hat.fixed ?? []), ...(inside ? [{ ...inside, lit: true }] : [])]);
     probeHide.push(add(brushed(shaped(hatZones.rest, round, hat.facets), hat.brush), surface));
     for (const z of hatZones.zones) probeHide.push(add(shaped(z.runs, round, hat.facets), z.mat));
-    const led = new THREE.MeshStandardMaterial({ color: "#f4efe6", roughness: 0.6, emissive: "#ffffff", emissiveIntensity: 0 });
-    const disc = add(new THREE.RingGeometry(hat.led.rIn * CM, hat.led.rOut * CM, round).rotateX(Math.PI / 2), led, false);
-    disc.position.y = hat.led.y * CM;
-    emitters.push({ m: led, gain: 6 });
+    if (inside) emitters.push({ m: fixedMat(inside.finish, inside.rough, true), gain: INSIDE_GAIN });
+    else {
+      const led = new THREE.MeshStandardMaterial({ color: "#f4efe6", roughness: 0.6, emissive: "#ffffff", emissiveIntensity: 0 });
+      const disc = add(new THREE.RingGeometry(hat.led.rIn * CM, hat.led.rOut * CM, round).rotateX(Math.PI / 2), led, false);
+      disc.position.y = hat.led.y * CM;
+      emitters.push({ m: led, gain: 6 });
+    }
     const o = hat.opal;
     if (o && "profile" in o) opalShell(o);
     else if (o) {
@@ -523,7 +557,12 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     color,
     cd,
     dimmer: L.dimmer,
-    reflect: [...(grip ? [brass, bodyBrass, steel, surface, grip] : [brass, bodyBrass, steel, surface]), ...[...fixed.values()].map((z) => z.m), ...reflectGlass],
+    // far copies of metal and paint lamps take the probe capture too: under the room environment (a bright neutral
+    // studio) they read milky white, chrome most of all. Far wood keeps it, as before.
+    reflect:
+      far && wood
+        ? []
+        : [...(grip ? [brass, bodyBrass, steel, surface, grip] : [brass, bodyBrass, steel, surface]), ...[...fixed.values()].map((z) => z.m), ...reflectGlass],
     probeHide,
     emitters,
     glows: !!s || !hat,
@@ -542,11 +581,13 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
         // antique keeps the finish's metalness here, so setLight lights it as the finish (paint: no gold shine at
         // night); the shader raises it for the reflections
         const ant = !!antique && !!antiqueAs && f.hex === antiqueAs.hex && f.metal === antiqueAs.metal;
+        const mar = !!marb && !!marbleAs && f.hex === marbleAs.hex && f.metal === marbleAs.metal;
         for (const m of grip ? [surface, grip] : [surface]) {
           m.color.set(ant ? antique.hex : f.hex);
           m.metalness = f.metal;
-          m.roughness = far ? Math.max(f.rough, 0.55) : ant ? antique.rough : f.rough;
+          m.roughness = far ? Math.max(f.rough, 0.55) : ant ? antique.rough : mar ? (marble.rough ?? f.rough) : f.rough;
         }
+        if (marb) marb.uMarble.value = +mar;
         if (surf) {
           surf.uBrushOn.value = +(f.metal > 0.5 && f.rough >= 0.2);
           surf.uAntique.value = +ant;
@@ -564,7 +605,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     setExposure(exposure) {
       if (bodyLimit) bodyLimit.value = BODY_LIMIT / exposure;
       if (gripLimit) gripLimit.value = BODY_LIMIT / exposure;
-      for (const z of fixed.values()) z.limit.value = BODY_LIMIT / exposure;
+      for (const z of fixed.values()) z.limit.value = z.top / exposure;
     },
     // intensity in the viewer's light units (0 = off), position in world space; colour defaults to the spec's
     setLight(intensity, worldPos, c = color) {

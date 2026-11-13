@@ -231,6 +231,9 @@ export interface ShadeSpec {
   // its inside seen through the opening. y, h, rBottom and rTop still describe the inside the light fills and the
   // opening it leaves by; `cap` and `tape` are unused, `topButton` sits on the profile's top.
   profile?: ProfilePoint[];
+  // Opt-in, with `opal`: alabaster instead of plain opal (Carina): soft clouds `scale` cm across, faint grey-beige by
+  // day, and at night denser, paler patches and darker streaks in the glow; `strength` (0-1) scales both
+  alabaster?: { scale: number; strength: number };
   transmission: number;
   liner: number;
 }
@@ -529,6 +532,161 @@ export function surfaceTreated(m: THREE.MeshPhysicalMaterial): SurfaceUniforms {
   const key = m.customProgramCacheKey.call(m);
   m.customProgramCacheKey = () => key + "-surface";
   return u;
+}
+
+/* ---------- marble and alabaster ---------- */
+
+// Gradient noise: smooth, without value noise's lattice-aligned creases, which show in warped strands and clouds.
+const GNOISE = /* glsl */ `
+  float kgh(vec3 p) { p = fract(p * vec3(.1031, .103, .0973)); p += dot(p, p.yxz + 33.33); return fract((p.x + p.y) * p.z); }
+  vec3 kgg(vec3 p) { return vec3(kgh(p), kgh(p + 17.1), kgh(p + 31.7)) * 2. - 1.; }
+  float kgc(vec3 i, vec3 f, vec3 o) { return dot(kgg(i + o), f - o); }
+  float gn(vec3 x) {
+    vec3 i = floor(x), f = fract(x), u = f * f * f * (f * (f * 6. - 15.) + 10.);
+    return mix(mix(mix(kgc(i, f, vec3(0, 0, 0)), kgc(i, f, vec3(1, 0, 0)), u.x), mix(kgc(i, f, vec3(0, 1, 0)), kgc(i, f, vec3(1, 1, 0)), u.x), u.y),
+               mix(mix(kgc(i, f, vec3(0, 0, 1)), kgc(i, f, vec3(1, 0, 1)), u.x), mix(kgc(i, f, vec3(0, 1, 1)), kgc(i, f, vec3(1, 1, 1)), u.x), u.y), u.z);
+  }
+`;
+
+// Veins: six sets of thin sheets, each set roughly parallel (bent by its own warp) across one of six evenly spread
+// directions; where a sheet cuts the surface it draws a strand. Every slot of a set's spacing holds a strand or none,
+// shifted within the slot, with its own width and ink, cut into pieces by its own noise, so the strands start and stop
+// independently and the six sets cross at every angle as the print's thrown strands do. All share a warp that bends
+// them, one that meanders them and creased ones that kink them and crinkle their edges. Solid in object space: no seam
+// round the turning. Each strand is box-filtered over the pixel from its distance in pixels, so one thinner than a
+// pixel draws fainter instead of breaking into dashes; detail and whole sets whose spacing shrinks to a few pixels
+// fade to their mean tone.
+const MARBLE = /* glsl */ `
+  uniform float uMarble, uMScale, uMWidth;
+  uniform vec3 uVein;
+  varying vec3 vMarbP, vMarbN;
+  vec3 mh3(float x) { vec3 p = fract(x * vec3(.1031, .103, .0973)); p += dot(p, p.yzx + 33.33); return fract((p.xxy + p.yzz) * p.zyx); }
+  vec3 marbleWarp(vec3 q, float o) { return vec3(gn(q + o), gn(q + o + 5.3), gn(q + o + 11.7)); }
+  float marbleVeins(vec3 P) {
+    vec3 dx0 = dFdx(P), dy0 = dFdy(P);
+    float px = max(max(length(dx0), length(dy0)), 1e-5);
+    // the pixel's footprint on the surface (metric of the screen axes), to turn a field's screen gradient into its
+    // gradient along the surface: strands are filtered across themselves, so a grazing face keeps the ones running
+    // into the view
+    float m11 = dot(dx0, dx0), m12 = dot(dx0, dy0), m22 = dot(dy0, dy0), mdet = max(m11 * m22 - m12 * m12, 1e-14);
+    vec3 q = P / uMScale;
+    // fades for detail of period p (in units of the scale): gone before it would alias
+    #define MFADE(p) smoothstep(3., 8., uMScale * (p) / px)
+    vec3 Pw = P + uMScale * (marbleWarp(q * .7, 0.) * .2 + marbleWarp(q * 1.8, 41.) * .1 * MFADE(.55)
+      + (abs(marbleWarp(q * 4., 3.)) - .25) * .07 * MFADE(.25) + (abs(marbleWarp(q * 16., 7.)) - .25) * .045 * MFADE(.06));
+    vec3 Q = Pw / uMScale;
+    vec3 N = normalize(vMarbN);
+    // thick and thin along each strand, where the ink pooled or ran thin
+    float along = mix(.7, 1.35, smoothstep(-.2, .35, gn(Q * 9.)));
+    // strands bunch up in some places and leave others clear
+    float bunch = gn(Q * 1.3 + 90.) * .5;
+    float v = 0.;
+    for (int i = 0; i < 6; i++) {
+      float k = float(i);
+      // the six axes of an icosahedron
+      vec3 a = normalize(i == 0 ? vec3(0., 1., 1.618) : i == 1 ? vec3(0., 1., -1.618) : i == 2 ? vec3(1., 1.618, 0.) : i == 3 ? vec3(-1., 1.618, 0.) : i == 4 ? vec3(1.618, 0., 1.) : vec3(-1.618, 0., 1.));
+      // spacing (cm) and the set's own bend
+      float sp = uMScale * (.06 + .01 * k);
+      float dd = dot(Pw, a) + (gn(Q * .9 + k * 3.1) * .15 + gn(Q * 3. + k * 5.3) * .035 * MFADE(.33)) * uMScale;
+      float t = dd / sp, li = floor(t + .5);
+      vec3 h = mh3(li * 7.13 + k * 101.7);
+      float dl = (t - li - (h.x - .5) * .5) * sp;
+      // a sheet nearly along the surface would smear into a blot: its strand thins out and goes
+      float sinA = length(cross(a, N));
+      float w = uMWidth * along * mix(.55, 1.5, h.y * h.y * h.y);
+      // across the strand: its distance and width in pixels from the screen gradient (gv, per pixel) and the surface
+      // gradient (gs, per cm; at most what the field can have, against the metric's blow-up at the silhouette)
+      vec2 g = vec2(dFdx(dd), dFdy(dd));
+      float gv = max(length(g), 1e-7), gs = min(sqrt(max((m22 * g.x * g.x - 2. * m12 * g.x * g.y + m11 * g.y * g.y) / mdet, 0.)), 1.5);
+      float d = abs(dl) / gv, wp = w * gs / gv;
+      float cov = clamp(min(d + .5, wp * .5) - max(d - .5, -wp * .5), 0., 1.);
+      // each strand cut into pieces a few cm long by its own noise, more of it where they bunch; most slots hold one
+      float piece = smoothstep(-.1, .1, gn(Q * 1.6 + h * 40.) + bunch);
+      float facing = smoothstep(.65, .85, sinA);
+      float ink = mix(.4, 1., step(.3, h.z)) * step(fract(h.x * 13.7), .7) * piece * facing;
+      // where the set's slots shrink to a few pixels across (sp / gv), its mean, with no per-strand or along-the-strand
+      // terms (they would change from pixel to pixel or mottle it); its lines run parallel nearby, so it fades before
+      // they would beat into a weave-like moire
+      float val = mix(uMWidth * .8 * min(gs, 1.) / sp * .7 * .8 * .5 * facing, cov * ink, smoothstep(2.5, 6., sp / gv));
+      v = 1. - (1. - v) * (1. - val);
+    }
+    return v;
+  }
+`;
+
+export interface MarbleUniforms {
+  uMarble: U<number>;
+}
+
+// `scale`, `width` in cm (KitSpec marble's width is in mm)
+export function marbled(m: THREE.MeshPhysicalMaterial, vein: string, scale: number, width: number): MarbleUniforms {
+  const u = { uMarble: { value: 0 }, uMScale: { value: scale }, uMWidth: { value: width }, uVein: { value: new THREE.Color(vein) } };
+  const prev = m.onBeforeCompile;
+  m.onBeforeCompile = (s, r) => {
+    prev.call(m, s, r);
+    Object.assign(s.uniforms, u);
+    s.vertexShader =
+      "varying vec3 vMarbP, vMarbN;\n" +
+      s.vertexShader.replace("#include <project_vertex>", "#include <project_vertex>\nvMarbP = transformed * 100.;\nvMarbN = objectNormal;");
+    s.fragmentShader =
+      GNOISE +
+      MARBLE +
+      s.fragmentShader.replace(
+        "#include <color_fragment>",
+        "#include <color_fragment>\nif (uMarble > .5) diffuseColor.rgb = mix(diffuseColor.rgb, uVein, marbleVeins(vMarbP));"
+      );
+  };
+  const key = m.customProgramCacheKey.call(m);
+  m.customProgramCacheKey = () => key + "-marble";
+  return u;
+}
+
+// Alabaster: warped clouds with crisp-edged denser patches and soft streaks along them. By day the dense parts are a
+// faint grey-beige; lit from inside they let less through and filter it less (paler, whiter), the clear parts glow
+// brighter and warmer. Mean glow is kept, so the lamp's output and the shade's calibration stay as they were. Octaves
+// finer than the pixel fade out.
+const ALABASTER = /* glsl */ `
+  uniform float uAlScale, uAlStrength;
+  varying vec3 vAlabP;
+  float alabaster(vec3 P) {
+    float px = max(max(length(dFdx(P)), length(dFdy(P))), 1e-5);
+    vec3 q = P / uAlScale;
+    vec3 W = vec3(gn(q * .5), gn(q * .5 + vec3(5.2, 1.3, 7.7)), gn(q * .5 + vec3(9.1, 4.4, 2.8)));
+    vec3 r = q + W * .4;
+    float c = 0., a = .55, f = 1.;
+    for (int i = 0; i < 5; i++) {
+      // billowed above the first octave: rounded, cauliflower-edged clouds rather than swirls
+      float n = gn(r * f + float(i) * 7.1);
+      c += a * (i == 0 ? n : abs(n) * 1.6 - .3) * (1. - smoothstep(.25, .6, px * f / uAlScale));
+      a *= .55; f *= 2.4;
+    }
+    // the stone's sugary grain, about a millimetre across, roughening the patches' edges
+    c += .1 * gn(P / .12) * (1. - smoothstep(.25, .6, px / .12));
+    return smoothstep(-.2, .08, c);
+  }
+`;
+
+export function alabastered(m: FabricMaterial, scale: number, strength: number) {
+  const u = { uAlScale: { value: scale }, uAlStrength: { value: strength } };
+  const prev = m.onBeforeCompile;
+  m.onBeforeCompile = (s, r) => {
+    prev.call(m, s, r);
+    Object.assign(s.uniforms, u);
+    s.vertexShader =
+      "varying vec3 vAlabP;\n" + s.vertexShader.replace("#include <project_vertex>", "#include <project_vertex>\nvAlabP = transformed * 100.;");
+    s.fragmentShader =
+      GNOISE +
+      ALABASTER +
+      s.fragmentShader
+        .replace("#include <color_fragment>", "#include <color_fragment>\nfloat kitAl = alabaster(vAlabP);\ndiffuseColor.rgb *= mix(vec3(1.), vec3(.88, .86, .82), kitAl * uAlStrength);")
+        // after the glow (fabricMaterial adds it right after emissivemap_fragment)
+        .replace(
+          "#include <lights_physical_fragment>",
+          "totalEmissiveRadiance *= mix(vec3(1.), mix(vec3(1.35, 1.2, .92), vec3(.76, .78, .84), kitAl), uAlStrength);\n#include <lights_physical_fragment>"
+        );
+  };
+  const key = m.customProgramCacheKey.call(m);
+  m.customProgramCacheKey = () => key + "-alabaster";
 }
 
 /* ---------- wood ---------- */

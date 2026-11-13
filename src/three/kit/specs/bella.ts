@@ -6,7 +6,8 @@ import type { KitSpec } from ".";
 // datasheet says Ø200 and Ø120 (the same 0.6 ratio), 5.35 cm high where it says 60 mm. The finial is visible down to
 // the top's front edge, so the top is a shallow dish (also drawn so on the datasheet). The datasheet's night photo
 // shows the underside: a cream interior out to a thin rim round a black lens-shaped LED housing (0.55 of the rim's
-// width) hanging ~1.4 cm below it; the interior is drawn as the LED disc at rim level (the kit's hat has one finish).
+// width) hanging ~1.4 cm below it; the interior is the hat's flat underside ring painted `beyaz` (`inside`), lit by the
+// LED hidden in the housing's edge, as the photo shows no glowing disc.
 // Charge port and touch key are underneath, unseen.
 const bella: KitSpec = {
   body: {
@@ -30,6 +31,7 @@ const bella: KitSpec = {
       [0, 39],
     ],
     led: { y: 27.69, rIn: 5.82, rOut: 10.54 },
+    inside: { from: 27.7, to: 27.7, finish: "beyaz" },
   },
   light: { kelvin: 2700, lumen: 550, y: 27.69, dimmer: [0.4, 0.7, 1], body: 0.03, bounce: 200 },
 };

@@ -27,8 +27,13 @@ const FINISHES: Record<string, Finish3D> = {
   // gold, bronz and eskitme: calibrated against the product photos in the day render (2026-11-08). eskitme stays at
   // metal 0.5 or below so the kit lights it as paint: the photos show a satin painted finish, not shiny metal at night.
   bronz: { hex: "#966B55", metal: 1, rough: 0.26 },
-  rose: { hex: "#DCA690", metal: 1, rough: 0.26 },
+  // rose and gri: against the product photos in the day render (2026-11-13). rose: the warm room shifts the swatch
+  // redder and more saturated (copper); this paler, pinker hex renders at the photos' mid hue ~17 and saturation ~0.41.
+  // gri: the warm dark grey satin powder coat of the Toledo photo (labelled toledo-siyah), a little metal for its
+  // fleck; at most 0.5, so the kit lights it as paint at night.
+  rose: { hex: "#EDC2C0", metal: 1, rough: 0.26 },
   krom: { hex: "#E2E4E8", metal: 1, rough: 0.13 },
+  gri: { hex: "#726E66", metal: 0.25, rough: 0.36 },
   "satine-nikel": { hex: "#B9B5AC", metal: 1, rough: 0.34 },
   eskitme: { hex: "#8C8973", metal: 0.45, rough: 0.62 },
   siyah: { hex: "#141415", metal: 0, rough: 0.46 },

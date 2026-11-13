@@ -72,6 +72,20 @@ export interface Antique {
   patina: number;
 }
 
+// Opt-in, per spec: the body and hat (and a body-finish top button) drawn as a marble print, thin wandering strands
+// crossing every way (hydro-dipped: Konra, Oxford), whenever the buyer picks `finish` (a slug from finishes.ts; the
+// print's ground is that finish, so other finishes stay plain). `vein` is the strands' colour, `scale` the pattern's
+// size in cm (6: neighbouring strands a few mm apart, bending every few cm), `width` the strands' width (mm; from about
+// half to twice that), `rough` the print's roughness (the finish's when left out). Solid in object space, so it wraps
+// round the turning without a seam or stretching; strands finer than a pixel fade to their mean tone.
+export interface Marble {
+  finish: string;
+  vein: string;
+  scale: number;
+  width: number;
+  rough?: number;
+}
+
 export interface Detail {
   type: "button" | "usbc" | "hole";
   y: number;
@@ -99,6 +113,10 @@ export interface HatSpec {
   facets?: Facets;
   opal?: OpalBand | OpalShell;
   fixed?: FixedFinish[];
+  // Opt-in: the hat's painted inside, lit by an LED hidden in a housing under it (Bella): a FixedFinish zone (its
+  // runs between `from` and `to`) that takes the LED's light at night as lit paint, never brighter than about white,
+  // and replaces the LED disc, which is then not drawn. Far copies keep the disc.
+  inside?: FixedFinish;
   brush?: number;
 }
 
@@ -126,6 +144,7 @@ export interface KitSpec {
   shade?: ShadeSpec;
   hat?: HatSpec;
   antique?: Antique;
+  marble?: Marble;
   // `shape` (opt-in): the button's outline in units of r and h, [0, 0] to [0, 1] (the default dome when left out:
   // [[0, 0], [1, 0], [1, 0.2], [0.9, 0.6], [0.55, 0.92], [0, 1]]). `finish` (opt-in): "body" for the selected finish,
   // or a slug from finishes.ts; brass when left out.
