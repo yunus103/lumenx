@@ -39,7 +39,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from extract import DATA, OUT, ROOT, Silhouette, _smooth, find_product, load_rgb, silhouette  # noqa: E402
+from extract import OUT, ROOT, Silhouette, _smooth, find_product, image_path, load_rgb, silhouette  # noqa: E402
 
 RENDERS = ROOT / "public" / "renders"
 SPECS = ROOT / "src" / "three" / "kit" / "specs"
@@ -462,7 +462,7 @@ def main() -> None:
     finish = args.finish or next((f for f in known if f in image["fileName"]), "ceviz" if spec["body"].get("grain") else "gold")
     if finish not in known:
         raise SystemExit(f"unknown finish '{finish}': {known}")
-    photo = DATA / "images" / f"{image['id']}.webp"
+    photo = image_path(image)
 
     outlines = parts(spec)
     height = float(max(o[:, 1].max() for o in outlines))

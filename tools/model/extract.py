@@ -371,12 +371,36 @@ def score(photo_path: Path | str, render_path: Path | str, samples: int = 400) -
 
 
 def find_product(slug: str) -> dict:
-    products = json.loads((DATA / "lightdesign.json").read_text(encoding="utf-8"))["products"]
-    exact = [p for p in products if p["slug"] == slug]
-    found = exact or [p for p in products if p["slug"].startswith(slug)]
+    """A Light Design product, else a price-list one (tools/data/ext/pricelist.json), whose images are local files."""
+    found = []
+    for name in ("lightdesign.json", "ext/pricelist.json"):
+        products = json.loads((DATA / name).read_text(encoding="utf-8"))["products"]
+        exact = [p for p in products if p["slug"] == slug]
+        found = exact or [p for p in products if p["slug"].startswith(slug)]
+        if found:
+            break
     if len(found) != 1:
         raise SystemExit(f"{len(found)} products match '{slug}': {[p['slug'] for p in found][:8]}")
-    return found[0]
+    p = found[0]
+    if any("file" in i for i in p["images"]):
+        p = {**p, "images": [{"id": Path(i["file"]).stem, "fileName": Path(i["file"]).name, **i} for i in p["images"]]}
+    return p
+
+
+def image_path(image: dict) -> Path:
+    if "file" not in image:
+        return DATA / "images" / f"{image['id']}.webp"
+    # the price-list cutouts are cropped to the lamp's edges: a white margin (to 5:6, like the shop photos) gives the
+    # silhouette a background to measure and the sheet an unstretched photo
+    im = Image.open(ROOT / image["file"]).convert("RGB")
+    h = round(max(im.height * 1.2, im.width * 1.2 * 6 / 5))
+    w = round(h * 5 / 6)
+    padded = Image.new("RGB", (w, h), (255, 255, 255))
+    padded.paste(im, ((w - im.width) // 2, (h - im.height) // 2))
+    out = OUT / "photos" / f"{image['id']}.png"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    padded.save(out)
+    return out
 
 
 def main() -> None:
@@ -393,7 +417,7 @@ def main() -> None:
     image = next((i for i in images if i["id"].startswith(args.image)), None) if args.image else images[0]
     if image is None:
         raise SystemExit(f"no image '{args.image}' in {[i['id'][:8] + ' ' + i['fileName'] for i in images]}")
-    img = load_rgb(DATA / "images" / f"{image['id']}.webp")
+    img = load_rgb(image_path(image))
     m = measure(img, args.height, args.y0)
 
     cuts = [0.0, *sorted(float(v) for v in args.split.split(","))] if args.split else [0.0]

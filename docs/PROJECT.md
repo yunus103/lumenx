@@ -31,7 +31,7 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - **Referanslar:** a page of images and videos of installations (`reference` documents, `referencesPage` singleton, no detail pages). A global switch in `siteSettings` (`referencesEnabled`, default off) hides it from navigation and the sitemap and makes the route return 404.
 - **Legal:** `legalPage` documents behind `/kvkk` and `/cerez-politikasi`, linked in the footer. The texts are templates until they get a legal review.
 - **Prices:**
-  - Each product has an **Ekonomik and a Premium price in USD** (`priceUsd`, `premiumPriceUsd`); if only one is filled, only that one is shown. Products with a single price use `priceUsd`.
+  - Loaded from the client's 2027 price list (2026-11-25); the client will revise them. Each product has an **Ekonomik and a Premium price in USD** (`priceUsd`, `premiumPriceUsd`); if only one is filled, only that one is shown. Products with a single price use `priceUsd`.
   - Labelled "Başlangıç fiyatı"; the real price is negotiated in the quote. TL is converted with TCMB's USD forex selling rate and rounded to the nearest 10 TL. No VAT note for now.
   - **One global switch** in `siteSettings.priceMode` (not per product): TL, USD or no price.
   - **Rate:** `/api/usd-rate` reads TCMB's public XML; the CDN caches it for 6 hours and keeps the last good rate if TCMB fails. The browser converts, so a new rate never regenerates pages. With no rate at all, the TL mode shows no price.
@@ -43,7 +43,7 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - **Spec table:** a product shows its category's `defaultSpecs` merged with its own `specs` by label (`mergeSpecs` in `src/lib/catalog.ts`): a product row with the same label replaces the category row, new labels are appended. Products list only what differs (material, weight, dimensions); charging stations have an empty category table and list all their rows.
 - **Products first, models later:** upload all products without 3D first, then model them one by one. A product without a model shows its photo gallery and configurator without the viewer.
 - **3D data lives in code, catalogue data in Sanity:** a product has an optional `modelKey` string. Kit specs (profiles, grain, light tuning) are code in the repo, versioned in git, never edited by the client. Modelling a product = add its spec + fill `modelKey`.
-- **Environment:** the existing restaurant room covers all table lamps. An outdoor kit and room are discussed once the full product list arrives; not a blocker now.
+- **Environment:** the existing restaurant room covers all table lamps. Armatures and outdoor fittings are photo-only (2026-11-25), so no outdoor kit or room is planned unless the client asks for a specific fitting.
 - **Schemas:** singletons `homePage`, `aboutPage`, `contactPage`, `productsPage`, `referencesPage`, `blogPage`, `navigation`, `siteSettings`; documents `product`, `productCategory`, `finish`, `shade`, `reference`, `legalPage`, `blogPost`, `blogCategory`.
 - **Catalogue schema (2026-11-02):** `product`, `productCategory` (a tree via `parent`, so a mega menu needs no schema change; URLs stay flat), shared `finish` (body colour with RAL; its slug is the 3D material key) and `shade`. Variant photos are keyed by finish (+ shade), the demo's `photoFor` logic; missing combinations fall back to the nearest photo, and Yunus fills gaps with AI-generated photos. Category holds the default Kelvin options and default spec table.
 - **Light Design's separate "Ekonomik" listings** (charging stations, Ezop, Meissa, Pandora, Plastica) stay separate products.
@@ -109,7 +109,7 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - **Datasheets:** 86 products link one on arstar.com.tr, which blocks scripts with Cloudflare. Don't work around that: open them in the browser, where pdf.js on the page reads their text (dimensions, lumen) and renders the drawing.
 - Capella, Avior and Alderamin are old demo models, rebuilt from zero with the kit; the `lamp` family goes when they are done.
 - Next tools: a profile extractor (a plain threshold fits dark and metal lamps within about 1 mm on Defne, but white parts on the grey background and glass break it) and a review sheet of photo, day and night render per product. The sheet also gives the night image for the cards.
-- Outdoor fittings and armatures: decided when the list arrives. A plain showroom scene is cheaper than baking new rooms.
+- Outdoor fittings and armatures: photo only (client, 2026-11-25). If one is ever modelled, a plain showroom scene is cheaper than baking new rooms.
 
 ## Plan
 
@@ -119,8 +119,9 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 4. **Done:** product schema, catalogue and detail pages, with the 3D viewer port.
 5. **Done:** Hakkımızda, İletişim, Referanslar (switch), Blog styling, 404, KVKK / cookie pages.
 6. **Done:** USD rate and prices with the global switch.
-7. **Next: modelling in batches.** The approach is discussed at the start of the next session.
-8. **Right before launch:** blog posts, KVKK and cookie review, webhook, contact form test with real SMTP values, SEO, real-phone tests, admin panel guide for the client, removal of the sample prices and content. Finish photos are Yunus's and have no rush.
+7. **Now: modelling in batches** with `/model-lamps` (queue in `.claude/skills/model-lamps/queue.md`). Done 2026-11-25: catalogue grown to ~315 products (Light Design rescrape, price-list items, armatures and outdoor fittings), 2027 prices, grouped catalogue tabs.
+   - Later, no rush: the Premium vs Ekonomik section (HANDOFF "Next up").
+8. **Right before launch:** blog posts, KVKK and cookie review, webhook, contact form test with real SMTP values, SEO, real-phone tests, admin panel guide for the client, removal of the sample content. Finish photos are Yunus's and have no rush.
 
 ## Open questions
 

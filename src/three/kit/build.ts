@@ -308,48 +308,60 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   surface.userData.envI = wood ? 0.2 : 1;
   // parts in a fixed finish (FixedFinish, button rings and centres): one material per finish, lit as metal or paint
   // by its own metalness, as the body is by the selected finish's
-  const fixed = new Map<string, { m: THREE.MeshPhysicalMaterial; u: LinerUniforms; limit: { value: number }; top: number }>();
-  // `lit`: its own material, which the viewer also drives as an emitter (HatSpec inside)
-  const fixedMat = (slug: string, rough?: number, lit = false) => {
-    const key = (rough === undefined ? slug : `${slug}@${rough}`) + (lit ? "@lit" : "");
+  const fixed = new Map<string, { m: THREE.MeshPhysicalMaterial; u?: LinerUniforms; limit?: { value: number }; top: number }>();
+  // `lit`: its own material, which the viewer also drives as an emitter (HatSpec inside). `brush`: patched for the
+  // zone's brushing lines (FixedFinish brush). Far copies treat it as their metal body: no liner, roughness 0.55 or more.
+  const fixedMat = (slug: string, rough?: number, lit = false, brush = false) => {
+    const key = (rough === undefined ? slug : `${slug}@${rough}`) + (lit ? "@lit" : "") + (brush ? "@brush" : "");
     let z = fixed.get(key);
     if (!z) {
       const f = finish3D({ slug: { current: slug } });
-      const m = new THREE.MeshPhysicalMaterial({ color: f.hex, metalness: f.metal, roughness: rough ?? f.rough });
+      const r = rough ?? f.rough;
+      const m = new THREE.MeshPhysicalMaterial({ color: f.hex, metalness: f.metal, roughness: far ? Math.max(r, 0.55) : r });
       m.userData.envI = 1;
       if (lit) m.emissiveMap = fadeOut();
-      z = { m, u: linerLit(m, source, prof, top, wash), limit: brightnessLimited(m), top: lit ? INSIDE_LIMIT : BODY_LIMIT };
+      z = far ? { m, top: BODY_LIMIT } : { m, u: linerLit(m, source, prof, top, wash), limit: brightnessLimited(m), top: lit ? INSIDE_LIMIT : BODY_LIMIT };
+      if (brush) surfaceTreated(m).uBrushOn.value = +(f.metal > 0.5 && r >= 0.2);
       fixed.set(key, z);
     }
     return z.m;
   };
-  // the runs of each fixed-finish zone as their own meshes, the rest in the selected finish
+  // the runs of each fixed-finish zone as their own meshes, the rest in the selected finish. A part with no runs
+  // (a hat wholly in fixed zones) gets no mesh: an empty geometry can't be built.
   const zoned = (all: THREE.Vector2[][], zones: (FixedFinish & { lit?: boolean })[] = []) => ({
     rest: all.filter((run) => !zones.some((z) => within(run, z.from, z.to))),
-    zones: zones.map((z) => ({ runs: all.filter((run) => within(run, z.from, z.to)), mat: fixedMat(z.finish, z.rough, z.lit) })),
+    zones: zones.flatMap((z) => {
+      const runs = all.filter((run) => within(run, z.from, z.to));
+      const brush = far ? 0 : (z.brush ?? 0);
+      return runs.length ? [{ runs, brush, mat: fixedMat(z.finish, z.rough, z.lit, brush > 0) }] : [];
+    }),
   });
   // a knurled grip is its own mesh: the runs between its two corners, in the same finish with the knurl's maps
   const k = wood || far ? undefined : b.knurl;
   const inGrip = (run: THREE.Vector2[]) => !!k && within(run, k.from, k.to);
-  const bodyZones = zoned(runs.filter((run) => !inGrip(run)), far ? [] : b.fixed);
+  const bodyZones = zoned(runs.filter((run) => !inGrip(run)), b.fixed);
   // brushed or antique metal (body.brush, hat.brush, antique): one patch on the body's material, each part's brush
   // strength as a vertex attribute
   const surf = wood || far || !(b.brush || hat?.brush || spec.antique) ? null : surfaceTreated(surface);
-  const brushed = (geo: THREE.BufferGeometry, v = 0) => {
-    if (surf) geo.setAttribute("kitBrush", new THREE.Float32BufferAttribute(new Float32Array(geo.attributes.position.count).fill(v), 1));
-    return geo;
-  };
+  const brushAttr = (geo: THREE.BufferGeometry, v: number) =>
+    geo.setAttribute("kitBrush", new THREE.Float32BufferAttribute(new Float32Array(geo.attributes.position.count).fill(v), 1));
+  const brushed = (geo: THREE.BufferGeometry, v = 0) => (surf ? brushAttr(geo, v) : geo);
+  // a fixed zone's mesh: brushed when the zone says so, on its own patched material
+  const zoneMesh = (z: ReturnType<typeof zoned>["zones"][number], geo: THREE.BufferGeometry) => add(z.brush ? brushAttr(geo, z.brush) : geo, z.mat);
   const antique = surf && spec.antique;
   const antiqueAs = antique && finish3D({ slug: { current: antique.finish } });
   // a marble print (KitSpec marble): one patch on the body's material, which the hat and a body-finish button share
   const marble = wood ? undefined : spec.marble;
   const marb = marble && marbled(surface, marble.vein, marble.scale, marble.width / 10);
   const marbleAs = marble && finish3D({ slug: { current: marble.finish } });
-  const bodyMesh = add(brushed(shaped(bodyZones.rest, far ? 24 : 200, b.facets), b.brush), surface);
-  bodyMesh.customDistanceMaterial = noRing;
-  const probeHide = [bodyMesh];
+  const probeHide: THREE.Mesh[] = [];
+  if (bodyZones.rest.length) {
+    const bodyMesh = add(brushed(shaped(bodyZones.rest, far ? 24 : 200, b.facets), b.brush), surface);
+    bodyMesh.customDistanceMaterial = noRing;
+    probeHide.push(bodyMesh);
+  }
   for (const z of bodyZones.zones) {
-    const zone = add(shaped(z.runs, 200, b.facets), z.mat);
+    const zone = zoneMesh(z, shaped(z.runs, far ? 24 : 200, b.facets));
     zone.customDistanceMaterial = noRing;
     probeHide.push(zone);
   }
@@ -519,9 +531,9 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   const emitters: KitLamp["emitters"] = [];
   if (hat) {
     const inside = far ? undefined : hat.inside;
-    const hatZones = zoned(profileRuns(hat.profile, far ? 16 : 120), far ? [] : [...(hat.fixed ?? []), ...(inside ? [{ ...inside, lit: true }] : [])]);
-    probeHide.push(add(brushed(shaped(hatZones.rest, round, hat.facets), hat.brush), surface));
-    for (const z of hatZones.zones) probeHide.push(add(shaped(z.runs, round, hat.facets), z.mat));
+    const hatZones = zoned(profileRuns(hat.profile, far ? 16 : 120), [...(hat.fixed ?? []), ...(inside ? [{ ...inside, lit: true }] : [])]);
+    if (hatZones.rest.length) probeHide.push(add(brushed(shaped(hatZones.rest, round, hat.facets), hat.brush), surface));
+    for (const z of hatZones.zones) probeHide.push(zoneMesh(z, shaped(z.runs, round, hat.facets)));
     if (inside) emitters.push({ m: fixedMat(inside.finish, inside.rough, true), gain: INSIDE_GAIN });
     else {
       const led = new THREE.MeshStandardMaterial({ color: "#f4efe6", roughness: 0.6, emissive: "#ffffff", emissiveIntensity: 0 });
@@ -558,10 +570,10 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     cd,
     dimmer: L.dimmer,
     // far copies of metal and paint lamps take the probe capture too: under the room environment (a bright neutral
-    // studio) they read milky white, chrome most of all. Far wood keeps it, as before.
+    // studio) they read milky white, chrome most of all. Far wood keeps the room's, as before; its fixed zones take the capture.
     reflect:
       far && wood
-        ? []
+        ? [...fixed.values()].map((z) => z.m)
         : [...(grip ? [brass, bodyBrass, steel, surface, grip] : [brass, bodyBrass, steel, surface]), ...[...fixed.values()].map((z) => z.m), ...reflectGlass],
     probeHide,
     emitters,
@@ -605,7 +617,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     setExposure(exposure) {
       if (bodyLimit) bodyLimit.value = BODY_LIMIT / exposure;
       if (gripLimit) gripLimit.value = BODY_LIMIT / exposure;
-      for (const z of fixed.values()) z.limit.value = z.top / exposure;
+      for (const z of fixed.values()) if (z.limit) z.limit.value = z.top / exposure;
     },
     // intensity in the viewer's light units (0 = off), position in world space; colour defaults to the spec's
     setLight(intensity, worldPos, c = color) {
@@ -624,7 +636,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
         u.uBase.value.copy(worldPos).sub(lampPos);
       };
       for (const u of lit) liner(u, body);
-      for (const { m, u } of fixed.values()) liner(u, m.metalness > 0.5 ? L.body : L.body * PAINT_BODY);
+      for (const { m, u } of fixed.values()) if (u) liner(u, m.metalness > 0.5 ? L.body : L.body * PAINT_BODY);
       for (const u of rings) u.uBase.value.copy(worldPos).sub(lampPos);
     },
   };

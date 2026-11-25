@@ -90,3 +90,5 @@ Finish the stage you are in, then commit what is complete: lamps with a fitted s
 Batch of 6: modellers 6–10 min and 120–147k tokens each in parallel; linking and night images one Sonnet agent, about 8 min and 100k; the whole batch about 30 min and 1M tokens.
 
 Batch of 12 with extra care (2026-11-13, all photos, magnified crops): modellers 19–40 min and 235–330k tokens each; three kit agents (fixed zones, foot, opal profiles; brushing and antique brass; glass and finials) 21–36 min and 230–350k each; the whole night about 3 h and 5.5M tokens.
+
+Batch of 12 (2026-11-25, 6 metal + 6 wood, 3 price-list only): modellers 10–25 min and 160–250k tokens each, six at a time in two overlapping waves; one kit agent (fixed zones) 10 min and 170k; the whole run about 2 h 15 min and 3M tokens.

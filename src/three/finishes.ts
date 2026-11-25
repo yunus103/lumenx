@@ -41,6 +41,9 @@ const FINISHES: Record<string, Finish3D> = {
   // oiled, satin: a thin clearcoat, never 0 (that would switch the program on a finish change)
   kayin: { hex: "#C98A45", metal: 0, rough: 0.42, wood: { early: "#c97f3b", late: "#94501f", rough: 0.55, clearcoat: 0.12 } },
   ceviz: { hex: "#6A3820", metal: 0, rough: 0.4, wood: { early: "#6b4128", late: "#33190c", rough: 0.52, clearcoat: 0.15 } },
+  // the price list's generic "Ahşap" (Orkide, Lara, Sena, Verda, Amore): a medium honey oak between kayin and ceviz,
+  // calibrated against the Orkide photo (2026-11-25)
+  ahsap: { hex: "#A8723D", metal: 0, rough: 0.42, wood: { early: "#a8561a", late: "#5e2808", rough: 0.55, clearcoat: 0.12 } },
 };
 
 const SHADES: Record<string, Shade3D> = {

@@ -86,6 +86,18 @@ const LINKS = [
   { slug: "menkent-garson-cagirma-masa-lambasi", modelKey: "menkent", shades: [] },
   { slug: "pollux-garson-cagirma-masa-lambasi", modelKey: "pollux", shades: [] },
   { slug: "wolf-garson-cagirma-masa-lambasi", modelKey: "wolf", shades: [] },
+  { slug: "bahar-sarjli-masa-lambasi", modelKey: "bahar", shades: [] },
+  { slug: "aster-sarjli-masa-lambasi", modelKey: "aster", shades: [] },
+  { slug: "astra-sarjli-masa-lambasi", modelKey: "astra", shades: [] },
+  { slug: "susen-sarjli-masa-lambasi", modelKey: "susen", shades: [] },
+  { slug: "albostan-sarjli-masa-lambasi", modelKey: "albostan", shades: [] },
+  { slug: "palermo-sarjli-masa-lambasi", modelKey: "palermo", shades: [] },
+  { slug: "akasya-ahsap-sarjli-masa-lambasi", modelKey: "akasya", shades: [] },
+  { slug: "sumbul-ahsap-sarjli-masa-lambasi", modelKey: "sumbul", shades: [] },
+  { slug: "maya-ahsap-sarjli-masa-lambasi", modelKey: "maya", shades: [] },
+  { slug: "mina-ahsap-sarjli-masa-lambasi", modelKey: "mina", shades: [] },
+  { slug: "orkide-ahsap-sarjli-masa-lambasi", modelKey: "orkide", shades: [] },
+  { slug: "pera-ahsap-sarjli-masa-lambasi", modelKey: "pera", shades: [] },
 ];
 
 const tx = client.transaction();

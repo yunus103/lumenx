@@ -1,17 +1,18 @@
-# HANDOFF: LUMENX site (updated 2026-11-14, tenth session)
+# HANDOFF: LUMENX site (updated 2026-11-25, eleventh session)
 
 Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the state of the work and what comes next.
 
 ## Next up
 
+0. **Later, no rush: Premium vs Ekonomik section.** Yunus will make the underside/charging photos (cassette vs Type-C) from the client's "PREMİUM VS EKONOMİK" sheet; Claude then designs the section. Agreed direction (2026-11-25): one shared Sanity source for both tiers (photo, one-line summary, difference rows), used by every table lamp with `chargeOptions`; in the configurator a small underside thumbnail and the one line under the Ekonomik/Premium switch, changing with it (don't swap the main gallery photo); on the product page a two-column comparison under the spec table, and the battery rows move there so they aren't stated twice. The facts are already in `BATTERY` in `tools/data/product-copy.mjs`.
 1. **Hero and Kelvin scenes: done for now, closed.** Defne frames from the real viewer (`/dev-render`, development only: `window.shot({...})` in the console; 32 samples, WebP quality .93). Revisit the product, angle or design once all products are modelled. Hero: `pos [-1.3,.22,-.45]`, `target [.05,.16,-.14]`, fov 24, `aksam`; phone: `pos [-1.42,.26,-.5]`, `target [0,.2,0]`, fov 30. Kelvin: `pos [.34,.3,1.08]`, `target [0,.13,0]`, fov 30, `gece`. Frames the code expects: hero `hero-{d,m}-{off,2700,3000,4000}.webp` (d 2400×1350, m 1080×1350), Kelvin `kelvin-{2700,3000,3500,4000,5000,6500}.webp` (1800×1180). The hero caption in Sanity names the pictured product. `og.jpg` still shows the old Avior render. Kelvin options on products stay as they are (Yunus's call).
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** Strategy in `docs/PROJECT.md` ("Modelling strategy"): code-built kit, not Blender GLBs.
    - **How:** run `/model-lamps` (project skill, `.claude/skills/model-lamps/`): it takes the next batch (default 6) from its `queue.md`, models each lamp with its own agent, links them with night images, pushes, and tells Yunus what to check. The procedure, tools, brief and lessons live there; this file keeps the state.
-   - **Numbers (2026-11-25):** about 315 products in Sanity: 154 Light Design, 15 from the price list only, ~145 armatures and outdoor fittings from other manufacturers (photo only, see `docs/PROJECT.md` "Product sources"). Only table lamps are modelled (~150 in the end); 65 are in the kit (table below). The queue (`queue.md`) was rebuilt the same day: new metal first, then wood, stone, fabric (a pleated-shade kit part unlocks most), porcelain, glass, lanterns; five lamps missing from the 2027 list wait for the client. Mosaic cubes (Lina, Gaye, Neva) and stations are not modelled.
+   - **Numbers (2026-11-25):** about 315 products in Sanity: 154 Light Design, 15 from the price list only, ~145 armatures and outdoor fittings from other manufacturers (photo only, see `docs/PROJECT.md` "Product sources"). Only table lamps are modelled (~150 in the end); 77 are in the kit (table below). The queue (`queue.md`) was rebuilt the same day: new metal first, then wood, stone, fabric (a pleated-shade kit part unlocks most), porcelain, glass, lanterns; five lamps missing from the 2027 list wait for the client. Mosaic cubes (Lina, Gaye, Neva) and stations are not modelled.
    - **Permissions Yunus gave:** browser and visual tests, opening the datasheets, tool dependencies, subagents at Claude's discretion. For modelling batches: no questions, push at the end, kit changes allowed as long as the Defne guard proves approved lamps unchanged. Work on `main`.
    - **To fix along the way:** Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
-4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
+4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample content (the sample prices are already gone). Yunus does the finish photos later, with no rush.
 5. **Vercel:** Yunus was going to create the project on 2026-11-05; the result isn't known here. When a deployment exists, check that `/api/usd-rate` returns a rate and `/dev-render` returns 404.
 
 ## Modelled lamps
@@ -85,8 +86,20 @@ Kit lamps are reviewed, linked in Sanity (`tools/link-models.mjs`) and have a ni
 | menkent | menkent-garson-cagirma-masa-lambasi | siyah | `--slug menkent-garson-cagirma --cam-height 24`; clear `glass` button on a chrome pin; hat top face `hat.fixed satine-nikel` (reads silver on every photo; could be a studio reflection, client) |
 | pollux | pollux-garson-cagirma-masa-lambasi | rose | `--slug pollux-garson-cagirma --photo 098f7dc5 --cam-height 24`; a cone hat, not a bell; clear `glass` button over a chrome pin (`hat.fixed krom`); composite photo, hat top judged by eye |
 | wolf | wolf-garson-cagirma-masa-lambasi | gold | `--slug wolf-garson-cagirma-masalambasi`; one photo, between gold and bronz (client); frosted call button as `glass` with `frost 0.3` over a brass post, a bit milkier than the photo; max 4 mm is the hat rim on a pitched photo |
+| bahar | bahar-sarjli-masa-lambasi | gold | 260 mm (gallery dimension photo + 2027 catalogue); `brush 0.3`; base Ø100 per labels where the white studio photo draws ~Ø117 (client); hat underside copied from Agena/Mila; stem glow |
+| aster | aster-sarjli-masa-lambasi | siyah | 265 mm (catalogue + dimension photo); base Ø105 / hat Ø134 from the photo vs 100/120 stated (client); hat underside copied from Polaris |
+| astra | astra-sarjli-masa-lambasi | satine-nikel | `--slug astra-sarjli-masa-lambasi-metal --cam-height 24` (upload by Sanity slug); 340 mm; `hat.brush 0.5`, `body.brush 0.4`; stem glow; hat Ø218 / base Ø149 vs 210/140 labelled (client); LED plate copied from Heli |
+| susen | susen-sarjli-masa-lambasi | rose | re-extracted `--height 24 --y0 25`; 240 mm = sum of the labelled parts, while catalogue and label say H 200 (client); white opal band under the hat (`hat.opal`), copper in the unlit photo (client); stem glow |
+| albostan | albostan-sarjli-masa-lambasi | gold | **price list**; 280 mm and hat Ø70 from the 2027 catalogue (p.18); base Ø92 from the photo vs 100 (client); hat underside copied from Mimosa; no night photo, no wash |
+| palermo | palermo-sarjli-masa-lambasi | rose | **price list**; `brush 0.4`; 220 mm (catalogue p.19); hat Ø174 from the photo vs 180 (client); hat underside like Torino; no night photo, no wash; composite photo (hat level, base from above) |
+| akasya | akasya-ahsap-sarjli-masa-lambasi | ceviz | `--photo 78efd94d --cam-height 50`; 250 mm; metal fixed `rose` brushed 0.45 (photos split copper/brass, client); body Ø85 / hat Ø124 vs 70/120 (client); LED plate copied from Sirius |
+| sumbul | sumbul-ahsap-sarjli-masa-lambasi | ceviz | `--cam-height 350` (photo shot from ~20° above); 190 mm; metal fixed `satine-nikel`, hat brushed 0.45; groove painted as a fixed `siyah` zone (no occlusion); diameters ~10% over the stated ones (client) |
+| maya | maya-ahsap-sarjli-masa-lambasi | ceviz | 185 mm; stem/collar fixed `gold`, hat fixed `siyah`; hat Ø100 studio vs 94 night vs 90 labelled (client); stem glow |
+| mina | mina-ahsap-sarjli-masa-lambasi | ceviz | 225 mm; metal fixed `siyah`; no button or port in any photo; hat Ø85 vs 80 labelled vs 60 catalogue (client) |
+| orkide | orkide-ahsap-sarjli-masa-lambasi | ahsap | **price list**; 225 mm (catalogue p.32); new `ahsap` wood finish calibrated on this photo (Lara, Sena, Verda, Amore share it); metal fixed `bronz` brushed 0.45; base Ø85 vs 80 (client); no night photo, no wash |
+| pera | pera-ahsap-sarjli-masa-lambasi | kayin | `--slug pera-ahsap-sarjli-masa-lambasi-1-1-1-1 --cam-height 75` (upload by Sanity slug); 230 mm; wood hat shares the body's grain field (one vertical pith works here); brass fixed `gold` brushed 0.4; beech flecks missing (kit gap); night photo shows a walnut hat on a beech body (client) |
 
-Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets`/`hat.facets` (N-sided parts, Melma, Ezop), `shade.opal` and `hat.opal` (opal diffuser, Karo, Baro). `extract.py` trims compression halo from silhouettes (scores of lamps fitted before shift up to ~2%). Added 2026-11-13, all opt-in, the Defne guard passed each time: `body.fixed`/`hat.fixed` (zones in a fixed finish, optional `rough`; Zamora and Evora finials, Bene's dome), button `ring`/`centre` (Verona), `foot.rBottom`/`round` (Suma, Melma, Bella), `shade.profile` and `hat.opal.profile` (opal parts of any shape; Carina, Nade), top-level `opal` and `glass` (Furud), `topButton.finish`/`shape` (Carina), `body.brush`/`hat.brush` (Torino, Diya, Kuma, Bene) and `antique` (brushed antique brass for one finish; Vela, Gemini). How to use them is in the model-lamps brief. Later on 2026-11-13: `marble` (a veined stone print on one finish; Konra `beyaz`, Oxford `siyah`), `shade.alabaster` (cloudy alabaster in an opal shade, also at night; Carina) and `hat.inside` (a lit painted hat interior that replaces the LED disc; Bella). Added 2026-11-14: `glass.frost` (frosted translucent plastic; Wolf's button) and `opal.rough`/`tint` (a matte grey opal; Minkar). Waiter-call buttons need no `topButton`: hat profile, `hat.fixed` or a top-level `glass` cap (Sirius, Pollux, Menkent garson). Open kit gaps: the table below. Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length.
+Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets`/`hat.facets` (N-sided parts, Melma, Ezop), `shade.opal` and `hat.opal` (opal diffuser, Karo, Baro). `extract.py` trims compression halo from silhouettes (scores of lamps fitted before shift up to ~2%). Added 2026-11-13, all opt-in, the Defne guard passed each time: `body.fixed`/`hat.fixed` (zones in a fixed finish, optional `rough`; Zamora and Evora finials, Bene's dome), button `ring`/`centre` (Verona), `foot.rBottom`/`round` (Suma, Melma, Bella), `shade.profile` and `hat.opal.profile` (opal parts of any shape; Carina, Nade), top-level `opal` and `glass` (Furud), `topButton.finish`/`shape` (Carina), `body.brush`/`hat.brush` (Torino, Diya, Kuma, Bene) and `antique` (brushed antique brass for one finish; Vela, Gemini). How to use them is in the model-lamps brief. Later on 2026-11-13: `marble` (a veined stone print on one finish; Konra `beyaz`, Oxford `siyah`), `shade.alabaster` (cloudy alabaster in an opal shade, also at night; Carina) and `hat.inside` (a lit painted hat interior that replaces the LED disc; Bella). Added 2026-11-14: `glass.frost` (frosted translucent plastic; Wolf's button) and `opal.rough`/`tint` (a matte grey opal; Minkar). Waiter-call buttons need no `topButton`: hat profile, `hat.fixed` or a top-level `glass` cap (Sirius, Pollux, Menkent garson). Open kit gaps: the table below. Tiny grooves need every point marked as a corner, since `profileRuns` spaces points by run length. Added 2026-11-25 (Defne guard passed): a hat or body may lie wholly inside `fixed` zones (no hidden sliver needed), far copies draw fixed zones (one extra draw call per zone per copy), and `fixed[].brush` brushes a zone (Sümbül, Akasya, Orkide, Pera). Wood lamps with metal parts (Akasya, Sümbül, Maya, Mina, Orkide, Pera) keep the metal in fixed zones, since only the woods are listed finishes. `ahsap` is a wood entry in `finishes.ts` for the price-list wood lamps. `extract.py` and `review.py` find price-list products (`tools/data/ext/pricelist.json`) and pad their cropped photos; `--photo` takes the file name. New lamps have no datasheet: the 2027 catalogue (`arstar.com.tr/wp-content/uploads/2026/11/Lightdesign-sarjli-masa-lambasi-2027-katalog.pdf`, read with pdf.js) gives H, head Ø and base Ø, and many galleries have a labelled dimension photo.
 
 **Product-specific details not yet in the kit** (kept as a list so they can become kit features if more lamps need them; rule: add to the kit when a lamp looks clearly wrong without it or it shows up on two lamps):
 
@@ -97,6 +110,10 @@ Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets
 | Ribbed clear glass | Dulcet, Mariner, Regulus Cam (upcoming) | `glass` is smooth |
 | Button finish per finish (one finish overrides) | Caph | the button follows the finish, so siyah gets a black button where the photo shows nickel |
 | Finer marble | Konra, Oxford | the photos' veins are finer and hairier, with drips on Oxford; ours read a little like cracks |
+| Beech ray flecks | Pera | beech reads smooth; the photos show 1–2 mm dark flecks |
+| Separate grain or wood per part | Pera | the hat shares the body's grain field and wood; a cross-grained hat or a walnut hat on a beech body can't be shown |
+| Occlusion in thin grooves | Sümbül | the groove renders light; painted with a fixed `siyah` zone instead |
+| `ceviz` reads darker and browner than the photos by day | Maya, Mina, Akasya | calibrated on Defne, so not changed in a batch; a finish review with Yunus |
 
 Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Luminaires (`kare`, `altigen`) are separate.
 
@@ -109,12 +126,14 @@ Still on the first-generation `lamp` family, to rebuild: avior, alderamin. Lumin
 - **Open, next:**
   1. **Kit gaps, add when a lamp needs them:** the table under "Modelled lamps".
   2. **Finish questions for the client:** Pandora's warm brown paint and Mensa's glossy taupe aren't any listed finish; the datasheet's Bronz swatch is dark brown while the bronz photos show copper-bronze metal.
-  3. **Sirius garson** has a different shape (a call-button cap, a deeper dome, a convex collar) and needs its own spec. Its top would need `topButton` on hat lamps.
 
 ## Where things stand
 
 Commits on `main`, pushed to GitHub; Yunus is connecting Vercel. Yunus works on one branch. On 2026-11-05 `.env.local` was removed from the whole history, which changed every commit hash and needed a force push; any other clone must be cloned again. Latest:
-- Latest commit: kit with optional parts, metal, Agena, still-view averaging (see `git log`)
+- Kit lamp batch of 2026-11-25: 12 lamps (6 metal, 6 wood, 3 of them price-list only), fixed-zone kit fixes, `ahsap` finish
+- `af077b7` catalogue tabs grouped (top-level groups + subcategory chips), Armatürler home card, queue rebuilt
+- `51c4553` 210 products added (new Light Design lamps, price-list items, armatures, outdoor), 2027 prices, 48/27 h battery facts
+- `f6eadc2` and earlier: kit lamp batches (see `git log`)
 - `44f9023` price switch and daily TCMB rate
 - `47229d5` hero and Kelvin frames from the viewer, hero text stays still
 - `0c6894e` restaurant scene polish
@@ -193,7 +212,7 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
   - The second category card is Armatürler since 2026-11-25 (it was Aplik ve Lambaderler); its image is a jeweller-shop photo from the armature sources.
   - Card photos are temporary. The large card uses the uploaded hero render.
   - Night photos are 800×1000.
-- **Sample prices to remove before launch:** 46 products (home tabs and the catalogue's first 24) have `priceUsd` 65 and `premiumPriceUsd` 75, and `siteSettings.priceMode` is `tl`, only to see the calculation. Real prices come from the client.
+- **Prices (2026-11-25):** the sample 65/75 prices are gone. 143 Light Design products carry the 2027 price list (`tools/apply-prices.mjs`), the 15 price-list-only products theirs from `ext/pricelist.json`; armatures and outdoor fittings have no price (quote line). Products not in the list (Mira, Polaris, Suma, Arya, Bilham, Denep, Vega, Dubhe, Cam aplik, Avena, Ülger) have none. `siteSettings.priceMode` is `tl`. Rerunning `apply-prices.mjs` overwrites Studio price edits.
 - **Check on the first Vercel deploy:** that `/api/usd-rate` reaches TCMB from Vercel's region (only tested from Turkey; TCMB took up to 9 s here).
 - **Sample content to delete before launch:** `sample-reference-restoran`, `sample-reference-otel`, `sample-reference-kafe` (plus its uploaded `sample-*` images and `sample-reference.mp4`; keep the hero render while the category card uses it), `sample-post-sarjli-masa-lambasi-restoran`, `sample-category-rehber`.
 - `info@lumenx.com` is a temporary address. It is also written into the KVKK and cookie texts, so a change must be made there too.
@@ -228,6 +247,9 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
     - Waiter-call buttons (Sirius, Capella, Caph, Menkent, Pollux, Wolf garson): clear, frosted acrylic or metal? Do they light up when a waiter is called?
     - Lofen: the Krom photo shows another lamp (all chrome, big bowl, collars, no base disc). Do the black drum, stem, bowl and the white underside stay on every finish? The datasheet render differs (black finial, narrower hat); which is current?
     - Lanterns: Azha, Bilham, Enif and Pico are frame lanterns with a candle; they need their own parts and stay in photo mode for now.
+    - New lamps (2026-11-25 batch): no per-product datasheet exists (the PDFs return 404); sizes came from the 2027 catalogue and the labelled dimension photos, whose own figures often don't add up. Datasheets and lumen values for Bahar, Aster, Astra, Süsen, Akasya, Sümbül, Maya, Mina, Pera?
+    - Price-list lamps Albostan, Palermo, Orkide are modelled from one small photo: the hat undersides, ports and touch keys are guessed. Real photos, including the underside and a night photo.
+    - Wood lamps Akasya, Sümbül, Maya, Mina, Pera: no photo shows the kayın version. Does the metal stay the same on kayın?
   - Colours (photo shows a colour no listed finish matches, or a doubtful one; the model uses the nearest):
     - Mira: glossy red-brown paint (modelled bronz).
     - Mona: dark warm brown-grey satin paint (modelled eskitme).
@@ -254,9 +276,17 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
     - Evora: the chrome finial is modelled on every finish, but the gold photo shows a gold one.
     - Zamora: the krem photo has a thinner stem; is it the same model?
     - Toledo: the chrome photo shows a different stem fitting at the base (a nut and a cone) from the other six.
+    - Akasya: the metal is copper in the catalogue, the night photo and one studio photo, brass in the other studio and the dimension photo. Which, and is the metal a separate option? (modelled copper `rose`)
+    - Sümbül: satin nickel in the studio photo, brass-looking in the restaurant photo; is there a brass option?
+    - Pera: the night photo shows a walnut hat on a beech body; is that a variant?
+    - Süsen: the drum under the hat glows white in the lit photos but is copper in the unlit one; is it an opal diffuser? (modelled opal)
+    - Bahar: the brass is warmer and deeper than our gold; same finish?
+    - Orkide: is the metal copper only? (modelled bronz)
   - Dimensions (photo vs datasheet; the models follow the photos):
     - Hat diameters: Aldebaran Ø222 vs 215, Aro Ø120 vs 115, Evora Ø127 vs 130, Heli Ø131 vs 120, Karo Ø186 vs 170, Konra Ø111 vs 130, Merle Ø183 vs 175, Mira Ø113.5 vs 120, Mula Ø111 vs 120, Verona Ø141 vs 120, Zamora Ø138 vs 130, Torino Ø125.5 vs 135, Vela Ø132 vs 120, Kuma Ø115 vs 130, Bene Ø106 vs 115, Bella Ø215 vs 200 (top Ø130 vs 120), Lofen Ø156 vs 200, Sirius garson Ø127 vs 120, Caph Ø126 vs 100 (base Ø121), Plastica Ø133 vs 120, Wolf Ø134 vs 130.
-    - Base diameters: Nerio Ø95 vs 90, Navi Ø106 vs 100, Plastica Ø111 vs 100.
+    - Base diameters: Nerio Ø95 vs 90, Navi Ø106 vs 100, Plastica Ø111 vs 100, Bahar ~Ø117 (studio photo) vs 100 (labels, catalogue; modelled 100), Albostan Ø92 vs 100, Orkide Ø85 vs 80. Palermo hat Ø174 vs 180.
+    - New lamps, photo vs stated (catalogue / labelled photo): Aster base Ø105, hat Ø134 vs 100/120, hat height 60 vs 50; Astra hat Ø218, base Ø149 vs 210/140, base 6 vs 5 mm; Akasya body Ø85, hat Ø124 vs 70/120; Sümbül body Ø77.6, hat Ø72 vs 70/65 (or the height is ~172, not 190); Maya hat Ø100 (studio) vs 94 (night) vs 90 (label); Mina hat Ø85 vs 80 (label) vs 60 (catalogue); Pera body Ø71, hat Ø118 vs 65/110.
+    - Süsen: catalogue and label say H 200 mm, but the labelled parts add up to 240 and every drawing shows ~240 (modelled 240).
     - Torino: is the 160 mm height with or without the knob? Is the black base a separate rubber foot?
     - Carina: bell Ø~107 (gold photos) or ~100 (chrome, rose, satin photos and datasheet)? The datasheet shows an older version.
     - Furud: datasheet Ø40 tube and Ø110 base vs ~35 and ~121 in the photos and drawing.
@@ -296,7 +326,7 @@ Every Sanity fetch is cached until the webhook invalidates its tags, and the web
 node --no-warnings --env-file=.env.local -e "const{encodeSignatureHeader}=require('@sanity/webhook');(async()=>{const body=JSON.stringify({_type:'productCategory',operation:'update'});const sig=await encodeSignatureHeader(body,Date.now(),process.env.SANITY_WEBHOOK_SECRET);const r=await fetch('http://localhost:3000/api/revalidate',{method:'POST',headers:{'content-type':'application/json','sanity-webhook-signature':sig},body});console.log(r.status)})()"
 ```
 
-Scripts (all `node --no-warnings --env-file=.env.local tools/<script>`): `scrape-lightdesign.mjs`, `import-lightdesign.mjs [--dry] [--overwrite]`, `link-models.mjs`, `seed-content.mjs`, `apply-copy.mjs [--dry]`. After `import-lightdesign.mjs --overwrite`, rerun `link-models.mjs` and `apply-copy.mjs`. `seed-about-contact.mjs` matches the schema but was not run; `aboutPage`, `contactPage` and `homePage` were patched directly.
+Scripts (all `node --no-warnings --env-file=.env.local tools/<script>`): `scrape-lightdesign.mjs [--add]` (`--add` keeps existing entries and appends new products; without it the file is rewritten and the copy keys may break), `import-lightdesign.mjs [--dry] [--overwrite]`, `link-models.mjs`, `seed-content.mjs`, `apply-copy.mjs [--dry]` (copy from `product-copy.mjs` + `copy-new-a/b.mjs`), `apply-prices.mjs [--dry]`, `import-external.mjs [--dry] [--overwrite] [--prune] [--only <file>]` (the non-Light Design products in `tools/data/ext/*.json`; `--prune` deletes external products no longer in any file), `scrape-ext-*.mjs` (raw facts only; the curated `ext/*.json` are edited by hand, not regenerated). After `import-lightdesign.mjs --overwrite`, rerun `link-models.mjs`, `apply-copy.mjs` and `apply-prices.mjs`. After removing images from an external product, delete the unreferenced `source.name == "ext"` assets. `seed-about-contact.mjs` matches the schema but was not run; `aboutPage`, `contactPage` and `homePage` were patched directly.
 
 ## Smaller leftovers
 

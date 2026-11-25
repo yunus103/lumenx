@@ -45,12 +45,14 @@ export interface OpalShell {
 // Opt-in: the profile's runs between two of its corners (`from`, `to`: heights in cm, like `knurl`) keep one finish
 // whatever the buyer picks (`finish`: a slug from finishes.ts, lit as metal or paint by its own metalness), e.g. a
 // chrome ball finial on a painted or brass lamp. `rough` overrides the finish's roughness on that zone (a glossy
-// white dome: `beyaz` is satin, 0.5). Far copies draw it in the body's finish.
+// white dome: `beyaz` is satin, 0.5). `brush` (0-1) brushes it as `body.brush` does, on a brushed metal finish only
+// (Sümbül's satin nickel hat). Far copies draw it too, without the brushing.
 export interface FixedFinish {
   from: number;
   to: number;
   finish: string;
   rough?: number;
+  brush?: number;
 }
 
 // Opt-in: clear glass turned from its own profile: the outer surface (r, y in cm, corners as anywhere, bottom-up),
