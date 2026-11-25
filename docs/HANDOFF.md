@@ -8,7 +8,7 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** Strategy in `docs/PROJECT.md` ("Modelling strategy"): code-built kit, not Blender GLBs.
    - **How:** run `/model-lamps` (project skill, `.claude/skills/model-lamps/`): it takes the next batch (default 6) from its `queue.md`, models each lamp with its own agent, links them with night images, pushes, and tells Yunus what to check. The procedure, tools, brief and lessons live there; this file keeps the state.
-   - **Numbers (2026-11-25):** about 315 products in Sanity: 154 Light Design, 15 from the price list only, ~145 armatures and outdoor fittings from other manufacturers (photo only, see `docs/PROJECT.md` "Product sources"). Only table lamps are modelled (~150 in the end); 65 are in the kit (table below). The queue (`queue.md`) still lists the old 30; it must be rebuilt with the new table lamps (wood, fabric, porcelain, salt, marble, metal) before the next batch. Mosaic cubes (Lina, Gaye, Neva) and stations are not modelled.
+   - **Numbers (2026-11-25):** about 315 products in Sanity: 154 Light Design, 15 from the price list only, ~145 armatures and outdoor fittings from other manufacturers (photo only, see `docs/PROJECT.md` "Product sources"). Only table lamps are modelled (~150 in the end); 65 are in the kit (table below). The queue (`queue.md`) was rebuilt the same day: new metal first, then wood, stone, fabric (a pleated-shade kit part unlocks most), porcelain, glass, lanterns; five lamps missing from the 2027 list wait for the client. Mosaic cubes (Lina, Gaye, Neva) and stations are not modelled.
    - **Permissions Yunus gave:** browser and visual tests, opening the datasheets, tool dependencies, subagents at Claude's discretion. For modelling batches: no questions, push at the end, kit changes allowed as long as the Defne guard proves approved lamps unchanged. Work on `main`.
    - **To fix along the way:** Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
@@ -142,7 +142,7 @@ Yunus reviewed the inner pages, the home page section structure, the restaurant 
 ## What was built
 
 **Catalogue:**
-- `Catalog.tsx` filters in the browser with History API URLs. Text tabs with a sliding underline, sticky bar, expanding search, 24 cards at a time with auto-load, Turkish-aware matching in `src/lib/search.ts`.
+- `Catalog.tsx` filters in the browser with History API URLs. Two rows (2026-11-25): text tabs with a sliding underline for the top-level groups (Şarjlı Ürünler, Armatürler, Dış Mekân), and the active group's subcategories as chips under them (wrap on desktop, scroll on phones, the current tab and chip scroll into view); sticky bar, expanding search, 24 cards at a time with auto-load, Turkish-aware matching in `src/lib/search.ts`.
 - Header search reads a static index from `/api/search-index`.
 - Cards: 5:6 frame, shimmer, optional `nightImage` with hover and light toggle (Defne, Avior, Alderamin, Capella only for now; render one per product while modelling).
 
@@ -166,7 +166,7 @@ Yunus reviewed the inner pages, the home page section structure, the restaurant 
 
 **Home page, in order** (`src/app/(site)/page.tsx`, inside `.home-flow`, which scopes the tighter spacing):
 1. **Hero** (`Hero.tsx`): full screen, pre-rendered frames, Kelvin and level controls stay.
-2. **Category cards** (`CategoryCards.tsx`): one large and two small, height follows the screen, automatic model count and names. Editable in `homePage.categoryCards` (title, category, image).
+2. **Category cards** (`CategoryCards.tsx`): one large and two small, height follows the screen, automatic model count and names (a group category such as Armatürler lists its subcategories instead). Editable in `homePage.categoryCards` (title, category, image).
 3. **Lamp spotlight** (`LampSpotlight.tsx`, `.spot-*`): names, lit lamp, details side by side within one screen. `homePage.spotlightProducts`; only products with a `nightImage`. The line under the lamp falls back to the Malzeme spec or the description while `summary` is empty.
 4. **Products** (`Collection.tsx`): 4 columns, sticky tab bar only within the section. `homePage.productTabs`: Mantar, Abajurlu, Cam ve Şeffaf, Metal, 8 products each.
 5. **Materials** (`MaterialStrip.tsx`, `.ms-*`): swatches from `finish` documents, a click shows up to 4 products in that finish. Self-contained: to remove, delete the component, `homeMaterialsQuery`, its fetch and JSX in `page.tsx`, the CSS block, the `MaterialFinish` type and the `materialTitle` / `materialText` fields.
@@ -190,7 +190,7 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
 ## Sanity state
 
 - **Placeholders Yunus will go over:**
-  - Third category card is Aplik ve Lambaderler until Armatürler exists.
+  - The second category card is Armatürler since 2026-11-25 (it was Aplik ve Lambaderler); its image is a jeweller-shop photo from the armature sources.
   - Card photos are temporary. The large card uses the uploaded hero render.
   - Night photos are 800×1000.
 - **Sample prices to remove before launch:** 46 products (home tabs and the catalogue's first 24) have `priceUsd` 65 and `premiumPriceUsd` 75, and `siteSettings.priceMode` is `tl`, only to see the calculation. Real prices come from the client.

@@ -55,8 +55,9 @@ function edgeColor(src: string) {
           const i = (y * c.width + x) * 4;
           return `rgb(${data[i]} ${data[i + 1]} ${data[i + 2]}) ${(((y + 0.5) / c.height) * 100).toFixed(1)}%`;
         }).join(", ");
+      // 51% each so the halves overlap: at 50% an odd frame width left a 1 px seam down the middle
       resolve(
-        `linear-gradient(${column(0)}) left / 50% 100% no-repeat, linear-gradient(${column(c.width - 1)}) right / 50% 100% no-repeat`
+        `linear-gradient(${column(0)}) left / 51% 100% no-repeat, linear-gradient(${column(c.width - 1)}) right / 51% 100% no-repeat`
       );
     };
     img.src = src;

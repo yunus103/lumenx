@@ -65,7 +65,8 @@ export const homePageQuery = groq`*[_type == "homePage"][0] {
   "categoryCards": categoryCards[defined(category->slug.current)]{
     _key, title, "slug": category->slug.current, image ${imageFields},
     "count": count(*[${inCardCategory}]),
-    "models": *[${inCardCategory}] | order(name asc)[0...8]{ name, "category": category->title }
+    "models": *[${inCardCategory}] | order(name asc)[0...8]{ name, "category": category->title },
+    "subcategories": *[_type == "productCategory" && parent._ref == ^.category._ref && count(*[_type == "product" && category._ref == ^._id]) > 0] | order(order asc).title
   },
   spotlightTitle, spotlightLinkLabel,
   "spotlightProducts": spotlightProducts[defined(@->nightImage.asset)]->{

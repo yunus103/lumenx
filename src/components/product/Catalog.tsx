@@ -20,12 +20,10 @@ interface CatalogProps {
 // The anchor's scroll-margin is the fixed header's height, so CSS stays the one place that knows it.
 const hdrOffset = (el: HTMLElement) => parseFloat(getComputedStyle(el).scrollMarginTop);
 
-// Tabs list the leaf categories (those nobody uses as a parent); parents get their own page and,
-// later, a mega menu.
-function leafCategories(categories: CategoryListItem[]) {
-  const parents = new Set(categories.map((c) => c.parent?._id).filter(Boolean));
-  return categories.filter((c) => c.count > 0 && !parents.has(c._id));
-}
+// Two rows: the tabs are the top-level groups (Şarjlı Ürünler, Armatürler, Dış Mekân), and the active group's
+// subcategories show as chips under them. Fifteen leaf tabs in one row was three screens wide.
+const topLevel = (categories: CategoryListItem[]) => categories.filter((c) => !c.parent && c.count > 0);
+const childrenOf = (categories: CategoryListItem[], id: string) => categories.filter((c) => c.parent?._id === id && c.count > 0);
 
 // useSearchParams needs a Suspense boundary on a static page; isolating it here keeps the grid server-rendered.
 function QueryFromUrl({ onChange }: { onChange: (q: string) => void }) {
@@ -70,7 +68,8 @@ export function Catalog({ page, categories, products }: CatalogProps) {
   const parentOf = useMemo(() => new Map(categories.map((c) => [c._id, c.parent?._id])), [categories]);
   const inActive = (p: ProductCardData) => !active || p.category._id === active._id || parentOf.get(p.category._id) === active._id;
   const shown = searched.filter(inActive);
-  const countFor = (id: string) => searched.filter((p) => p.category._id === id).length;
+  const countFor = (id: string) => searched.filter((p) => p.category._id === id || parentOf.get(p.category._id) === id).length;
+  const group = active?.parent ? categories.find((c) => c._id === active.parent!._id) : active;
 
   const filterKey = `${activeSlug ?? ""}|${query}`;
   const [limit, setLimit] = useState(PAGE_SIZE);
@@ -113,14 +112,37 @@ export function Catalog({ page, categories, products }: CatalogProps) {
 
   const tabs = [
     { id: "all", href: BASE, title: page?.allLabel, n: searched.length, current: !activeSlug },
-    ...leafCategories(categories).map((c) => ({
+    ...topLevel(categories).map((c) => ({
       id: c._id,
       href: `${BASE}/${c.slug.current}`,
       title: c.title,
       n: countFor(c._id),
-      current: c.slug.current === activeSlug,
+      current: c._id === group?._id,
     })),
   ];
+  const subs = group ? childrenOf(categories, group._id) : [];
+  const subChips =
+    group && subs.length > 1
+      ? [
+          { id: group._id, href: `${BASE}/${group.slug.current}`, title: page?.allLabel, n: countFor(group._id), current: active?._id === group._id },
+          ...subs.map((c) => ({ id: c._id, href: `${BASE}/${c.slug.current}`, title: c.title, n: countFor(c._id), current: c._id === active?._id })),
+        ]
+      : [];
+
+  // On a phone both rows scroll sideways: bring the current tab and chip into view, or "Armatürler" sits
+  // cut off at the edge. The rows are scrolled, not the page.
+  const tabsRef = useRef<HTMLElement>(null);
+  const subsRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    for (const row of [tabsRef.current, subsRef.current]) {
+      const el = row?.querySelector<HTMLElement>('[aria-current="page"]');
+      if (!row || !el) continue;
+      const left = el.offsetLeft - row.offsetLeft;
+      if (left < row.scrollLeft || left + el.offsetWidth > row.scrollLeft + row.clientWidth) {
+        row.scrollTo({ left: Math.max(0, left - 16), behavior: "smooth" });
+      }
+    }
+  }, [activeSlug]);
 
   const heading = active?.title ?? page?.pageTitle ?? "";
   const intro = active ? active.description : page?.pageSubtitle;
@@ -156,7 +178,7 @@ export function Catalog({ page, categories, products }: CatalogProps) {
       <div className="cat-anchor" ref={anchorRef} />
       <div className={`cat-bar${stuck ? " stuck" : ""}`}>
         <div className="wrap cat-bar-in">
-          <nav className="cat-tabs" aria-label="Kategoriler">
+          <nav className="cat-tabs" aria-label="Kategoriler" ref={tabsRef}>
             {tabs.map((t) => (
               <a key={t.id} href={t.href} onClick={onChip} aria-current={t.current ? "page" : undefined} data-empty={t.n ? undefined : ""}>
                 {t.title}
@@ -183,6 +205,18 @@ export function Catalog({ page, categories, products }: CatalogProps) {
             )}
           </label>
         </div>
+        {subChips.length > 0 && (
+          <div className="wrap">
+            <nav className="cat-subs" aria-label={group?.title} key={group?._id} ref={subsRef}>
+              {subChips.map((t) => (
+                <a key={t.id} href={t.href} onClick={onChip} aria-current={t.current ? "page" : undefined} data-empty={t.n ? undefined : ""}>
+                  {t.title}
+                  <span>{t.n}</span>
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
       </div>
       <div className="wrap">
         <p className="cat-count" aria-live="polite">

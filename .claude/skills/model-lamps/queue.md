@@ -1,95 +1,104 @@
 # Modelling queue
 
-Ordered: the next batch is the first unchecked rows. Format: `- [ ] key | Sanity slug | note`. Tick a row when the lamp is linked with a night image; write "spec done, not linked" if a run stopped half way. Built from Sanity on 2026-11-08 (products without `modelKey`); the type comes from the product description, so check the photos.
+Ordered: the next batch is the first unchecked rows. Format: `- [ ] key | Sanity slug | note`. Tick a row when the lamp is linked with a night image; write "spec done, not linked" if a run stopped half way. Rebuilt on 2026-11-25 from Sanity (table lamps without `modelKey`); the note comes from the product copy and the cover photo, so check the photos. The 65 finished lamps are in `docs/HANDOFF.md` "Modelled lamps".
 
-Light Design slugs can differ from the Sanity slug (`-1`, `-ekonomik`); the coordinator resolves them from `source.url`.
+Only table lamps are modelled (client, 2026-11-25). Light Design slugs can differ from the Sanity slug; the coordinator resolves them from `source.url`. Rows marked **price list** have no Light Design page: their only photo is the small one from the 2027 price list (`tools/data/ext-images/pricelist/<key>.png`, ~100–240 px wide) and there is no datasheet, so fit the proportions to that photo, take sizes from similar lamps, and say so in the HANDOFF notes (the client was asked for real photos).
 
-## Metal, hat lamps (the kit's home ground)
-- [x] aldebaran | aldebaran-sarjli-masa-lambasi | dome hat, bullet-shaped body
-- [x] aro | aro-sarjli-masa-lambasi | cylinder hat, bell-shaped body
-- [x] casares | casares-sarjli-masa-lambasi | flat disc hat, disc base
-- [x] esna | esna-sarjli-masa-lambasi | mushroom hat flowing into the body
-- [x] evora | evora-sarjli-masa-lambasi | classic mushroom; its gold photo is warmer than the gold finish
-- [x] ezop | ezop-sarjli-masa-lambasi | thin rod, small disc hat
-- [x] geminga | geminga-sarjli-masa-lambasi | small cone hat, very thin stem
-- [x] heli | heli-sarjli-masa-lambasi | small dome hat, tall thin stem
-- [x] hint | hint-sarjli-masa-lambasi | flat hat, thick column body
-- [x] karo | karo-sarjli-masa-lambasi | layered hat: flat disc on a cone
-- [x] konra | konra-sarjli-masa-lambasi | mushroom hat, long cone body
-- [x] melma | melma-sarjli-masa-lambasi | small cone hat, slender stem
-- [x] merle | merle-sarjli-masa-lambasi | flat hat, thin tall stem
-- [x] mira | mira-sarjli-masa-lambasi | dome hat, round base
-- [x] mirach | mirach-sarjli-masa-lambasi | small mushroom hat, thin stem
-- [x] mona | mona-sarjli-masa-lambasi | cylinder hat, truncated cone body
-- [x] mula | mula-sarjli-masa-lambasi | wide dome hat, short body
-- [x] neptun | neptun-sarjli-masa-lambasi | thin cone body, small pointed hat
-- [x] orben | orben-sarjli-masa-lambasi | mushroom hat merging into a cone
-- [x] oxford | oxford-sarjli-masa-lambasi | wide mushroom hat, sturdy body
-- [x] polaris | polaris-sarjli-masa-lambasi | dome hat, thin stem, round base
-- [x] rigel | rigel-sarjli-masa-lambasi | small dome hat; lists `gumus`, which has no 3D value yet (falls back by type)
-- [x] suma | suma-sarjli-masa-lambasi | mushroom into cone; datasheet is image-only
-- [x] toledo | toledo-sarjli-masa-lambasi | tall bell on a thin stem; lists `gri` (no 3D value yet)
-- [x] torino | torino-sarjli-masa-lambasi | dome hat on a cone body over a drum
-- [x] vela | vela-sarjli-masa-lambasi | flat dome hat, round base
-- [x] verona | verona-sarjli-masa-lambasi | dome hat, cylinder body
-- [x] zamora | zamora-sarjli-masa-lambasi | classic mushroom
-- [x] bene | bene-sarjli-masa-lambasi | white dome (`hat.fixed`) on a metal cone
-- [x] nade | nade-sarjli-masa-lambasi | black dome with a smooth white opal bowl under it (`hat.opal` profile)
-- [x] bella | bella-sarjli-masa-lambasi | generic description, check the photos
-- [x] carina | carina-sarjli-masa-lambasi | generic description, check the photos
-- [x] furud | furud-sarjli-masa-lambasi | glass tube with an opal candle on a disc base
-- [x] kuma | kuma-sarjli-masa-lambasi | generic description, check the photos
-- [x] lofen | lofen-sarjli-masa-lambasi | generic description, check the photos
-- [x] minkar | minkar-sarjli-masa-lambasi | aluminium body; its "gold" photo shows another colour
-- [x] navi | navi-sarjli-masa-lambasi | generic description, check the photos
-- [x] nerio | nerio-sarjli-masa-lambasi | generic description, check the photos
-- [x] plastica | plastica-sarjli-masa-lambasi | economy plastic series: black, blue and other colours
-- [ ] arya | arya-sarjli-masa-lambasi | small swivelling spot head: not fully turned, needs a tilted part
-- [ ] solio | solio-sarjli-masa-lambasi | cylinder hat cut at an angle: not turned, needs a kit part
-
-## Lanterns (not turned: a frame, glass and a candle; need their own parts)
-- [ ] azha | azha-sarjli-masa-lambasi | rectangular frame with a handle, opal candle inside
-- [ ] bilham | bilham-sarjli-masa-lambasi | two uprights and a handle bar, glass cylinder, candle; Ekonomik datasheet 404
-- [ ] enif | enif-sarjli-masa-lambasi | square frame with a wire handle, candle
-- [ ] pico | pico-sarjli-masa-lambasi | white square frame lantern with a leather strap handle (seen 2026-11-14); datasheet `pico-sarjli-masa-lambasi` 300×150 mm
-
-## Waiter-call lamps (buttons done in the hat profile, `hat.fixed` or top-level `glass`; see sirius-garson, pollux, wolf)
-- [x] sirius-garson | sirius-garson-cagirma-masa-lambasi | not the Sirius shape: call-button cap, deeper dome, convex collar, 240 mm
-- [x] capella-garson | capella-garson-cagirma-masa-lambasi | Capella with a call button; compare with `capella.ts`
-- [x] alpheca | alpheca-garson-cagirma-masa-lambasi | cylinder hat, short sturdy body
-- [x] caph | caph-garson-cagirma-masa-lambasi | mushroom hat, thin body
-- [x] menkent | menkent-garson-cagirma-masa-lambasi | cylinder hat with a visible bulb inside, dome base
-- [x] pollux | pollux-garson-cagirma-masa-lambasi | bell form, dome hat
-- [x] wolf | wolf-garson-cagirma-masa-lambasi | compact mushroom
-- [ ] garson-cagri-butonu | garson-cagri-butonu | a table call button, not a lamp: a small turned cylinder
+## Metal (the kit's home ground)
+- [ ] bahar | bahar-sarjli-masa-lambasi | thin stem, wide flat disc hat, round base
+- [ ] aster | aster-sarjli-masa-lambasi | black cone hat on a thin stem, round base
+- [ ] astra | astra-sarjli-masa-lambasi | satin-nickel dome hat, thin stem, round base
+- [ ] susen | susen-sarjli-masa-lambasi | very slender copper-rose lamp, small pointed hat, flat round base
+- [ ] albostan | albostan-sarjli-masa-lambasi | **price list**; gold, small hat on a thin stem, bell base
+- [ ] palermo | palermo-sarjli-masa-lambasi | **price list**; copper-rose mushroom hat on a cone body
 
 ## Wood (like Defne)
-- [ ] amore | amore-sarjli-masa-lambasi | marble, metal or wood variants
-- [ ] kamelya | kamelya-sarjli-masa-lambasi | wooden body
-- [ ] lila | lila-sarjli-masa-lambasi | wooden body
+- [ ] akasya | akasya-ahsap-sarjli-masa-lambasi | turned wood body, metal stem and hat
+- [ ] sumbul | sumbul-ahsap-sarjli-masa-lambasi | wood body, metal stem and hat
+- [ ] maya | maya-ahsap-sarjli-masa-lambasi | pear-shaped wood body, black metal hat
+- [ ] mina | mina-ahsap-sarjli-masa-lambasi | wood body, black metal hat
+- [ ] orkide | orkide-ahsap-sarjli-masa-lambasi | **price list**; stacked wood body, copper hat
+- [ ] pera | pera-ahsap-sarjli-masa-lambasi | wood cylinder body, wood dome hat, metal stem
+- [ ] poyraz | poyraz-ahsap-sarjli-masa-lambasi | round wood body, wood disc hat, metal stem
+- [ ] puren | puren-ahsap-sarjli-masa-lambasi | egg-shaped wood body, wood disc hat, metal stem
+- [ ] yosun | yosun-ahsap-sarjli-masa-lambasi | wood cylinder body, wood disc hat, metal stem
+- [ ] alba | alba-ahsap-sarjli-masa-lambasi | wood cone body, wide wood mushroom hat
+- [ ] alya | alya-ahsap-sarjli-masa-lambasi | wood cone body, wood disc hat, brass detail
+- [ ] aran | aran-ahsap-sarjli-masa-lambasi | wood cone body and cone hat
+- [ ] acelya | acelya-ahsap-sarjli-masa-lambasi | pear-shaped wood body, wood hat, brass stem
+- [ ] deren | deren-ahsap-sarjli-masa-lambasi | wood cylinder, wood disc hat, brass stem
+- [ ] dora | dora-ahsap-sarjli-masa-lambasi | stacked-bead wood body, wood hat, brass stem
+- [ ] feza | feza-ahsap-sarjli-masa-lambasi | wood cylinder, small wood hat, brass stem
+- [ ] lupin | lupin-ahsap-sarjli-masa-lambasi | wood cone body, wood mushroom hat
+- [ ] beliz | beliz-ahsap-sarjli-masa-lambasi | wood body, brass stem, white bell shade (opal or porcelain, unconfirmed)
+- [ ] kamelya | kamelya-sarjli-masa-lambasi | wooden body, linen shade
+- [ ] lila | lila-sarjli-masa-lambasi | wooden body, linen shade
 - [ ] lotus | lotus-sarjli-masa-lambasi | wooden body
+- [ ] amore | amore-sarjli-masa-lambasi | marble, metal or wood variants (price per body)
 
-## Fabric and pleated shades
+## Stone and marble (opal or stone domes)
+- [ ] alis | alis-mermer-sarjli-masa-lambasi | sandy stone base, opal dome
+- [ ] flora | flora-mermer-ahsap-sarjli-masa-lambasi | wood base, marble body
+- [ ] lera | lera-mermer-ahsap-sarjli-masa-lambasi | white marble dome on a wood base (`marble` kit part)
+- [ ] sera | sera-sarjli-masa-lambasi | **price list**; veined translucent dome (alabaster?) on a stone base
+- [ ] azalya | azalya-sarjli-tuz-lambasi | opal dome on a travertine-like base
+- [ ] lalin | lalin-sarjli-tuz-lambasi | plain white cylinder ("tuz", looks like stone)
+- [ ] nergis | nergis-sarjli-tuz-lambasi | white stone baluster form
+- [ ] melia | melia-sarjli-tuz-lambasi | white stone cylinder with a hollow top
+
+## Fabric and pleated shades (a pleated-shade kit part unlocks most of these)
 - [ ] avior | avior-sarjli-masa-lambasi | rebuild from zero (now the old `lamp` family); shades krem, kirmizi
-- [ ] alderamin | alderamin-sarjli-masa-lambasi | rebuild from zero; krem/kirmizi are its shades. After both: delete the `lamp` family
-- [ ] alpha | alpha-sarjli-masa-lambasi | cone fabric shade, thin body
-- [ ] denep | denep-sarjli-masa-lambasi | pleated white shade, cylinder body
-- [ ] siena | siena-sarjli-masa-lambasi | cream fabric shade, round base
-- [ ] ulger | ulger-sarjli-masa-lambasi | ribbed white cylinder shade on a metal base
-- [ ] dulcet | dulcet-sarjli-masa-lambasi | ribbed transparent cylinder shade
-- [ ] mariner | mariner-sarjli-masa-lambasi | ribbed transparent shade, ship-lantern look
-- [ ] vega | vega-sarjli-masa-lambasi | transparent cone shade
+- [ ] alderamin | alderamin-sarjli-masa-lambasi | rebuild from zero, pleated red shade; after both: delete the `lamp` family
+- [ ] siena | siena-sarjli-masa-lambasi | pleated cream shade, round base
+- [ ] avena | avena-kumas-sarjli-masa-lambasi | pleated cream shade, tall metal stem
+- [ ] ulger | ulger-sarjli-masa-lambasi | pleated white cylinder shade with gold rim, metal base
+- [ ] levan | levan-kumas-sarjli-masa-lambasi | pleated shade with a scalloped hem, gold base
+- [ ] arven | arven-ahsap-sarjli-masa-lambasi | pleated shade on a short wood body
+- [ ] ladin | ladin-ahsap-kumas-sarjli-masa-lambasi | pleated shade, wood stem, black base
+- [ ] alpha | alpha-sarjli-masa-lambasi | cone fabric shade (red, black trim), gold base
+- [ ] dalia | dalia-porselen-sarjli-masa-lambasi | scalloped fabric shade on a striped ceramic body
+- [ ] lilia | lilia-kumas-porselen-sarjli-masa-lambasi | **price list**; pleated shade with navy trim, diamond-pattern porcelain body
+- [ ] bagonvil | bagonvil-kumas-sarjli-masa-lambasi | tall ribbed beige fabric lantern shade
+- [ ] zelal | zelal-kumas-sarjli-masa-lambasi | tall ribbed red fabric lantern shade
+
+## Porcelain (painted pattern: needs a print texture)
+- [ ] zambak | zambak-porselen-sarjli-masa-lambasi | hexagonal porcelain shade with a blue pattern, brass stem
+- [ ] manolya | manolya-porselen-sarjli-masa-lambasi | porcelain dome with a bird pattern, brass stem
+- [ ] nehir | nehir-ahsap-porselen-sarjli-masa-lambasi | ribbed white porcelain dome, wood body
+- [ ] hazer | hazer-ahsap-porselen-sarjli-masa-lambasi | **price list**; textured white porcelain cone, wood body
 
 ## Glass and mosaic
 - [ ] regulus-cam | regulus-cam-sarjli-masa-lambasi | ribbed glass cylinder body, metal hat and base; eskitme photo
-- [ ] newyork-cam | newyork-cam-sarjli-masa-lambasi | decorative glass
+- [ ] newyork-cam | newyork-cam-sarjli-masa-lambasi | ribbed glass, chrome top and base
+- [ ] mariner | mariner-sarjli-masa-lambasi | short ribbed glass shade, brass top and base
+- [ ] dulcet | dulcet-sarjli-masa-lambasi | pleated translucent cylinder shade, copper base
 - [ ] sargas-mozaik | sargas-mozaik-sarjli-masa-lambasi | mosaic glass head, metal body; three sizes
 - [ ] segen-mozaik | segen-mozaik-sarjli-masa-lambasi | mushroom-shaped mosaic glass head
-- [ ] mozaik-sutun | mozaik-sutun-sarjli-masa-lambasi | turned copper column (Ottoman lantern look) around a green mosaic glass cylinder, finial on top; LD slug `sutun-sarjli-masa-lambasi`, 330 mm; needs a mosaic glass kit part like Sargas, Segen, Dubhe
+- [ ] iris | iris-mozaik-sarjli-masa-lambasi | mosaic glass dome, brass body
+- [ ] viola | viola-ahsap-mozaik-sarjli-masa-lambasi | mosaic glass dome on a wood cone body
+- [ ] mozaik-sutun | mozaik-sutun-sarjli-masa-lambasi | turned copper column around a green mosaic glass cylinder, finial on top; LD slug `sutun-sarjli-masa-lambasi`, 330 mm; needs the mosaic glass kit part
+
+## Special shapes
+- [ ] solio | solio-sarjli-masa-lambasi | cylinder hat cut at an angle: not turned, needs a kit part
+- [ ] garson-cagri-butonu | garson-cagri-butonu | a table call button, not a lamp: a small turned cylinder
+
+## Lanterns (not turned: a frame, glass and a candle; need their own parts)
+- [ ] azha | azha-sarjli-masa-lambasi | wooden frame lantern with a handle, opal candle inside
+- [ ] enif | enif-sarjli-masa-lambasi | square frame with a wire handle, candle
+- [ ] pico | pico-sarjli-masa-lambasi | white square frame lantern with a leather strap handle; datasheet 300×150 mm
+- [ ] svela | svela-sarjli-masa-lambasi | **price list**; ribbed opal cylinder on a satin-nickel base, leather strap
+- [ ] verda | verda-sarjli-masa-lambasi | **price list**; tapered wooden salt lantern, leather strap
+- [ ] lara | lara-sarjli-masa-lambasi | **price list**; square wooden salt lantern, leather strap
+- [ ] sena | sena-sarjli-masa-lambasi | **price list**; cylindrical wooden salt lantern, leather strap
+
+## Waiting on the client (not in the 2027 price list; maybe discontinued)
+- [ ] arya | arya-sarjli-masa-lambasi | small swivelling spot head: needs a tilted part
+- [ ] bilham | bilham-sarjli-masa-lambasi | two uprights and a handle bar, glass cylinder, candle
+- [ ] denep | denep-sarjli-masa-lambasi | pleated white shade, cylinder body
+- [ ] vega | vega-sarjli-masa-lambasi | transparent cone shade
 - [ ] dubhe | dubhe-sarjli-masa-lambasi | coloured mosaic glass globe; datasheet image-only
 
-## Wall and floor (not table lamps: decide the scene first)
-- [ ] alpha-aplik | alpha-aplik-kablosuz-modullu | wall light, cone fabric shade, metal arm
-- [ ] cam-aplik | cam-aplik-kablosuz-modullu | wall light with glass
-- [ ] metal-aplik | metal-aplik-kablosuz-modullu | plain metal wall light
-- [ ] kose-lambader | kose-lambader-kablosuz-modullu | corner floor lamp, pleated shade
+## Not modelled
+- Mosaic cubes Lina, Gaye, Neva (client: not worth it).
+- Wall and floor lamps (Alpha, Cam, Metal aplik, Balsam, Hebe, Anemon, İdil, Berfin; Köşe, Alpina, Vanda, Linden, Evren lambader) until the client asks: table lamps come first.
+- Charging stations, accessories, armatures and outdoor fittings: photo only.

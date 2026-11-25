@@ -359,6 +359,8 @@ export interface CategoryCard {
   image?: SanityImage;
   count: number;
   models: { name: string; category?: string }[];
+  /** Titles of the category's own subcategories that have products; empty for a leaf category. */
+  subcategories: string[];
 }
 
 export interface SpotlightProduct {

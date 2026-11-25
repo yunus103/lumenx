@@ -10,7 +10,14 @@ function modelNames(models: CategoryCard["models"]) {
   return [...new Set(names)].slice(0, 4).join(", ");
 }
 
-const SIZES = ["(max-width: 760px) 100vw, 58vw", "(max-width: 760px) 100vw, 42vw"];
+// "Spot Armatürler, Sarkıt Armatürler…" repeat the group's own name: keep the part that differs.
+const kindNames = (titles: string[]) =>
+  titles
+    .map((t) => t.replace(/ Armatürler(i)?$/, ""))
+    .slice(0, 5)
+    .join(", ");
+
+const SIZES =["(max-width: 760px) 100vw, 58vw", "(max-width: 760px) 100vw, 42vw"];
 
 export function CategoryCards({ cards, countLabel }: { cards: CategoryCard[]; countLabel?: string }) {
   return (
@@ -29,7 +36,8 @@ export function CategoryCards({ cards, countLabel }: { cards: CategoryCard[]; co
               <p className="hc-count">
                 {c.count} {countLabel}
               </p>
-              <p className="hc-models">{modelNames(c.models)}</p>
+              {/* a group card (Armatürler) names its kinds of fitting; the long model names of armatures don't fit */}
+              <p className="hc-models">{c.subcategories.length ? kindNames(c.subcategories) : modelNames(c.models)}</p>
             </div>
           </Link>
         ))}
