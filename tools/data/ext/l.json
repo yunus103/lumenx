@@ -1,0 +1,1235 @@
+{
+  "source": "l",
+  "products": [
+    {
+      "key": "l-sarkit",
+      "name": "Sarkıt Kuyumcu Armatürü",
+      "slug": "sarkit-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Tavandan iki askıyla sarkıtılan, siyah gövdeli, dikdörtgen bir kuyumcu armatürüdür. Alt yüzündeki sıralı lensli LED'ler ışığı aşağıya, tezgâhın ve vitrinin üstüne toplar.",
+        "Ada vitrinlerin ve satış bankolarının üstünde tavan yüksekliğine göre asılır. Güç seçeneği arttıkça gövdedeki LED sayısı da artar; geniş bir bankoya yüksek güç, küçük bir vitrine düşük güç uyar."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-sarkit-144w-925.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/246/925/Kuyumcu_Aydnlatma_Armatr_Sarkt_144W__20744.1778859033.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-sarkit-108w-923.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/245/923/Kuyumcu_Aydnlatma_Armatr_Sarkt_108W__78669.1778856555.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-sarkit-72w-921.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/244/921/Kuyumcu_Aydnlatma_Armatr_Sarkt_72W__68395.1778856379.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-sarkit-36w-919.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/243/919/Kuyumcu_Aydnlatma_Armatr_Sarkt_36W__88059.1778856108.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-sarkit-144w-1196.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/246/1196/1324__90924.1779486243.png"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "36 W",
+            "72 W",
+            "108 W",
+            "144 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "36–144 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçüler",
+          "Boy 100 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-sarkit-36w/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-sarkit-72w/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-sarkit-108w/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-sarkit-144w/"
+      ]
+    },
+    {
+      "key": "l-banko-ustu",
+      "name": "Banko Üstü Kuyumcu Armatürü",
+      "slug": "banko-ustu-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Satış bankosunun üstüne asılan, altın rengi gövdeli bir kuyumcu armatürüdür. Gövdenin altındaki yoğun LED dizisi bankoyu karanlık nokta bırakmadan aydınlatır.",
+        "Parlak gövde mağazanın dekorasyonuyla birlikte görünür; müşterinin ürünü incelediği noktayı hem vurgular hem süsler."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-banko-ustu-927.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/247/927/Kuyumcu_Aydnlatma_Armatr_banko_st__43830.1779486763.png"
+        }
+      ],
+      "finishes": [
+        "gold"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "specs": [
+        [
+          "Güç",
+          "144 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçüler",
+          "Boy 100 cm"
+        ],
+        [
+          "Montaj",
+          "Askı aparatlı"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-banko-ustu/"
+      ],
+      "options": []
+    },
+    {
+      "key": "l-mercekli",
+      "name": "Mercekli Kuyumcu Armatürü",
+      "slug": "mercekli-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Doğrusal gövdede her LED'in üstünde ayrı bir mercek bulunan bir kuyumcu armatürüdür. Mercekler ışığı dağıtmak yerine sergilenen ürünün üstüne yönlendirir.",
+        "Uzun vitrinlerde boydan boya aynı açıyla ışık verir; takıların parıltısı vitrin cam ve aynalarıyla birlikte öne çıkar."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-mercekli-917.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/242/917/Kuyumcu_Aydnlatma_Armatr_Mercekli__80389.1778855479.png"
+        }
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "specs": [
+        [
+          "Güç",
+          "36 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçüler",
+          "Boy 100 cm"
+        ],
+        [
+          "Montaj",
+          "Vitrin içi"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-mercekli/"
+      ],
+      "options": []
+    },
+    {
+      "key": "l-dogrusal-bant",
+      "name": "Doğrusal Bant Kuyumcu Armatürü",
+      "slug": "dogrusal-bant-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Alüminyum profil üzerinde sıralı LED'lerden oluşan doğrusal bir kuyumcu armatürüdür. Işığı vitrin boyunca eşit bir çizgi olarak yayar.",
+        "Raf altlarına ya da vitrinin üst kenarına yerleştirilir; vitrin içi genel aydınlatma için sade bir çözümdür."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-dogrusal-bant-915.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/241/915/Kuyumcu_Aydnlatma_Armatr_Dorusal_Bant__32414.1778855205.png"
+        }
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "specs": [
+        [
+          "Güç",
+          "36 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçüler",
+          "Boy 100 cm"
+        ],
+        [
+          "Montaj",
+          "Vitrin içi"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-dogrusal-bant/"
+      ],
+      "options": []
+    },
+    {
+      "key": "l-doner-aparatli",
+      "name": "Döner Aparatlı Kuyumcu Armatürü",
+      "slug": "doner-aparatli-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Döner aparatı sayesinde ışık yönü ayarlanabilen, lensli bir kuyumcu armatürüdür. Aparat ışığı istenen açıya çevirir.",
+        "Vitrindeki ürünler değiştiğinde armatür yeniden yönlendirilebilir; uzun raflarda ve stantlarda bu esneklik işe yarar."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-doner-aparatli-913.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/240/913/Kuyumcu_Aydnlatma_Armatr_Dner_Aparatl__13035.1778854321.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-doner-aparatli-1185.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/240/1185/S24_ESR_1318_2000px__23557.1779485375.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "specs": [
+        [
+          "Güç",
+          "36 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçüler",
+          "Boy 100 cm"
+        ],
+        [
+          "Montaj",
+          "Döner aparatlı"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-doner-aparatli/"
+      ],
+      "options": []
+    },
+    {
+      "key": "l-kare-gomme",
+      "name": "Kare Gömme Kuyumcu Armatürü",
+      "slug": "kare-gomme-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Beyaz döküm gövdeli, kare çerçeveli, lensli LED'lerden oluşan gömme bir kuyumcu armatürüdür. Tavandaki kesim deliğine yerleştirilir; ölçü büyüdükçe LED sayısı da artar.",
+        "Küçük ölçü tekil takı üniteleri için, büyük ölçü geniş vitrin alanları için seçilir. Kare formlar yan yana dizildiğinde düzenli bir tavan deseni oluşturur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-13x13-cm-kasa-901.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/234/901/Kuyumcu_Aydnlatma_Armatr_13x13cm__68938.1778789277.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-16x16-cm-kasa-1189.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/257/1189/kuyumcu_aydnlatma_16x16_kasaa__91534.1779486071.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-22x22-cm-kasa-904.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/235/904/Kuyumcu_Aydnlatma_Armatr_22x22cm__57969.1778790232.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-13x13-cm-kasa-1187.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/234/1187/1313__91464.1779485569.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-22x22-cm-kasa-1192.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/235/1192/1315__41194.1779486111.png"
+        }
+      ],
+      "finishes": [
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "13 × 13 cm",
+            "16 × 16 cm",
+            "22 × 22 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "16–54 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçü ve güç",
+          "13 × 13 cm: 16 W; 16 × 16 cm: 54 W; 22 × 22 cm: 54 W"
+        ],
+        [
+          "Kesim ölçüsü",
+          "11 × 11 / 14,5 × 14,5 / 19 × 19 cm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-13x13-cm-kasa/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-16x16-cm-kasa/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-22x22-cm-kasa/"
+      ]
+    },
+    {
+      "key": "l-yuvarlak-gomme",
+      "name": "Yuvarlak Gömme Kuyumcu Armatürü",
+      "slug": "yuvarlak-gomme-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Beyaz döküm gövdeli, yuvarlak çerçeveli, lensli LED'lerden oluşan gömme bir kuyumcu armatürüdür. Tavandaki kesim deliğine yerleştirilir.",
+        "Dört çapta yapılır; küçük çaplar tek bir ürünü, büyük çaplar vitrin ya da tezgâhın bir bölümünü aydınlatır. Mağazanın genel aydınlatmasıyla uyumlu, sade bir görünüm verir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-12cm-kasa-890.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/229/890/Kuyumcu_Aydnlatma_Armatr_12_cm1__75818.1778777450.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-15cm-kasa-892.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/230/892/Kuyumcu_Aydnlatma_Armatr_15_cm__17660.1778780417.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-19cm-kasa-894.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/231/894/Kuyumcu_Aydnlatma_Armatr_19_cm1__37498.1778780777.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-23cm-kasa-896.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/232/896/Kuyumcu_Aydnlatma_Armatr_23cm__32329.1778787477.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-15cm-kasa-1175.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/230/1175/yuvarlak__68491.1779484969.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-15cm-kasa-1184.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/230/1184/S23_ESR_1309_1_2000px__64650.1779485212.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "12 cm",
+            "15 cm",
+            "19 cm",
+            "23 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "10–44 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçü ve güç",
+          "12 cm: 10 W; 15 cm: 22 W; 19 cm: 36 W; 23 cm: 44 W"
+        ],
+        [
+          "Kesim ölçüsü",
+          "11 / 14 / 17 / 20 cm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-12cm-kasa/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-15cm-kasa/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-19cm-kasa/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-23cm-kasa/"
+      ]
+    },
+    {
+      "key": "l-dikdortgen-gomme",
+      "name": "Dikdörtgen Gömme Kuyumcu Armatürü",
+      "slug": "dikdortgen-gomme-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Beyaz döküm gövdeli, düz yüzlü, lensli LED'lerden oluşan dikdörtgen bir gömme kuyumcu armatürüdür. En ince ölçüsünde tek sıra LED, en büyük ölçüsünde çok sıralı bir ışık yüzeyi bulunur.",
+        "İnce ölçüler dar vitrinlerin ve rafların üstüne, geniş ölçü tezgâh ve ada vitrinlerine uyar. Büyük ölçü için birkaç güç seçeneği vardır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-31x6-cm-kasa-876.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/222/876/kuyumcu_aydnlatma_armatr_31x6cm_kasa1__52799.1778716446.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-26x10-cm-kasa-878.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/223/878/kuyumcu_aydnlatma_armatr_26x10cm_kasa1__81942.1778716833.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-33x18-cm-kasa-54w-880.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/224/880/Kuyumcu_Aydnlatma_Armatr_33x18cm_kasa1__92308.1778775726.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-33x18-cm-kasa-50w-882.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/225/882/Kuyumcu_Aydnlatma_Armatr_33x18cm_kasa_50w__54819.1778775892.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-33x18-cm-kasa-65w-884.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/226/884/Kuyumcu_Aydnlatma_Armatr_33x18cm_kasa_65w1__22810.1778776288.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-33x18-cm-kasa-54w-1181.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/224/1181/S23_ESR_1305_2000px__49781.1779485112.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-33x18-cm-kasa-54w-1198.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/224/1198/Multiple_Recessed_LEDs_Jewelry_Store_3_2000px__04973.1779486684.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-26x10-cm-kasa-1178.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/223/1178/S23_ESR_1302_2_2000px__66911.1779485028.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "31 × 6 cm",
+            "26 × 10 cm",
+            "33 × 18 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "20–65 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçü ve güç",
+          "31 × 6 cm: 20 W; 26 × 10 cm: 25 W; 33 × 18 cm: 50 / 54 / 65 W"
+        ],
+        [
+          "Kesim ölçüsü",
+          "30 × 5,5 / 24,5 × 9 / 30–31 × 16 cm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-31x6-cm-kasa/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-26x10-cm-kasa/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-33x18-cm-kasa-50w/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-33x18-cm-kasa-54w/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-33x18-cm-kasa-65w/"
+      ]
+    },
+    {
+      "key": "l-egimli-dikdortgen-gomme",
+      "name": "Eğimli Dikdörtgen Gömme Kuyumcu Armatürü",
+      "slug": "egimli-dikdortgen-gomme-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Beyaz döküm gövdeli, lens panelinin gömme çerçevenin içinde eğimli durduğu dikdörtgen bir kuyumcu armatürüdür. Panelin eğimi ışığı belirli bir yöne taşır.",
+        "Tezgâhın ya da vitrinin yan tarafından bakan müşteriye doğru ışık vermek istenen yerlerde, düz panelli armatürlere alternatif olarak kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-37x23-cm-kasa-886.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/227/886/Kuyumcu_Aydnlatma_Armatr_37x23cm_kasa__21643.1778776603.png"
+        }
+      ],
+      "finishes": [
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "specs": [
+        [
+          "Güç",
+          "50 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçüler",
+          "37 × 23 cm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "33 × 21 cm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-37x23-cm-kasa/"
+      ],
+      "options": []
+    },
+    {
+      "key": "l-siva-ustu-kutu",
+      "name": "Sıva Üstü Kutu Kuyumcu Armatürü",
+      "slug": "siva-ustu-kutu-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Beyaz döküm gövdeli, kutu biçiminde, tavana yüzeyden monte edilen bir kuyumcu armatürüdür. Alt yüzünde lensli LED'ler sıralanır; tavana delik açılması gerekmez.",
+        "Alçak ya da gömme için uygun olmayan tavanlarda kullanılır. Kare ve dikdörtgen olmak üzere iki plan seçilir; vitrin üstünde ya da tezgâh hizasında dikkat çekmeden yerini alır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-22x22x6-cm-kasa-906.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/236/906/Kuyumcu_Aydnlatma_Armatr_22x22x6cm__39201.1778790881.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-33x18x6-cm-kasa-888.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/228/888/Kuyumcu_Aydnlatma_Armatr_33_x_18_x_6_cm1__45218.1778776918.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-22x22x6-cm-kasa-1186.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/236/1186/S24_ESR_1316_2000px__86586.1779485414.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-33x18x6-cm-kasa-1174.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/228/1174/S23_ESR_1307_2000px__37549.1779484920.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "22 × 22 × 6 cm",
+            "33 × 18 × 6 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "50–54 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçü ve güç",
+          "22 × 22 × 6 cm: 54 W; 33 × 18 × 6 cm: 50 W"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-22x22x6-cm-kasa/",
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-33x18x6-cm-kasa/"
+      ]
+    },
+    {
+      "key": "l-silindir",
+      "name": "Silindir Kuyumcu Armatürü",
+      "slug": "silindir-kuyumcu-armaturu",
+      "category": "kuyumcu-aydinlatma",
+      "description": [
+        "Beyaz döküm gövdeli, silindir biçiminde, tavana yüzeyden monte edilen bir kuyumcu armatürüdür. Alt yüzündeki lensli LED'ler ışığı aşağıya toplar.",
+        "Tek başına bir ürün grubunun ya da küçük bir stantın üstünde nokta ışığı gibi kullanılır; silindir formu modern vitrinlere uyar."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/kuyumcu-aydinlatma-armaturu-19x16-cm-kasa-silindir-898.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/233/898/Kuyumcu_Aydnlatma_Armatr_silindir__39710.1778788497.png"
+        }
+      ],
+      "finishes": [
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "specs": [
+        [
+          "Güç",
+          "44 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Cree LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Philips"
+        ],
+        [
+          "Gövde",
+          "Döküm kasa"
+        ],
+        [
+          "Ölçüler",
+          "19 × 16 cm silindir"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/kuyumcu-aydinlatma-armaturu-19x16-cm-kasa-silindir/"
+      ],
+      "options": []
+    },
+    {
+      "key": "l-led-profil",
+      "name": "LED Profil",
+      "slug": "led-profil",
+      "category": "lineer-ve-profil",
+      "description": [
+        "Alüminyum gövdeli, polikarbon difüzörlü, ince bir LED profildir. Difüzör noktasal LED görünümünü yumuşatır ve kesintisiz bir ışık çizgisi verir.",
+        "Mimari detaylarda gizli aydınlatma, dolap ve tezgâh altı ışığı ile dekoratif ışık hatları için kullanılır. İki kesit ölçüsü vardır; ışık rengi sıcaktan soğuğa seçilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/led-profil-139x185-kasa-845.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/211/845/led_profil_139x185_kasa1__41029.1778677971.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/led-profil-90x145-kasa-848.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/212/848/led_profil_60x145_kasa1__85080.1778683975.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/led-profil-139x185-kasa-1207.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/211/1207/WhatsApp_Image_2026-06-15_at_17.52.19__44503.1781535291.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/l/led-profil-90x145-kasa-1206.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/212/1206/WhatsApp_Image_2026-06-15_at_17.52.19_2__52127.1781535264.jpg"
+        }
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "13,9 × 18,5 mm",
+            "9 × 14,5 mm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Osram LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "12 / 24 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, polikarbon difüzör"
+        ],
+        [
+          "Ölçüler",
+          "13,9 × 18,5 mm / 9 × 14,5 mm"
+        ],
+        [
+          "Boy ve güç",
+          "100 cm: 12 W/m (12 / 24 V); 12 W/m renkli (24 V); 13,9 × 18,5 mm: 100 cm 21 W (24 V)"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/led-profil-139x185-kasa/",
+        "https://ledlinear.com.tr/led-profil-90x145-kasa/"
+      ]
+    },
+    {
+      "key": "l-siva-alti-led-profil",
+      "name": "Sıva Altı LED Profil",
+      "slug": "siva-alti-led-profil",
+      "category": "lineer-ve-profil",
+      "description": [
+        "Yüzeye gömülen, kanatlı alüminyum gövdeli, polikarbon difüzörlü bir LED profildir. Kanatlar montaj yüzeyindeki uygulama hatalarını gizler ve çerçevesiz, düz bir ışık hattı bırakır.",
+        "Duvar ve tavan çizgilerinde, dolap altında ve mimari ışık hatlarında kullanılır. Kesiti 9 mm derinlik ve 19,6 mm genişliktedir; ışık rengi 2700 K'dan 6500 K'ya kadar seçilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/siva-alti-led-profil-859.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/214/859/sva_alt_led_profil1__79121.1778690971.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/siva-alti-led-profil-1208.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/214/1208/WhatsApp_Image_2026-06-15_at_17.52.19_1__85990.1781535310.jpg"
+        }
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Osram LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "12 / 24 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, polikarbon difüzör"
+        ],
+        [
+          "Ölçüler",
+          "9 mm derinlik × 19,6 mm genişlik (kanat dahil)"
+        ],
+        [
+          "Boy ve güç",
+          "100 cm: 12 W/m (12 / 24 V); 12 W/m renkli (24 V)"
+        ],
+        [
+          "Montaj",
+          "Sıva altı"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/siva-alti-led-profil/"
+      ],
+      "options": []
+    },
+    {
+      "key": "l-siva-ustu-kose-led-profil",
+      "name": "Sıva Üstü Köşe LED Profil",
+      "slug": "siva-ustu-kose-led-profil",
+      "category": "lineer-ve-profil",
+      "description": [
+        "Açılı kesitli, alüminyum gövdeli, opal polikarbon difüzörlü, yüzeye monte edilen bir köşe LED profildir. Duvar ve tavan birleşimlerinde ışığı köşeye yayar.",
+        "Duvar-tavan köşelerinde, nişlerde ve gizli ışık hatlarında kullanılır. Kesit ölçüsü 18,5 × 19 mm'dir; ışık rengi 2700 K'dan 6500 K'ya kadar seçilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/siva-ustu-led-profil-856.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/213/856/sva_st_led_profil_1__23946.1778684662.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/siva-ustu-led-profil-1209.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/213/1209/WhatsApp_Image_2026-06-15_at_17.52.19__35245.1781535324.jpg"
+        }
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Osram LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "12 / 24 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, opal polikarbon difüzör"
+        ],
+        [
+          "Ölçüler",
+          "18,5 × 19 mm (köşegen 23,4 mm)"
+        ],
+        [
+          "Boy ve güç",
+          "100 cm: 12 W/m (12 / 24 V); 12 W/m renkli (24 V)"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/siva-ustu-led-profil/"
+      ],
+      "options": []
+    },
+    {
+      "key": "l-trimless-bar-led",
+      "name": "Trimless Bar LED",
+      "slug": "trimless-bar-led",
+      "category": "lineer-ve-profil",
+      "description": [
+        "Alçıpan yüzeyle aynı hizada biten, çerçevesiz bir bar LED profilidir. Kanatlı gövde alçıpan uygulamasında yüzeyle sıfır bitiş sağlar ve ışık çizgisi duvar ya da tavanda dikiş izi bırakmadan görünür.",
+        "Standart ve Mini olmak üzere iki genişliği vardır; Standart daha belirgin, Mini daha ince bir çizgi verir. Boyu 100 cm'dir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/trimless-standart-bar-led-868.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/218/868/Trimless_Standart_Bar_Led1__27889.1778701864.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/trimless-mini-bar-led-866.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/217/866/trimless_mini_bar_led1__70006.1778701696.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/trimless-standart-bar-led-1205.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/218/1205/WhatsApp_Image_2026-06-15_at_17.44.38_1__73858.1781534859.jpg"
+        }
+      ],
+      "kelvin": [
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "Standart (25,3 mm)",
+            "Mini (14,9 mm)"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "14 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3200 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Gövde",
+          "Cam pleksi"
+        ],
+        [
+          "Ölçüler",
+          "Boy 100 cm; kasa genişliği 25,35 mm (kanat dahil 74,2 mm) / 14,9 mm (kanat dahil 56,3 mm)"
+        ],
+        [
+          "Montaj",
+          "Alçıpana gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/trimless-standart-bar-led/",
+        "https://ledlinear.com.tr/trimless-mini-bar-led/"
+      ]
+    },
+    {
+      "key": "l-trimless-oval-bar-led",
+      "name": "Trimless Oval Bar LED",
+      "slug": "trimless-oval-bar-led",
+      "category": "lineer-ve-profil",
+      "description": [
+        "Kavisli alçıpan yüzeylere uyan esnek kanatlı, çerçevesiz bir bar LED profilidir. Kanatlar kesilerek daire ya da dalga biçimli mimari formlarda bile pürüzsüz bir bitiş sağlar.",
+        "Standart ve Mini olmak üzere iki genişliği vardır; eğrisel tavan ve duvar detaylarında ışık çizgisini kırılmadan taşır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/l/trimless-oval-standart-bar-led-872.png",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/220/872/Trimless_Oval_Mini_Bar_Led1__88104.1778702161.1280.1280__52104.1778702328.png"
+        },
+        {
+          "file": "tools/data/ext-images/l/trimless-oval-standart-bar-led-1202.jpg",
+          "url": "https://cdn11.bigcommerce.com/s-vtja9zyaao/images/stencil/1280x1280/products/220/1202/WhatsApp_Image_2026-06-15_at_17.44.38__37729.1781534788.jpg"
+        }
+      ],
+      "kelvin": [
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "Standart (20 mm)",
+            "Mini (15 mm)"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "14–18 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3200 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Gövde",
+          "Cam pleksi"
+        ],
+        [
+          "Ölçüler",
+          "Boy 100 cm; iç genişlik 20 mm, derinlik 12 mm (kanat dahil 52 mm) / 15 mm, derinlik 12 mm (kanat dahil 47 mm)"
+        ],
+        [
+          "Montaj",
+          "Alçıpana gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP44"
+        ]
+      ],
+      "sourceUrls": [
+        "https://ledlinear.com.tr/trimless-oval-standart-bar-led/",
+        "https://ledlinear.com.tr/trimless-oval-mini-bar-led/"
+      ]
+    }
+  ]
+}

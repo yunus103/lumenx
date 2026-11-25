@@ -1,0 +1,3960 @@
+{
+  "source": "a",
+  "products": [
+    {
+      "key": "a1-aura-gu10-spot",
+      "name": "Aura GU10 Spot",
+      "slug": "aura-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Aura, yuvarlak çerçeveli GU10 spot armatürüdür. Tekli ya da yan yana iki başlıklı olarak seçilebilir; ikili model oval bir çerçeve içinde iki ışık noktası verir.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-aura-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/U8tzrLipXZcv733KS587.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-aura-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/yxbrKmuL0ARrCHIoR907.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-aura-gu10-halo-spot-5.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/MlrFz3N5mufO3GLMboH2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-aura-double-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/kU4DWttYYK6roFvNT6Eb.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-aura-double-gu10-halo-spot-3.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/myE3odZYBLTcWqloQVcP.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-aura-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/HmWv0oELBiNa8HVC0ltP.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 5 W; İkili 2 × 5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 450 lm; İkili 900 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: Ø117 × 75 mm; İkili: 117 × 234 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: Ø105 mm; İkili: 2 × Ø105 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/aura-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/round/aura-double-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-calypso-gu10-spot",
+      "name": "Calypso GU10 Spot",
+      "slug": "calypso-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Calypso, tek oval çerçevenin içinde iki GU10 ışık noktası taşıyan gömme spot armatürdür. İki ayrı spot yerine tek çerçevede iki ışık noktası verir.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-calypso-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/4a6wkfnEmjMBoZpVHUDZ.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-calypso-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/3Z1fHJxfqpZFyUfJ4ZEg.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-calypso-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/6Nd2nnIA0KuIdjw6KI25.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "2 × 5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "900 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "112 × 210 × 90 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "2 × Ø95 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/calypso-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-dona-gu10-spot",
+      "name": "Dona GU10 Spot",
+      "slug": "dona-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Dona, derin ve yuvarlak reflektörlü gömme GU10 spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-dona-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/TyAmwoUZmKifT9VacV7R.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-dona-gu10-halo-spot-5.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/xa34TXsxTarCgETVZ2Uz.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-dona-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/6oAMvUANzDmXIEJR4YDv.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-dona-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/iKUDzTH9f6ColxT7Oupo.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø98 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/dona-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-dona-2-gu10-spot",
+      "name": "Dona-2 GU10 Spot",
+      "slug": "dona-2-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Dona-2, yuvarlak çerçeveli, derin reflektörlü gömme GU10 spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-dona-2-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/yorsup6jZJBpvOxATdGE.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-dona-2-gu10-halo-spot-5.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/vEGwGNQG73SFQhTAqvGM.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-dona-2-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/FxfZqzr3qzPLCsJ25TNs.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-dona-2-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/XJ749ktGR9WEgQDRGmvQ.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø97 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/dona-2-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-halo-gu10-spot",
+      "name": "Halo GU10 Spot",
+      "slug": "halo-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Halo, ince yuvarlak çerçeveli, küçük ölçülü gömme GU10 spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-halo-gu10-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/BMJRJBOPzu2vGgAtx9W6.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-halo-gu10-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/TmI8ivff0wQzHHP3bPTC.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-halo-gu10-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/ZXKdMnDAv81wQHjNjVrA.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø90 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø70 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/halo-gu10-spot"
+      ]
+    },
+    {
+      "key": "a1-luna-gu10-spot",
+      "name": "Luna GU10 Spot",
+      "slug": "luna-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Luna, yuvarlak çerçeveli gömme GU10 spot armatürdür. Tekli ve iki başlıklı oval modeli vardır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-luna-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/BLvvzLRRFlRmEQbjpYkC.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-luna-gu10-halo-spot-3.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/ebILyX4SHJhCDGwny6AL.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-luna-double-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/Gfz1dc8OzAJgAetC8XxL.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-luna-double-gu10-halo-spot-3.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/QQhqKJthgydCBU14J4oq.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-luna-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/7XDiRylKghTKh9h4SJlf.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 5 W; İkili 2 × 5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 450 lm; İkili 900 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: Ø97 × 75 mm; İkili: 97 × 194 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: Ø85 mm; İkili: 2 × Ø85 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/luna-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/round/luna-double-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-minna-gu10-spot",
+      "name": "Minna GU10 Spot",
+      "slug": "minna-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Minna, küçük ölçülü, yuvarlak ve sade çerçeveli gömme GU10 spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-minna-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/pQkq9Dimhq0AP1VJ8NDG.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-minna-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/sQA6trak5ZSjBDzr65LB.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-minna-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/ltlyFNlSTii53ShVGnU4.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø80 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø70 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/minna-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-misha-gu10-spot",
+      "name": "Misha GU10 Spot",
+      "slug": "misha-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Misha, yuvarlak ve içe oturan çerçevesiyle tavanla bütünleşen gömme GU10 spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-misha-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/Eb1jJdZqEHPAlUMeR26p.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-misha-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/0V9rcIZxaWIXb3jLamzm.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-misha-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/eeRf6xMYUqlFkyThX23S.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø83 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø70 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/misha-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-mitra-gu10-spot",
+      "name": "Mitra GU10 Spot",
+      "slug": "mitra-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Mitra, yuvarlak ve derin gövdeli, tavanla bütünleşen gömme GU10 spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-mitra-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/uRrmmWwDNYfZ5XZllhU2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-mitra-gu10-halo-spot-3.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/qHEE5EoNJLhGcFmvyeAr.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-mitra-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/KvXCoj1G0x6AeEnzcWVF.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø83 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø70 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/mitra-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-mora-gu10-spot",
+      "name": "Mora GU10 Spot",
+      "slug": "mora-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Mora, geniş yuvarlak çerçeveli gömme GU10 spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-mora-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/6Y5qt98X9GSN2zqsRX4A.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-mora-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/4AKmV0RQzgxYBRbBubyV.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-mora-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/BtOhtoRe0BiZ7WY5Vzqs.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø108 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø90 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/mora-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-odel-gu10-spot",
+      "name": "Odel GU10 Spot",
+      "slug": "odel-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Odel, yuvarlak çerçeveli gömme GU10 spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-odel-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/oUc4Zm3L9Lrc25QVZc5o.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-odel-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/qeFU9SG2pWZKzRncBfV6.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-odel-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/OBfUP8p0pWvGLpQb8jvc.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø97 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/odel-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-tia-gu10-spot",
+      "name": "Tia GU10 Spot",
+      "slug": "tia-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Tia, huni biçimli derin reflektörlü, yuvarlak gömme GU10 spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-tia-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/ZNTmVDyHciCi9oQchdtd.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-tia-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/sLGdlM6WAutdjI4WMmot.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-tia-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/bbalFZ4Udu2ktDCKY3uE.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø97 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø90 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/round/tia-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-karo-gu10-spot",
+      "name": "Karo GU10 Spot",
+      "slug": "karo-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Karo, kare çerçeveli, sade hatlı gömme GU10 spot armatürdür. Çerçeve kare olsa da tavan deliği yuvarlaktır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-karo-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/mUsHrPL3iSZoY3FiHszE.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-karo-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/lRBKt6ChhVPulBKVgpr2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-karo-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/99bhNVgqRWmhgqeHLcUZ.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "85 × 85 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø70 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/square/karo-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-leda-gu10-spot",
+      "name": "Leda GU10 Spot",
+      "slug": "leda-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Leda, kare çerçeveli gömme GU10 spot armatürdür. Tekli ve iki başlıklı dikdörtgen modeli vardır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-leda-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/lpoG614ScH1tbazvOz5a.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-leda-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/dz7NFQeKNVLwig6lRczw.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-leda-double-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/fLMR9C9MzvWQXTiZKTWW.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-leda-double-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/vfsPDmUq5soLeOd7ibLi.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-leda-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/i9qIm7ouzD6AZthjwQYG.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-leda-double-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/HeJAD3WQ54OKKj84FUFm.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 5 W; İkili 2 × 5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 450 lm; İkili 900 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: 97 × 97 × 75 mm; İkili: 97 × 194 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: Ø85 mm; İkili: 2 × Ø85 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/square/leda-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/leda-double-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-mira-gu10-spot",
+      "name": "Mira GU10 Spot",
+      "slug": "mira-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Mira, kare çerçeveli ve hareketli başlıklı gömme GU10 spot armatürdür. Tavan deliği yuvarlak olduğu için montajı kolaydır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-mira-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/HfPSngUT3IAYWrHwj5He.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-mira-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/gb96T22WGiendYFlqP1U.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-mira-gu10-halo-spot-5.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/kcGGBVBhTBIZR0iRqclb.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-mira-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/mqAgjlHDmJtBERRd9CLx.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "108 × 108 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø90 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/square/mira-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-odelia-gu10-spot",
+      "name": "Odelia GU10 Spot",
+      "slug": "odelia-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Odelia, yüzeyleri açılı kesilmiş, köşeli çerçeveli gömme GU10 spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-odelia-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/rQIrYStaCRXu08iLG7Zb.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-odelia-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/xiRRxVW6z4ykLRiy7KlL.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-odelia-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/yBlkQe8ENJfs97lGqerJ.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "97 × 97 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø75 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/square/odelia-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-terran-gu10-spot",
+      "name": "Terran GU10 Spot",
+      "slug": "terran-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Terran, kare ve derin reflektörlü gömme GU10 spot armatürdür. İki ebatta gelir. Tavan deliği yuvarlak olduğu için montajı kolaydır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-terran-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/eR6DnNdx2JS9OYGPn8ZM.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-terran-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/YujiufKEB93O7jhluCkO.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-terran-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/4VKGdwWuKbnyGIWer0gQ.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "90 × 90 mm",
+            "120 × 120 mm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "90 × 90 mm: 90 × 90 × 110 mm; 120 × 120 mm: 120 × 120 × 110 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "90 × 90 mm: Ø80 mm; 120 × 120 mm: Ø105 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/square/terran-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/terran-big-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-trinity-gu10-spot",
+      "name": "Trinity GU10 Spot",
+      "slug": "trinity-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Trinity, kare çerçeveli gömme GU10 spot armatürdür. Tek, iki veya üç başlıklı sıralı olarak seçilir. Tavan deliği yuvarlak olduğu için montajı kolaydır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-trinity-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/B34xr9Rf8L6o4Po0rPtt.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-trinity-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/PzGkVhDVbdu0cHVNMHmZ.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-trinity-gu10-halo-spot-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/bej8lGzxaGEYGq1RLAm1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-trinity-gu10-halo-spot-6.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/yF0AQM7MHNkgjSG5L4DL.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-trinity-gu10-halo-spot-7.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/dcn3goqSRYhhDp4JcSC7.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-trinity-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Pk5S0a8SoEW7tl8TrqHh.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili",
+            "Üçlü"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 5 W; İkili 2 × 5 W; Üçlü 3 × 5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 450 lm; İkili 900 lm; Üçlü 1.350 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: 90 × 90 × 75 mm; İkili: 90 × 165 × 75 mm; Üçlü: 90 × 240 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: Ø75 mm; İkili: 2 × Ø75 mm; Üçlü: 3 × Ø75 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/square/trinity-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/trinity-double-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/trinity-triple-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-valera-gu10-spot",
+      "name": "Valera GU10 Spot",
+      "slug": "valera-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Valera, geniş kare çerçeveli gömme GU10 spot armatürdür. Tekli ve iki başlıklı modeli vardır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-valera-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/YCQul5ZoSfseKAXbm57U.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-valera-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/DCxIKePAg1xUK1Gk9Q3c.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-valera-gu10-halo-spot-5.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/jJoQiVoXr5Z5wCmaCUgz.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-valera-double-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/fzpkWHc7IUOukpYFCbVo.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-valera-double-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/ivaPReqU71FG0JLLR4Wu.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-valera-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/tBF92AdVInRe0ZLDXE2Q.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-valera-double-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/April2023/rSdk5oOZ6nuZuiGTiBMN.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 5 W; İkili 2 × 5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 450 lm; İkili 900 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: 117 × 117 × 75 mm; İkili: 117 × 234 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: Ø105 mm; İkili: 2 × Ø105 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/square/valera-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/valera-double-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-vega-gu10-spot",
+      "name": "Vega GU10 Spot",
+      "slug": "vega-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Vega, kare çerçeveli gömme GU10 spot armatürdür. Tek, iki veya üç başlıklı sıralı olarak seçilir.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/E2QejR4Y3FCnOzQBkMGa.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/atuLpDDXpcta1vFijjvR.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-double-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/eErwV2D8skWTleX7xuJj.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-double-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/13gZzdERkAByOcAgwIz1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-triple-gu10-halo-spot-3.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/G7ZT9I7o3Cg57ae00Oph.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/AhCcOMuPTJnxPzMfbWZ9.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-double-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/3CU9yY7PVPdw66Y26hDl.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili",
+            "Üçlü"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 5 W; İkili 2 × 5 W; Üçlü 3 × 5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 450 lm; İkili 900 lm; Üçlü 1.350 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: 128 × 128 × 75 mm; İkili: 128 × 235 × 75 mm; Üçlü: 128 × 335 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: 110 × 110 mm; İkili: 110 × 210 mm; Üçlü: 110 × 310 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/square/vega-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/vega-double-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/vega-triple-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-vega-d-gu10-spot",
+      "name": "Vega D GU10 Spot",
+      "slug": "vega-d-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Vega D, ince kare çerçeveli gömme GU10 spot armatürdür. Tek, iki veya üç başlıklı sıralı olarak seçilir.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-d-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/A8Sycu7ztUqrQfFYfpe9.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-d-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/CntDKmRaJzXQBd2DiDLv.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-d-double-gu10-halo-spot-3.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/GyUGMCTKsZSC9I7n6uuu.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-d-triple-gu10-halo-spot-3.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/A8FEuxjzi7dqWDbmUTJO.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-d-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/doT3E2npvUpQUTjoPDEZ.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-d-double-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Vq3AiXqpTgnBfODry5sT.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-d-triple-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/vWeSonfwGRQt47BaitrP.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili",
+            "Üçlü"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 5 W; İkili 2 × 5 W; Üçlü 3 × 5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 450 lm; İkili 900 lm; Üçlü 1.350 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: 120 × 120 × 75 mm; İkili: 120 × 220 × 75 mm; Üçlü: 120 × 324 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: 100 × 100 mm; İkili: 100 × 200 mm; Üçlü: 100 × 300 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/square/vega-d-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/vega-d-double-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/vega-d-triple-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-vega-s-gu10-spot",
+      "name": "Vega S GU10 Spot",
+      "slug": "vega-s-gu10-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Vega S, küçük ölçülü, ince kare çerçeveli gömme GU10 spot armatürdür. Tek, iki veya üç başlıklı sıralı olarak seçilir.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu aydınlatması için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-s-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/L3MA8wlIOAHzk5l1cgd1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-s-gu10-halo-spot-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/l9EvdDyc3OHBD3LpZB50.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-s-double-gu10-halo-spot-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/ksnN0HvjiCdhUT3BVsLP.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-s-triple-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/D35y7W2EHPnZCK4GwaCq.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-s-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/ThYCVerFF8tSH9VzmJfy.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-vega-s-double-gu10-halo-spot-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/cnuLNediG7kq1Xn0chwy.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili",
+            "Üçlü"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 5 W; İkili 2 × 5 W; Üçlü 3 × 5 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED lamba"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 450 lm; İkili 900 lm; Üçlü 1.350 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: 100 × 100 × 75 mm; İkili: 100 × 170 × 75 mm; Üçlü: 100 × 255 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: 85 × 85 mm; İkili: 85 × 155 mm; Üçlü: 85 × 235 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/gu-10/square/vega-s-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/vega-s-double-gu10-halo-spot",
+        "https://abalighting.com/tr/urunler/gu-10/square/vega-s-triple-gu10-halo-spot"
+      ]
+    },
+    {
+      "key": "a1-dona-siva-ustu-spot",
+      "name": "Dona Sıva Üstü Spot",
+      "slug": "dona-siva-ustu-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Dona, tavan yüzeyine monte edilen silindir gövdeli sıva üstü spot armatürdür.",
+        "Gövdesi elektrostatik boyalı alüminyumdur; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir. Asma tavan kesimi gerektirmediği için beton ve sıvalı tavanlarda da kullanılır; mağaza, kafe ve ofislere uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-dona-op-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/BYpgN79uFv59uLtE2nIy.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-dona-op-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/V7co763X8weZNx1z5cuD.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-dona-op-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Qgm9RwZErLFZWytsafx4.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø80 × 100 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/gu-10/dona-op"
+      ]
+    },
+    {
+      "key": "a1-dona-s-siva-ustu-spot",
+      "name": "Dona-S Sıva Üstü Spot",
+      "slug": "dona-s-siva-ustu-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Dona-S, tavan yüzeyine monte edilen kutu gövdeli sıva üstü spot armatürdür.",
+        "Gövdesi elektrostatik boyalı alüminyumdur; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir. Asma tavan kesimi gerektirmediği için beton ve sıvalı tavanlarda da kullanılır; mağaza, kafe ve ofislere uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-dona-s-op-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/IgaNTp2HhXvgAHBmRS2i.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-dona-s-op-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/rjVtl0KKiMq20PmDKP9X.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-dona-s-op-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/kjXhTJq3Cinh6ldmO74S.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "80 × 80 × 110 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/gu-10/dona-s-op"
+      ]
+    },
+    {
+      "key": "a1-scala-siva-ustu-spot",
+      "name": "Scala Sıva Üstü Spot",
+      "slug": "scala-siva-ustu-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Scala, tavan yüzeyine monte edilen dikdörtgen kutu gövdeli sıva üstü spot armatürdür. Tek, iki veya üç ışık noktalı olarak seçilir; ışık noktaları siyah bir çerçeve içinde yer alır.",
+        "Gövdesi elektrostatik boyalı alüminyumdur; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir. Asma tavan kesimi gerektirmediği için beton ve sıvalı tavanlarda da kullanılır; mağaza, kafe ve ofislere uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-scala-d-op-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/iFtf5RZbuUvheSa4h6Do.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-scala-d-op-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/5EyU6LGNuHzYoZREBLIq.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-scala-double-op-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/ibwUhaBJ6BwJmdDGVh1W.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-scala-double-op-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/FrsnkNoWvG2BKk7iKfBd.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-scala-triple-op-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/PkNvIxnsExum7xNihX4O.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-scala-triple-op-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/NLOtLvuyab3y8SzjTH86.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-scala-d-op-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/8xnUxNeQK3z7HhstYrr5.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/gu-10-scala-double-op-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/FENbRPMc7qQrdIKMBfyZ.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili",
+            "Üçlü"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: 60 × 60 × 85 mm; İkili: 120 × 60 × 85 mm; Üçlü: 180 × 60 × 85 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/gu-10/scala-d-op",
+        "https://abalighting.com/tr/urunler/overplast/gu-10/scala-double-op",
+        "https://abalighting.com/tr/urunler/overplast/gu-10/scala-triple-op"
+      ]
+    },
+    {
+      "key": "a1-aura-led-spot",
+      "name": "Aura LED Spot",
+      "slug": "aura-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Aura, yönlendirilebilir COB LED başlıklı, yuvarlak çerçeveli gömme spot armatürdür. Tekli ya da yan yana iki başlıklı oval modeli seçilebilir.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-aura-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/hthjA4l79eDWfXcWvq39.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-aura-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/ZMPfhGliUsQRSgJPyETV.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-aura-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/qmAr4N1p4Pi3KlE7OuYV.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-aura-double-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Edv1gnh7ZEfZ5W3Lvt8U.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-aura-double-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/h9KpQhhUhLpnFQLsKVdb.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-aura-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/XWtGR9hkLrwPd7hh7xqr.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-aura-double-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/A3GojPTVgsMNrOaqV86R.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        },
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 8–10 W; İkili 2 × 8 veya 2 × 10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 980–1.200 lm; İkili 1.960–2.400 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: Ø117 × 95 mm; İkili: 117 × 234 × 95 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: Ø105 mm; İkili: 2 × Ø105 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/aura-spotlight",
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/aura-double-spotlight"
+      ]
+    },
+    {
+      "key": "a1-luna-led-spot",
+      "name": "Luna LED Spot",
+      "slug": "luna-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Luna, yana yatırılabilir COB LED başlıklı, yuvarlak çerçeveli gömme spot armatürdür. Tekli ve iki başlıklı oval modeli vardır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-luna-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/5QtSRITSZg4O4eyPfPTw.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-luna-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/f85Qf3fuOgsWCaoq2J5C.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-luna-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/VX0mRdRUzOPCTzjiSg5A.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-luna-spotlight-6.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/sgowTgKTrw8SWDkF59MP.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-luna-double-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/LoG1m7rMyHnq6g5hLsiH.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-luna-double-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/3bhOnLRXVfNeik3ySdUF.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-luna-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Wnm6MYFp5suJCL0JhnvH.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-luna-double-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/YXveg7GUxMKZRORP3TO6.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        },
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 8–10 W; İkili 2 × 8 veya 2 × 10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 980–1.200 lm; İkili 1.960–2.400 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: Ø97 × 75 mm; İkili: 97 × 194 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: Ø85 mm; İkili: 2 × Ø85 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/luna-spotlight",
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/luna-double-spotlight"
+      ]
+    },
+    {
+      "key": "a1-minna-led-spot",
+      "name": "Minna LED Spot",
+      "slug": "minna-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Minna, küçük ölçülü, yuvarlak çerçeveli COB LED'li gömme spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-minna-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/5tVLcJbmO4swDTBcYhOh.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-minna-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/jmnLjS659iFAgNjiWXME.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-minna-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/RUXR5dd03qPDApPy3DCm.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-minna-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/qF5URDfUbzYCWv54xTkf.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1.200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø80 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø70 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/minna-spotlight"
+      ]
+    },
+    {
+      "key": "a1-misha-led-spot",
+      "name": "Misha LED Spot",
+      "slug": "misha-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Misha, yuvarlak ve içe oturan çerçeveli COB LED'li gömme spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-misha-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/tWd9yJQbjshfcgTf4VOP.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-misha-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/2HycVROcPrU0EIKFy9N3.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-misha-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/6TnnNto7Dd6Avad3AMmD.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-misha-spotlight-6.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/lrPG8lRWzDkf87qk7mTD.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-misha-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/J3oJQ3yoxc2NEGUX4jos.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1.200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø83 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø70 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/misha-spotlight"
+      ]
+    },
+    {
+      "key": "a1-mitra-led-spot",
+      "name": "Mitra LED Spot",
+      "slug": "mitra-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Mitra, yuvarlak ve derin gövdeli COB LED'li gömme spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mitra-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/2ec0xR6HY5uuRPD0TT92.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mitra-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/UJmjpa60MELDhL8XL7aW.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mitra-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/sUuTpuuzxdAIuhi9XNq6.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mitra-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/0EOlWoToUNZxRp6Hwzgw.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1.200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø83 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø70 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/mitra-spotlight"
+      ]
+    },
+    {
+      "key": "a1-mobled-led-spot",
+      "name": "Mobled LED Spot",
+      "slug": "mobled-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Mobled, yalnızca 47 mm çapında, çok küçük bir gömme LED spot armatürdür. Raf, niş ve vitrin gibi dar yerlerde işe yarar.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mobled-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/4JHNad34jxwWjtq5UlRy.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mobled-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/ukflxvsuwnoV9eHuVeub.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mobled-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/2usjzRaNKDpxtzLI0G32.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mobled-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/UUxnwBgFbPggfuuWgNBy.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [],
+      "specs": [
+        [
+          "Güç",
+          "2 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø47 × 35 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø35 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/mobled"
+      ]
+    },
+    {
+      "key": "a1-mora-led-spot",
+      "name": "Mora LED Spot",
+      "slug": "mora-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Mora, geniş yuvarlak çerçeveli COB LED'li gömme spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mora-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/WsRcQ7KKP05db1WvEfvf.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mora-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/0Rm0GVRsTLBa9B2E3Xd1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mora-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/oqTs8W0o2MtTyULWa024.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mora-spotlight-6.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/76hcGENkJfQRzTujC4Og.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-mora-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/6eF2P2yXy3RSwDA3d9eE.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1.200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø108 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø90 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/mora-spotlight"
+      ]
+    },
+    {
+      "key": "a1-odel-led-spot",
+      "name": "Odel LED Spot",
+      "slug": "odel-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Odel, yuvarlak çerçeveli COB LED'li gömme spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-odel-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/jMOy6jUpzU7e2vG9BBLI.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-odel-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/6heiKlhvdnUW5oqBdWIj.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-odel-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/IddjKadyHtPEZYO3w50E.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-odel-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Z3XcdH5ehAYm9OyCjq76.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1.200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø97 × 75 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/odel-spotlight"
+      ]
+    },
+    {
+      "key": "a1-tia-led-spot",
+      "name": "Tia LED Spot",
+      "slug": "tia-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Tia, huni biçimli derin reflektörlü, yuvarlak COB LED'li gömme spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-tia-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/VkHfM9V9Qn2O0WPG9SVA.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-tia-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/TtqZgYM1GnNZ2BU1VI3k.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-tia-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/HxKUm9tmgh7odVGMf1KV.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/round-spot-tia-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/y29eKssuagCVhRfJlKRS.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1.200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Ø97 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø90 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/round-spot/tia-spotlight"
+      ]
+    },
+    {
+      "key": "a1-karo-led-spot",
+      "name": "Karo LED Spot",
+      "slug": "karo-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Karo, kare çerçeveli, sade hatlı COB LED'li gömme spot armatürdür. Çerçeve kare olsa da tavan deliği yuvarlaktır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-karo-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/XBKBod955m6MA7NOydsZ.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-karo-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/i655uAsW9snQ833X8ojn.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-karo-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/QUAisQ6nb2LuMYtvhBCw.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-karo-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/J1UxUXJlKQU0XVyiuq1O.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1.200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "85 × 85 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø70 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/square-spot/karo-spotlight"
+      ]
+    },
+    {
+      "key": "a1-leda-led-spot",
+      "name": "Leda LED Spot",
+      "slug": "leda-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Leda, kare çerçeveli COB LED'li gömme spot armatürdür. Tekli ve iki başlıklı dikdörtgen modeli vardır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-leda-double-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/ukxVSOs3jofNgXeXqh7n.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-leda-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/NPrCSPY70xzw8kf7rjko.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-leda-double-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/yvf7KR6F4BYFGTGg4Tfe.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        },
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "Tekli 8–10 W; İkili 2 × 8 veya 2 × 10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "Tekli 980–1.200 lm; İkili 1.960–2.400 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "Tekli: 97 × 97 × 75 mm; İkili: 97 × 194 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli: Ø85 mm; İkili: 2 × Ø85 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/square-spot/leda-spotlight",
+        "https://abalighting.com/tr/urunler/spot-lights/square-spot/leda-double-spotlight"
+      ]
+    },
+    {
+      "key": "a1-mira-led-spot",
+      "name": "Mira LED Spot",
+      "slug": "mira-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Mira, kare çerçeveli, hareketli COB LED başlıklı gömme spot armatürdür. Tavan deliği yuvarlak olduğu için montajı kolaydır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-mira-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/8UUp7MOryAdhLlYog9Pa.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-mira-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/qIhe8627VMiWon4vzLHP.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-mira-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/7DAnhcQRi85U47Bsj5UB.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-mira-spotlight-6.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/o1RANqEZRVaOPQGvdi35.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-mira-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/8DTvFs8ESOOr5ppDNhsE.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1.200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "108 × 108 × 75 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/square-spot/mira-spotlight"
+      ]
+    },
+    {
+      "key": "a1-odelia-led-spot",
+      "name": "Odelia LED Spot",
+      "slug": "odelia-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Odelia, yüzeyleri açılı kesilmiş, köşeli çerçeveli COB LED'li gömme spot armatürdür.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-odelia-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/BTP5SjIOHcMvILpEQszT.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-odelia-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/INOWhYxVzgPdO3QiYNTC.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-odelia-spotlight-6.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/PMS4pYYg6TdzKr5huTkf.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-odelia-spotlight-3.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/q54yf1D2DJLkavaTwgux.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-odelia-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/68OFFzaNy58zvOkn234H.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1.200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "97 × 97 × 75 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/square-spot/odelia-spotlight"
+      ]
+    },
+    {
+      "key": "a1-terran-led-spot",
+      "name": "Terran LED Spot",
+      "slug": "terran-led-spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Terran, kare ve derin reflektörlü COB LED'li gömme spot armatürdür. İki ebatta gelir. Tavan deliği yuvarlak olduğu için montajı kolaydır.",
+        "Alüminyum enjeksiyon gövdesi elektrostatik boyalıdır; beyaz, siyah ve antrasit gelir, RAL kataloğundaki başka renklerde de boyanabilir. Işık rengi 2700 K ile 6500 K arasında seçilebilir; kısılabilir, DALI ve acil durum kiti seçenekleri vardır. Kafe, restoran, lobi, mağaza ve ofislerde vurgu ve genel aydınlatma için uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-terran-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/zUkbHvJHMy4KII5RAmf4.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-terran-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/xSa86Vk9E58flkIJFhzp.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-terran-spotlight-5.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/yEvx5ILyct2QQN79BoM4.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-terran-big-spotlight-2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/gFu9MUGKAy3vL88urakq.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-terran-big-spotlight-4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/WLCoDuHUuGUvJ4ZWhW7O.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-spot/square-spot-terran-spotlight-1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/lwExg9TlvAmauDb2VoMX.jpg"
+        }
+      ],
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "90 × 90 mm",
+            "120 × 120 mm"
+          ]
+        },
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1.200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Alüminyum enjeksiyon, elektrostatik boya"
+        ],
+        [
+          "Ölçüler",
+          "90 × 90 mm: 90 × 90 × 110 mm; 120 × 120 mm: 120 × 120 × 110 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "90 × 90 mm: Ø80 mm; 120 × 120 mm: Ø105 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme (sıva altı)"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20–44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/spot-lights/square-spot/terran-spotlight",
+        "https://abalighting.com/tr/urunler/spot-lights/square-spot/terran-big-spotlight"
+      ]
+    }
+  ]
+}

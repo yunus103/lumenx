@@ -4,7 +4,11 @@
 // Usage: node --env-file=.env.local tools/apply-copy.mjs [--dry]
 import fs from "node:fs";
 import { createClient } from "@sanity/client";
-import { CATEGORY_SPECS, COPY } from "./data/product-copy.mjs";
+import { CATEGORY_SPECS, COPY as BASE } from "./data/product-copy.mjs";
+import { COPY as NEW_A } from "./data/copy-new-a.mjs";
+import { COPY as NEW_B } from "./data/copy-new-b.mjs";
+
+const COPY = { ...BASE, ...NEW_A, ...NEW_B };
 
 const DRY = process.argv.includes("--dry");
 

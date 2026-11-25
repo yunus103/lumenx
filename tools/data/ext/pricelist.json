@@ -1,0 +1,358 @@
+{
+  "source": "p",
+  "products": [
+    {
+      "key": "p-svela",
+      "name": "Svela Şarjlı Masa Lambası",
+      "slug": "svela-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Svela, fener formunda bir masa lambasıdır. Silindirik gövdenin ortasında dikey oluklu opal bir tüp, altında ve üstünde fırçalanmış metal halkalar bulunur; üzerinde dikişli kahverengi bir deri kayış vardır.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada kullanılır ya da kayışından taşınır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/svela.png"
+        }
+      ],
+      "finishes": [
+        "satine-nikel"
+      ],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "premiumPriceUsd": 220,
+      "options": []
+    },
+    {
+      "key": "p-sera",
+      "name": "Sera Şarjlı Masa Lambası",
+      "slug": "sera-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Sera, yarı saydam, damarlı taş görünümlü kubbe gölgeli bir masa lambasıdır. Kubbe, doğal taştan alçak, yuvarlak bir kaide üzerinde durur; ışık kubbenin içinden sıcak ve yumuşak yayılır.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/sera.png"
+        }
+      ],
+      "finishes": [],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "priceUsd": 95,
+      "premiumPriceUsd": 105,
+      "options": []
+    },
+    {
+      "key": "p-verda",
+      "name": "Verda Şarjlı Masa Lambası",
+      "slug": "verda-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Verda, yukarı doğru daralan, açık çerçeveli bir ahşap fenerdir. Çerçevenin içinde turuncu tonlu tuz kristalleri durur; üstteki deri kayış lambayı taşımak ve asmak için kullanılır.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada, rafta ya da kayışından asılarak kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/verda.png"
+        }
+      ],
+      "finishes": [
+        "ahsap"
+      ],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "premiumPriceUsd": 120,
+      "options": []
+    },
+    {
+      "key": "p-lara",
+      "name": "Lara Şarjlı Masa Lambası",
+      "slug": "lara-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Lara, kare kesitli, koyu tonlu bir ahşap fenerdir. Çerçevenin içinde turuncu tonlu tuz kristalleri durur; üstteki deri kayış lambayı taşımak ve asmak için kullanılır.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada, rafta ya da kayışından asılarak kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/lara.png"
+        }
+      ],
+      "finishes": [
+        "ahsap"
+      ],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "premiumPriceUsd": 120,
+      "options": []
+    },
+    {
+      "key": "p-sena",
+      "name": "Sena Şarjlı Masa Lambası",
+      "slug": "sena-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Sena, silindirik, açık çerçeveli bir ahşap fenerdir. Çerçevenin içinde turuncu tonlu tuz kristalleri durur; üstteki deri kayış lambayı taşımak ve asmak için kullanılır.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada, rafta ya da kayışından asılarak kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/sena.png"
+        }
+      ],
+      "finishes": [
+        "ahsap"
+      ],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "premiumPriceUsd": 120,
+      "options": []
+    },
+    {
+      "key": "p-aplik-sarj-modulu",
+      "name": "Aplik Şarj Modülü",
+      "slug": "aplik-sarj-modulu",
+      "category": "sarj-istasyonlari",
+      "description": [
+        "Aplik Şarj Modülü, yuvarlak beyaz bir taban üzerinde duran, üstü opal kubbeli kompakt bir modüldür. Aplik tipi şarjlı armatürlerin şarj ihtiyacı için kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/aplik-sarj-modulu.png"
+        }
+      ],
+      "finishes": [],
+      "specs": [],
+      "priceUsd": 35,
+      "options": []
+    },
+    {
+      "key": "p-albostan",
+      "name": "Albostan Şarjlı Masa Lambası",
+      "slug": "albostan-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Albostan, ince ve uzun bir gövdeli masa lambasıdır. Parlak altın tonlu metal gövde, geniş yuvarlak bir tabanda biter; ince gövdenin üstünde küçük, yuvarlak bir başlık durur.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/albostan.png"
+        }
+      ],
+      "finishes": [
+        "gold"
+      ],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "priceUsd": 58,
+      "premiumPriceUsd": 75,
+      "options": []
+    },
+    {
+      "key": "p-palermo",
+      "name": "Palermo Şarjlı Masa Lambası",
+      "slug": "palermo-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Palermo, mantar formunda bir masa lambasıdır. Geniş bir kubbe gölge, aşağı doğru genişleyen konik bir gövde üzerinde durur; gövde ve gölge fırçalanmış, bakır pembesi tonlu metaldir.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/palermo.png"
+        }
+      ],
+      "finishes": [
+        "rose"
+      ],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "priceUsd": 60,
+      "premiumPriceUsd": 79,
+      "options": []
+    },
+    {
+      "key": "p-neva",
+      "name": "Neva Mozaik Şarjlı Masa Lambası",
+      "slug": "neva-mozaik-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Neva, yeşil cam mozaik karolarla kaplı, küp biçiminde bir masa lambasıdır. Karolar derzli bir ızgara düzeninde sıralanır; gövde küçük ayaklar üzerinde durur.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/neva.png"
+        }
+      ],
+      "finishes": [],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "premiumPriceUsd": 95,
+      "options": []
+    },
+    {
+      "key": "p-hazer",
+      "name": "Hazer Ahşap Porselen Şarjlı Masa Lambası",
+      "slug": "hazer-ahsap-porselen-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Hazer, beyaz, kabartma desenli porselen bir konik gölgeye sahip masa lambasıdır. Gölge, pirinç tonlu ince bir gövde ile silindirik koyu ahşap bir gövdeye bağlanır; gölgenin tepesinde küçük bir pirinç uç vardır.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/hazer.png"
+        }
+      ],
+      "finishes": [
+        "ceviz"
+      ],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "premiumPriceUsd": 135,
+      "options": []
+    },
+    {
+      "key": "p-orkide",
+      "name": "Orkide Ahşap Şarjlı Masa Lambası",
+      "slug": "orkide-ahsap-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Orkide, bakır tonlu metal konik bir gölgeye sahip masa lambasıdır. Gölge, ince bir bakır gövde ile yuvarlak hatlı, kademeli, tornalanmış bir ahşap gövdeye oturur.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/orkide.png"
+        }
+      ],
+      "finishes": [
+        "ahsap"
+      ],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "premiumPriceUsd": 95,
+      "options": []
+    },
+    {
+      "key": "p-balsam",
+      "name": "Balsam Aplik Kablosuz Modüllü",
+      "slug": "balsam-aplik-kablosuz-modullu",
+      "category": "aplik-ve-lambader",
+      "description": [
+        "Balsam, krem tonlu kumaş konik bir gölgeye sahip aplik armatürdür. Gölge, duvar plakasından uzanan ince krom bir kolun ucunda durur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/balsam.png"
+        }
+      ],
+      "finishes": [],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "priceUsd": 110,
+      "options": []
+    },
+    {
+      "key": "p-hebe",
+      "name": "Hebe Aplik Kablosuz Modüllü",
+      "slug": "hebe-aplik-kablosuz-modullu",
+      "category": "aplik-ve-lambader",
+      "description": [
+        "Hebe, dikey oluklu, yarı saydam beyaz bir gölgeye sahip aplik armatürdür. Gölge, altta koyu bir kapakla biter ve duvara yaslanan yarım silindir bir form oluşturur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/hebe.png"
+        }
+      ],
+      "finishes": [],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "priceUsd": 95,
+      "options": []
+    },
+    {
+      "key": "p-alpina",
+      "name": "Alpina Lambader Kablosuz Modüllü",
+      "slug": "alpina-lambader-kablosuz-modullu",
+      "category": "aplik-ve-lambader",
+      "description": [
+        "Alpina, ince, dikdörtgen bir tabana oturan bronz tonlu dikey bir gövdeye sahip lambaderdir. Gövdenin üst kısmından uzanan bir kol, beyaz kumaş silindirik bir gölgeyi taşır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/alpina.png"
+        }
+      ],
+      "finishes": [],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "priceUsd": 145,
+      "options": []
+    },
+    {
+      "key": "p-lilia",
+      "name": "Lilia Kumaş Porselen Şarjlı Masa Lambası",
+      "slug": "lilia-kumas-porselen-sarjli-masa-lambasi",
+      "category": "sarjli-masa-lambasi",
+      "description": [
+        "Lilia, pilili krem kumaş bir gölgeye sahip masa lambasıdır. Gölgenin alt ve üst kenarında lacivert bir şerit biter; gölge, pirinç tonlu kısa bir bağlantıyla lacivert-beyaz baklava desenli silindirik bir porselen gövdeye oturur.",
+        "Şarj edilebilir bir masa lambasıdır; kablosuz çalışır, masada kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/pricelist/lilia.png"
+        }
+      ],
+      "finishes": [],
+      "kelvin": [
+        2700
+      ],
+      "specs": [],
+      "chargeOptions": true,
+      "premiumPriceUsd": 135,
+      "options": []
+    }
+  ]
+}

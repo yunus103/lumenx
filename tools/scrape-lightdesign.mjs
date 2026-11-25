@@ -1,7 +1,8 @@
 // Scrapes every Light Design product page into tools/data/lightdesign.json.
 // Each ikas storefront page embeds the full product in __NEXT_DATA__, so no HTML parsing is needed.
-// Usage: node tools/scrape-lightdesign.mjs
-import { writeFile, mkdir } from "node:fs/promises";
+// Usage: node tools/scrape-lightdesign.mjs [--add]
+// --add keeps every product already in the JSON untouched and appends only products whose ikas id is new.
+import { writeFile, mkdir, readFile } from "node:fs/promises";
 
 const SITE = "https://lightdesign.com.tr";
 const CDN = "https://cdn.myikas.com/images/8f38c025-b866-495f-a2cf-a6d9e04c83a1";
@@ -67,8 +68,12 @@ function normalize(d, url) {
   };
 }
 
+const ADD = process.argv.includes("--add");
 const urls = await productUrls();
-const byId = new Map();
+const existing = ADD ? JSON.parse(await readFile(OUT, "utf8")) : null;
+const byId = new Map(existing?.products.map((p) => [p.id, p]));
+const known = new Set(byId.keys());
+const added = [];
 const failed = [];
 
 for (const url of urls) {
@@ -77,12 +82,16 @@ for (const url of urls) {
     failed.push(url);
     continue;
   }
+  if (known.has(d.id)) continue;
   // Same product can be listed under several slugs; keep the one ikas reports as canonical.
   const p = normalize(d, url);
   const prev = byId.get(p.id);
   if (!prev || url.endsWith(`/${p.slug}`)) byId.set(p.id, p);
+  if (!prev) added.push(p.slug);
 }
 
 await mkdir(new URL("./data/", import.meta.url), { recursive: true });
 await writeFile(OUT, JSON.stringify({ scrapedAt: new Date().toISOString(), failed, products: [...byId.values()] }, null, 2));
 console.log(`${urls.length} urls → ${byId.size} unique products, ${failed.length} failed`);
+if (ADD) console.log(`added ${added.length}: ${added.join(", ")}`);
+if (failed.length) console.log("failed:", failed.join(" "));

@@ -11,17 +11,23 @@ const MOSAIC = ["Malzeme", "Metal gövde, mozaik cam"];
 const GLASS = ["Malzeme", "Metal gövde, cam abajur"];
 const STATION = [["Uyumluluk", "Şarjlı masa lambaları"], ["Kullanım", "İç mekân"], ["Menşei", "Türkiye"]];
 
+// Premium and Ekonomik battery units, from the client's comparison sheet (PREMİUM VS EKONOMİK, 2026-11).
+const BATTERY = [
+  ["Işık ayarı", "3 kademe; Premium dokunmatik, Ekonomik buton"],
+  ["Güç", "Premium 1-3-5 W, Ekonomik 1-2-3 W"],
+  ["Batarya", "Li-ion 3,7 V; Premium 2 × 2200 mAh, Ekonomik 2200 mAh"],
+  ["Kullanım süresi", "Premium 48 / 24 / 11 saat, Ekonomik 27 / 16 / 10 saat (düşük / orta / yüksek)"],
+  ["Şarj süresi", "Premium 8 saat, Ekonomik 10 saat"],
+  ["Şarj", "Premium şarj kaseti ve 5 V adaptör, Ekonomik Type-C kablo"],
+  ["Pil gövdesi", "Premium N66 yanmaz plastik, Ekonomik ABS"],
+];
+
 export const CATEGORY_SPECS = {
   "sarjli-masa-lambasi": [
     ["Işık kaynağı", "Samsung 2835 SMD LED"],
-    ["Işık ayarı", "Dokunmatik, 3 kademe dimmer"],
-    ["Güç", "3 W (Ekonomik) / 5 W (Premium)"],
-    ["Batarya", "Li-ion 1×18650 1500 mAh / 2×18650 1500–2200 mAh"],
-    ["Kullanım süresi", "Premium'da tam şarjla 30 saate kadar, ışık seviyesine bağlı"],
-    ["Şarj süresi", "Ortalama 8 saat"],
-    ["Güç girişi", "5 V / 2 A"],
+    ...BATTERY,
     ["Malzeme", "Alüminyum ve DKP sac, boya veya kaplama"],
-    ["Ağırlık", "Yaklaşık 1 kg"],
+    ["Ağırlık", "Ortalama 0,95 kg (Premium), 0,75 kg (Ekonomik)"],
     ["Koruma sınıfı", "IP20, iç mekân"],
     ["Sertifikalar", "CE, ISO, RoHS, MSDS"],
     ["Şarj seçenekleri", "Tekli kaset veya 9 / 18 / 27 / 36'lı istasyon"],
@@ -31,12 +37,9 @@ export const CATEGORY_SPECS = {
   "garson-cagirma": [
     ["Çağrı", "Masadaki çağrı butonu"],
     ["Işık kaynağı", "Samsung 2835 SMD LED"],
-    ["Işık ayarı", "Dokunmatik, 3 kademe dimmer"],
-    ["Güç", "3 W (Ekonomik) / 5 W (Premium)"],
-    ["Batarya", "Li-ion 1×18650 1500 mAh / 2×18650 1500–2200 mAh"],
-    ["Güç girişi", "5 V / 2 A"],
+    ...BATTERY,
     ["Malzeme", "Alüminyum ve DKP sac, boya veya kaplama"],
-    ["Ağırlık", "Yaklaşık 1 kg"],
+    ["Ağırlık", "Ortalama 0,95 kg (Premium), 0,75 kg (Ekonomik)"],
     ["Koruma sınıfı", "IP20, iç mekân"],
     ["Sertifikalar", "CE, ISO, RoHS, MSDS"],
     ["Şarj seçenekleri", "Tekli kaset veya 9 / 18 / 27 / 36'lı istasyon"],
@@ -208,7 +211,7 @@ export const COPY = {
   "defne-sarjli-masa-lambasi-3-3": {
     d: [
       "Defne Ahşap Şarjlı Masa Lambası, zarif tasarımı ve ahşap gövdesiyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Dekoratif görünümünü yüksek performansla birleştiren Defne, profesyonel kullanım için tasarlanmıştır.",
-      "3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanımıyla akşam boyunca kesintisiz ışık verir. Çoklu şarj istasyonlarıyla uyumlu olan Defne, oteller, restoranlar, kafeler ve barlar için ideal bir aydınlatma çözümüdür.",
+      "3 kademeli dokunmatik dimmeri ve tam şarjla 48 saate varan kullanımıyla akşam boyunca kesintisiz ışık verir. Çoklu şarj istasyonlarıyla uyumlu olan Defne, oteller, restoranlar, kafeler ve barlar için ideal bir aydınlatma çözümüdür.",
     ],
     specs: [WOOD("keten abajur")],
     options: [],
@@ -216,7 +219,7 @@ export const COPY = {
   "kamelya-sarjli-masa-lambasi-3-2": {
     d: [
       "Kamelya Ahşap Şarjlı Masa Lambası, zarif tasarımı ve ahşap gövdesiyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Dekoratif görünümünü yüksek performansla birleştiren Kamelya, profesyonel kullanım için tasarlanmıştır.",
-      "Kamelya, 3 kademeli dokunmatik dimmeriyle ışığı ortama göre ayarlamanıza olanak tanır ve tam şarjla 30 saate varan kullanım sunar. Çoklu şarj istasyonlarıyla uyumludur; oteller, restoranlar, kafeler ve özel projeler için ideal bir çözümdür.",
+      "Kamelya, 3 kademeli dokunmatik dimmeriyle ışığı ortama göre ayarlamanıza olanak tanır ve tam şarjla 48 saate varan kullanım sunar. Çoklu şarj istasyonlarıyla uyumludur; oteller, restoranlar, kafeler ve özel projeler için ideal bir çözümdür.",
     ],
     specs: [WOOD("kumaş abajur")],
     options: [],
@@ -224,7 +227,7 @@ export const COPY = {
   "lila-sarjli-masa-lambasi-3-1-4": {
     d: [
       "Lila Ahşap Şarjlı Masa Lambası, zarif tasarımı ve ahşap gövdesiyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Dekoratif görünümünü yüksek performansla birleştiren Lila, profesyonel kullanım için tasarlanmıştır.",
-      "3 kademeli dokunmatik dimmeri sayesinde ışık seviyesi kolayca ayarlanır; tam şarjla 30 saate varan kullanım uzun süreli, kesintisiz aydınlatma sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Lila, oteller, restoranlar ve kafeler için ideal bir aydınlatma çözümüdür.",
+      "3 kademeli dokunmatik dimmeri sayesinde ışık seviyesi kolayca ayarlanır; tam şarjla 48 saate varan kullanım uzun süreli, kesintisiz aydınlatma sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Lila, oteller, restoranlar ve kafeler için ideal bir aydınlatma çözümüdür.",
     ],
     specs: [WOOD("kumaş abajur")],
     options: [],
@@ -232,7 +235,7 @@ export const COPY = {
   "lotus-sarjli-masa-lambasi-2": {
     d: [
       "Lotus Ahşap Şarjlı Masa Lambası, zarif tasarımı ve ahşap gövdesiyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Dekoratif görünümünü yüksek performansla birleştiren Lotus, profesyonel kullanım için tasarlanmıştır.",
-      "3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanımıyla uzun süreli, kesintisiz aydınlatma sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Lotus, oteller, restoranlar, kafeler ve özel projeler için ideal bir çözümdür.",
+      "3 kademeli dokunmatik dimmeri ve tam şarjla 48 saate varan kullanımıyla uzun süreli, kesintisiz aydınlatma sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Lotus, oteller, restoranlar, kafeler ve özel projeler için ideal bir çözümdür.",
     ],
     specs: [["Malzeme", "Ahşap gövde ve başlık"]],
     options: [],
@@ -266,7 +269,7 @@ export const COPY = {
   "sutun-sarjli-masa-lambasi": {
     d: [
       "Sütun Şarjlı Masa Lambası, sade ve modern sütun formuyla dikkat çeken, restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Dayanıklı metal gövdesi ve kaliteli yüzey kaplamasıyla yoğun kullanıma uygundur; minimal tasarımı modern ve klasik dekorasyonlara kolayca uyum sağlar.",
-      "3 kademeli dokunmatik dimmeriyle farklı ortamlara uygun ışık verir, tam şarjla 30 saate varan kullanım sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Sütun, oteller, restoranlar, kafeler ve özel projeler için estetik bir çözümdür.",
+      "3 kademeli dokunmatik dimmeriyle farklı ortamlara uygun ışık verir, tam şarjla 48 saate varan kullanım sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Sütun, oteller, restoranlar, kafeler ve özel projeler için estetik bir çözümdür.",
     ],
     specs: [MOSAIC],
   },
@@ -307,7 +310,7 @@ export const COPY = {
   "minkar-sarjli-masa-lambasi": {
     d: [
       "Minkar Şarjlı Masa Lambası, zarif tasarımı ve kaliteli alüminyum gövdesiyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Modern çizgileri ve dekoratif görünümü ortama estetik bir dokunuş katar; sağlam yapısıyla uzun yıllar güvenle kullanılır.",
-      "Premium Seri'nin bir üyesi olan Minkar, 3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanım süresiyle işletmelerde kesintisiz aydınlatma verir. Çoklu şarj istasyonlarıyla uyumlu olup şıklığı, dayanıklılığı ve kullanım kolaylığını bir araya getirir.",
+      "Premium Seri'nin bir üyesi olan Minkar, 3 kademeli dokunmatik dimmeri ve tam şarjla 48 saate varan kullanım süresiyle işletmelerde kesintisiz aydınlatma verir. Çoklu şarj istasyonlarıyla uyumlu olup şıklığı, dayanıklılığı ve kullanım kolaylığını bir araya getirir.",
     ],
   },
   "vega-sarjli-masa-lambasi": {
@@ -319,7 +322,7 @@ export const COPY = {
   "carina-sarjli-masa-lambasi": {
     d: [
       "Carina Şarjlı Masa Lambası, zarif tasarımı, dayanıklı metal gövdesi ve kaliteli yüzey kaplamasıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Modern görünümü dekorasyona estetik bir dokunuş katar, sağlam yapısıyla uzun yıllar güvenle kullanılır.",
-      "Premium Seri'nin bir üyesi olan Carina, 3 kademeli dokunmatik dimmeriyle ışık seviyesini kolayca ayarlamanıza olanak tanır. Tam şarjla 30 saate varan kullanım sunar ve çoklu şarj istasyonu ile uyumlu olduğu için profesyonel projelerde güvenle kullanılır.",
+      "Premium Seri'nin bir üyesi olan Carina, 3 kademeli dokunmatik dimmeriyle ışık seviyesini kolayca ayarlamanıza olanak tanır. Tam şarjla 48 saate varan kullanım sunar ve çoklu şarj istasyonu ile uyumlu olduğu için profesyonel projelerde güvenle kullanılır.",
     ],
   },
 
@@ -327,7 +330,7 @@ export const COPY = {
   "azha-sarjli-masa-lambasi": {
     d: [
       "Azha Şarjlı Masa Lambası, modern tasarımı, kaliteli metal gövdesi ve zarif detaylarıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Şık ve minimalist görünümü ortama estetik katarken, sağlam yapısıyla yoğun kullanıma uygun uzun ömürlü bir çözüm sunar.",
-      "3 kademeli dokunmatik dimmeriyle ışık seviyesi kolayca ayarlanır, tam şarjla 30 saate varan kullanım sağlar. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumludur.",
+      "3 kademeli dokunmatik dimmeriyle ışık seviyesi kolayca ayarlanır, tam şarjla 48 saate varan kullanım sağlar. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumludur.",
     ],
   },
   "bilham-sarjli-masa-lambasi": {
@@ -336,19 +339,19 @@ export const COPY = {
     slug: "bilham-sarjli-masa-lambasi",
     d: [
       "Bilham Şarjlı Masa Lambası, modern tasarımı, kaliteli metal gövdesi ve zarif detaylarıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Dekoratif görünümü ortama estetik bir dokunuş katarken, sağlam yapısıyla yoğun kullanıma uygundur.",
-      "3 kademeli dokunmatik dimmeriyle ışık seviyesi kolayca ayarlanır, tam şarjla 30 saate varan kullanım sağlanır. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumlu olan Bilham, restoranlar, oteller ve kafeler için şık ve işlevsel bir çözümdür.",
+      "3 kademeli dokunmatik dimmeriyle ışık seviyesi kolayca ayarlanır, tam şarjla 48 saate varan kullanım sağlanır. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumlu olan Bilham, restoranlar, oteller ve kafeler için şık ve işlevsel bir çözümdür.",
     ],
   },
   "enif-sarjli-masa-lambasi": {
     d: [
       "Enif Şarjlı Masa Lambası, modern çizgileri, sağlam metal gövdesi ve kaliteli yüzey kaplamasıyla restoran, otel, kafe ve yaşam alanları için tasarlanmış premium kablosuz LED masa lambasıdır. Şık ve zarif tasarımı ortama estetik bir görünüm kazandırır, dayanıklı yapısıyla yoğun kullanıma uygundur.",
-      "3 kademeli dokunmatik dimmeriyle farklı kullanım senaryolarına uygun ışık seviyeleri sağlar, tam şarjla 30 saate varan kullanım sunar. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumludur.",
+      "3 kademeli dokunmatik dimmeriyle farklı kullanım senaryolarına uygun ışık seviyeleri sağlar, tam şarjla 48 saate varan kullanım sunar. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumludur.",
     ],
   },
   "pico-sarjli-masa-lambasi": {
     d: [
       "Pico Şarjlı Masa Lambası, kompakt tasarımı, kaliteli metal gövdesi ve modern görünümüyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Minimal çizgileri her türlü dekorasyona kolayca uyum sağlar, sağlam yapısıyla yoğun kullanıma dayanır.",
-      "3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanım süresiyle farklı ortamlara uygun ışık verir. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumludur.",
+      "3 kademeli dokunmatik dimmeri ve tam şarjla 48 saate varan kullanım süresiyle farklı ortamlara uygun ışık verir. 9'lu, 18'li, 27'li ve 36'lı çoklu şarj istasyonlarıyla uyumludur.",
     ],
   },
 
@@ -388,7 +391,7 @@ export const COPY = {
   "amore-sarjli-masa-lambasi-1": {
     d: [
       "Amore Şarjlı Masa Lambası, zarif tasarımı ve mermer, metal ya da ahşap seçenekleriyle restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium bir kablosuz LED masa lambasıdır. Dekoratif görünümünü yüksek performansla birleştiren Amore, profesyonel kullanım için tasarlanmıştır.",
-      "3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanımıyla uzun süreli, kesintisiz aydınlatma sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Amore, oteller, restoranlar, kafeler ve barlar için ideal bir aydınlatma çözümüdür.",
+      "3 kademeli dokunmatik dimmeri ve tam şarjla 48 saate varan kullanımıyla uzun süreli, kesintisiz aydınlatma sağlar. Çoklu şarj istasyonlarıyla uyumlu olan Amore, oteller, restoranlar, kafeler ve barlar için ideal bir aydınlatma çözümüdür.",
     ],
     options: [{ name: "Gövde", values: ["Mermer", "Metal", "Ahşap"] }],
   },
@@ -533,7 +536,7 @@ export const COPY = {
   "bella-sarjli-masa-lambasi": {
     d: [
       "Bella Şarjlı Masa Lambası, zarif tasarımı ve modern çizgileriyle restoran, otel, kafe ve yaşam alanlarına estetik bir görünüm kazandıran premium kablosuz LED masa lambasıdır. Kaliteli alüminyum gövdesi ve dekoratif tasarımıyla hem şık hem de uzun ömürlüdür.",
-      "Premium Seri'nin bir üyesi olan Bella, 3 kademeli dokunmatik dimmeriyle ışığı ortama göre ayarlamanıza olanak tanır. Tam şarjla 30 saate varan kullanım sunar ve çoklu şarj istasyonlarıyla uyumludur. Restoranlar, oteller, kafeler ve özel projeler için profesyonel bir çözümdür.",
+      "Premium Seri'nin bir üyesi olan Bella, 3 kademeli dokunmatik dimmeriyle ışığı ortama göre ayarlamanıza olanak tanır. Tam şarjla 48 saate varan kullanım sunar ve çoklu şarj istasyonlarıyla uyumludur. Restoranlar, oteller, kafeler ve özel projeler için profesyonel bir çözümdür.",
     ],
   },
   "fuga-sarjli-masa-lambasi": {
@@ -558,7 +561,7 @@ export const COPY = {
   "lofen-sarjli-masa-lambasi": {
     d: [
       "Lofen Şarjlı Masa Lambası, sade ve modern tasarımıyla restoran, otel, kafe ve yaşam alanlarında estetik bir aydınlatma sunan premium kablosuz LED masa lambasıdır. Dayanıklı alüminyum gövdesi ve kaliteli yüzey kaplaması uzun ömürlü kullanım sağlar.",
-      "Premium Seri'nin bir parçası olan Lofen, 3 kademeli dokunmatik dimmeri ve tam şarjla 30 saate varan kullanımıyla kesintisiz aydınlatma verir. Çoklu şarj istasyonlarıyla uyumludur; profesyonel işletmeler ve mimari projeler için şık bir çözümdür.",
+      "Premium Seri'nin bir parçası olan Lofen, 3 kademeli dokunmatik dimmeri ve tam şarjla 48 saate varan kullanımıyla kesintisiz aydınlatma verir. Çoklu şarj istasyonlarıyla uyumludur; profesyonel işletmeler ve mimari projeler için şık bir çözümdür.",
     ],
   },
   "melma-sarjli-masa-lambasi": {
@@ -576,7 +579,7 @@ export const COPY = {
   "navi-sarjli-masa-lambasi": {
     d: [
       "Navi Şarjlı Masa Lambası, modern tasarımı, sağlam metal gövdesi ve kaliteli yüzey kaplamasıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Şık görünümüyle dekorasyona katkı sağlar, dayanıklı yapısıyla yoğun kullanıma uygundur.",
-      "3 kademeli dokunmatik dimmeriyle istenen ışık seviyesi kolayca ayarlanır, tam şarjla 30 saate varan kullanım sağlanır. Çoklu şarj istasyonlarıyla uyumlu olan Navi, oteller, restoranlar, kafeler ve özel projeler için güvenilir bir aydınlatma çözümüdür.",
+      "3 kademeli dokunmatik dimmeriyle istenen ışık seviyesi kolayca ayarlanır, tam şarjla 48 saate varan kullanım sağlanır. Çoklu şarj istasyonlarıyla uyumlu olan Navi, oteller, restoranlar, kafeler ve özel projeler için güvenilir bir aydınlatma çözümüdür.",
     ],
   },
   "nigora-sarjli-masa-lambasi": {
@@ -651,7 +654,7 @@ export const COPY = {
   "furud-sarjli-masa-lambasi": {
     d: [
       "Furud Şarjlı Masa Lambası, modern tasarımı, sağlam alüminyum gövdesi ve kaliteli yüzey kaplamasıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Şık görünümü dekorasyonu tamamlar, profesyonel kullanım için uzun ömürlü performans sunar.",
-      "Premium Seri'nin bir üyesi olan Furud, 3 kademeli dokunmatik dimmeriyle istenen ışık seviyesine kolayca ayarlanır. Tam şarjla 30 saate varan kullanımı ve çoklu şarj istasyonu uyumuyla profesyonel projeler için güvenilir bir çözümdür.",
+      "Premium Seri'nin bir üyesi olan Furud, 3 kademeli dokunmatik dimmeriyle istenen ışık seviyesine kolayca ayarlanır. Tam şarjla 48 saate varan kullanımı ve çoklu şarj istasyonu uyumuyla profesyonel projeler için güvenilir bir çözümdür.",
     ],
   },
   "gemini-sarjli-masa-lambasi": {
@@ -670,7 +673,7 @@ export const COPY = {
   "kuma-sarjli-masa-lambasi": {
     d: [
       "Kuma Şarjlı Masa Lambası, modern çizgileri, sağlam metal gövdesi ve kaliteli yüzey kaplamasıyla restoran, otel, kafe ve yaşam alanları için geliştirilmiş premium kablosuz LED masa lambasıdır. Estetik tasarımı dekorasyona uyum sağlarken, dayanıklı yapısı profesyonel kullanıma uygundur.",
-      "Premium Seri'nin bir üyesi olan Kuma, 3 kademeli dokunmatik dimmeriyle farklı ortamlara uygun ışık seviyeleri sunar. Tam şarjla 30 saate varan kullanım süresi işletmelere uzun süreli avantaj sağlar; çoklu şarj istasyonlarıyla uyumludur.",
+      "Premium Seri'nin bir üyesi olan Kuma, 3 kademeli dokunmatik dimmeriyle farklı ortamlara uygun ışık seviyeleri sunar. Tam şarjla 48 saate varan kullanım süresi işletmelere uzun süreli avantaj sağlar; çoklu şarj istasyonlarıyla uyumludur.",
     ],
   },
   "meissa-sarjli-masa-lambasi-ekonomik": {
@@ -720,7 +723,7 @@ export const COPY = {
   "nerio-sarjli-masa-lambasi": {
     d: [
       "Nerio Şarjlı Masa Lambası, sade çizgileri ve modern tasarımıyla restoran, otel, kafe ve yaşam alanlarında estetik bir aydınlatma sunan premium kablosuz LED masa lambasıdır. Dayanıklı alüminyum gövdesi ve kaliteli yüzey kaplaması uzun ömürlü kullanım sağlarken, dekoratif tasarımı bulunduğu ortama şıklık katar.",
-      "Premium Seri'nin bir üyesi olan Nerio, 3 kademeli dokunmatik dimmeriyle farklı kullanım senaryolarına uygun ışık seviyeleri sunar. Tam şarjla 30 saate varan kullanım süresiyle uzun süre kesintisiz aydınlatma verir.",
+      "Premium Seri'nin bir üyesi olan Nerio, 3 kademeli dokunmatik dimmeriyle farklı kullanım senaryolarına uygun ışık seviyeleri sunar. Tam şarjla 48 saate varan kullanım süresiyle uzun süre kesintisiz aydınlatma verir.",
     ],
   },
   "pandora-sarjli-masa-lambasi-ekonomik": {

@@ -50,3 +50,6 @@ next-env.d.ts
 # photo-to-profile tool output
 /tools/model/out/
 __pycache__/
+
+# external product images (re-downloadable)
+/tools/data/ext-images/

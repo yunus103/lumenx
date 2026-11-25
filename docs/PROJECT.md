@@ -19,6 +19,7 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - Daily USD rate fetched automatically and used for prices.
 - 3D: a realistic room (1–2 environments per product type), turn the product, change light and body colour on the model.
 - **250 products, all modelled in 3D.** "Close to the photo, not identical" is in the offer.
+  - **Revised with the client (2026-11-25):** about 300 products in the catalogue, of which only the table lamps are modelled (~150). Armatures, outdoor fittings, mosaic cubes and charging stations are photo-only unless the client asks for a specific one.
 - Admin panel (Sanity) delivered so the client can update products and prices later; we upload all products initially.
 - Hosting and maintenance free for year one. Deadline: roughly end of 2026.
 
@@ -55,6 +56,9 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 - **Light Design (`lightdesign.com.tr`), all products.** Built on ikas (Next.js storefront).
   - `https://lightdesign.com.tr/products.xml` lists 106 product URLs → **104 unique products** (scraped 2026-11-02 into `tools/data/lightdesign.json`). Suffixes like `-3-3` are often the real URL, so dedupe is by ikas product id. Palermo redirects to Aldebaran; **Albostan** is in a redirect loop on their site and is missing. The descriptions are rewritten (see "Product texts" above).
   - Each product page embeds `<script id="__NEXT_DATA__">` with `props.pageProps.pageSpecificData`: name, description, `variantTypes` (e.g. "Renk": Ceviz / Kayın, with thumbnail image ids), categories (with path, e.g. Şarjlı Ürünler › Şarjlı Masa Lambası) and images on `cdn.myikas.com`. No HTML parsing needed.
+  - **2026-11-25:** rescraped with `scrape-lightdesign.mjs --add` (keeps existing entries byte-identical, appends new ikas ids): 50 new products, 154 in total. Several sitemap URLs (palermo, balsam, hebe, alpina, neva, hazer, orkide, lilia) open *other* products (stale redirects) and Albostan still loops, so those come from the price list instead (below).
+- **2027 price list (client, PDF):** every Light Design table lamp with its price. Prices are loaded from it (`tools/data/prices-2027.mjs`, `tools/apply-prices.mjs`; the client will update them later). The 15 items that exist only in the list are `tools/data/ext/pricelist.json`, with the list's small photos until the client sends real ones.
+- **Other manufacturers (client's links, 2026-11-25):** spots, downlights, track, pendants, recessed, linear/profile, jeweller and outdoor fittings, sold as LUMENX products. **No source brand or shop code may appear anywhere** (names, texts, images, file names); component brands (Osram, Samsung) may. Variants (size, wattage, heads, height) are options on one product. One scraper per source (`tools/scrape-ext-*.mjs`) writes raw facts to `tools/data/ext-raw/`; the curated files `tools/data/ext/*.json` are the source of truth (hand-curated, not regenerated); `tools/import-external.mjs` imports them (contract in its header, brand check, `--dry`, `--overwrite`). Source keys are neutral letters (`a` spots/downlights/track, `m` pendants/recessed, `l` jeweller/profile, `b` outdoor, `p` price list). Their categories live under two new roots, Armatürler and Dış Mekân (`CATEGORIES` in the importer; two levels only, the catalogue counts a parent's direct children). Excluded by the client: petrol-station poles, socket bollards, custom-lettering and logo door-number lights.
 - **Frekans (`frekanselektrikaydinlatma.com`), some products.** WooCommerce; which ones is up to the client.
 - **The rest** (to reach ~250) comes from the client's product list.
 - **Import plan:** a Node script scrapes to JSON, downloads images, and imports into the single `production` dataset with `SANITY_API_WRITE_TOKEN` from `.env.local` (Editor rights; used only by scripts, never by the site). Idempotent: deterministic `_id`s from the source slug, so reruns update instead of duplicating.
@@ -120,7 +124,7 @@ Read this first in every session. It holds the client, the agreed scope, the dec
 
 ## Open questions
 
-- The client's full product list (beyond Light Design).
+- More product links may follow from the client.
 - Domain for the LUMENX site.
 - Verified email address for the site.
 - Which Frekans products to include.

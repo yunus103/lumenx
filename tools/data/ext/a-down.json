@@ -1,0 +1,4058 @@
+{
+  "source": "a",
+  "products": [
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-arcelia-cob",
+      "name": "Arcelia COB Downlight",
+      "category": "downlight",
+      "description": [
+        "Arcelia, kare çerçeveli ve kademeli COB led gömme downlight. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve ve %99 saf alüminyum COB reflektör kullanır; reflektör 38° ışın açısıyla yüksek verim verir.",
+        "Konut, otel odası, restoran ve ofiste 2\" ile 8\" arasındaki ölçülerden biri seçilerek kullanılır; küçük bir koridordan geniş bir salona kadar doğru ışık miktarı bulunur. İsteğe bağlı IP44 ile banyo ve saçak altına da monte edilebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/3OBXIQZPXNHCX5cpQHSo.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/3OBXIQZPXNHCX5cpQHSo.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/xUTcqP1NbqbktCgK2jZr.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/xUTcqP1NbqbktCgK2jZr.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/cqqhLC16MAZMFFXsG5BX.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/cqqhLC16MAZMFFXsG5BX.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/6e0OaKH44tBEcDTlehB1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/6e0OaKH44tBEcDTlehB1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/xcMF0lroLaybqMjxbsQD.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/xcMF0lroLaybqMjxbsQD.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/3LVLxcpD0eoNggKFbcsm.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/3LVLxcpD0eoNggKFbcsm.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/vQvxUMrC71xxDoMlVICP.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/vQvxUMrC71xxDoMlVICP.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "7–25 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "700–2500 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "97–227 × 97–227 mm, derinlik 70–85 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 7 W, 700 lm, 97 × 97 mm, derinlik 70 mm, kesim Ø85 mm; 3\": 9 W, 900 lm, 117 × 117 mm, derinlik 70 mm, kesim Ø105 mm; 4\": 12,5 W, 1250 lm, 147 × 147 mm, derinlik 75 mm, kesim Ø130 mm; 5\": 12,5 W, 1250 lm, 175 × 175 mm, derinlik 85 mm, kesim Ø160 mm; 6\": 18 W, 1800 lm, 195 × 195 mm, derinlik 85 mm, kesim Ø180 mm; 8\": 25 W, 2500 lm, 227 × 227 mm, derinlik 85 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/arcelia-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/arcelia-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/arcelia-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/arcelia-8-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/arcelia-2-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/arcelia-6-inch-downlight"
+      ],
+      "slug": "arcelia-cob-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-berra-cob",
+      "name": "Berra COB Downlight",
+      "category": "downlight",
+      "description": [
+        "Berra, hafif kademeli kare çerçeveli COB led gömme downlight. Önden kare görünür, tavandaki montaj deliği yuvarlak olduğu için kurulumu elektrikçi için kolaydır. Gövde alüminyum enjeksiyon, çerçeve elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir.",
+        "COB reflektör 38° ışın açısı verir. Konut ve ticari projelerde 2\" ile 8\" arasındaki ölçülerle, ölçüye göre 7 W ile 30 W arasında güç sunar."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/RxPJBUh6PNg4zHSUtdYe.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/RxPJBUh6PNg4zHSUtdYe.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/Y3Mj2DZfozZ5lFEj03GC.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Y3Mj2DZfozZ5lFEj03GC.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/uZBg6GwrVfBiZQT1Bs7X.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/uZBg6GwrVfBiZQT1Bs7X.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/tR7T0MHSWNFG7GiBQgVF.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/tR7T0MHSWNFG7GiBQgVF.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/Lfb7myMDT2HwiKk8bH41.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Lfb7myMDT2HwiKk8bH41.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/NQzUGOPvOusqY3fdkMsZ.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/NQzUGOPvOusqY3fdkMsZ.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "7–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "700–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "108–240 × 108–240 mm, derinlik 55–65 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø90–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 7 W, 700 lm, 108 × 108 mm, derinlik 65 mm, kesim Ø90 mm; 3\": 9 W, 900 lm, 128 × 128 mm, derinlik 55 mm, kesim Ø105 mm; 4\": 12,5 W, 1250 lm, 150 × 150 mm, derinlik 55 mm, kesim Ø130 mm; 6\": 25 W, 2500 lm, 200 × 200 mm, derinlik 55 mm, kesim Ø180 mm; 8\": 30 W, 3000 lm, 240 × 240 mm, derinlik 58 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/berra-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/berra-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/berra-2-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/berra-6-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/berra-8-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/berra-5-inch-downlight"
+      ],
+      "slug": "berra-cob-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-cordelia-cob",
+      "name": "Cordelia COB Downlight",
+      "category": "downlight",
+      "description": [
+        "Cordelia, düz kare çerçeveli COB led gömme downlight. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve ve %99 saf alüminyum COB reflektörle 38° ışın açısı sağlar.",
+        "Düz yüzeyli temiz görünümüyle tavanla bütünleşmesi istenen konut, mağaza ve ofis projelerine uyar. 2\" ile 8\" arasındaki ölçülerden seçilir; isteğe bağlı IP44 ile nemli alanlarda da kullanılabilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/vuB50nfP4U7YfZBMtLHv.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/vuB50nfP4U7YfZBMtLHv.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/daSI4zV4FWyx7VzRxa8A.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/daSI4zV4FWyx7VzRxa8A.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/anHw51o1sqFdWACHdI1H.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/anHw51o1sqFdWACHdI1H.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/pJFJzwQoxUUmpz7XDUMz.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/pJFJzwQoxUUmpz7XDUMz.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/o297QnjbyNsIOSOHvRVI.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/o297QnjbyNsIOSOHvRVI.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/vqBFNRQGOuWVr3dhnvCV.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/vqBFNRQGOuWVr3dhnvCV.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "7–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "700–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "97–227 × 97–227 mm, derinlik 48–58 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 7 W, 700 lm, 97 × 97 mm, derinlik 55 mm, kesim Ø85 mm; 3\": 9 W, 900 lm, 117 × 117 mm, derinlik 48 mm, kesim Ø105 mm; 4\": 12,5 W, 1250 lm, 147 × 147 mm, derinlik 54 mm, kesim Ø130 mm; 6\": 25 W, 2500 lm, 195 × 195 mm, derinlik 55 mm, kesim Ø180 mm; 8\": 30 W, 3000 lm, 227 × 227 mm, derinlik 58 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/cordelia-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/cordelia-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/cordelia-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/cordelia-2-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/cordelia-6-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/cordelia-8-inch-downlight"
+      ],
+      "slug": "cordelia-cob-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-leilani-cob",
+      "name": "Leilani COB Downlight",
+      "category": "downlight",
+      "description": [
+        "Leilani, yuvarlak ve kademeli COB led gömme downlight. Alüminyum enjeksiyon gövde ve soğutucu, toz boyalı çerçeve ve %99 saf alüminyum COB reflektör kullanır; ışın açısı 38°.",
+        "Otel, restoran, mağaza ve konutlarda genel aydınlatma için uygundur. 2\" ile 8\" arasında altı ölçüsü vardır; isteğe bağlı IP44 ile banyo, duş alanı ve saçak altında da kullanılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/MFjH3eGKhEclbcYocgrJ.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/MFjH3eGKhEclbcYocgrJ.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/ej6aj0QpBseXcbuTkon7.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/ej6aj0QpBseXcbuTkon7.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/KgTrRfZD1BV8FtFZetTH.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/KgTrRfZD1BV8FtFZetTH.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/nyhtHTwWq6qe93Ni8gNQ.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/nyhtHTwWq6qe93Ni8gNQ.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/DdAqjsEQwltdNI7nPc0U.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/DdAqjsEQwltdNI7nPc0U.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/tDp93hpCurdta15s8wRs.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/tDp93hpCurdta15s8wRs.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "7–25 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "700–2500 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø97–227 mm, derinlik 70–85 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 7 W, 700 lm, Ø97 mm, derinlik 70 mm, kesim Ø85 mm; 3\": 9 W, 900 lm, Ø117 mm, derinlik 70 mm, kesim Ø105 mm; 4\": 12,5 W, 1250 lm, Ø147 mm, derinlik 75 mm, kesim Ø130 mm; 5\": 12,5 W, 1250 lm, Ø175 mm, derinlik 85 mm, kesim Ø160 mm; 6\": 18 W, 1800 lm, Ø192 mm, derinlik 85 mm, kesim Ø175 mm; 8\": 25 W, 2500 lm, Ø227 mm, derinlik 85 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/leilani-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/leilani-8-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/leilani-2-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/leilani-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/leilani-6-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/leilani-4-inch-downlight"
+      ],
+      "slug": "leilani-cob-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-noelani-cob",
+      "name": "Noelani COB Downlight",
+      "category": "downlight",
+      "description": [
+        "Noelani, yuvarlak ve kademesiz COB led gömme downlight. Alüminyum enjeksiyon gövde ve soğutucu, toz boyalı çerçeve ve %99 saf alüminyum COB reflektörle 38° ışın açısı verir.",
+        "Sade yuvarlak formuyla konut, ofis, mağaza ve koridor aydınlatmasına uyar. 2\" ile 8\" arasındaki ölçülerden seçilir; isteğe bağlı IP44 ile nemli mekânlarda da kullanılabilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/0eUr9YQQUcxIaTsPL8qQ.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/0eUr9YQQUcxIaTsPL8qQ.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/FemFaHGCFmdLkWjuPhFY.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/FemFaHGCFmdLkWjuPhFY.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/10WFXkFIU9Y2cP4vwtDU.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/10WFXkFIU9Y2cP4vwtDU.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/0nPyYDG5zEaLFfEIUDeR.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/0nPyYDG5zEaLFfEIUDeR.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/4phzHdaZI48UR102VXSj.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/4phzHdaZI48UR102VXSj.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/zzG6hjPdu3aA84Br1JqL.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/zzG6hjPdu3aA84Br1JqL.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "7–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "700–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø97–227 mm, derinlik 48–58 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 7 W, 700 lm, Ø97 mm, derinlik 55 mm, kesim Ø85 mm; 3\": 9 W, 900 lm, Ø117 mm, derinlik 48 mm, kesim Ø105 mm; 4\": 12,5 W, 1250 lm, Ø147 mm, derinlik 54 mm, kesim Ø130 mm; 6\": 25 W, 2500 lm, Ø192 mm, derinlik 55 mm, kesim Ø175 mm; 8\": 30 W, 3000 lm, Ø227 mm, derinlik 58 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/noelani-8-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/noelani-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/noelani-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/noelani-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/noelani-9-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/noelani-2-inch-downlight"
+      ],
+      "slug": "noelani-cob-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-novea-cob",
+      "name": "Novea COB Downlight",
+      "category": "downlight",
+      "description": [
+        "Novea, yuvarlak ve hafif kademeli COB led gömme downlight. Alüminyum enjeksiyon gövde ve soğutucu, toz boyalı çerçeve ve 38° ışın açılı %99 saf alüminyum COB reflektörle düşük güçte yüksek ışık verir.",
+        "Mağaza, ofis, koridor, toplantı odası ve konutlarda kullanılır. 2\" ile 8\" arasında altı ölçüsü vardır; isteğe bağlı IP44 ile banyo ve saçak altına da uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/qZ0TBh5FaCLpgiBKA7lf.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/qZ0TBh5FaCLpgiBKA7lf.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/9V3HEpUwrAK8ocNo1UiH.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/9V3HEpUwrAK8ocNo1UiH.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/9sfvnbttH0R5J7gKfGOU.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/9sfvnbttH0R5J7gKfGOU.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/fShsXq6HMDuQ7pCev9Di.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/fShsXq6HMDuQ7pCev9Di.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/uMMC1kgDpyawlXQGMtui.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/uMMC1kgDpyawlXQGMtui.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/NrGroANd1aux9847sowm.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/NrGroANd1aux9847sowm.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/AtAXjcc3dw57ijJuVZUx.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/AtAXjcc3dw57ijJuVZUx.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "7–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "700–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø108–240 mm, derinlik 55–65 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 7 W, 700 lm, Ø108 mm, derinlik 65 mm, kesim Ø85 mm; 3\": 9 W, 900 lm, Ø128 mm, derinlik 55 mm, kesim Ø105 mm; 4\": 12,5 W, 1250 lm, Ø150 mm, derinlik 55 mm, kesim Ø130 mm; 6\": 25 W, 2500 lm, Ø200 mm, derinlik 55 mm, kesim Ø180 mm; 8\": 30 W, 3000 lm, Ø240 mm, derinlik 58 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/novea-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/novea-8-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/novea-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/novea-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/novea-2-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/cob-downlight/novea-6-inch-downlight"
+      ],
+      "slug": "novea-cob-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-carina-smd",
+      "name": "Carina SMD Downlight",
+      "category": "downlight",
+      "description": [
+        "Carina, düz kademeli kare çerçeveli SMD led gömme downlight. Alüminyum enjeksiyon gövde, toz boyalı çerçeve ve alüminyum kademe; kademenin içi ve dışı aynı ya da farklı renge boyanabilir.",
+        "Konut ve projelerde genel aydınlatma için uygundur; tavandaki montaj deliği yuvarlak olduğundan montajı kolaydır. 2\" ile 8\" arasında altı ölçü vardır, isteğe bağlı IP44 yapılabilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/x5RVGx4nhkiHM6lIqVJ9.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/x5RVGx4nhkiHM6lIqVJ9.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/raqQZlkspeGTV7AGKUQi.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/raqQZlkspeGTV7AGKUQi.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/DgjjtzT4p3o4hBWuMFgA.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/DgjjtzT4p3o4hBWuMFgA.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/tjoRUEYP2XqjSwDbSkS8.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/tjoRUEYP2XqjSwDbSkS8.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/f3ZCKsqNSldcKIt0hRYy.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/f3ZCKsqNSldcKIt0hRYy.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/yhuRy8JjBlKgneJUQmA1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/yhuRy8JjBlKgneJUQmA1.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–25 W"
+        ],
+        [
+          "Işık kaynağı",
+          "SMD LED"
+        ],
+        [
+          "Işık akısı",
+          "800–2500 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "97–227 × 97–227 mm, derinlik 70–85 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 8 W, 800 lm, 97 × 97 mm, derinlik 70 mm, kesim Ø85 mm; 3\": 10 W, 1000 lm, 117 × 117 mm, derinlik 70 mm, kesim Ø105 mm; 4\": 12 W, 1200 lm, 147 × 147 mm, derinlik 75 mm, kesim Ø130 mm; 5\": 15 W, 1500 lm, 175 × 175 mm, derinlik 85 mm, kesim Ø160 mm; 6\": 20 W, 2000 lm, 195 × 195 mm, derinlik 85 mm, kesim Ø180 mm; 8\": 25 W, 2500 lm, 227 × 227 mm, derinlik 85 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/carina-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/carina-2-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/carina-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/carina-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/carina-8-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/carina-6-inch-downlight"
+      ],
+      "slug": "carina-smd-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-divina-smd",
+      "name": "Divina SMD Downlight",
+      "category": "downlight",
+      "description": [
+        "Divina, kare çerçeveli SMD led gömme downlight. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve; çerçeve RAL kataloğundaki renklere boyanabilir. Önden kare görünür, tavandaki montaj deliği yuvarlaktır.",
+        "Ofis, mağaza, koridor ve konutlarda 2\" ile 8\" arasındaki altı ölçüyle kullanılır. İsteğe bağlı IP44 ile banyo ve saçak altına da uyar."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/xy83r9GXUtwAHRvvtyBO.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/xy83r9GXUtwAHRvvtyBO.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/amS7iyfzEQKLr5xlxYKr.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/amS7iyfzEQKLr5xlxYKr.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/AKAuoqJnRdo3WFGn3Fmy.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/AKAuoqJnRdo3WFGn3Fmy.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/QkqjB2JiTmKozkKK8vxZ.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/QkqjB2JiTmKozkKK8vxZ.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/UR26xilpbkoRcSfLXvqQ.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/UR26xilpbkoRcSfLXvqQ.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "SMD LED"
+        ],
+        [
+          "Işık akısı",
+          "800–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "97–227 × 97–227 mm, derinlik 48–58 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 8 W, 800 lm, 97 × 97 mm, derinlik 55 mm, kesim Ø85 mm; 3\": 10 W, 1000 lm, 117 × 117 mm, derinlik 48 mm, kesim Ø105 mm; 4\": 15 W, 1500 lm, 147 × 147 mm, derinlik 54 mm, kesim Ø130 mm; 5\": 18 W, 1800 lm, 175 × 175 mm, derinlik 58 mm, kesim Ø160 mm; 6\": 25 W, 2500 lm, 195 × 195 mm, derinlik 55 mm, kesim Ø180 mm; 8\": 30 W, 3000 lm, 227 × 227 mm, derinlik 58 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/divina-2-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/divina-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/divina-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/divina-8-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/divina-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/divina-6-inch-downlight"
+      ],
+      "slug": "divina-smd-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-erela-smd",
+      "name": "Erela SMD Downlight",
+      "category": "downlight",
+      "description": [
+        "Erela, yuvarlak ve düz kademeli SMD led gömme downlight. Alüminyum enjeksiyon gövde, toz boyalı çerçeve ve çizgili kademe; kademenin içi ve dışı aynı ya da farklı renge boyanabilir.",
+        "Otel, restoran, mağaza ve konutlarda genel aydınlatma için kullanılır. 2\" ile 8\" arasında altı ölçüsü vardır; isteğe bağlı IP44 yapılabilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/Xaw0knHzWzRG2eLhOkK1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Xaw0knHzWzRG2eLhOkK1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/saXSut5exkXoZcarhdXw.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/saXSut5exkXoZcarhdXw.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/r2jUJUD34CmyiVqEKaOD.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/r2jUJUD34CmyiVqEKaOD.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/mwoyuKdrg1oeHlA0xkoZ.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/mwoyuKdrg1oeHlA0xkoZ.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/oFznR1kRx3fuzrrwypis.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/oFznR1kRx3fuzrrwypis.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/oB0UsaKpOZ27AcKeX3b8.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/oB0UsaKpOZ27AcKeX3b8.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/E4Wdjczio3GNdC0iib4N.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/E4Wdjczio3GNdC0iib4N.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–25 W"
+        ],
+        [
+          "Işık kaynağı",
+          "SMD LED"
+        ],
+        [
+          "Işık akısı",
+          "800–2500 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø97–227 mm, derinlik 70–85 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 8 W, 800 lm, Ø97 mm, derinlik 70 mm, kesim Ø85 mm; 3\": 10 W, 1000 lm, Ø117 mm, derinlik 70 mm, kesim Ø105 mm; 4\": 12 W, 1200 lm, Ø147 mm, derinlik 75 mm, kesim Ø130 mm; 5\": 15 W, 1500 lm, Ø175 mm, derinlik 85 mm, kesim Ø160 mm; 6\": 20 W, 2000 lm, Ø192 mm, derinlik 85 mm, kesim Ø175 mm; 8\": 25 W, 2500 lm, Ø227 mm, derinlik 85 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/erela-2-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/erela-6-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/erela-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/erela-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/erela-8-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/erela-5-inch-downlight"
+      ],
+      "slug": "erela-smd-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-feiza-smd",
+      "name": "Feiza SMD Downlight",
+      "category": "downlight",
+      "description": [
+        "Feiza, hafif kademeli kare çerçeveli SMD led gömme downlight. Alüminyum enjeksiyon gövde ve soğutucu, toz boyalı çerçeve; RAL kataloğundaki renklere boyanabilir. Montaj deliği yuvarlak olduğu için kurulumu kolaydır.",
+        "Konut ve ticari mekânlarda 2\" ile 8\" arasındaki altı ölçüyle kullanılır. İsteğe bağlı IP44 ile nemli alanlara da uyar."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/KUCdPwR3eKIElQjl6CmE.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/KUCdPwR3eKIElQjl6CmE.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/TcQjvo7z48uxwoO0xYqL.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/TcQjvo7z48uxwoO0xYqL.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/G21f0XxGgVqYa4ZAWNlj.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/G21f0XxGgVqYa4ZAWNlj.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/nKfnaciVIqXjHYF2bK5h.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/nKfnaciVIqXjHYF2bK5h.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/V9sf1i0HGqDY9wpojCW9.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/V9sf1i0HGqDY9wpojCW9.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "SMD LED"
+        ],
+        [
+          "Işık akısı",
+          "800–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "108–240 × 108–240 mm, derinlik 55–65 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø90–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 8 W, 800 lm, 108 × 108 mm, derinlik 65 mm, kesim Ø90 mm; 3\": 10 W, 1000 lm, 128 × 128 mm, derinlik 55 mm, kesim Ø105 mm; 4\": 15 W, 1500 lm, 150 × 150 mm, derinlik 55 mm, kesim Ø130 mm; 5\": 18 W, 1800 lm, 180 × 180 mm, derinlik 55 mm, kesim Ø160 mm; 6\": 25 W, 2500 lm, 200 × 200 mm, derinlik 55 mm, kesim Ø180 mm; 8\": 30 W, 3000 lm, 240 × 240 mm, derinlik 58 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/feiza-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/feiza-2-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/feiza-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/feiza-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/feiza-6-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/feiza-8-inch-downlight"
+      ],
+      "slug": "feiza-smd-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-kayle-smd",
+      "name": "Kayle SMD Downlight",
+      "category": "downlight",
+      "description": [
+        "Kayle, yuvarlak ve ekonomik SMD led gömme downlight. Monoblok alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve; ince profili sayesinde yalnızca 25 mm derinlik ister.",
+        "Konut, ofis ve koridor projelerinde genel aydınlatma için uygundur. 3\", 4\", 6\" ve 8\" ölçüleri vardır; isteğe bağlı IP44 yapılabilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/v6FHBfiOb5J76awZJjO2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/v6FHBfiOb5J76awZJjO2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/I0wLcIwXobcDkeI9tGwW.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/I0wLcIwXobcDkeI9tGwW.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "3\"",
+            "4\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "10–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "SMD LED"
+        ],
+        [
+          "Işık akısı",
+          "1000–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø128–240 mm, derinlik 25 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø105–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "3\": 10 W, 1000 lm, Ø128 mm, derinlik 25 mm, kesim Ø105 mm; 4\": 15 W, 1250 lm, Ø150 mm, derinlik 25 mm, kesim Ø130 mm; 6\": 25 W, 2500 lm, Ø200 mm, derinlik 25 mm, kesim Ø180 mm; 8\": 30 W, 3000 lm, Ø240 mm, derinlik 25 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/kaylee-6-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/kaylee-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/kayle-8-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/kaylee-4-inch-downlight"
+      ],
+      "slug": "kayle-smd-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-nova-smd",
+      "name": "Nova SMD Downlight",
+      "category": "downlight",
+      "description": [
+        "Nova, yuvarlak ve kademeli SMD led gömme downlight. Ön yüzü tek parçadır; gövde ve soğutucu alüminyum enjeksiyon, çerçeve elektrostatik toz boyalıdır.",
+        "Konut, ofis ve mağazalarda genel aydınlatma için kullanılır. 2\" ile 8\" arasında altı ölçüsü vardır; isteğe bağlı IP44 ile banyo ve saçak altına da uygundur."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/Z69VzQbZiwOlDNobvAPq.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Z69VzQbZiwOlDNobvAPq.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/oAjiacp7NJ5nwC99Pbqu.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/oAjiacp7NJ5nwC99Pbqu.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/z25ZawU88NiWmsiohM3G.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/z25ZawU88NiWmsiohM3G.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/tS09gPEHYkgS7xNusVMp.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/tS09gPEHYkgS7xNusVMp.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/8NslhFAf2Vqs22QGP3NN.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/8NslhFAf2Vqs22QGP3NN.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/kbKwi3upCpzpllFVKuEd.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/kbKwi3upCpzpllFVKuEd.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "SMD LED"
+        ],
+        [
+          "Işık akısı",
+          "800–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø108–240 mm, derinlik 55–65 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø90–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 8 W, 800 lm, Ø108 mm, derinlik 65 mm, kesim Ø90 mm; 3\": 10 W, 1000 lm, Ø128 mm, derinlik 55 mm, kesim Ø105 mm; 4\": 15 W, 1500 lm, Ø150 mm, derinlik 55 mm, kesim Ø130 mm; 5\": 18 W, 1800 lm, Ø180 mm, derinlik 55 mm, kesim Ø160 mm; 6\": 25 W, 2500 lm, Ø200 mm, derinlik 55 mm, kesim Ø180 mm; 8\": 30 W, 3000 lm, Ø240 mm, derinlik 58 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/nova-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/nova-6-i-nch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/nova-8-i-nch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/nova-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/nova-2-i-nch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/nova-3-inch-downlight"
+      ],
+      "slug": "nova-smd-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-sunshine-smd",
+      "name": "Sunshine SMD Downlight",
+      "category": "downlight",
+      "description": [
+        "Sunshine, yuvarlak SMD led gömme downlight. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve; çerçeve RAL kataloğundaki renklere boyanabilir, montajı elektrikçi için kolaydır.",
+        "2\" ile 8\" arasında altı ölçüsüyle konut, ofis, mağaza ve koridorlarda kullanılır. İsteğe bağlı IP44 yapılabilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/TS32SYRAyL5cWqAwmHL1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/TS32SYRAyL5cWqAwmHL1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/51XVs053Y9ozb2LZMmWX.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/51XVs053Y9ozb2LZMmWX.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/KVjeliCXxS1z4UdZlqFg.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/KVjeliCXxS1z4UdZlqFg.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/rGAzZtMqUr8Wsapp6lTS.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/rGAzZtMqUr8Wsapp6lTS.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/m6J2yoVPUjmheFKlZ9ZN.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/m6J2yoVPUjmheFKlZ9ZN.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/k1jgSII9pFoKxVLkipEj.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/k1jgSII9pFoKxVLkipEj.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/e8uWsw3AFGMobDn9RpV4.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/e8uWsw3AFGMobDn9RpV4.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/WNzqlf9xEy3AZBz7NCol.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/WNzqlf9xEy3AZBz7NCol.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "SMD LED"
+        ],
+        [
+          "Işık akısı",
+          "800–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø97–227 mm, derinlik 48–58 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø85–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 8 W, 800 lm, Ø97 mm, derinlik 55 mm, kesim Ø85 mm; 3\": 10 W, 1000 lm, Ø117 mm, derinlik 48 mm, kesim Ø105 mm; 4\": 15 W, 1500 lm, Ø147 mm, derinlik 54 mm, kesim Ø130 mm; 5\": 18 W, 1800 lm, Ø175 mm, derinlik 58 mm, kesim Ø160 mm; 6\": 25 W, 2500 lm, Ø192 mm, derinlik 55 mm, kesim Ø175 mm; 8\": 30 W, 3000 lm, Ø227 mm, derinlik 58 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/sunshine2-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/sunshine-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/sunshine-6-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/sunshine-8-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/sunshine-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/sunshine-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/sunshine-n-8-inc-downlight"
+      ],
+      "slug": "sunshine-smd-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-zerlina-smd",
+      "name": "Zerlina SMD Downlight",
+      "category": "downlight",
+      "description": [
+        "Zerlina, yuvarlak, düz desenli ve kademeli SMD led gömme downlight. Alüminyum enjeksiyon gövde, toz boyalı çerçeve ve krom kademe; kademenin içi ve dışı aynı ya da farklı renge boyanabilir.",
+        "Otel, restoran, mağaza ve konutlarda 3\" ile 8\" arasındaki beş ölçüyle kullanılır. İsteğe bağlı IP44 yapılabilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/pan6xNFiztnLfb5rgfOA.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/pan6xNFiztnLfb5rgfOA.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/bgR8L8yosULOKmO44swp.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/bgR8L8yosULOKmO44swp.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/v7EewfgGNmc0Qzq0YuzT.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/v7EewfgGNmc0Qzq0YuzT.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/vbG2wcjVbAVt0dwXbd58.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/vbG2wcjVbAVt0dwXbd58.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/DljHU7K3xEBMSghNlIue.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/DljHU7K3xEBMSghNlIue.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "10–25 W"
+        ],
+        [
+          "Işık kaynağı",
+          "SMD LED"
+        ],
+        [
+          "Işık akısı",
+          "1000–2500 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø117–227 mm, derinlik 70–85 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø105–210 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "3\": 10 W, 1000 lm, Ø117 mm, derinlik 70 mm, kesim Ø105 mm; 4\": 12 W, 1200 lm, Ø147 mm, derinlik 75 mm, kesim Ø130 mm; 5\": 15 W, 1500 lm, Ø175 mm, derinlik 85 mm, kesim Ø160 mm; 6\": 20 W, 2000 lm, Ø192 mm, derinlik 85 mm, kesim Ø175 mm; 8\": 25 W, 2500 lm, Ø227 mm, derinlik 85 mm, kesim Ø210 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/zerlina-5-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/zerlina-6-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/zerlina-3-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/zerlina-4-inch-downlight",
+        "https://abalighting.com/tr/urunler/downlight/smd-downlight/zerlina-8-inch-downlight"
+      ],
+      "slug": "zerlina-smd-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-angel-retail",
+      "name": "Angel Hareketli Gömme Spot",
+      "category": "ray-ve-magaza",
+      "description": [
+        "Angel, yuvarlak, tek başlı, yönlendirilebilir COB led gömme spot. Alüminyum enjeksiyon gövde ve soğutucu, toz boyalı çerçeve; çerçeve RAL kataloğundaki renklere boyanabilir. Başı 180° yönlendirilebildiği için vitrin ve raf aydınlatmasında tercih edilir.",
+        "Mağaza, butik ve showroom gibi ürünün öne çıkarılacağı mekânlar için uygundur. 30 W ve 40 W güç seçenekleri vardır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/pwPey2Pgmg6jGs7HPx1Y.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/pwPey2Pgmg6jGs7HPx1Y.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/goXL2ZpK9jUmNcz05RfN.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/goXL2ZpK9jUmNcz05RfN.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/7EeWat1G7b7p9Nvaz8Bx.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/7EeWat1G7b7p9Nvaz8Bx.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/OXj5XrxLkZAEHeFrSNAD.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/OXj5XrxLkZAEHeFrSNAD.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/Lz4GlDj1jpTlULTZc1rK.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Lz4GlDj1jpTlULTZc1rK.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/PynFUq6tP6cxbPQI1E99.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/PynFUq6tP6cxbPQI1E99.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "30 W",
+            "40 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30–40 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "3000–4000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø150 mm, yükseklik 140 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø130 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/retail/angel-30w",
+        "https://abalighting.com/tr/urunler/retail/retail/angel-40w"
+      ],
+      "slug": "angel-hareketli-gomme-spot"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-angel-big-retail",
+      "name": "Angel Big Hareketli Gömme Spot",
+      "category": "ray-ve-magaza",
+      "description": [
+        "Angel Big, Angel serisinin geniş gövdeli, yuvarlak ve tek başlı COB led gömme spotu. Alüminyum enjeksiyon gövde ve soğutucu, toz boyalı çerçeve; baş 180° yönlendirilebilir. Led ile sürücü geçmeli kablolarla bağlandığı için montajı kolaydır.",
+        "Mağaza vitrinleri, raflar ve sergi alanlarında odak ışığı vermek için kullanılır. İsteğe bağlı IP44 ile nemli alanlara da uygundur. 30 W ve 40 W güç seçenekleri vardır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/0DGivOMofE9fm7Dutulv.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/0DGivOMofE9fm7Dutulv.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/LyDyIpRAQdiZ83Sex14Q.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/LyDyIpRAQdiZ83Sex14Q.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/v7Y1COVa6IWhbMJHTgjY.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/v7Y1COVa6IWhbMJHTgjY.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "30 W",
+            "40 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30–40 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "3000–4000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø200 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø180 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/retail/angel-big-30w",
+        "https://abalighting.com/tr/urunler/retail/retail/angel-big-40w"
+      ],
+      "slug": "angel-big-hareketli-gomme-spot"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-angel-big-s-retail",
+      "name": "Angel Big S Hareketli Gömme Spot",
+      "category": "ray-ve-magaza",
+      "description": [
+        "Angel Big S, Angel Big'in kare çerçeveli versiyonudur: tek başlı, yönlendirilebilir COB led gömme spot. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve, 180° hareketli baş.",
+        "Mağaza ve showroomlarda kare çerçeveli sade bir görünüm isteyen projeler için uygundur. İsteğe bağlı IP44 yapılabilir. 30 W ve 40 W güç seçenekleri vardır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/pBD9Sha8xxfmDGXHUTof.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/pBD9Sha8xxfmDGXHUTof.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/Y82gdpsLI7GSnlsJjB3I.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Y82gdpsLI7GSnlsJjB3I.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "30 W",
+            "40 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30–40 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "3000–4000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "200 × 200 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø180 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/retail/angel-big-s-40w",
+        "https://abalighting.com/tr/urunler/retail/retail/angel-big-s-30w"
+      ],
+      "slug": "angel-big-s-hareketli-gomme-spot"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-kaira-r-retail",
+      "name": "Kaira R Hareketli Gömme Spot",
+      "category": "ray-ve-magaza",
+      "description": [
+        "Kaira R, yuvarlak çerçeveli, tek başlı, yönlendirilebilir COB led gömme spot. Alüminyum enjeksiyon gövde ve soğutucu, toz boyalı çerçeve; çerçeve RAL kataloğundaki renklere boyanabilir. Başı 180° oynatılabilir.",
+        "Özel dekorasyon arayan mimarlar ve mağaza projeleri için uygundur; siyah ve beyaz çerçeveli uygulamalarda ürün ve vitrin vurgusu yapar. 30 W ve 40 W güç seçenekleri vardır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/aMx1hDSQhWqF1jitTOzf.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/aMx1hDSQhWqF1jitTOzf.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/C5pHkRtv7ibpWQrPt1IS.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/C5pHkRtv7ibpWQrPt1IS.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "30 W",
+            "40 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30–40 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "3000–4000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø200 mm, yükseklik 130 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø180 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/retail/kaira-r-30w",
+        "https://abalighting.com/tr/urunler/retail/retail/kaira-r-40w"
+      ],
+      "slug": "kaira-r-hareketli-gomme-spot"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-kaira-s-retail",
+      "name": "Kaira S Hareketli Gömme Spot",
+      "category": "ray-ve-magaza",
+      "description": [
+        "Kaira S, kare çerçeveli, tekli ve ikili başlı COB led gömme spot. Alüminyum enjeksiyon gövde ve soğutucu, toz boyalı çerçeve; çerçeve RAL kataloğundaki renklere boyanabilir. Tavandaki montaj deliği yuvarlaktır ve baş 180° yönlendirilebilir.",
+        "Mağaza, vitrin ve showroom aydınlatmasında tercih edilir. Tekli ya da ikili baş, 30 W ya da 40 W güç seçilebilir; ikili versiyon iki kesim açılır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/KPjZo9eQNFtZmy7YP7wS.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/KPjZo9eQNFtZmy7YP7wS.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/hzhT3NTND54q9A5RGEdq.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/hzhT3NTND54q9A5RGEdq.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/v60wNqKDiUsO76UjdMng.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/v60wNqKDiUsO76UjdMng.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/N2nCxPgkfMknHefjgTQV.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/N2nCxPgkfMknHefjgTQV.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/0Fa0oKa3CNB6Hd8znXXo.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/0Fa0oKa3CNB6Hd8znXXo.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        },
+        {
+          "name": "Güç",
+          "values": [
+            "30 W",
+            "40 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30–40 W, ikili 2 × 30–40 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "3000–4000 lm, ikili 6000–8000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Tekli 200 × 200 mm, yükseklik 130 mm; ikili 200 × 390 mm, yükseklik 130 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli Ø180 mm; ikili 2 × Ø180 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/retail/kaira-s-30w",
+        "https://abalighting.com/tr/urunler/retail/retail/kaira-s-40w",
+        "https://abalighting.com/tr/urunler/retail/retail/kaira-double-40w",
+        "https://abalighting.com/tr/urunler/retail/retail/kaira-double-30w"
+      ],
+      "slug": "kaira-s-hareketli-gomme-spot"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-zain-retail",
+      "name": "Zain Hareketli Gömme Spot",
+      "category": "ray-ve-magaza",
+      "description": [
+        "Zain, yuvarlak çerçeveli, tek başlı, yönlendirilebilir COB led gömme spot. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve; çerçeve RAL kataloğundaki renklere boyanabilir. Baş 180° oynar.",
+        "Özel dekorasyon yapmak isteyen mimarlar ve mağaza projeleri için uygundur. 30 W ve 40 W güç seçenekleri vardır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/0bOsfTgfKFmKAx6BGmY3.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/0bOsfTgfKFmKAx6BGmY3.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/bjJoqPIeOCCcyOou5m7O.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/bjJoqPIeOCCcyOou5m7O.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "30 W",
+            "40 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30–40 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "3300–4400 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø195 mm, yükseklik 140 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø175 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/retail/zain-30w",
+        "https://abalighting.com/tr/urunler/retail/retail/zain-40w"
+      ],
+      "slug": "zain-hareketli-gomme-spot"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-zain-s-retail",
+      "name": "Zain S Hareketli Gömme Spot",
+      "category": "ray-ve-magaza",
+      "description": [
+        "Zain S, kare çerçeveli, tekli, ikili ve üçlü başlı COB led gömme spot. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve; çerçeve RAL kataloğundaki renklere boyanabilir. Her baş 180° yönlendirilebilir.",
+        "Mağaza, vitrin ve showroomlarda tek tek ya da sıralı ışık odakları kurmak için kullanılır; özel dekorasyon arayan mimarlara uygundur. Tip ve güç seçilebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/kzSTTYU9ItXAyZ0fKj4k.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/kzSTTYU9ItXAyZ0fKj4k.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/XvDAYJoWazFfKMGHg2Qb.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/XvDAYJoWazFfKMGHg2Qb.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/4W72WBkrgPV1BXL4bmkp.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/4W72WBkrgPV1BXL4bmkp.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/3Sr9BikzJH75rkaa5gWi.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/3Sr9BikzJH75rkaa5gWi.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/g6UgmU3PsKCsHEdjf9m3.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/g6UgmU3PsKCsHEdjf9m3.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/jRqK3dgWEKQBDbyOseWe.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/jRqK3dgWEKQBDbyOseWe.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili",
+            "Üçlü"
+          ]
+        },
+        {
+          "name": "Güç",
+          "values": [
+            "30 W",
+            "40 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30–40 W, ikili 2 × 30–40 W, üçlü 3 × 30–40 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "3000–4000 lm, ikili 6000–8000 lm, üçlü 9000–12000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Tekli 195 × 195 mm; ikili 195 × 350 mm; üçlü 195 × 520 mm, yükseklik 140 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli 175 × 175 mm; ikili 175 × 320 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/retail/zain-triple-3-30w",
+        "https://abalighting.com/tr/urunler/retail/retail/zain-s-40w",
+        "https://abalighting.com/tr/urunler/retail/retail/zain-triple-3-40w",
+        "https://abalighting.com/tr/urunler/retail/retail/zain-s-30w",
+        "https://abalighting.com/tr/urunler/retail/retail/zain-double-2-40w",
+        "https://abalighting.com/tr/urunler/retail/retail/zain-double-2-30w"
+      ],
+      "slug": "zain-s-hareketli-gomme-spot"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-zaida-retail",
+      "name": "Zaida Hareketli Gömme Spot",
+      "category": "ray-ve-magaza",
+      "description": [
+        "Zaida, kare çerçeveli, tekli, ikili ve üçlü başlı COB led gömme spot. Alüminyum enjeksiyon gövde ve soğutucu, toz boyalı çerçeve; çerçeve RAL kataloğundaki renklere boyanabilir, baş 180° oynar.",
+        "Mağaza, vitrin ve showroomlarda ürün vurgusu için, ayrıca özel dekorasyon arayan mimari projelerde kullanılır. İsteğe bağlı IP44 yapılabilir. Tip ve güç seçilebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/aC1PXBoUkiltZbyXxP4h.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/aC1PXBoUkiltZbyXxP4h.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/bGoF09xbBHFZmuzg1oBw.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/bGoF09xbBHFZmuzg1oBw.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/mmdqq5FsTU7s9exo77Uu.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/mmdqq5FsTU7s9exo77Uu.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/xNQOnJJbCtli36ZaxBLY.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/xNQOnJJbCtli36ZaxBLY.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/QSfuQaMCuDujrHpBST5Z.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/QSfuQaMCuDujrHpBST5Z.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/N5vcMgaEwvFBo2nRWyFQ.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/N5vcMgaEwvFBo2nRWyFQ.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/FVtNXIyMy5J4eRlGConz.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/FVtNXIyMy5J4eRlGConz.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili",
+            "Üçlü"
+          ]
+        },
+        {
+          "name": "Güç",
+          "values": [
+            "30 W",
+            "40 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30–40 W, ikili 2 × 30–40 W, üçlü 3 × 30–40 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "3000–4000 lm, ikili 6000–8000 lm, üçlü 9000–12000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Tekli 195 × 195 mm; ikili 195 × 350 mm; üçlü 195 × 520 mm, yükseklik 140 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Tekli 175 × 175 mm; ikili 175 × 320 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/retail/zaida-40w",
+        "https://abalighting.com/tr/urunler/retail/retail/zaida-30w",
+        "https://abalighting.com/tr/urunler/retail/retail/zaida-triple-3-30w",
+        "https://abalighting.com/tr/urunler/retail/retail/zaida-triple-3-40w",
+        "https://abalighting.com/tr/urunler/retail/retail/zaida-double-2-40w",
+        "https://abalighting.com/tr/urunler/retail/retail/zaida-double-2-30w"
+      ],
+      "slug": "zaida-hareketli-gomme-spot"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-agacan-pendant",
+      "name": "Agacan Sarkıt Armatür",
+      "category": "sarkit-armaturler",
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/UhyCs5tugXV1Mg6AOPz7.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/UhyCs5tugXV1Mg6AOPz7.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/etWIwGsI6uLN397lGqNj.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/etWIwGsI6uLN397lGqNj.jpg"
+        }
+      ],
+      "description": [
+        "Agacan, doğrusal formlu dekoratif sarkıt armatür. Gövdesi alüminyum, elektrostatik toz boyalıdır; dışı ve içi farklı özel renklere boyanabilir.",
+        "Restoran, kafe, lobi ve ofis masalarının üzerinde dekoratif ışık verir. GU10 ampullü 80 cm ya da E27 ampullü 100 cm uzunluk seçilebilir; tavana ya da sıva üstüne standart aparatlarla asılır."
+      ],
+      "options": [
+        {
+          "name": "Duy",
+          "values": [
+            "GU10",
+            "E27"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "2 × GU10 (900 lm) veya 2 × E27 (1600 lm) led ampul"
+        ],
+        [
+          "Duy",
+          "GU10 veya E27"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum"
+        ],
+        [
+          "Ölçüler",
+          "GU10: uzunluk 800 mm, genişlik 80 mm; E27: uzunluk 1000 mm, genişlik 100 mm"
+        ],
+        [
+          "Montaj",
+          "Askılı, tavana veya sıva üstüne"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/architectural/agacan-gu10-decorative-pendant",
+        "https://abalighting.com/tr/urunler/retail/architectural/agacan-e27-decorative-pendant"
+      ],
+      "slug": "agacan-sarkit-armatur"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-dowlet-pendant",
+      "name": "Dowlet Sarkıt Armatür",
+      "category": "sarkit-armaturler",
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/lIIfBzfjdrWuoQDfQLLS.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/lIIfBzfjdrWuoQDfQLLS.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/gWIgWHBVFyEhmHcIuDMU.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/gWIgWHBVFyEhmHcIuDMU.jpg"
+        }
+      ],
+      "description": [
+        "Dowlet, E14 led ampule uygun, çok ince tüp formlu sarkıt armatür. Gövdesi alüminyum, elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir.",
+        "Kafe, restoran, lobi ve mağazalarda tek başına ya da farklı boylarda gruplanarak dekoratif bir vurgu oluşturur. İki boy seçeneği vardır."
+      ],
+      "options": [
+        {
+          "name": "Boy",
+          "values": [
+            "44 cm",
+            "74 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "5 W"
+        ],
+        [
+          "Işık akısı",
+          "450 lm"
+        ],
+        [
+          "Duy",
+          "E14"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum"
+        ],
+        [
+          "Ölçüler",
+          "Ø44 mm, uzunluk 440 mm veya 740 mm"
+        ],
+        [
+          "Montaj",
+          "Askılı"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/architectural/dowlet-e14-decorative-pendant",
+        "https://abalighting.com/tr/urunler/retail/architectural/agacan-e14-decorative-pendant"
+      ],
+      "slug": "dowlet-sarkit-armatur"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-radames-pendant",
+      "name": "Radames Sarkıt Armatür",
+      "category": "sarkit-armaturler",
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/AnkIx3kPDbY4NnBxZtxB.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/AnkIx3kPDbY4NnBxZtxB.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/LlYNbGQL7AqEkEtA5G9i.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/LlYNbGQL7AqEkEtA5G9i.jpg"
+        }
+      ],
+      "description": [
+        "Radames, silindirik gövdeli, COB ledli sarkıt armatür. Gövde alüminyum enjeksiyon, soğutucu alüminyum, çerçeve elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir.",
+        "Mutfak adaları, bar ve kasa üstleri, restoran masaları ve mağaza tezgâhlarında doğrudan, kontrollü ışık verir. 30 W ve 40 W güç seçenekleri vardır."
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "30 W",
+            "40 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30–40 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "3300–4400 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø125 mm, yükseklik 210 mm"
+        ],
+        [
+          "Montaj",
+          "Askılı"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/architectural/radames-30w-decorative-pendant",
+        "https://abalighting.com/tr/urunler/retail/architectural/radames-40w-decorative-pendant"
+      ],
+      "slug": "radames-sarkit-armatur"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-grid-spot",
+      "name": "Grid Petek Tavan Spotu",
+      "category": "spot-armaturler",
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/vaUGO3HGDUujTbtkFycn.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/vaUGO3HGDUujTbtkFycn.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/JCpKErRpEAWS3VEBohhe.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/JCpKErRpEAWS3VEBohhe.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/Ir9swyiV6cfdvAJdmavu.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/Ir9swyiV6cfdvAJdmavu.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/47KKqy5crZzlOtDUqAOd.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/47KKqy5crZzlOtDUqAOd.jpg"
+        }
+      ],
+      "description": [
+        "Grid, petek (grid) tavanlar için özel üretilmiş kare gövdeli COB led spot. Alüminyum enjeksiyon gövde elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir; montajı elektrikçi için kolaydır.",
+        "Kafe, restoran, lobi, mağaza ve diğer iç mekânlarda petek tavanın içine yerleşen sade bir ışık odağı verir. 8 W ve 10 W güç seçenekleri vardır; ölçüler sipariş sırasında netleştirilir."
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon"
+        ],
+        [
+          "Ölçüler",
+          "Sipariş sırasında netleştirilir"
+        ],
+        [
+          "Montaj",
+          "Petek tavan"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/architectural/grid-spotlight"
+      ],
+      "slug": "grid-petek-tavan-spotu"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-tuna-spot",
+      "name": "Tuna Gömme Spot",
+      "category": "spot-armaturler",
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/hLZ0ZxrGgWAYupPAiiO2.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/hLZ0ZxrGgWAYupPAiiO2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/jYb9NBIBrtXMs8Exu9Lm.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/jYb9NBIBrtXMs8Exu9Lm.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/znX6g608QKiOqtVUu3wV.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/znX6g608QKiOqtVUu3wV.jpg"
+        }
+      ],
+      "description": [
+        "Tuna, 100 mm çaplı COB lede göre üretilmiş yuvarlak gömme spot. Alüminyum enjeksiyon gövde elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir; tavan deliği yuvarlak olduğu için kurulumu kolaydır.",
+        "Kafe, restoran, lobi ve mağazalarda derinlikli, kontrollü ışık verir. 8 W ve 10 W güç seçenekleri vardır."
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon"
+        ],
+        [
+          "Ölçüler",
+          "Ø100 mm, yükseklik 120 mm"
+        ],
+        [
+          "Kesim ölçüsü",
+          "Ø90 mm"
+        ],
+        [
+          "Montaj",
+          "Gömme"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/architectural/tuna-spotlight",
+        "https://abalighting.com/tr/urunler/retail/architectural/tuna-10w-spotlight"
+      ],
+      "slug": "tuna-gomme-spot"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-tau-panel",
+      "name": "Tau LED Panel",
+      "category": "siva-alti-armaturler",
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/oGsPFTY5G6HY6PCCFcdN.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/oGsPFTY5G6HY6PCCFcdN.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/4S5cLNpU8puv2x94obL1.jpg",
+          "url": "https://abalighting.com/storage/products/May2023/4S5cLNpU8puv2x94obL1.jpg"
+        }
+      ],
+      "description": [
+        "Tau, 60 × 60 cm ölçüsünde LED panel. 2,8 mm kalınlığındaki özel difüzör yumuşak ve düzgün bir ışık verir; 0,6 mm sac gövde uzun süre asılı kalsa da eğilmez ve deforme olmaz.",
+        "Ofis, mağaza, koridor ve toplantı salonlarında kullanılır. Tavan tipine göre dört montaj seçeneği vardır: taşyünü tavan, sıva üstü, alçıpan ve clip-in."
+      ],
+      "options": [
+        {
+          "name": "Montaj",
+          "values": [
+            "Taşyünü tavan",
+            "Sıva üstü",
+            "Alçıpan",
+            "Clip-in"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "40 W"
+        ],
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Işık akısı",
+          "4000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı sac"
+        ],
+        [
+          "Ölçüler",
+          "595 × 595 × 60 mm (sıva üstü 600 × 600 × 62 mm)"
+        ],
+        [
+          "Montaj",
+          "Taşyünü tavan, sıva üstü, alçıpan veya clip-in"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/retail/architectural/tau-60x60-led-panel-clip-in",
+        "https://abalighting.com/tr/urunler/retail/architectural/tau-60x60-led-panel-rockwall",
+        "https://abalighting.com/tr/urunler/retail/architectural/tau-60x60-led-panel-gypsum",
+        "https://abalighting.com/tr/urunler/retail/architectural/tau-60x60-led-panel-over-plaster"
+      ],
+      "slug": "tau-led-panel"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-leilani-op",
+      "name": "Leilani Sıva Üstü Downlight",
+      "category": "downlight",
+      "description": [
+        "Leilani Sıva Üstü, yuvarlak, düz kademeli COB led sıva üstü downlight. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve; kademenin içi ve dışı farklı renklere boyanabilir.",
+        "Tavanı delinemeyen veya kesim istenmeyen konut, ofis ve mağazalarda kullanılır. 2\" ile 8\" arasındaki altı ölçüden seçilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/AruLeBJpxFoWOBkvDsRX.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/AruLeBJpxFoWOBkvDsRX.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/q5yJx9UMqqjKGrcUO7c3.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/q5yJx9UMqqjKGrcUO7c3.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/eOLGOLd55BwI49X83g2J.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/eOLGOLd55BwI49X83g2J.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "7–25 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "700–2500 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø100–230 mm, yükseklik 120 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 7 W, 700 lm, Ø100 mm; 3\": 9 W, 900 lm, Ø120 mm; 4\": 12,5 W, 1250 lm, Ø150 mm; 5\": 12,5 W, 1250 lm, Ø180 mm; 6\": 18 W, 1800 lm, Ø200 mm; 8\": 25 W, 2500 lm, Ø230 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/led/leilani-op-6-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/leilani-op-8-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/leilani-op-4-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/leilani-op-3-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/leilani-op-5-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/leilani-op-2-inch"
+      ],
+      "slug": "leilani-siva-ustu-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-noelani-op",
+      "name": "Noelani Sıva Üstü Downlight",
+      "category": "downlight",
+      "description": [
+        "Noelani Sıva Üstü, yuvarlak silindirik COB led sıva üstü downlight. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve.",
+        "Kesim açmadan monte edilen konut, ofis ve mağaza uygulamalarına uyar; isteğe bağlı IP44 ile banyo ve saçak altında da kullanılabilir. 2\", 3\", 4\", 5\" ve 8\" ölçüleri vardır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/43OLsiw8GgoBYLyqjpgt.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/43OLsiw8GgoBYLyqjpgt.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/AUWTUtJpzsfyvgHsTSc0.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/AUWTUtJpzsfyvgHsTSc0.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/wKga1wTeLDtiU8YelmeK.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/wKga1wTeLDtiU8YelmeK.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "7–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "700–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø100–230 mm, yükseklik 100 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 7 W, 700 lm, Ø100 mm; 3\": 9 W, 900 lm, Ø120 mm; 4\": 12,5 W, 1250 lm, Ø150 mm; 8\": 30 W, 3000 lm, Ø230 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/led/noelani-op-2-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/noelani-op-8-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/noelani-op-3-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/noelani-op-5-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/noelani-op-4-inch"
+      ],
+      "slug": "noelani-siva-ustu-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-novea-op",
+      "name": "Novea Sıva Üstü Downlight",
+      "category": "downlight",
+      "description": [
+        "Novea Sıva Üstü, yuvarlak COB led sıva üstü downlight. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı çerçeve.",
+        "Kesim açılamayan tavanlarda konut, ofis ve mağaza aydınlatması için kullanılır; isteğe bağlı IP44 yapılabilir. 2\" ile 8\" arasında altı ölçüsü vardır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/tWRpucS97AuQOPMnfjFC.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/tWRpucS97AuQOPMnfjFC.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/fq3Vj0navUaqYYLpgGWL.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/fq3Vj0navUaqYYLpgGWL.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/5oDRCyfEVTHueTGGSdLX.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/5oDRCyfEVTHueTGGSdLX.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "2\"",
+            "3\"",
+            "4\"",
+            "5\"",
+            "6\"",
+            "8\""
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "7–30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "700–3000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Ø110–240 mm, yükseklik 100 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Ölçü ve güç",
+          "2\": 7 W, 700 lm, Ø110 mm; 3\": 9 W, 900 lm, Ø130 mm; 4\": 12,5 W, 1250 lm, Ø150 mm; 6\": 25 W, 2500 lm, Ø200 mm; 8\": 30 W, 3000 lm, Ø240 mm"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/led/novea-op-6-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/novea-op-8-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/novea-op-3-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/novea-op-4-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/novea-op-5-inch",
+        "https://abalighting.com/tr/urunler/overplast/led/novea-op-2-inch"
+      ],
+      "slug": "novea-siva-ustu-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-cordelia-op",
+      "name": "Cordelia Sıva Üstü Downlight",
+      "category": "downlight",
+      "description": [
+        "Cordelia Sıva Üstü, 100 × 100 mm kare gövdeli COB led sıva üstü downlight. Alüminyum enjeksiyon gövde elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir.",
+        "Kafe, restoran, lobi ve mağazalarda tavan kesimi gerektirmeden sade bir ışık odağı verir. 8 W ve 10 W güç seçenekleri vardır."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/v04Nb9XAhcP2c3LceHyX.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/v04Nb9XAhcP2c3LceHyX.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/Lhiw5ot4FAEOvEnFDsFu.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/Lhiw5ot4FAEOvEnFDsFu.jpg"
+        }
+      ],
+      "options": [
+        {
+          "name": "Güç",
+          "values": [
+            "8 W",
+            "10 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8–10 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980–1250 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon"
+        ],
+        [
+          "Ölçüler",
+          "100 × 100 mm, yükseklik 110 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/led/cordelia-op-10w",
+        "https://abalighting.com/tr/urunler/overplast/led/cordelia-op-8w"
+      ],
+      "slug": "cordelia-siva-ustu-downlight"
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-karo-op",
+      "name": "Karo Sıva Üstü Downlight",
+      "category": "downlight",
+      "description": [
+        "Karo Sıva Üstü, 90 × 90 mm kare gövdeli COB led sıva üstü downlight. Alüminyum enjeksiyon gövde elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir.",
+        "Kafe, restoran, lobi ve mağazalarda tavana kesim açmadan monte edilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/ykEbWEmQJRCqIeY5DWqT.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/ykEbWEmQJRCqIeY5DWqT.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/jetH6ggS76GQIBtE3qzU.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/jetH6ggS76GQIBtE3qzU.jpg"
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon"
+        ],
+        [
+          "Ölçüler",
+          "90 × 90 mm, yükseklik 110 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/led/karo-op-cob"
+      ],
+      "slug": "karo-siva-ustu-downlight",
+      "options": []
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-minna-op",
+      "name": "Minna Sıva Üstü Downlight",
+      "category": "downlight",
+      "description": [
+        "Minna Sıva Üstü, 90 mm çaplı yuvarlak COB led sıva üstü downlight. Alüminyum enjeksiyon gövde elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir.",
+        "Kafe, restoran, lobi ve mağazalarda tavan kesimi açmadan monte edilen silindirik bir ışık odağı verir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/NI6eb40DrzKWuBttcAX1.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/NI6eb40DrzKWuBttcAX1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/JrnQASdRzb42MPlpqgOT.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/JrnQASdRzb42MPlpqgOT.jpg"
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon"
+        ],
+        [
+          "Ölçüler",
+          "Ø90 mm, yükseklik 110 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/led/minna-op-cob"
+      ],
+      "slug": "minna-siva-ustu-downlight",
+      "options": []
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-misha-op",
+      "name": "Misha Sıva Üstü Downlight",
+      "category": "downlight",
+      "description": [
+        "Misha Sıva Üstü, 90 mm çaplı yuvarlak COB led sıva üstü downlight. Alüminyum enjeksiyon gövde elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir.",
+        "Kafe, restoran, lobi ve mağazalarda tavan kesimi açmadan monte edilen silindirik bir ışık odağı verir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/RvGfHoxNsUkjomxlga0R.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/RvGfHoxNsUkjomxlga0R.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/Mec07um20o3OzDi8qYgS.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/Mec07um20o3OzDi8qYgS.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/zR6grhySSDPLyGKcbCEU.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/zR6grhySSDPLyGKcbCEU.jpg"
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon"
+        ],
+        [
+          "Ölçüler",
+          "Ø90 mm, yükseklik 110 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/led/misha-op-cob"
+      ],
+      "slug": "misha-siva-ustu-downlight",
+      "options": []
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-mitra-op",
+      "name": "Mitra Sıva Üstü Downlight",
+      "category": "downlight",
+      "description": [
+        "Mitra Sıva Üstü, 90 mm çaplı yuvarlak COB led sıva üstü downlight. Alüminyum enjeksiyon gövde elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir.",
+        "Kafe, restoran, lobi ve mağazalarda tavan kesimi açmadan monte edilen silindirik bir ışık odağı verir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/QUnAWM9H67zKrrpYspyn.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/QUnAWM9H67zKrrpYspyn.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/TpA6a1sQOqTJo0NbBhlA.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/TpA6a1sQOqTJo0NbBhlA.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/OZsoIWIhbTgOpe59OngF.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/OZsoIWIhbTgOpe59OngF.jpg"
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "8 W"
+        ],
+        [
+          "Işık kaynağı",
+          "COB LED"
+        ],
+        [
+          "Işık akısı",
+          "980 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon"
+        ],
+        [
+          "Ölçüler",
+          "Ø90 mm, yükseklik 110 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/led/mitra-op-cob"
+      ],
+      "slug": "mitra-siva-ustu-downlight",
+      "options": []
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-mobled-op",
+      "name": "Mobled Sıva Üstü Spot",
+      "category": "spot-armaturler",
+      "description": [
+        "Mobled Sıva Üstü, 55 mm çaplı küçük silindirik led sıva üstü spot. Alüminyum enjeksiyon gövde elektrostatik toz boyalıdır ve RAL kataloğundaki renklere boyanabilir.",
+        "Raf, niş ve tezgâh üstlerinde 2 W ile tamamlayıcı, ince bir vurgu ışığı verir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/9wFBZtwGGZgJmvMzInvU.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/9wFBZtwGGZgJmvMzInvU.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/GlRb5G0l4Ei5VWMwvyIt.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/GlRb5G0l4Ei5VWMwvyIt.jpg"
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "2 W"
+        ],
+        [
+          "Işık akısı",
+          "250 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon"
+        ],
+        [
+          "Ölçüler",
+          "Ø55 mm, yükseklik 110 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/led/mobled-op"
+      ],
+      "slug": "mobled-siva-ustu-spot",
+      "options": []
+    },
+    {
+      "finishes": [
+        "beyaz",
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "key": "a2-zain-op",
+      "name": "Zain Sıva Üstü Spot",
+      "category": "spot-armaturler",
+      "images": [
+        {
+          "file": "tools/data/ext-images/a-down/NCsWwQjDqDmGDXP0FKMM.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/NCsWwQjDqDmGDXP0FKMM.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/S5DRhj2Re9yMNqJogz7y.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/S5DRhj2Re9yMNqJogz7y.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/nRJj38KcL1YCxYxp9sMN.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/nRJj38KcL1YCxYxp9sMN.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/uW557dffRzAd7JEpwEwA.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/uW557dffRzAd7JEpwEwA.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/a-down/0tRI0UtLEFemGaiMVhqS.jpg",
+          "url": "https://abalighting.com/storage/products/June2023/0tRI0UtLEFemGaiMVhqS.jpg"
+        }
+      ],
+      "description": [
+        "Zain Sıva Üstü, kare gövdeli, tekli ve ikili başlı, yönlendirilebilir led spot. Alüminyum enjeksiyon gövde ve soğutucu, elektrostatik toz boyalı kasa; kasa RAL kataloğundaki renklere boyanabilir. Led ile sürücü geçmeli kablolarla bağlandığı için montajı kolaydır.",
+        "Özel dekorasyon arayan mimarlar için mağaza, restoran ve ofislerde tavana kesim açmadan monte edilen güçlü bir ışık odağı sunar. Tekli ya da ikili baş, 30 W ya da 40 W seçilebilir."
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        },
+        {
+          "name": "Güç",
+          "values": [
+            "30 W",
+            "40 W"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30–40 W, ikili 2 × 30–40 W"
+        ],
+        [
+          "Işık akısı",
+          "3300–4400 lm, ikili 6600–8800 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 K, 3000 K, 4000 K, 6500 K"
+        ],
+        [
+          "Renk geriverimi (CRI)",
+          "80–90"
+        ],
+        [
+          "Işın açısı",
+          "38°"
+        ],
+        [
+          "Giriş gerilimi",
+          "220–240 V AC"
+        ],
+        [
+          "Gövde",
+          "Elektrostatik boyalı alüminyum enjeksiyon, alüminyum soğutucu"
+        ],
+        [
+          "Ölçüler",
+          "Tekli 195 × 195 mm; ikili 195 × 350 mm, yükseklik 140 mm"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP20, isteğe bağlı IP44"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ]
+      ],
+      "sourceUrls": [
+        "https://abalighting.com/tr/urunler/overplast/led/zain-double-op-2-30w",
+        "https://abalighting.com/tr/urunler/overplast/led/zain-op-40w",
+        "https://abalighting.com/tr/urunler/overplast/led/zain-op-30w",
+        "https://abalighting.com/tr/urunler/overplast/led/zaida-double-op-2-40w"
+      ],
+      "slug": "zain-siva-ustu-spot"
+    }
+  ]
+}

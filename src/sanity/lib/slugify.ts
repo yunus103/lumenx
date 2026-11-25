@@ -19,9 +19,12 @@ export function turkishSlugify(input: string): string {
     ö: "o",
     ş: "s",
     ü: "u",
+    â: "a",
+    î: "i",
+    û: "u",
   };
 
-  str = str.replace(/[çğıöşü]/g, (char) => turkishChars[char] || char);
+  str = str.replace(/[çğıöşüâîû]/g, (char) => turkishChars[char] || char);
 
   // Clean string and format as slug
   return str

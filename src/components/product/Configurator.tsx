@@ -16,8 +16,8 @@ import { ProductViewer } from "./ProductViewer";
 
 type Power = "ekonomik" | "premium";
 const POWER: Record<Power, { label: string; detail: string }> = {
-  ekonomik: { label: "Ekonomik 3 W", detail: "1×18650, 1500 mAh" },
-  premium: { label: "Premium 5 W", detail: "2×18650, 1500–2200 mAh" },
+  ekonomik: { label: "Ekonomik 3 W", detail: "27 saate kadar, Type-C şarj" },
+  premium: { label: "Premium 5 W", detail: "48 saate kadar, şarj kaseti" },
 };
 
 const LEVELS = ["Düşük", "Orta", "Yüksek"];

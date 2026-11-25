@@ -1,0 +1,2682 @@
+{
+  "source": "b",
+  "products": [
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-evran-aydinlatma-diregi",
+      "name": "Evran Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/evran"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/00-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/006/evran-250-2.jpg"
+        }
+      ],
+      "description": [
+        "Evran, ışık modülü yola doğru yatık duran, kırık hatlı tek gövdeli bir aydınlatma direğidir. İki LED modülü açılı lensle yürüme yolunu ve çevresini aydınlatır.",
+        "Bahçe, site girişi ve otel çevresi gibi yaya alanlarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "2 × 21 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Osram LED, açılı lens"
+        ],
+        [
+          "Işık akısı",
+          "4000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Boy 250 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "evran-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-goksu-aydinlatma-diregi",
+      "name": "Göksu Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/goksu"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/01-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/020/goksu-2.jpg"
+        }
+      ],
+      "description": [
+        "Göksu, ince profilli gövdesi ve yatık duran tek ışık başlığıyla sade bir bahçe direğidir. Işık, açılı lens sayesinde yola ve yan alanlara yayılır.",
+        "Bahçe, site ve yürüme yolu aydınlatmasında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Osram LED, açılı lens"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 5 × 10 cm, boy 250 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "goksu-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-alacam-aydinlatma-diregi",
+      "name": "Alaçam Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/alacam"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/02-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/021/alacam-2.jpg"
+        }
+      ],
+      "description": [
+        "Alaçam, 3 metrelik tek kollu bir aydınlatma direğidir. Kolun ucundaki ışık başlığı yolun üzerine uzanır ve geniş bir alanı aynı noktadan aydınlatır.",
+        "Site yolları, otel bahçeleri ve yürüyüş alanları için uygundur. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Osram LED, açılı lens"
+        ],
+        [
+          "Işık akısı",
+          "6000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Boy 300 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "alacam-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-barla-aydinlatma-diregi",
+      "name": "Barla Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/barla"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/03-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/022/barla-300-1.jpg"
+        }
+      ],
+      "description": [
+        "Barla, tek gövdeden iki yöne açılan çift kollu bir direktir. Her kolda bir LED modülü vardır; böylece yolun iki yanı tek direkle aydınlatılır.",
+        "Bahçe, site ve yürüme yolu aydınlatmasında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 5 × 10 cm, boy 300 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "barla-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-cebeci-aydinlatma-diregi",
+      "name": "Cebeci Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/cebeci"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/04-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/091/cebeci-300-1.jpg"
+        }
+      ],
+      "description": [
+        "Cebeci, üst kısmında iki ışık başlığı taşıyan 3 metrelik bir direktir. Başlıklar farklı yönlere bakar ve sokak ya da bahçe yolunu iki taraftan ışıklandırır.",
+        "Bahçe, cadde ve site içi yollar için uygundur. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "2 × 30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Osram LED, açılı lens"
+        ],
+        [
+          "Işık akısı",
+          "6000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Boy 300 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "cebeci-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-alacati-aydinlatma-diregi",
+      "name": "Alaçatı Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/alacati"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/05-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/094/alacati-250-2.jpg"
+        }
+      ],
+      "description": [
+        "Alaçatı, ucunda yatay bir ışık çubuğu taşıyan T biçimli bir direktir. İki LED modülü çubuğun iki ucunda yer alır ve ışığı yolun iki yanına eşit paylaştırır.",
+        "Bahçe, site ve yürüme yolu aydınlatmasında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "2 × 30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "LED, açılı lens"
+        ],
+        [
+          "Işık akısı",
+          "6000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 5 × 10 cm, boy 250 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "alacati-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-aydos-aydinlatma-diregi",
+      "name": "Aydos Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/aydos-250cm-bahce-aydinlatma-dis-mekan-aydinlatma"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/06-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/895/aydos-site-250-2.jpg"
+        }
+      ],
+      "description": [
+        "Aydos, ince profilli ve düz hatlı bir bahçe direğidir. Işık başlığı gövdeden yola doğru uzanır.",
+        "Dış mekân, bahçe ve yaya yollarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Osram LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Philips elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 5 × 10 cm, boy 250 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "aydos-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-erciyes-aydinlatma-diregi",
+      "name": "Erciyes Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/aydos-300cm-aluminyum-govde-100x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/07-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/564/erciyes-2.jpg"
+        }
+      ],
+      "description": [
+        "Erciyes, tepesinde Y biçiminde iki kola ayrılan çift kollu bir direktir. Kollar yolun iki yanına bakar ve tek direkle geniş bir alanı aydınlatır.",
+        "Bahçe, site ve cadde kenarlarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Osram LED, açılı lens"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 5 × 10 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "erciyes-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-mihran-aydinlatma-diregi",
+      "name": "Mihran Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/mihran-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat-kopya"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/08-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/589/mihran-350-2.jpg"
+        }
+      ],
+      "description": [
+        "Mihran, 3,5 metre boyunda, tek gövdeden çıkan iki ışık koluna sahip bir direktir. Kollardan biri yukarı, diğeri yola doğru yönlenir.",
+        "Otel ve villa bahçeleri, site yolları ve geniş yaya alanları için uygundur. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Boy 350 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "mihran-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-luras-aydinlatma-diregi",
+      "name": "Luras Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/luras-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/09-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/615/luras-esektrik-2.jpg"
+        }
+      ],
+      "description": [
+        "Luras, iki yönlü uzun kollarıyla geniş alan aydınlatması için tasarlanmış 3,5 metrelik bir direktir. Yüksek güçlü iki LED modülü park alanlarını ve geniş yolları kapsar.",
+        "Otel ve site girişleri, otopark ve cadde kenarları için uygundur. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 8 × 15 cm, boy 350 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "luras-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-atlas-aydinlatma-diregi",
+      "name": "Atlas Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/levent-45-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/13-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/641/atlas-2li-2.jpg"
+        }
+      ],
+      "description": [
+        "Atlas, iki yana açılan T biçimli kolların ucunda kafes çerçeveli iki fener taşır. Fenerlerde E27 ampul kullanılır ve ampuller ürünle birlikte gelir.",
+        "Klasik bir görünüm istenen villa, otel bahçesi ve konut sitelerinde kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "E27 LED ampul"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Duy",
+          "E27"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 10 × 10 cm + 5 × 5 cm, boy 300 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "atlas-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-levent-aydinlatma-diregi",
+      "name": "Levent Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/levent-45-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat-1",
+        "https://www.bollardaydinlatma.com/urun/levent-44-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat-1"
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/14-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/654/levent-tek-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/15-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/667/levent-2-1.jpg"
+        }
+      ],
+      "description": [
+        "Levent, kafes çerçeveli fenerleri olan bir bahçe direğidir. Tek fenerli ya da iki fenerli kollu iki biçimde yapılır; ampuller ürünle birlikte gelir.",
+        "Peyzajlı bahçeler, villa girişleri ve otel dış mekânları için uygundur. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "E27 LED ampul"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Duy",
+          "E27"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 10 × 10 cm + 5 × 5 cm, boy 300 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "levent-aydinlatma-diregi"
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-cinar-aydinlatma-diregi",
+      "name": "Çınar Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/cinar-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/16-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/680/cinar-site-2.jpg"
+        }
+      ],
+      "description": [
+        "Çınar, tepesinde dört kol taşıyan 4 metrelik bir direktir. Kollar dört yöne açılır ve tek noktadan meydan, otopark ya da geniş bahçe alanını aydınlatır.",
+        "Meydan, site içi yol kavşakları ve otel dış alanları için uygundur. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "4 × 30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Işık akısı",
+          "12000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 10 × 10 cm, boy 400 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "cinar-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        6500
+      ],
+      "key": "b-mercan-gunes-enerjili-aydinlatma-diregi",
+      "name": "Mercan Güneş Enerjili Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/solaraydinlatma",
+        "https://www.bollardaydinlatma.com/urun/mercan-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat"
+      ],
+      "volt": false,
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Tekli",
+            "İkili"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/17-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/926/mercan-tekli-site-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/18-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/693/mercan-site-2.jpg"
+        }
+      ],
+      "description": [
+        "Mercan, tepesindeki güneş paneliyle elektrik hattı gerektirmeden çalışan 3 metrelik bir direktir. Tek ya da iki ışık kollu yapılır; çalışma süresi 6–8 saattir, ikili modelde kumanda bulunur.",
+        "Şebeke elektriği çekilemeyen bahçe, yol ve peyzaj alanlarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "100 W (tekli), 2 × 100 W (ikili)"
+        ],
+        [
+          "Işık kaynağı",
+          "LED, güneş enerjili"
+        ],
+        [
+          "Işık akısı",
+          "1000 lm (tekli)"
+        ],
+        [
+          "Renk sıcaklığı",
+          "6500 K"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Boy 300 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ],
+        [
+          "Çalışma süresi",
+          "6–8 saat"
+        ]
+      ],
+      "slug": "mercan-gunes-enerjili-aydinlatma-diregi"
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-aydos-isiticili-aydinlatma-diregi",
+      "name": "Aydos Isıtıcılı Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/elektrikli-isiticili-led-aydinlatma-diregi-250cm-dis-mekan-kopya"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/19-crop.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/928/6.png"
+        }
+      ],
+      "description": [
+        "Aydos Isıtıcılı, aynı direkte LED aydınlatmayı ve elektrikli ısıtıcıyı birleştirir. Isıtıcı 5 kademelidir ve kumanda ile ayarlanır.",
+        "Restoran ve kafe terasları, otel bahçeleri ve açık oturma alanlarında soğuk günlerde mekânı kullanılabilir tutar. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "21 W LED, 2000 W ısıtıcı"
+        ],
+        [
+          "Işık kaynağı",
+          "LED ve elektrikli ısıtıcı"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 10 × 10 cm, boy 230 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP54"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ],
+        [
+          "Isıtıcı",
+          "2000 W, 5 kademeli, kumandalı"
+        ]
+      ],
+      "slug": "aydos-isiticili-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-alacati-isiticili-aydinlatma-diregi",
+      "name": "Alaçatı Isıtıcılı Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/dis-mekan-cafe-bahce-isiticili-led-aydinlatma-diregi-cift-isitici-230cm"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/20-crop.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/937/7.png"
+        }
+      ],
+      "description": [
+        "Alaçatı Isıtıcılı, yatay bir çubuğun iki ucuna yerleştirilmiş LED ışıkları ve çift ısıtıcısıyla geniş bir oturma alanına hizmet verir.",
+        "Restoran, kafe ve otel teraslarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "2 × 21 W LED, 2 × 2000 W ısıtıcı"
+        ],
+        [
+          "Işık kaynağı",
+          "LED ve elektrikli ısıtıcı"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 10 × 10 cm, boy 230 cm, kol genişliği 150 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP54"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ],
+        [
+          "Isıtıcı",
+          "2 × 2000 W, 5 kademeli, kumandalı"
+        ]
+      ],
+      "slug": "alacati-isiticili-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-firat-isiticili-aydinlatma-diregi",
+      "name": "Fırat Isıtıcılı Aydınlatma Direği",
+      "category": "aydinlatma-direkleri",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/elektrikli-isiticili-led-aydinlatma-diregi-bollard-aydinlatma-200cm"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/21-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/913/firat-soba-site-2.jpg"
+        }
+      ],
+      "description": [
+        "Fırat Isıtıcılı, kare kesitli gövdesinin içine LED aydınlatma ve elektrikli ısıtıcıyı alan bir direktir. Gövdedeki dikey aralıklardan ışık sızar.",
+        "Kafe ve restoran terasları ile otel dış alanlarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "LED ve elektrikli ısıtıcı"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Profil 15 × 15 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP54"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ],
+        [
+          "Isıtıcı",
+          "2000 W"
+        ]
+      ],
+      "slug": "firat-isiticili-aydinlatma-diregi",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        3000,
+        6500
+      ],
+      "key": "b-hevsel-bollard",
+      "name": "Hevsel Bollard",
+      "category": "bollard-ve-set-ustu",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/hevsel-75cm-aluminyum-govde-100x100mm-e27-led-ampul-dahil-dis-mekan-bollard-ucretsiz-teslimat",
+        "https://www.bollardaydinlatma.com/urun/hevsel",
+        "https://www.bollardaydinlatma.com/urun/hevsel-75cm-bahce-aydinlatmasi-yurume-yolu-aydinlatma-dis-mekan-armatur-kopya",
+        "https://www.bollardaydinlatma.com/urun/hevsel-100cm-bahce-aydinlatmasi-yurume-yolu-aydinlatma"
+      ],
+      "options": [
+        {
+          "name": "Boy",
+          "values": [
+            "35 cm",
+            "50 cm",
+            "75 cm",
+            "100 cm"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/22-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/785/hevsel-35-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/24-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/896/hevsel-75.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/23-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/001/2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/24-4.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/896/hevsel-3.jpg"
+        }
+      ],
+      "description": [
+        "Hevsel, iki yüzünde opal ışık panelleri olan kare kesitli bir bollarddır. E27 ampulle çalışır ve ışığı yere ve çevreye yumuşak biçimde yayar.",
+        "Bahçe yolları, otel ve restoran girişleri ile site içi yürüyüş alanlarında kullanılır. Boy 35, 50, 75 veya 100 cm seçilebilir; gövde rengi isteğe göre üretilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "E27 LED ampul (ürünle birlikte)"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–6500 K"
+        ],
+        [
+          "Duy",
+          "E27"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 10 × 10 cm, boy 35–100 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ],
+        [
+          "Boy ve güç",
+          "35 cm: 15 W; 100 cm: 20 W"
+        ],
+        [
+          "Boy ve ışık akısı",
+          "35 cm: 1300 lm; 50–100 cm: 1800 lm"
+        ]
+      ],
+      "slug": "hevsel-bollard"
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit"
+      ],
+      "key": "b-hevsel-dekor-bollard",
+      "name": "Hevsel Dekor Bollard",
+      "category": "bollard-ve-set-ustu",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/hevsel-kale-50cm-aluminyum-govde-100x100mm-led-15w-dis-mekan-bollard-ucretsiz-teslimat"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/45-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/790/hevsel-2520-2-1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/45-3.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/790/hevsel-0115.jpg"
+        }
+      ],
+      "description": [
+        "Hevsel Dekor, siyah gövdesinin ön yüzünde renkli bir ışık şeridi taşıyan 50 cm'lik bir bollarddır. Işık rengi isteğe göre seçilebilir.",
+        "Bahçe yollarında, otel ve kafe dış alanlarında vurgu aydınlatması olarak kullanılır."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "İstenen renge göre"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 10 × 10 cm, boy 50 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "hevsel-dekor-bollard",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-firat-bollard",
+      "name": "Fırat Bollard",
+      "category": "bollard-ve-set-ustu",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/firat",
+        "https://www.bollardaydinlatma.com/urun/bollard-aydinlatma-firat-bahce-site-yurume-yolu-aydinlatma-60cm",
+        "https://www.bollardaydinlatma.com/urun/bollard-aydinlatma-firat-bahce-site-yurume-yolu-aydinlatma-70cm",
+        "https://www.bollardaydinlatma.com/urun/bollard-aydinlatma-firat-bahce-site-yurume-yolu-aydinlatma-80cm",
+        "https://www.bollardaydinlatma.com/urun/bollard-aydinlatma-firat-bahce-site-yurume-yolu-aydinlatma-100cm"
+      ],
+      "options": [
+        {
+          "name": "Boy",
+          "values": [
+            "40 cm",
+            "60 cm",
+            "70 cm",
+            "80 cm",
+            "100 cm"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/28-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/081/firat-60-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/27-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/019/site-firat-40cm-1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/29-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/076/firat-70-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/30-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/082/firat-80-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/31-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/108/firat-100-2.jpg"
+        }
+      ],
+      "description": [
+        "Fırat, dikey ışık aralıkları olan kare kesitli, ince hatlı bir bollarddır. Işık, gövdedeki uzun yarıklardan çıkar ve yolu gözü almadan aydınlatır.",
+        "Bahçe, site ve yürüme yolu aydınlatmasında kullanılır. Boy 40, 60, 70, 80 veya 100 cm seçilebilir. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 10 × 10 cm, boy 40–100 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "firat-bollard"
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-evran-bollard",
+      "name": "Evran Bollard",
+      "category": "bollard-ve-set-ustu",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/evran-60cm-aluminyum-govde-50x100mm-led-2x21w-dis-mekan-bollard-ucretsiz-teslimat-kopya",
+        "https://www.bollardaydinlatma.com/urun/bollard-aydinlatma-evran-cift-yonlu-bahce-aydinlatma-80cm",
+        "https://www.bollardaydinlatma.com/urun/bollard-aydinlatma-evran-cift-yonlu-bahce-aydinlatma-100cm"
+      ],
+      "options": [
+        {
+          "name": "Boy",
+          "values": [
+            "60 cm",
+            "80 cm",
+            "100 cm"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/33-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/121/evran-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/32-3.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/815/evran60-1.jpg"
+        }
+      ],
+      "description": [
+        "Evran, ışık başlığı yola doğru yatık duran kırık hatlı bir bollarddır. İki LED modülü çift yönlü olarak yolun iki yanını aydınlatır.",
+        "Bahçe yolları, site içi yürüyüş alanları ve otel çevresinde kullanılır. Boy 60, 80 veya 100 cm seçilebilir. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "2 × 21 W"
+        ],
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Işık akısı",
+          "4000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 5 × 10 cm, boy 60–100 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "evran-bollard"
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-alacam-bollard",
+      "name": "Alaçam Bollard",
+      "category": "bollard-ve-set-ustu",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/alacam-40cm-aluminyum-govde-50x100mm-21w-osram-led-dis-mekan-baba-ustu-aydinlatma-ucretsiz-teslimat",
+        "https://www.bollardaydinlatma.com/urun/bollard-aydinlatma-alacam-bahce-aydinlatmasi-60cm-1",
+        "https://www.bollardaydinlatma.com/urun/bollard-aydinlatma-alacam-bahce-aydinlatmasi-60cm",
+        "https://www.bollardaydinlatma.com/urun/bollard-aydinlatma-alacam-bahce-aydinlatmasi-100cm",
+        "https://www.bollardaydinlatma.com/urun/alacam-0cm-aluminyum-govde-100x100mm-e27-21w-led-ampul-dahil-dis-mekan-bollard-ucretsiz-teslimat"
+      ],
+      "options": [
+        {
+          "name": "Boy",
+          "values": [
+            "60 cm",
+            "80 cm",
+            "100 cm"
+          ]
+        },
+        {
+          "name": "Tip",
+          "values": [
+            "LED modüllü",
+            "E27 ampullü"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/36-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/147/alacam-60cmm.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/37-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/139/alacam-80-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/39-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/832/alacam-80c-10x10-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/35-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/879/alacam-40-site-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/38-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/146/alacam-100-2.jpg"
+        }
+      ],
+      "description": [
+        "Alaçam, ışık başlığı yola doğru eğik duran, alçak bir bollarddır. Işık, açılı lensle yaya yoluna yönlenir.",
+        "Havuz çevresi, bahçe yolları ve teras kenarlarında kullanılır. Boy 60, 80 veya 100 cm, LED modüllü ya da E27 ampullü yapıda seçilebilir. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "20–21 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Osram LED veya E27 LED ampul"
+        ],
+        [
+          "Işık akısı",
+          "2000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 5 × 10 cm (LED modüllü) veya 10 × 10 cm (E27), boy 60–100 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ],
+        [
+          "Modeller",
+          "LED modüllü: 21 W, 5 × 10 cm gövde, 60–100 cm; E27: 20 W, 10 × 10 cm gövde, 80 cm"
+        ]
+      ],
+      "slug": "alacam-bollard"
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-midas-bollard",
+      "name": "Midas Bollard",
+      "category": "bollard-ve-set-ustu",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/midas"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/40-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/446/midas-2.jpg"
+        }
+      ],
+      "description": [
+        "Midas, ön yüzünde dikey bir ışık paneli olan geniş gövdeli bir bollarddır. Işık paneli sıcak ve düzgün bir ışık verir.",
+        "Giriş yolları, bahçe ve teras çevresinde kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "30 W"
+        ],
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Işık akısı",
+          "2000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 8 × 15 cm, boy 80 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "midas-bollard",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-gunyuzu-bollard",
+      "name": "Günyüzü Bollard",
+      "category": "bollard-ve-set-ustu",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/gunyuzu-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat-kopya",
+        "https://www.bollardaydinlatma.com/urun/gunyuzu-80cm-aluminyum-govde-80x150mm-20x80mm-14w-osram-led-aydinlatma-bollard-ucretsiz-teslimat-kopya"
+      ],
+      "options": [
+        {
+          "name": "Boy",
+          "values": [
+            "60 cm",
+            "100 cm"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/41-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/447/gunyuzu-1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/48-3.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/500/img-20240517-wa0033.jpg"
+        }
+      ],
+      "description": [
+        "Günyüzü, ortasında dikey bir ışık penceresi açılmış, geniş gövdeli dekoratif bir bollarddır. Işık pencereden çıkıp yolun üzerine yayılır.",
+        "Bahçe ve yürüme yolu aydınlatmasında kullanılır. Boy 60 veya 100 cm seçilebilir. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 8 × 15 cm, boy 60–100 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "gunyuzu-bollard"
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        6500
+      ],
+      "key": "b-doruk-bollard",
+      "name": "Doruk Bollard",
+      "category": "bollard-ve-set-ustu",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/dekor-50cm-metal-govde-15x15cm-e27-30w-led-yurume-yolu-ve-set-ustu-aydinlatma-ucretsiz-teslimat-kopya",
+        "https://www.bollardaydinlatma.com/urun/dekor-bahce-100cm-metal-govde-15x15cm-e27-30w-led-yurume-yolu-ve-set-ustu-aydinlatma-ucretsiz-teslimat-kopya-kopya"
+      ],
+      "options": [
+        {
+          "name": "Boy",
+          "values": [
+            "50 cm",
+            "100 cm"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/42-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/550/dekor-bahce-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/43-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/557/doruk-bahce-2.jpg"
+        }
+      ],
+      "description": [
+        "Doruk, kare fener biçimli bir bollarddır. Yüzeylerdeki figürlü ve çizgili desenler ışığı gölge oyunlarıyla dışarı verir.",
+        "Bahçe yolları, otel ve restoran çevreleri için dekoratif bir seçenektir. Boy 50 veya 100 cm seçilebilir; gövde rengi isteğe göre üretilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "E27 LED ampul (ürünle birlikte)"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–6500 K"
+        ],
+        [
+          "Duy",
+          "E27"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Metal, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "50 cm: gövde 15 × 15 cm; 100 cm: gövde 25 × 33 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ],
+        [
+          "Boy ve güç",
+          "100 cm: 20 W"
+        ]
+      ],
+      "slug": "doruk-bollard"
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-aydos-bollard",
+      "name": "Aydos Bollard",
+      "category": "bollard-ve-set-ustu",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/aydos-80cm-bahce-aydinlatma-dis-mekan-aydinlatma-direkleri"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/47-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/935/aydos-site-2.jpg"
+        }
+      ],
+      "description": [
+        "Aydos Bollard, yola doğru uzanan yatık ışık başlığı olan ince gövdeli bir bollarddır. LED modül Osram'dır.",
+        "Bahçe, site ve yürüme yollarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "21 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Osram LED"
+        ],
+        [
+          "Işık akısı",
+          "2000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 5 × 10 cm, boy 80 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "aydos-bollard",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-erciyes-bollard",
+      "name": "Erciyes Bollard",
+      "category": "bollard-ve-set-ustu",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/erciyes-cift-kollu-led-60cm-yurume-yolu-bahce-aydinlatma-diregi"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/44-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/706/erciyes-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/44-3.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/706/1.jpg"
+        }
+      ],
+      "description": [
+        "Erciyes Bollard, tepede Y biçiminde iki kola ayrılır; her kolda bir LED modülü bulunur. İki yöne bakan ışık yolun iki yanını aydınlatır.",
+        "Bahçe yolları ve site içi yürüyüş alanlarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "2 × 21 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Osram LED, açılı lens"
+        ],
+        [
+          "Işık akısı",
+          "4000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 5 × 10 cm"
+        ],
+        [
+          "Montaj",
+          "Taban plakalı, zemine sabitlenir"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "erciyes-bollard",
+      "options": []
+    },
+    {
+      "key": "b-doruk-set-ustu-armaturu",
+      "name": "Doruk Set Üstü Armatürü",
+      "category": "bollard-ve-set-ustu",
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Çerçeveli",
+            "Yatay çizgili",
+            "Siluetli",
+            "Daireli"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/58-3.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/862/doruk-25.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/59-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/860/doruk-4.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/61-2.jpeg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/849/d64fb77c-41ea-45e6-9892-ddadbd2f9552.jpeg"
+        },
+        {
+          "file": "tools/data/ext-images/b/58-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/862/4.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/58-4.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/862/doruk-0138.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/60-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/861/doruk-25-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/60-3.jpeg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/861/844bd0c8-4882-4296-bee6-1698af3a5128.jpeg"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/urun-doruk-set-ustu-en-25cm-boy-35cm-metal-govde-e27-20w-led-ampul-dahil-dis-mekan-ucretsiz-teslimat-7",
+        "https://www.bollardaydinlatma.com/urun/doruk-set-ustu-en-25cm-boy-35cm-metal-govde-e27-20w-led-ampul-dahil-dis-mekan-ucretsiz-teslimat-5",
+        "https://www.bollardaydinlatma.com/urun/doruk-set-ustu-en-25cm-boy-35cm-metal-govde-e27-20w-led-ampul-dahil-dis-mekan-ucretsiz-teslimat-6-applanguagecode-tr",
+        "https://www.bollardaydinlatma.com/urun/doruk-set-ustu-en-25cm-boy-35cm-metal-govde-e27-20w-led-ampul-dahil-dis-mekan-ucretsiz-teslimat"
+      ],
+      "description": [
+        "Doruk Set Üstü, duvar ya da set başlarına oturan küçük bir fenerdir. Metal çerçeveli, opal yüzeylidir; yüzeydeki çerçeve, çizgi, daire ve siluet desenleri ışıkla birlikte görünür.",
+        "Bahçe duvarı, giriş sütunu ve teras korkuluğu başlarında kullanılır. Desen dört seçenek arasından seçilir; gövde rengi isteğe göre üretilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "20 W"
+        ],
+        [
+          "Işık kaynağı",
+          "E27 LED ampul (ürünle birlikte)"
+        ],
+        [
+          "Işık akısı",
+          "1800 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–6500 K"
+        ],
+        [
+          "Duy",
+          "E27"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Metal, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Başlık 25 × 25 cm, yükseklik 35 cm"
+        ],
+        [
+          "Montaj",
+          "Set üstüne"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "doruk-set-ustu-armaturu"
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        6500
+      ],
+      "key": "b-belen-dis-mekan-aplik",
+      "name": "Belen Dış Mekân Aplik",
+      "category": "dis-mekan-aplik",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/camli-aplik-30cm-duvar-aplik"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/49-1.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/906/belen-site-2.jpg"
+        }
+      ],
+      "description": [
+        "Belen, cam yüzlü fener biçiminde bir duvar apliğidir. İçindeki rustik ampul görünür ve sıcak, dekoratif bir ışık verir.",
+        "Giriş kapıları, teras ve restoran dış cepheleri için uygundur. Gövde rengi isteğe göre üretilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Rustik (filament) LED ampul"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700–3000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "19 × 36 cm"
+        ],
+        [
+          "Montaj",
+          "Duvara"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "belen-dis-mekan-aplik",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-nurdagi-dis-mekan-aplik",
+      "name": "Nurdağı Dış Mekân Aplik",
+      "category": "dis-mekan-aplik",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/nurdagi-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/50-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/449/site-yeni-tasarimlar.jpg"
+        }
+      ],
+      "description": [
+        "Nurdağı, dikey ve dar bir ışık paneli olan ince bir duvar apliğidir. Işık, panelden duvar boyunca düzgün biçimde yayılır.",
+        "Kapı yanları, koridor ve bahçe duvarlarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "20 W"
+        ],
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Işık akısı",
+          "1500 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "4 × 8 cm"
+        ],
+        [
+          "Montaj",
+          "Duvara"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "nurdagi-dis-mekan-aplik",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-selin-dis-mekan-aplik",
+      "name": "Selin Dış Mekân Aplik",
+      "category": "dis-mekan-aplik",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/selin-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/51-3.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/451/selin-aplik-00118.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/51-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/451/selin-1.jpg"
+        }
+      ],
+      "description": [
+        "Selin, kare kesitli gövdesinden yukarı ve aşağı ışık veren çift yönlü bir duvar apliğidir. Işık, duvar yüzeyinde keskin bir ışık-gölge çizgisi bırakır.",
+        "Taş ve beton cephelerde, teras ve giriş duvarlarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "2 × 7 W"
+        ],
+        [
+          "Işık kaynağı",
+          "GU10 LED ampul (ürünle birlikte)"
+        ],
+        [
+          "Işık akısı",
+          "1200 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Duy",
+          "GU10"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "10 × 10 cm"
+        ],
+        [
+          "Montaj",
+          "Duvara"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "selin-dis-mekan-aplik",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-goksu-dis-mekan-aplik",
+      "name": "Göksu Dış Mekân Aplik",
+      "category": "dis-mekan-aplik",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/goksu-35cm-aluminyum-govde-50x100mm-21w-osram-led-dis-mekan-aplik-ucretsiz-teslimat",
+        "https://www.bollardaydinlatma.com/urun/goksu-2710-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat"
+      ],
+      "options": [
+        {
+          "name": "Tip",
+          "values": [
+            "Standart",
+            "Sensörlü"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/52-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/769/goksu-aplik-site-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/53-3.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/452/gcksu-35.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/53-4.jpeg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/452/c70fc0f0-9f5d-4110-be0c-971473b34f02.jpeg"
+        }
+      ],
+      "description": [
+        "Göksu, duvardan aşağı doğru eğilen yatık ışık başlığıyla duvara ve yola ışık düşüren bir apliktir. Sensörlü modelde ışık hareketle devreye girer.",
+        "Cephe, bahçe duvarı ve yürüme yolu kenarlarında kullanılır. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "21 W"
+        ],
+        [
+          "Işık kaynağı",
+          "Osram LED, su geçirmez lens"
+        ],
+        [
+          "Işık akısı",
+          "2000 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 5 × 10 cm, uzunluk 35 cm"
+        ],
+        [
+          "Montaj",
+          "Duvara"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "goksu-dis-mekan-aplik"
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-alacam-dis-mekan-aplik",
+      "name": "Alaçam Dış Mekân Aplik",
+      "category": "dis-mekan-aplik",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/alacam-40cm-aluminyum-govde-100x100mm-e27-led-ampul-dahil-dis-mekan-aplik-ucretsiz-teslimat"
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/54-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/776/alacam-10x10-site-2.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/54-3.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/776/alacam-aplik-1.jpg"
+        }
+      ],
+      "description": [
+        "Alaçam Aplik, duvardan aşağı eğik duran bir ışık başlığına sahiptir ve ışığı duvar boyunca aşağı doğru verir.",
+        "Bahçe duvarları, teras ve cephelerde kullanılır. Gövde rengi isteğe göre üretilir."
+      ],
+      "specs": [
+        [
+          "Güç",
+          "20 W"
+        ],
+        [
+          "Işık kaynağı",
+          "E27 LED ampul (ürünle birlikte)"
+        ],
+        [
+          "Işık akısı",
+          "1800 lm"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Duy",
+          "E27"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "10 × 10 cm, uzunluk 35 cm"
+        ],
+        [
+          "Montaj",
+          "Duvara"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ]
+      ],
+      "slug": "alacam-dis-mekan-aplik",
+      "options": []
+    },
+    {
+      "finishes": [
+        "siyah",
+        "antrasit",
+        "beyaz"
+      ],
+      "kelvin": [
+        3000,
+        4000,
+        6500
+      ],
+      "key": "b-konak-dis-mekan-aplik",
+      "name": "Konak Dış Mekân Aplik",
+      "category": "dis-mekan-aplik",
+      "sourceUrls": [
+        "https://www.bollardaydinlatma.com/urun/konak-250cm-aluminyum-govde-50x100mm-30w-osram-led-aydinlatma-diregi-ucretsiz-teslimat",
+        "https://www.bollardaydinlatma.com/urun/konak-45cm-aluminyum-govde-100x100mm-30w-osram-led-dis-mekan-aplik-ucretsiz-teslimat"
+      ],
+      "options": [
+        {
+          "name": "Boy",
+          "values": [
+            "30 cm",
+            "40 cm"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/b/55-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/450/konak-30-1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/56-2.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/525/konak-40-1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/b/56-3.jpg",
+          "url": "https://www.bollardaydinlatma.com/idea/om/78/myassets/products/525/konak-3.jpg"
+        }
+      ],
+      "description": [
+        "Konak, cam görünümlü opal yüzeyi olan dikdörtgen bir duvar apliğidir. Dört yüzünden yumuşak, dağınık bir ışık verir.",
+        "Restoran ve kafe cepheleri, otel girişleri ve bahçe duvarlarında kullanılır. Boy 30 veya 40 cm seçilebilir. Gövde rengi ve ışık rengi isteğe göre üretilebilir."
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "3000–4000 K, 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "220 V"
+        ],
+        [
+          "Sürücü",
+          "Elektronik"
+        ],
+        [
+          "Gövde",
+          "Alüminyum, fırın boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde 10 × 10 cm, yükseklik 30–40 cm"
+        ],
+        [
+          "Montaj",
+          "Duvara"
+        ],
+        [
+          "Koruma sınıfı",
+          "IP65"
+        ],
+        [
+          "Garanti",
+          "2 yıl"
+        ],
+        [
+          "Boy ve ışık akısı",
+          "30 cm: 2000 lm; 40 cm: 1500 lm"
+        ]
+      ],
+      "slug": "konak-dis-mekan-aplik"
+    }
+  ]
+}

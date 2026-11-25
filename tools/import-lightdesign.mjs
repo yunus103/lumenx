@@ -48,7 +48,7 @@ const CATEGORIES = [
 function categoryOf(p) {
   // Lowercased with the Turkish locale: the /i flag doesn't fold "İ" to "i".
   const text = `${p.name} ${p.categories.map((c) => c.path.join(" ")).join(" ")}`.toLocaleLowerCase("tr-TR");
-  if (/şarj (istasyonu|kaseti)/.test(text)) return "sarj-istasyonlari";
+  if (/şarj (istasyonu|kaseti|modülü)/.test(text)) return "sarj-istasyonlari";
   if (/garson|çağrı/.test(text)) return "garson-cagirma";
   if (/aplik|lambader/.test(text)) return "aplik-ve-lambader";
   return "sarjli-masa-lambasi";

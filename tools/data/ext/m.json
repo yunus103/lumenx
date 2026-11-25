@@ -1,0 +1,1290 @@
+{
+  "source": "m",
+  "products": [
+    {
+      "key": "m-ucgen-oval",
+      "name": "Üçgen Oval Sarkıt Armatür",
+      "slug": "ucgen-oval-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Üçgen Oval, yuvarlatılmış köşeli, içi boş üçgen çerçeve biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Işık çerçevenin alt yüzünden iner.",
+        "Üç kenarın ortasındaki boşluk tavanda hafif, grafik bir çizgi bırakır; ofis girişlerinde, galerilerde ve tasarım mağazalarında tek parça ya da eğimli sıralarla kullanılır. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/ucgen-oval.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/UCGEN-OVAL.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/ucgen-oval-mluo.html"
+      ]
+    },
+    {
+      "key": "m-ucgen-davul",
+      "name": "Üçgen Davul Sarkıt Armatür",
+      "slug": "ucgen-davul-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Üçgen Davul, yuvarlatılmış köşeli üçgen gövde biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Alt yüzü tamamen opal difüzörlü, düz ve geniş bir ışık yüzeyi verir.",
+        "Geniş ve dolu ışık yüzeyi, kafe ve restoranlarda köşe masaların ya da lobi oturma gruplarının üstünde güçlü bir odak noktası oluşturur. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/ucgen-davul.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/UCGEN-DAVUL.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/ucgen-davul-mlud.html"
+      ]
+    },
+    {
+      "key": "m-su-yolu",
+      "name": "Su Yolu Sarkıt Armatür",
+      "slug": "su-yolu-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Su Yolu, S biçiminde kıvrılan lineer gövde biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Dalgalı hattı, bar ve restoran tavanlarında tek başına ya da seri olarak kullanılabilir.",
+        "Kıvrımlı hat uzun, düz tavanları yumuşatır; koridorlarda, resepsiyon arkalarında ve bar üstlerinde akış hissi verir. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/su-yolu.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/SU-YOLU.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/su-yolu-mlsy.html"
+      ]
+    },
+    {
+      "key": "m-simit",
+      "name": "Simit Sarkıt Armatür",
+      "slug": "simit-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Simit, ince gövdeli halka biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Işık halkanın alt yüzünden iner; boş orta kısım tavana ferahlık verir.",
+        "Yuvarlak masaların, resepsiyon tezgâhlarının ve sofra alanlarının tam üstünde ortalanarak asılır; farklı çaplarda iç içe de kullanılabilir. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/simit-01.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/simit-01.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/simit-mls.html"
+      ]
+    },
+    {
+      "key": "m-kare-simit",
+      "name": "Kare Simit Sarkıt Armatür",
+      "slug": "kare-simit-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Kare Simit, yuvarlatılmış köşeli, içi boş kare çerçeve biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Işık çerçevenin alt yüzünden iner.",
+        "Kare plana sahip lobilerde, toplantı masalarının ve dört kişilik masaların üstünde düzen hissi verir; yan yana dizildiğinde ritmik bir tavan deseni oluşur. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/kare-simit.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/KARE-SIMIT.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/kare-simit-mlks.html"
+      ]
+    },
+    {
+      "key": "m-kare-oval",
+      "name": "Kare Oval Sarkıt Armatür",
+      "slug": "kare-oval-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Kare Oval, yuvarlatılmış köşeli kare gövde biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Alt yüzü tamamen opal difüzörlü, düz bir ışık yüzeyi verir.",
+        "Kare masaların, bekleme alanlarının ve vitrin önlerinin üstünde ışığı yumuşak köşeleriyle geniş bir yüzey olarak yayar. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/kare-oval-1.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/kare-oval-1.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/kare-oval-mlko.html"
+      ]
+    },
+    {
+      "key": "m-dikdortgen-oval",
+      "name": "Dikdörtgen Oval Sarkıt Armatür",
+      "slug": "dikdortgen-oval-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Dikdörtgen Oval, yuvarlatılmış uçlu, ince ve uzun lineer gövde biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Uzun masalar, bar tezgâhları ve koridorlar için sıralı ya da tek başına kullanılır.",
+        "Ince ve uzun formu bar tezgâhlarının, uzun yemek masalarının ve koridorların üstünde tek bir çizgi gibi durur; uç uca eklenerek daha uzun hatlar kurulabilir. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/dik-oval.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/DIK-OVAL.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/dikdortgen-oval-mldo.html"
+      ]
+    },
+    {
+      "key": "m-dikdortgen-oval-linear",
+      "name": "Dikdörtgen Oval Lineer Sarkıt Armatür",
+      "slug": "dikdortgen-oval-lineer-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Dikdörtgen Oval Lineer, içi boş, yuvarlatılmış köşeli dikdörtgen çerçeve biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Işık çerçevenin alt yüzünden iner.",
+        "Dikdörtgen çerçeve, uzun masaların ve açık ofis çalışma adalarının üstünde alanı görsel olarak belirler; boş orta kısım tavanı açık gösterir. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/dik.oval-linear.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/DIK.OVAL-LINEAR.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/dikdortgen-oval-linear-mldol.html"
+      ]
+    },
+    {
+      "key": "m-dikdortgen-oval-davul",
+      "name": "Dikdörtgen Oval Davul Sarkıt Armatür",
+      "slug": "dikdortgen-oval-davul-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Dikdörtgen Oval Davul, yuvarlatılmış köşeli, uzun dikdörtgen gövde biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Alt yüzü tamamen opal difüzörlü, geniş bir ışık yüzeyi verir; uzun masaların ve tezgâhların üstüne uyar.",
+        "Toplantı masaları, uzun yemek masaları ve resepsiyon tezgâhlarının üstüne düz, geniş bir ışık yüzeyi getirir. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/dik.-oval-davul.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/DIK.-OVAL-DAVUL.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/dikdortgen-oval-davul-mldod.html"
+      ]
+    },
+    {
+      "key": "m-dikdortgen-davul",
+      "name": "Dikdörtgen Davul Sarkıt Armatür",
+      "slug": "dikdortgen-davul-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Dikdörtgen Davul, köşeli, uzun dikdörtgen gövde biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Alt yüzü tamamen opal difüzörlü, geniş bir ışık yüzeyi verir.",
+        "Keskin hatları kurumsal ofislerde, showroomlarda ve mağaza kasa bölgelerinde düzenli, mimari bir görünüm verir. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/dik.-davul.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/DIK.-DAVUL.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/dikdortgen-davul-mldd.html"
+      ]
+    },
+    {
+      "key": "m-davul",
+      "name": "Davul Sarkıt Armatür",
+      "slug": "davul-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Davul, yuvarlak, alçak yüksekliğe sahip disk gövde biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Alt yüzü tamamen difüzörlü, düz bir ışık yüzeyi verir.",
+        "Yuvarlak, alçak formu otel odalarında, kafelerde ve butik mağazalarda tek başına ya da küçük gruplar halinde sade bir tavan ışığı olarak çalışır. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/davul.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/davul.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/davul-mld.html"
+      ]
+    },
+    {
+      "key": "m-altigen-davul",
+      "name": "Altıgen Davul Sarkıt Armatür",
+      "slug": "altigen-davul-sarkit-armatur",
+      "category": "sarkit-armaturler",
+      "description": [
+        "Altıgen Davul, altıgen gövde biçiminde, alüminyum ekstrüzyon gövdeli bir sarkıt armatürdür. Alt yüzü tamamen opal difüzörlü, düz bir ışık yüzeyi verir; birkaçı yan yana petek düzeninde asılabilir.",
+        "Altıgenler bitişik asıldığında petek gibi büyüyen bir tavan kompozisyonu kurar; lobi, restoran ve showroom tavanlarında dikkat çekici bir yüzey oluşturur. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/altigen-davul.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/ALTIGEN-DAVUL.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sarkıt"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/altigen-davul-mlad.html"
+      ]
+    },
+    {
+      "key": "m-simit-siva-alti",
+      "name": "Simit Sıva Altı Armatür",
+      "slug": "simit-siva-alti-armatur",
+      "category": "siva-alti-armaturler",
+      "description": [
+        "Simit, ince gövdeli halka biçiminde, alüminyum ekstrüzyon gövdeli bir sıva altı armatürdür. Işık halkanın alt yüzünden iner.",
+        "Düşük tavanlı mekânlarda sarkıt kullanılamadığında yuvarlak masaların ve oturma alanlarının üstünde halka formunu tavana yakın taşır. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/siva-alti-simit-1.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/SIVA-ALTI-SIMIT-1.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sıva altı"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/siva-alti-simit-mlsas.html"
+      ]
+    },
+    {
+      "key": "m-linear-siva-alti",
+      "name": "Lineer Sıva Altı Armatür",
+      "slug": "lineer-siva-alti-armatur",
+      "category": "siva-alti-armaturler",
+      "description": [
+        "Lineer, tavana gömülen ince lineer profil biçiminde, alüminyum ekstrüzyon gövdeli bir sıva altı armatürdür. Tavan hattıyla aynı çizgide, kesintisiz bir ışık şeridi verir.",
+        "Ofis, mağaza, koridor ve otel ortak alanlarında tek bir hat ya da birbirine eklenen hatlar halinde kullanılır. Profil ölçüsü dört seçenekten seçilir; renk ve boy istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır, acil aydınlatma kiti 1 veya 3 saat süreli eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/siva-alti-linear.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/SIVA-ALTI-LINEAR.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Ölçü",
+          "values": [
+            "8 × 5 cm",
+            "7 × 3,85 cm",
+            "7,5 × 5,5 cm",
+            "7,5 × 4,5 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Profil 8×5 / 7×3,85 / 7,5×5,5 / 7,5×4,5 cm"
+        ],
+        [
+          "Montaj",
+          "Sıva altı"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/siva-alti-linear-mlsal.html"
+      ]
+    },
+    {
+      "key": "m-kare-davul-siva-alti",
+      "name": "Kare Davul Sıva Altı Armatür",
+      "slug": "kare-davul-siva-alti-armatur",
+      "category": "siva-alti-armaturler",
+      "description": [
+        "Kare Davul, yuvarlatılmış köşeli kare gövde biçiminde, alüminyum ekstrüzyon gövdeli bir sıva altı armatürdür. Alt yüzü tamamen opal difüzörlü, düz bir ışık yüzeyi verir.",
+        "Kare plan, koridor kavşakları, kasa önleri ve bekleme alanlarında tavana oturan düz bir ışık yüzeyi sağlar. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/siva-alti-kare-davul.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/SIVA-ALTI-KARE-DAVUL.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sıva altı"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/siva-alti-kare-davul-mlsakd.html"
+      ]
+    },
+    {
+      "key": "m-davul-siva-alti",
+      "name": "Davul Sıva Altı Armatür",
+      "slug": "davul-siva-alti-armatur",
+      "category": "siva-alti-armaturler",
+      "description": [
+        "Davul, yuvarlak, alçak yüksekliğe sahip disk gövde biçiminde, alüminyum ekstrüzyon gövdeli bir sıva altı armatürdür. Alt yüzü tamamen opal difüzörlü, düz bir ışık yüzeyi verir.",
+        "Yuvarlak yüzey otel odası girişlerinde, mağaza reyonlarında ve alçak tavanlı kafelerde temiz bir tavan ışığı olarak kullanılır. Yükseklik 5, 7,5 veya 10 cm seçilir; renk ve ölçü istenene göre yapılır. Işık rengi dört kademeden seçilir, kontrol açma-kapama ya da DALI ile yapılır; acil aydınlatma kiti eklenebilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/siva-alti-davul-1.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/SIVA-ALTI-DAVUL-1.jpg"
+        }
+      ],
+      "finishes": [
+        "siyah"
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "options": [
+        {
+          "name": "Yükseklik",
+          "values": [
+            "5 cm",
+            "7,5 cm",
+            "10 cm"
+          ]
+        }
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "230–240 V AC, 50–60 Hz"
+        ],
+        [
+          "Sürücü",
+          "Tridonic-Osram, açma-kapama veya DALI"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, elektrostatik toz boya, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Gövde yüksekliği 5 / 7,5 / 10 cm"
+        ],
+        [
+          "Montaj",
+          "Sıva altı"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/siva-alti-davul-mlsad.html"
+      ]
+    },
+    {
+      "key": "m-led-bar",
+      "name": "LED Bar Lineer Armatür",
+      "slug": "led-bar-lineer-armatur",
+      "category": "lineer-ve-profil",
+      "description": [
+        "LED Bar, 18,4 × 11,7 mm kesitli, alüminyum ekstrüzyon profilli, sıva üstü monte edilen ince bir lineer armatürdür. Opal difüzörü ışığı çizgi boyunca düzgün yayar.",
+        "Raf altı, vitrin, bar arkası ve kenar aydınlatması gibi dar yerlerde kullanılır. Boy istenen ölçüde yapılır; ışık rengi dört kademeden seçilir, 12 V veya 24 V ile çalışır ve açma-kapama ya da DALI ile kontrol edilir."
+      ],
+      "images": [
+        {
+          "file": "tools/data/ext-images/m/led-bar-1.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/led-bar-1.jpg"
+        },
+        {
+          "file": "tools/data/ext-images/m/led-bar-olculeri-resmi.jpg",
+          "url": "https://morelight.com.tr/wp-content/uploads/2024/05/led-bar-olculeri-resmi.jpg"
+        }
+      ],
+      "kelvin": [
+        2700,
+        3000,
+        4000,
+        6500
+      ],
+      "specs": [
+        [
+          "Işık kaynağı",
+          "Samsung LED"
+        ],
+        [
+          "Renk sıcaklığı",
+          "2700 / 3000 / 4000 / 6500 K"
+        ],
+        [
+          "Giriş gerilimi",
+          "12 V / 24 V"
+        ],
+        [
+          "Sürücü",
+          "Açma-kapama veya DALI kontrol"
+        ],
+        [
+          "Gövde",
+          "Alüminyum ekstrüzyon, opal difüzör"
+        ],
+        [
+          "Ölçüler",
+          "Profil 18,4 × 11,7 mm, boy istenene göre"
+        ],
+        [
+          "Montaj",
+          "Sıva üstü"
+        ],
+        [
+          "Ömür",
+          "50.000 saat"
+        ],
+        [
+          "Garanti",
+          "3 yıl"
+        ]
+      ],
+      "sourceUrls": [
+        "https://morelight.com.tr/led-bar-mllb-2.html"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -8,7 +8,7 @@ Read `docs/PROJECT.md` first (client, scope, decisions, plan). This file is the 
 2. **USD rate and price switch: done** (see "Prices" below).
 3. **Now: modelling.** Strategy in `docs/PROJECT.md` ("Modelling strategy"): code-built kit, not Blender GLBs.
    - **How:** run `/model-lamps` (project skill, `.claude/skills/model-lamps/`): it takes the next batch (default 6) from its `queue.md`, models each lamp with its own agent, links them with night images, pushes, and tells Yunus what to check. The procedure, tools, brief and lessons live there; this file keeps the state.
-   - **Numbers (2026-11-14):** 104 products uploaded of about 250, deadline roughly the end of 2026. 65 lamps are in the kit (table below), 30 in the queue (4 of them lanterns, which need their own parts; Arya and Solio need tilted or cut parts), then the ~150 new products when the list arrives.
+   - **Numbers (2026-11-25):** about 315 products in Sanity: 154 Light Design, 15 from the price list only, ~145 armatures and outdoor fittings from other manufacturers (photo only, see `docs/PROJECT.md` "Product sources"). Only table lamps are modelled (~150 in the end); 65 are in the kit (table below). The queue (`queue.md`) still lists the old 30; it must be rebuilt with the new table lamps (wood, fabric, porcelain, salt, marble, metal) before the next batch. Mosaic cubes (Lina, Gaye, Neva) and stations are not modelled.
    - **Permissions Yunus gave:** browser and visual tests, opening the datasheets, tool dependencies, subagents at Claude's discretion. For modelling batches: no questions, push at the end, kit changes allowed as long as the Defne guard proves approved lamps unchanged. Work on `main`.
    - **To fix along the way:** Agena's underside LED is an assumption. Moving edges keep slight steps on purpose.
 4. **Right before launch, not now (Yunus's call):** blog posts, KVKK and cookie review, webhook, contact form test, SEO, real-phone tests, admin panel guide, removal of the sample prices and content. Yunus does the finish photos later, with no rush.
@@ -204,8 +204,19 @@ Revalidation: the home query and materials use the `home:products` tag, sent on 
 - Add `reference`, `referencesPage` and `legalPage` to the webhook filter in the Sanity dashboard (README is already updated), and check that `aboutPage`, `contactPage` and the others are there.
 - KVKK and cookie texts are templates and need a legal review.
 - **Client questions** (the one list; Yunus asks them in one go. Every modelling batch adds its questions here; remove a line once answered):
+  - Catalogue (2026-11-25):
+    - Jeweller lighting (11 products): the client sent the link himself; confirm it belongs on a hotel and restaurant brand's site.
+    - Left out on purpose: petrol-station poles, garden and car charging socket bollards, the custom-lettering and logo door-number lights. Confirm.
+    - On the site but not in the 2027 list (prices cleared): Mira, Polaris, Suma, Arya, Bilham, Denep, Vega, Dubhe, Cam aplik. Discontinued? Remove or keep? (Aldebaran is in the list as "UMA" with its photo; priced –/105 as Aldebaran. Confirm the name.)
+    - No price in the list: Avena, Ülger.
+    - 15 products exist only in the price list, with its small photos and no specs (Albostan, Palermo, Svela, Sera, Neva, Hazer, Orkide, Lilia, Verda, Lara, Sena, Balsam, Hebe, Alpina, Aplik Şarj Modülü). Light Design's site links them to other products. Need real photos and dimensions.
+    - Premium-only lamps (garson, wood, porcelain, salt, lanterns…): is Ekonomik really not offered? Their page still shows the Ekonomik/Premium switch when Light Design lists the charge option.
+    - Konra and Oxford marble versions cost 95$ (Premium only) vs 58/75$ metal; the site shows the metal price.
+    - Salt lamps (Lalin, Nergis, Melia, Azalya) look like white stone, not salt crystal; Light Design lists seven metal finishes on them, on Zambak and Manolya too. Real options?
+    - Sera's dome: alabaster, onyx or stone? Vanda: floor lamp or small uplight? Alis "Mermer": the photo shows a sandy stone.
+    - Outdoor fittings: the shop's page text and the datasheet drawings disagree on power on many products; conflicting values were left out (list in the import notes below). Real values per product?
+    - Surface spots Dona, Dona-S, Scala: the source gives no power or lamp type.
   - General:
-    - Weight: Light Design lists "1 kg" on every product (shown as "Yaklaşık 1 kg").
     - Garson Çağrı Butonu looks standalone but inherits the table-lamp spec table.
     - Plastica: the name suggests plastic, the source says aluminium/sheet steel.
     - Premium stations: the text says "aynı anda dokuz lamba" on all sizes; capacity was taken from the name.
