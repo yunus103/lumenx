@@ -570,11 +570,10 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   // an own opal part (no shade, no hat) lets its light out as a shade does, through the bottom of `source`
   const exit = hat && !s ? { y: (hat.led.y - 0.5) * CM, r: hat.led.rOut * 0.86 * CM } : { y: (source.y - 0.05) * CM, r: source.rBottom * 0.86 * CM };
   const rings: RingUniforms[] = [];
-  // the tallest part (Beliz's finial tops the body's profile, above its opal). A shaded lamp keeps its shade's top:
-  // the framing its approved lamps were judged in (Karo's hat stands 4.3 cm above it).
+  // the tallest part (Beliz's finial tops the body's profile, above its opal; Karo's hat stands 4.3 cm above its shade)
   const ys = (p?: ProfilePoint[]) => p?.map((q) => q[1]) ?? [];
   const heightCm = s
-    ? (s.profile ? Math.max(...s.profile.map((p) => p[1])) : s.y + s.h + s.thickness) + (spec.topButton?.h || 0)
+    ? Math.max((s.profile ? Math.max(...s.profile.map((p) => p[1])) : s.y + s.h + s.thickness) + (spec.topButton?.h || 0), ...ys(hat?.profile))
     : Math.max(...ys(b.profile), ...ys(hat?.profile), ...ys(hat?.opal && "profile" in hat.opal ? hat.opal.profile : undefined), ...ys(spec.opal?.profile), ...ys(spec.glass?.profile));
 
   return {

@@ -124,7 +124,6 @@ Kit features added on demand: `body.knurl` (knurled grip, Casares), `body.facets
 | Finer marble | Konra, Oxford | the photos' veins are finer and hairier, with drips on Oxford; ours read a little like cracks |
 | Beech ray flecks | Pera, Alba | beech reads smooth; the photos show 1–2 mm dark flecks |
 | Oak ray flecks and straight quarter-sawn streaks | Deren, Dora, Poyraz, Beliz, Açelya | the shader draws soft rings (reads like cherry); the photos show straight streaks with dark pore and ray flecks |
-| Karo framing height | Karo | its hat sits 4.3 cm above its opal shade, but shaded lamps take their height from the shade, so the viewer frames it ~4.3 cm short (may crop the hat); left alone because Karo is approved |
 | Ray flecks follow the grain | Aran, Alya | the wood shader draws rays across the grain, so a level-grain hat (`hat.grain`) shows faint vertical ticks; kept low with `pores` ~0.5 |
 | Separate wood per part | Pera, Poyraz, Püren, Yosun, Aran | night or second photos show a walnut hat on a beech body; the hat always takes the body's finish (its own grain exists now: `hat.grain`) |
 | Occlusion in thin grooves | Sümbül | the groove renders light; painted with a fixed `siyah` zone instead |
