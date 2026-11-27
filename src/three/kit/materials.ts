@@ -57,6 +57,7 @@ type U<T> = { value: T };
 export interface WoodUniforms {
   uEarly: U<THREE.Color>;
   uLate: U<THREE.Color>;
+  uRings: U<number>;
   [k: string]: U<unknown>;
 }
 

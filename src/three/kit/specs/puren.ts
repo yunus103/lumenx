@@ -48,6 +48,8 @@ const puren: KitSpec = {
     { type: "usbc", y: 1.94, x: 1.54, side: "front", r: 0.65 },
     { type: "hole", y: 2.0, x: -0.14, side: "front", r: 0.09 },
   ],
+  // the photos' stain (pale honey beech), not the kayin calibrated on Defne
+  woodTone: { kayin: { early: "#f0ab58", late: "#b06e30", rough: 0.55, clearcoat: 0.12 } },
   light: { kelvin: 2700, lumen: 550, y: 16.26, dimmer: [0.4, 0.7, 1], body: 0.012, bounce: 200 },
 };
 

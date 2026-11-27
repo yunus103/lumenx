@@ -40,6 +40,8 @@ export interface OpalShell {
   // Opt-in: satin instead of glossy (this roughness, no clearcoat) and a colour instead of white (Minkar's grey dome)
   rough?: number;
   tint?: string;
+  // Opt-in: alabaster clouding as ShadeSpec alabaster (Carina), here on the shell: top-level `opal` or `hat.opal`
+  alabaster?: { scale: number; strength: number };
 }
 
 // Opt-in: the profile's runs between two of its corners (`from`, `to`: heights in cm, like `knurl`) keep one finish
@@ -91,6 +93,18 @@ export interface Marble {
   scale: number;
   width: number;
   rough?: number;
+}
+
+// Opt-in, per spec: a wood finish drawn in this lamp's photo stain instead of the calibrated one (Defne's), whenever
+// the buyer picks it: `early`/`late` the spring and latewood colours, `rough`/`clearcoat`/`coatRough` the gloss (a
+// lacquer: higher clearcoat, lower coatRough; 0.38 when left out), `contrast` scales the grain's ring contrast (1 when left out).
+export interface WoodTone {
+  early: string;
+  late: string;
+  rough: number;
+  clearcoat: number;
+  coatRough?: number;
+  contrast?: number;
 }
 
 export interface Detail {
@@ -156,6 +170,8 @@ export interface KitSpec {
   hat?: HatSpec;
   antique?: Antique;
   marble?: Marble;
+  // Opt-in, see WoodTone: per wood finish slug
+  woodTone?: Partial<Record<"ceviz" | "kayin", WoodTone>>;
   // `shape` (opt-in): the button's outline in units of r and h, [0, 0] to [0, 1] (the default dome when left out:
   // [[0, 0], [1, 0], [1, 0.2], [0.9, 0.6], [0.55, 0.92], [0, 1]]). `finish` (opt-in): "body" for the selected finish,
   // or a slug from finishes.ts; brass when left out.

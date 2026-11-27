@@ -33,6 +33,8 @@ const alba: KitSpec = {
     led: { y: 20.69, rIn: 1.6, rOut: 10.3, wash: { metal: 0.15, wood: 3 } },
     fixed: [{ from: 27.43, to: 27.6, finish: "gold" }],
   },
+  // the photos' stain (pale honey beech), not the kayin calibrated on Defne
+  woodTone: { kayin: { early: "#f0ab58", late: "#b06e30", rough: 0.55, clearcoat: 0.12 } },
   light: { kelvin: 2700, lumen: 550, y: 20.69, dimmer: [0.4, 0.7, 1], body: 0.012, bounce: 200 },
 };
 

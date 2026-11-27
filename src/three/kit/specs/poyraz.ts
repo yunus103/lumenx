@@ -44,6 +44,8 @@ const poyraz: KitSpec = {
     led: { y: 18.69, rIn: 0.5, rOut: 3.65, wash: { metal: 0.15 } },
     fixed: [{ from: 21.97, to: 22, finish: "rose", brush: 0.35 }],
   },
+  // the photos' stain (glossy red-brown stained oak), not the ceviz calibrated on Defne
+  woodTone: { ceviz: { early: "#c16a2e", late: "#793813", rough: 0.4, clearcoat: 0.5, coatRough: 0.22, contrast: 1.4 } },
   light: { kelvin: 2700, lumen: 550, y: 18.69, dimmer: [0.4, 0.7, 1], body: 0.012, bounce: 200 },
 };
 

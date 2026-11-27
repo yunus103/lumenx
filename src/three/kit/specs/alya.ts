@@ -40,6 +40,8 @@ const alya: KitSpec = {
     { type: "usbc", y: 2.8, x: 0.65, side: "back", r: 0.62 },
     { type: "hole", y: 4.5, x: 0.85, side: "back", r: 0.09 },
   ],
+  // the photos' stain (lacquered dark red-brown wood), not the ceviz calibrated on Defne
+  woodTone: { ceviz: { early: "#9b5225", late: "#612a0e", rough: 0.45, clearcoat: 0.35, coatRough: 0.2, contrast: 1.4 } },
   light: { kelvin: 2700, lumen: 550, y: 16.59, dimmer: [0.4, 0.7, 1], body: 0.03, bounce: 200 },
 };
 

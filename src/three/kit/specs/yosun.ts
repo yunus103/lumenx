@@ -44,6 +44,8 @@ const yosun: KitSpec = {
     { type: "usbc", y: 1.48, x: -0.17, side: "front", r: 0.8 },
     { type: "hole", y: 1.76, x: -2.56, side: "front", r: 0.1 },
   ],
+  // the photos' stain (pale honey beech), not the kayin calibrated on Defne
+  woodTone: { kayin: { early: "#f0ab58", late: "#b06e30", rough: 0.55, clearcoat: 0.12 } },
   light: { kelvin: 2700, lumen: 550, y: 19.99, dimmer: [0.4, 0.7, 1], body: 0.012, bounce: 200 },
 };
 

@@ -104,6 +104,12 @@ const LINKS = [
   { slug: "alba-ahsap-sarjli-masa-lambasi", modelKey: "alba", shades: [] },
   { slug: "alya-ahsap-sarjli-masa-lambasi", modelKey: "alya", shades: [] },
   { slug: "aran-ahsap-sarjli-masa-lambasi", modelKey: "aran", shades: [] },
+  { slug: "acelya-ahsap-sarjli-masa-lambasi", modelKey: "acelya", shades: [] },
+  { slug: "deren-ahsap-sarjli-masa-lambasi", modelKey: "deren", shades: [] },
+  { slug: "dora-ahsap-sarjli-masa-lambasi", modelKey: "dora", shades: [] },
+  { slug: "feza-ahsap-sarjli-masa-lambasi", modelKey: "feza", shades: [] },
+  { slug: "lupin-ahsap-sarjli-masa-lambasi", modelKey: "lupin", shades: [] },
+  { slug: "beliz-ahsap-sarjli-masa-lambasi", modelKey: "beliz", shades: [] },
 ];
 
 const tx = client.transaction();

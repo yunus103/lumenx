@@ -311,6 +311,11 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   // a wood hat turned from its own blank (HatSpec grain): its own grain field, in the body's finish
   const hatWood = wood && hat?.grain ? byLiner(woodMaterial(INITIAL_WOOD, hat.grain)) : null;
   if (hatWood) hatWood.userData.envI = 0.2;
+  // each wood material's own ring contrast and coat roughness, restored when no woodTone applies
+  const woodBase = (wood ? (hatWood ? [wood, hatWood] : [wood]) : []).map(
+    (m) => [m, { rings: m.userData.uniforms.uRings.value, coatRough: m.clearcoatRoughness }] as const
+  );
+  const woodTones = Object.entries(spec.woodTone ?? {}).map(([slug, t]) => [finish3D({ slug: { current: slug } }).wood, t] as const);
   // parts in a fixed finish (FixedFinish, button rings and centres): one material per finish, lit as metal or paint
   // by its own metalness, as the body is by the selected finish's
   const fixed = new Map<string, { m: THREE.MeshPhysicalMaterial; u?: LinerUniforms; limit?: { value: number }; top: number }>();
@@ -517,6 +522,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     const out = opalMaterial(o.transmission, false, o.rough, o.tint);
     const inside = opalMaterial(o.transmission, false, o.rough, o.tint);
     inside.side = THREE.BackSide;
+    if (o.alabaster) for (const m of [out, inside]) alabastered(m, o.alabaster.scale, o.alabaster.strength);
     fabrics.push(out, inside);
     add(shell, out, false);
     add(shell, inside, false);
@@ -564,9 +570,12 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   // an own opal part (no shade, no hat) lets its light out as a shade does, through the bottom of `source`
   const exit = hat && !s ? { y: (hat.led.y - 0.5) * CM, r: hat.led.rOut * 0.86 * CM } : { y: (source.y - 0.05) * CM, r: source.rBottom * 0.86 * CM };
   const rings: RingUniforms[] = [];
+  // the tallest part (Beliz's finial tops the body's profile, above its opal). A shaded lamp keeps its shade's top:
+  // the framing its approved lamps were judged in (Karo's hat stands 4.3 cm above it).
+  const ys = (p?: ProfilePoint[]) => p?.map((q) => q[1]) ?? [];
   const heightCm = s
     ? (s.profile ? Math.max(...s.profile.map((p) => p[1])) : s.y + s.h + s.thickness) + (spec.topButton?.h || 0)
-    : Math.max(...(hat ?? spec.opal!).profile.map((p) => p[1]), ...(spec.glass?.profile.map((p) => p[1]) ?? []));
+    : Math.max(...ys(b.profile), ...ys(hat?.profile), ...ys(hat?.opal && "profile" in hat.opal ? hat.opal.profile : undefined), ...ys(spec.opal?.profile), ...ys(spec.glass?.profile));
 
   return {
     group: g,
@@ -613,12 +622,17 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
         }
         return;
       }
-      const w = f.wood ?? woodFromHex(f.hex);
-      for (const m of hatWood ? [wood, hatWood] : [wood]) {
+      // this lamp's photo stain for a calibrated wood finish (KitSpec woodTone); matched by value, as the finish may
+      // arrive as a copy
+      const tone = woodTones.find(([as]) => as?.early === f.wood?.early && as?.late === f.wood?.late)?.[1];
+      const w = tone ?? f.wood ?? woodFromHex(f.hex);
+      for (const [m, base] of woodBase) {
         m.userData.uniforms.uEarly.value.set(w.early);
         m.userData.uniforms.uLate.value.set(w.late);
+        m.userData.uniforms.uRings.value = base.rings * (tone?.contrast ?? 1);
         m.roughness = w.rough;
         m.clearcoat = w.clearcoat;
+        m.clearcoatRoughness = tone?.coatRough ?? base.coatRough;
       }
     },
     setExposure(exposure) {

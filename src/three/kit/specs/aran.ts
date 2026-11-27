@@ -36,6 +36,8 @@ const aran: KitSpec = {
     { type: "usbc", y: 2.1, x: 1.9, side: "front", r: 0.6 },
     { type: "hole", y: 2.2, x: 0.4, side: "front", r: 0.09 },
   ],
+  // the photos' stain (pale honey beech), not the kayin calibrated on Defne
+  woodTone: { kayin: { early: "#f0ab58", late: "#b06e30", rough: 0.55, clearcoat: 0.12 } },
   light: { kelvin: 2700, lumen: 550, y: 15.59, dimmer: [0.4, 0.7, 1], body: 0.012, bounce: 200 },
 };
 
