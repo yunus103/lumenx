@@ -8,6 +8,8 @@ You are working in the LUMENX repository (Next.js + Sanity, three.js kit lamps).
 
 Render and upload the night card image (`nightImage` in Sanity) for these kit lamps, which are already linked in Sanity. Read the top of `tools/model/review.py` and `tools/upload-night.mjs` first.
 
+When the modeller used a Light Design `--slug` that differs from the Sanity slug, `--upload` fails: upload with the fallback in step 3 and the Sanity slug.
+
 | key | --slug (Sanity slug) | finish | flags |
 |---|---|---|---|
 | <key> | <sanity-slug> | <finish> | <exact flags the modeller used, or empty> |

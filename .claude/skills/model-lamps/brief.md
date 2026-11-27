@@ -62,7 +62,8 @@ Lessons so far:
   - `eskitme`: satin olive taupe paint; also the "taupe" painted photos.
   - Also: `satine-nikel`, `krom`, `rose`, `siyah`, `beyaz`.
   - If no listed finish matches the photo, use the closest and say so; it becomes a question for the client.
-- **`hat.led.wash`.** It lights the stem/body under the hat at night and is opt-in. Turn it on only if the night photos show it.
+- **`hat.led.wash`.** It lights the stem/body under the hat at night and is opt-in. Turn it on only if the night photos show it. On a wood body it needs `wash.wood` (3 matched Aran and Alba); leave that out when a long metal stem separates the body from the hat (Pera, Poyraz).
+- **`hat.grain`** (same `Grain` as `body.grain`): a wood hat with its own grain field, for hats turned from their own blank (level streaks round the side, parallel lines on top). Sloped cone hats: pith far behind, level `dir` (Aran: `pith [0,18,-40], dir [1,0.04,0.12]`). Wall or pillow hats: pith far diagonally below and behind, `dir` along x (Püren: `pith [0,-10.2,-28], dir [1,0.03,0.08]`). Keep `ring` ~0.15 and `pores` ~0.5 (the rays run across the grain and show as ticks). A pith near the hat draws swirls or a dot.
 - **Opt-in parts (see `specs/index.ts`).** `body.knurl` knurled grip (Casares); `body.facets` / `hat.facets` N-sided parts (Melma, Ezop): count sides from face-width ratios and check edges are straight, polished round drums show reflection bands too; `shade.opal` / `hat.opal` smooth white opal diffuser (Karo, Baro), not the fabric shade.
   - `body.fixed` / `hat.fixed: [{ from, to, finish }]`: profile runs between two corner heights (cm, like `knurl`) keep one finish whatever the buyer picks: a chrome finial (Zamora, Evora), a white dome on a metal body. Use only when the photos of several finishes show that part unchanged.
   - Button `ring` / `centre`: `{ type: "button", …, ring: "krom", centre: { finish: "beyaz", r: 0.6 } }` (Verona); brass when left out.

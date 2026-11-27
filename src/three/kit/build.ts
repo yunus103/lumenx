@@ -298,7 +298,9 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     stem: Math.min(...prof.filter((p) => p.x > 0 && p.y > top / 2).map((p) => p.x)),
     metal: hat.led.wash.metal,
   };
-  const surface: THREE.MeshPhysicalMaterial = wood ? byLiner(wood) : far ? metal : byLiner(metal, wash);
+  // wood takes the wash only when the spec asks (HatSpec led.wash.wood), scaled from paint's share of the lamp light
+  const woodWash = wash && hat?.led.wash?.wood ? { ...wash, gain: hat.led.wash.wood * PAINT_BODY } : undefined;
+  const surface: THREE.MeshPhysicalMaterial = wood ? byLiner(wood, woodWash) : far ? metal : byLiner(metal, wash);
   const bodyLimit = wood || far ? null : brightnessLimited(surface);
   // the body stays out of the exit lights' shadow maps (point lights render distance materials); the table takes
   // its shadow from ringShadowed. Daylight shadows are unaffected.
@@ -306,6 +308,9 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   // wood is a satin lacquer: the lit table shows in it towards the silhouette, as in the photos, but only faintly.
   // Metal shows everything around it.
   surface.userData.envI = wood ? 0.2 : 1;
+  // a wood hat turned from its own blank (HatSpec grain): its own grain field, in the body's finish
+  const hatWood = wood && hat?.grain ? byLiner(woodMaterial(INITIAL_WOOD, hat.grain)) : null;
+  if (hatWood) hatWood.userData.envI = 0.2;
   // parts in a fixed finish (FixedFinish, button rings and centres): one material per finish, lit as metal or paint
   // by its own metalness, as the body is by the selected finish's
   const fixed = new Map<string, { m: THREE.MeshPhysicalMaterial; u?: LinerUniforms; limit?: { value: number }; top: number }>();
@@ -532,7 +537,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
   if (hat) {
     const inside = far ? undefined : hat.inside;
     const hatZones = zoned(profileRuns(hat.profile, far ? 16 : 120), [...(hat.fixed ?? []), ...(inside ? [{ ...inside, lit: true }] : [])]);
-    if (hatZones.rest.length) probeHide.push(add(brushed(shaped(hatZones.rest, round, hat.facets), hat.brush), surface));
+    if (hatZones.rest.length) probeHide.push(add(brushed(shaped(hatZones.rest, round, hat.facets), hat.brush), hatWood ?? surface));
     for (const z of hatZones.zones) probeHide.push(zoneMesh(z, shaped(z.runs, round, hat.facets)));
     if (inside) emitters.push({ m: fixedMat(inside.finish, inside.rough, true), gain: INSIDE_GAIN });
     else {
@@ -574,7 +579,7 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
     reflect:
       far && wood
         ? [...fixed.values()].map((z) => z.m)
-        : [...(grip ? [brass, bodyBrass, steel, surface, grip] : [brass, bodyBrass, steel, surface]), ...[...fixed.values()].map((z) => z.m), ...reflectGlass],
+        : [...(grip ? [brass, bodyBrass, steel, surface, grip] : [brass, bodyBrass, steel, surface]), ...(hatWood ? [hatWood] : []), ...[...fixed.values()].map((z) => z.m), ...reflectGlass],
     probeHide,
     emitters,
     glows: !!s || !hat,
@@ -609,10 +614,12 @@ export function buildLamp(spec: KitSpec, far = false): KitLamp {
         return;
       }
       const w = f.wood ?? woodFromHex(f.hex);
-      wood.userData.uniforms.uEarly.value.set(w.early);
-      wood.userData.uniforms.uLate.value.set(w.late);
-      wood.roughness = w.rough;
-      wood.clearcoat = w.clearcoat;
+      for (const m of hatWood ? [wood, hatWood] : [wood]) {
+        m.userData.uniforms.uEarly.value.set(w.early);
+        m.userData.uniforms.uLate.value.set(w.late);
+        m.roughness = w.rough;
+        m.clearcoat = w.clearcoat;
+      }
     },
     setExposure(exposure) {
       if (bodyLimit) bodyLimit.value = BODY_LIMIT / exposure;

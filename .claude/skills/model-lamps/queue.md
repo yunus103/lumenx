@@ -1,6 +1,6 @@
 # Modelling queue
 
-Ordered: the next batch is the first unchecked rows. Format: `- [ ] key | Sanity slug | note`. Tick a row when the lamp is linked with a night image; write "spec done, not linked" if a run stopped half way. Rebuilt on 2026-11-25 from Sanity (table lamps without `modelKey`); the note comes from the product copy and the cover photo, so check the photos. The 77 finished lamps are in `docs/HANDOFF.md` "Modelled lamps".
+Ordered: the next batch is the first unchecked rows. Format: `- [ ] key | Sanity slug | note`. Tick a row when the lamp is linked with a night image; write "spec done, not linked" if a run stopped half way. Rebuilt on 2026-11-25 from Sanity (table lamps without `modelKey`); the note comes from the product copy and the cover photo, so check the photos. The 83 finished lamps are in `docs/HANDOFF.md` "Modelled lamps".
 
 Only table lamps are modelled (client, 2026-11-25). Light Design slugs can differ from the Sanity slug; the coordinator resolves them from `source.url`. Rows marked **price list** have no Light Design page: their only photo is the small one from the 2027 price list (`tools/data/ext-images/pricelist/<key>.png`, ~100–240 px wide) and there is no datasheet, so fit the proportions to that photo, take sizes from similar lamps, and say so in the HANDOFF notes (the client was asked for real photos). Newer lamps (and many price-list ones) have no datasheet: the 2027 catalogue (`arstar.com.tr/wp-content/uploads/2026/11/Lightdesign-sarjli-masa-lambasi-2027-katalog.pdf`) gives H, head Ø and base Ø, and many galleries have a labelled dimension photo. `extract.py` and `review.py` handle price-list products by slug.
 
@@ -19,12 +19,12 @@ Only table lamps are modelled (client, 2026-11-25). Light Design slugs can diffe
 - [x] mina | mina-ahsap-sarjli-masa-lambasi | wood body, black metal hat
 - [x] orkide | orkide-ahsap-sarjli-masa-lambasi | **price list**; stacked wood body, copper hat
 - [x] pera | pera-ahsap-sarjli-masa-lambasi | wood cylinder body, wood dome hat, metal stem
-- [ ] poyraz | poyraz-ahsap-sarjli-masa-lambasi | round wood body, wood disc hat, metal stem
-- [ ] puren | puren-ahsap-sarjli-masa-lambasi | egg-shaped wood body, wood disc hat, metal stem
-- [ ] yosun | yosun-ahsap-sarjli-masa-lambasi | wood cylinder body, wood disc hat, metal stem
-- [ ] alba | alba-ahsap-sarjli-masa-lambasi | wood cone body, wide wood mushroom hat
-- [ ] alya | alya-ahsap-sarjli-masa-lambasi | wood cone body, wood disc hat, brass detail
-- [ ] aran | aran-ahsap-sarjli-masa-lambasi | wood cone body and cone hat
+- [x] poyraz | poyraz-ahsap-sarjli-masa-lambasi | round wood body, wood disc hat, metal stem
+- [x] puren | puren-ahsap-sarjli-masa-lambasi | egg-shaped wood body, wood disc hat, metal stem
+- [x] yosun | yosun-ahsap-sarjli-masa-lambasi | wood cylinder body, wood disc hat, metal stem
+- [x] alba | alba-ahsap-sarjli-masa-lambasi | wood cone body, wide wood mushroom hat
+- [x] alya | alya-ahsap-sarjli-masa-lambasi | wood cone body, wood disc hat, brass detail
+- [x] aran | aran-ahsap-sarjli-masa-lambasi | wood cone body and cone hat
 - [ ] acelya | acelya-ahsap-sarjli-masa-lambasi | pear-shaped wood body, wood hat, brass stem
 - [ ] deren | deren-ahsap-sarjli-masa-lambasi | wood cylinder, wood disc hat, brass stem
 - [ ] dora | dora-ahsap-sarjli-masa-lambasi | stacked-bead wood body, wood hat, brass stem

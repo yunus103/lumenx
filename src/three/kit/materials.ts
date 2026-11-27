@@ -118,7 +118,7 @@ const LINER = /* glsl */ `
   float bodyR(float y) { float f = clamp(y / uTop, 0., 1.) * 16.; int i = int(min(f, 15.)); return y > uTop ? 0. : mix(uProf[i], uProf[i + 1], f - float(i)); }
 #ifdef KIT_WASH
   uniform vec4 uWash; // LED disc height, inner and outer radius, stem radius (m, lamp-local)
-  uniform float uWashMetal;
+  uniform float uWashMetal, uWashGain;
   uniform int uWashN;
   // integral over the angle of max(u cos a + v, 0) / (A - B cos a)^2, from 0 to acos(c)
   float washF(float c, float u, float v, float A, float B, float AmB, float ApB) {
@@ -195,7 +195,7 @@ const LINER_LIGHT = /* glsl */ `
 #endif
     }
 #ifdef KIT_WASH
-    reflectedLight.directDiffuse += uLampColor * uLampI * ledWash(P, nW) * BRDF_Lambert(material.diffuseColor + diffuseColor.rgb * metalnessFactor * uWashMetal);
+    reflectedLight.directDiffuse += uLampColor * uLampI * uWashGain * ledWash(P, nW) * BRDF_Lambert(material.diffuseColor + diffuseColor.rgb * metalnessFactor * uWashMetal);
 #endif
     // close to the table a downward face only sees the table in the body's own shadow
     float under = max(-nW.y, 0.), seen = mix(1., smoothstep(0., .06, P.y), under);
@@ -245,6 +245,8 @@ export interface WashSpec {
   rOut: number;
   stem: number;
   metal: number;
+  // scales the wash against the material's other lamp light (1 when left out)
+  gain?: number;
 }
 
 export function linerLit<M extends THREE.Material>(m: M, shade: ShadeSpec, prof: THREE.Vector2[], top: number, wash?: WashSpec): LinerUniforms {
@@ -261,6 +263,7 @@ export function linerLit<M extends THREE.Material>(m: M, shade: ShadeSpec, prof:
   if (wash) {
     u.uWash = { value: new THREE.Vector4(wash.y, wash.rIn, wash.rOut, wash.stem) };
     u.uWashMetal = { value: wash.metal };
+    u.uWashGain = { value: wash.gain ?? 1 };
     u.uWashN = { value: 16 };
   }
   const prev = m.onBeforeCompile;

@@ -114,9 +114,13 @@ export interface HatSpec {
     rOut: number;
     // Opt-in, where the photos show it: the body takes the disc's light as an area source, so a stem right under it
     // glows and fades down. `metal` is the share a metal finish scatters diffusely (0 polished, more for a sandy
-    // metallic powder coat); paint scatters it by its own colour.
-    wash?: { metal: number };
+    // metallic powder coat); paint scatters it by its own colour. A wood body ignores it unless `wood` is set: the
+    // wash's strength on the wood (1 = as on paint at the body's light, more to brighten it).
+    wash?: { metal: number; wood?: number };
   };
+  // Opt-in, wood lamps: the hat turned from its own blank, with its own grain field instead of the body's (same
+  // finish). A side-grain blank: `dir` horizontal and the pith far outside the hat, e.g. pith [0, 18, -40], dir [1, 0, 0.1].
+  grain?: Grain;
   facets?: Facets;
   opal?: OpalBand | OpalShell;
   fixed?: FixedFinish[];
